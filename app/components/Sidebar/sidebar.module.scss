@@ -243,10 +243,12 @@
       background: #0a111b;
       display: flex;
       justify-content: center;
+      cursor: pointer;
     }
 
     h2 {
       font-size: 16px;
+      cursor: pointer;
     }
   }
 }
