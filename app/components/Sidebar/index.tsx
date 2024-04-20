@@ -86,6 +86,17 @@ const Sidebar: FC = () => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
             mode="inline">
+            {/* <Menu.SubMenu
+              style={{ width: 256, background: 'none', border: 'none' }}
+              defaultSelectedKeys={['1']}
+              defaultOpenKeys={['sub1']}>
+              <div
+                style={{ paddingLeft: '24px', height: '24px' }}
+                className="ant-menu-submenu-title">
+                <span style={{ color: 'white' }}>Тип товара (переименовать)</span>
+                <Image src={iconState === 'plusIcon' ? plusIcon : minusIcon} alt="decrement" />
+              </div>
+            </Menu.SubMenu> */}
             <Menu.SubMenu
               style={{ background: '#131d2c', width: '300px', color: 'white' }}
               onTitleClick={toggleIcon}
