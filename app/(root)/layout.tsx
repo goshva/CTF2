@@ -7,6 +7,7 @@ import Sidebar from "@/components/Sidebar";
 import News from "@/components/News";
 
 import backgroundImage from "@/main-bg.png";
+import ProfileBadge from "@/components/ProfileBadge";
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -22,17 +23,14 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           objectFit="cover"
         />
       </div>
+      <Header />
       <div className={styles.wrapper}>
-        <Header />
-
+        <ProfileBadge />
         <Sidebar />
-
         <News />
-
         <main className={styles.main}>{children}</main>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };
