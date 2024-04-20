@@ -64,7 +64,8 @@ const News = React.memo(() => {
           {
             // width: `calc(${data.length * 100}%)`,
           }
-        }>
+        }
+      >
         {data.map(({ imageUrl, title, description, hashTags }, index) => (
           <div className={styles.slide} key={`slide-${index}`}>
             {index === currentSlide && (
@@ -81,6 +82,7 @@ const News = React.memo(() => {
               className={styles.image}
               style={{
                 backgroundImage: `url(${imageUrl})`,
+                backgroundSize: "contain",
               }}
             />
             <div className={styles.carouselContent}>
