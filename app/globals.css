@@ -11,3 +11,16 @@
   overflow: hidden;
   z-index: -1;
 }
+
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root .ant-menu-item,
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root
+  .ant-menu-submenu-title {
+  height: 24px;
+}
+
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline
+  .ant-menu-sub.ant-menu-inline
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title {
+  height: 24px;
+}
