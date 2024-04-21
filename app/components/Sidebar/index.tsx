@@ -68,10 +68,6 @@ const Sidebar: FC = () => {
       <div className={styles.profileSection}>
         {!isAuthenticated && (
           <div className={styles.buttonContainer}>
-            {/* <button onClick={handleOpenProfile} className={styles.steam_btn}>
-              <Image src={steamIcon} alt="steam icon" />
-              LOGIN WITH STEAM
-            </button> */}
             <Button
               onClick={handleOpenProfile}
               className={styles.steam_btn}
