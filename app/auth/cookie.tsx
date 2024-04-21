@@ -1,4 +1,3 @@
-//cookie name hwt
 function getCookieValue(cookieName: string): string | null {
     const cookiesString: string = document.cookie;
   
