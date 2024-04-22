@@ -1,0 +1,104 @@
+.carousel {
+  color: white;
+  background-color: rgba(40, 46, 51, 0.5);
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.innerCarouselContainer {
+  transition: 0.3s cubic-bezier(0.78, 0, 0.6, 0.91);
+  display: flex;
+}
+
+.slideControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.25rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    filter: brightness(1.2);
+    background-color: #737373;
+  }
+
+  &_reversed {
+    transform: rotateZ(180deg);
+  }
+}
+
+.carouselContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 0 0.5rem;
+}
+
+.image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  min-width: 214px;
+}
+
+.text {
+  font-size: 16px;
+
+  @media (max-width: 1570px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+
+.title {
+  color: #ff6243;
+}
+
+.description {
+  color: black;
+  overflow: hidden;
+  // flex: 1;
+}
+
+.text-primary {
+  font-size: large;
+}
+.text-secondary {
+  font-size: small;
+}
+
+.chip {
+  border-radius: 7px;
+  background-color: #2e2e2e;
+  color: #e5e7e9;
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  &:not(:last-child) {
+    margin-right: 4px;
+  }
+}
