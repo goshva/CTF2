@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
-import Image from "next/image";
-import styles from "./layout.module.scss";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
-import News from "@/components/News";
+import { ReactNode } from 'react';
+import Image from 'next/image';
+import styles from './layout.module.scss';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import News from '@/components/News';
 
-import backgroundImage from "@/main-bg.png";
-import ProfileBadge from "@/components/ProfileBadge";
+import backgroundImage from '@/main-bg.png';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -23,14 +22,17 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           objectFit="cover"
         />
       </div>
-      <Header />
       <div className={styles.wrapper}>
-        <ProfileBadge />
+        <Header />
+
         <Sidebar />
+
         <News />
+
         <main className={styles.main}>{children}</main>
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
