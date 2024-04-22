@@ -63,6 +63,8 @@ const Sidebar: FC = () => {
     }, 6000);
   };
 
+  // adding steam button
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.profileSection}>
