@@ -24,3 +24,8 @@
   > .ant-menu-submenu-title {
   height: 24px;
 }
+
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-expand-icon,
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-arrow {
+  display: none;
+}
