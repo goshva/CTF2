@@ -12,85 +12,46 @@
   z-index: -1;
 }
 
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline.ant-menu-root .ant-menu-item,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline.ant-menu-root .ant-menu-submenu-title {
-  height: 24px;
-}
-
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline
-  .ant-menu-sub.ant-menu-inline
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title {
-  height: 24px;
-}
-
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu .ant-menu-submenu-expand-icon,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu .ant-menu-submenu-arrow {
-  display: none;
-}
-
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline > .ant-menu-item,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-vertical > .ant-menu-item,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-vertical
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title {
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root .ant-menu-item,
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root
+  .ant-menu-submenu-title {
   background-color: #131d2c;
   border-radius: 5px;
+  height: 24px;
+  color: white;
 
   &:hover {
     background-color: #243766;
   }
 }
 
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-dark.ant-menu-inline .ant-menu-item,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-dark
-  > .ant-menu.ant-menu-inline
-  .ant-menu-item {
-  background-color: #243766;
-
-  &:hover {
-    background-color: #243766;
-  }
-}
-
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline
-  .ant-menu-sub.ant-menu-inline
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title {
-  background-color: #243766;
-
-  &:hover {
-    background-color: #243766;
-  }
-}
-
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-dark.ant-menu-inline
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-dark.ant-menu-inline
   .ant-menu-sub.ant-menu-inline,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-dark
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-dark
   > .ant-menu.ant-menu-inline
   .ant-menu-sub.ant-menu-inline {
   background: #131d2c;
   border-radius: 5px;
 }
 
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline.ant-menu-root
-  .ant-menu-item
-  > .ant-menu-title-content,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu-inline.ant-menu-root
-  .ant-menu-submenu-title
-  > .ant-menu-title-content {
-  color: white;
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-expand-icon,
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-arrow {
+  display: none;
 }
 
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu .ant-menu-item .ant-menu-item-icon + span,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu
-  .ant-menu-submenu-title
-  .ant-menu-item-icon
-  + span,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu .ant-menu-item .anticon + span,
-:where(.css-dev-only-do-not-override-mzwlov).ant-menu .ant-menu-submenu-title .anticon + span {
-  color: white;
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline
+  .ant-menu-sub.ant-menu-inline
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title {
+  height: 24px;
 }
+
+:where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline
+  .ant-menu-sub.ant-menu-inline
+  > .ant-menu-submenu
+  > .ant-menu-submenu-title {
+  background: #243766;
+  height: 24px;
+  border-radius: 10px;
+}
+// ===========

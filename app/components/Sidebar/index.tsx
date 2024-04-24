@@ -14,6 +14,7 @@ import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
+import Link from 'next/link';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -36,6 +37,8 @@ function getItem(
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState('plusIcon');
   const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
+
+  // guns state потом другые добавлю
   const [pistolState, setPistolState] = useState('plusIcon');
 
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
@@ -87,6 +90,7 @@ const Sidebar: FC = () => {
   const items: MenuItem[] = [
     getItem(
       <span
+        onClick={toggleIcon}
         style={{
           color: 'white',
           display: 'flex',
@@ -100,11 +104,19 @@ const Sidebar: FC = () => {
       null,
       [
         getItem(
-          <span>Пистолеты</span>,
-          'sub4',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+          <span
+            onClick={toggleIconPistol}
+            style={{
+              color: 'white',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <span>Пистолет</span>
             <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
+          </span>,
+          'sub3',
+          null,
           [
             getItem('Все пистолеты', '13'),
             getItem('Five-Seven', '14'),
@@ -119,16 +131,73 @@ const Sidebar: FC = () => {
             getItem('Dual Berettas', '24'),
           ],
         ),
-        getItem('Снайперская винтовка', '25'),
-        getItem('Пистолет-пулемет', '26'),
-        getItem('Пулемет', '27'),
-        getItem('Дробовик', '28'),
-        getItem('Нож', '29'),
-        getItem('Прочее', '30'),
+        getItem(
+          <span>Винтовка</span>,
+          'sub4',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Снайперская винтовка</span>,
+          'sub5',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Пистолет-пулемет</span>,
+          'sub6',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Пулемет</span>,
+          'sub7',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Дробовик</span>,
+          'sub8',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Нож</span>,
+          'sub9',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        getItem(
+          <span>Прочее</span>,
+          'sub10',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [getItem('Пусто', '13')],
+        ),
+        // getItem('Снайперская винтовка', '25'),
+        // getItem('Пистолет-пулемет', '26'),
+        // getItem('Пулемет', '27'),
+        // getItem('Дробовик', '28'),
+        // getItem('Нож', '29'),
+        // getItem('Прочее', '30'),
       ],
     ),
     getItem(
       <span
+        onClick={toggleIconSecond}
         style={{
           color: 'white',
           display: 'flex',
@@ -138,7 +207,7 @@ const Sidebar: FC = () => {
         <span>Критерий</span>
         <Image src={iconStateSecond === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
       </span>,
-      'sub3',
+      'sub11',
       null,
       [
         getItem('Категория', '31'),
@@ -154,15 +223,19 @@ const Sidebar: FC = () => {
       <div className={styles.profileSection}>
         {!isAuthenticated && (
           <div className={styles.buttonContainer}>
-            <Button
-              onClick={handleOpenProfile}
-              className={styles.steam_btn}
-              type="primary"
-              loading={loadings[0]}
-              onClickCapture={() => enterLoading(0)}>
-              <Image src={steamIcon} alt="steam icon" />
-              Click me!
-            </Button>
+            <Link
+              href="https://countertrade.vit.ooo/v1/auth/steam"
+              style={{ textDecoration: 'none' }}>
+              <Button
+                onClick={handleOpenProfile}
+                className={styles.steam_btn}
+                type="primary"
+                loading={loadings[0]}
+                onClickCapture={() => enterLoading(0)}>
+                <Image src={steamIcon} alt="steam icon" />
+                Click me!
+              </Button>
+            </Link>
           </div>
         )}
         {isAuthenticated && (
