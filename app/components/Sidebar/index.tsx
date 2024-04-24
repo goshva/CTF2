@@ -115,11 +115,16 @@ const Sidebar: FC = () => {
         {isAuthenticated && (
           <>
             <div className={styles.avatar}>
-            <Image src={decodedToken.photos[1].value} alt="avatar" width={80} height={80} style={{ borderRadius: '50%' }}/>
+            <Image src={decodedToken && decodedToken.photos[1]
+              ? decodedToken.photos[1].value 
+              : profileAvatar} alt="avatar" width={80} height={80} style={{ borderRadius: '50%' }}/>
             </div>
             <section>
               <article className={styles.name_email_content}>
-                <h3>{decodedToken.displayName}</h3>
+                <h3>{decodedToken
+                ? decodedToken.displayName
+                : <div>Username</div>
+                }</h3>
                 <div className={styles.line}></div>
                 <p>@lockinto</p>
               </article>
