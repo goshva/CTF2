@@ -76,25 +76,25 @@ const Sidebar: FC = () => {
     }, 6000);
   };
 
-  // if (loadingCookies) {
-  //   return (
-  //     <aside className={styles.sidebar}>
-  //     <div className={styles.profileSection}>
-  //         <div className={styles.buttonContainer}>
-  //           <Button
-  //             onClick={handleOpenProfile}
-  //             className={styles.steam_btn}
-  //             type="primary"
-  //             loading={loadings[0]}
-  //             onClickCapture={() => enterLoading(0)}>
-  //             <Image src={steamIcon} alt="steam icon" />
-  //             Lodaing...
-  //           </Button>
-  //         </div>
-  //     </div>
-  //     </aside>
-  //   );
-  // }
+  if (loadingCookies) {
+    return (
+      <aside className={styles.sidebar}>
+      <div className={styles.profileSection}>
+          <div className={styles.buttonContainer}>
+            <Button
+              onClick={handleOpenProfile}
+              className={styles.steam_btn}
+              type="primary"
+              loading={loadings[0]}
+              onClickCapture={() => enterLoading(0)}>
+              <Image src={steamIcon} alt="steam icon" />
+              Lodaing...
+            </Button>
+          </div>
+      </div>
+      </aside>
+    );
+  }
 
   return (
     <aside className={styles.sidebar}>
