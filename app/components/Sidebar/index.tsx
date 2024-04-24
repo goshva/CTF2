@@ -13,7 +13,6 @@ import type { InputNumberProps } from 'antd';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
-import Link from 'next/link';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 
@@ -55,6 +54,7 @@ const Sidebar: FC = () => {
   };
 
   const handleOpenProfile = () => {
+    window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam'
     setTimeout(() => {
       setIsAuthenticated(true);
     }, 1500);
@@ -101,7 +101,6 @@ const Sidebar: FC = () => {
       <div className={styles.profileSection}>
         {!isAuthenticated && (
           <div className={styles.buttonContainer}>
-          <Link href='https://countertrade.vit.ooo/v1/auth/steam' style={{textDecoration: 'none'}}>
             <Button
               onClick={handleOpenProfile}
               className={styles.steam_btn}
@@ -111,7 +110,6 @@ const Sidebar: FC = () => {
               <Image src={steamIcon} alt="steam icon" />
               Click me!
             </Button>
-            </Link>
           </div>
         )}
         {isAuthenticated && (
