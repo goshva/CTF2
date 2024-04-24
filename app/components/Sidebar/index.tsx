@@ -15,7 +15,7 @@ import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
 import Link from 'next/link';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css'; временно удалено
 
 type MenuItem = Required<MenuProps>['items'][number];
 

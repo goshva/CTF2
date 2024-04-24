@@ -15,13 +15,13 @@
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root .ant-menu-item,
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline.ant-menu-root
   .ant-menu-submenu-title {
-  background-color: #131d2c;
-  border-radius: 5px;
-  height: 24px;
-  color: white;
+  background-color: #131d2c !important;
+  border-radius: 5px !important;
+  height: 24px !important;
+  color: white !important;
 
   &:hover {
-    background-color: #243766;
+    background-color: #243766 !important;
   }
 }
 
@@ -30,28 +30,28 @@
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu-dark
   > .ant-menu.ant-menu-inline
   .ant-menu-sub.ant-menu-inline {
-  background: #131d2c;
-  border-radius: 5px;
+  background: #131d2c !important;
+  border-radius: 5px !important;
 }
 
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-expand-icon,
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu .ant-menu-submenu-arrow {
-  display: none;
+  display: none !important;
 }
 
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline
   .ant-menu-sub.ant-menu-inline
   > .ant-menu-submenu
   > .ant-menu-submenu-title {
-  height: 24px;
+  height: 24px !important;
 }
 
 :where(.css-dev-only-do-not-override-1qfezbu).ant-menu-inline
   .ant-menu-sub.ant-menu-inline
   > .ant-menu-submenu
   > .ant-menu-submenu-title {
-  background: #243766;
-  height: 24px;
-  border-radius: 10px;
+  background: #243766 !important;
+  height: 24px !important;
+  border-radius: 10px !important;
 }
 // ===========
