@@ -1,11 +1,12 @@
 .carousel {
   color: white;
   background-color: rgba(40, 46, 51, 0.5);
-  border: 1px solid rgba(0, 0, 0, 1);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   display: flex;
   overflow: hidden;
   width: 100%;
+  margin-left: -15px;
 }
 
 .slide {

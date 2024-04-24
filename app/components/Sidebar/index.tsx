@@ -13,6 +13,25 @@ import type { InputNumberProps } from 'antd';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
+import type { MenuProps } from 'antd';
+
+type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[],
+  type?: 'group',
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as MenuItem;
+}
 
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState('plusIcon');
@@ -64,6 +83,71 @@ const Sidebar: FC = () => {
   };
 
   // adding steam button
+
+  const items: MenuItem[] = [
+    getItem(
+      <span
+        style={{
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <span>Тип товара (переименовать)</span>
+        <Image src={iconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+      </span>,
+      'sub1',
+      null,
+      [
+        getItem(
+          <span>Пистолеты</span>,
+          'sub4',
+          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
+            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          </div>,
+          [
+            getItem('Все пистолеты', '13'),
+            getItem('Five-Seven', '14'),
+            getItem('Glock-18', '15'),
+            getItem('P2000', '16'),
+            getItem('P250', '17'),
+            getItem('R8 Revolver', '18'),
+            getItem('Tec-9', '19'),
+            getItem('CZ75-Auto', '21'),
+            getItem('USP-S', '22'),
+            getItem('Desert Eagle', '23'),
+            getItem('Dual Berettas', '24'),
+          ],
+        ),
+        getItem('Снайперская винтовка', '25'),
+        getItem('Пистолет-пулемет', '26'),
+        getItem('Пулемет', '27'),
+        getItem('Дробовик', '28'),
+        getItem('Нож', '29'),
+        getItem('Прочее', '30'),
+      ],
+    ),
+    getItem(
+      <span
+        style={{
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <span>Критерий</span>
+        <Image src={iconStateSecond === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+      </span>,
+      'sub3',
+      null,
+      [
+        getItem('Категория', '31'),
+        getItem('Фазы', '32'),
+        getItem('Раритетность', '33'),
+        getItem('Качество', '34'),
+      ],
+    ),
+  ];
 
   return (
     <aside className={styles.sidebar}>
@@ -122,7 +206,7 @@ const Sidebar: FC = () => {
       <div className={styles.middleSide}>
         <div className={styles.select_wrapper}>
           <section className={styles.select_section}>
-            <Menu
+            {/* <Menu
               style={{ width: 256, background: 'none', border: 'none' }}
               defaultSelectedKeys={['1']}
               defaultOpenKeys={['sub1']}
@@ -234,14 +318,20 @@ const Sidebar: FC = () => {
                 <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="32">
                   Фазы
                 </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="33">
+                <Menu.Item style={{ color: 'white', background: '#243766' }} key="33">
                   Раритетность
                 </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="34">
+                <Menu.Item style={{ color: 'white', background: '#243766' }} key="34">
                   Качество
                 </Menu.Item>
               </Menu.SubMenu>
-            </Menu>
+            </Menu> */}
+            <Menu
+              style={{ width: 300, background: 'none', border: 'none' }}
+              mode="inline"
+              theme="dark"
+              items={items}
+            />
           </section>
         </div>
         <div className={styles.float}>
