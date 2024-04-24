@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './layout.module.scss';
@@ -8,31 +10,35 @@ import News from '@/components/News';
 
 import backgroundImage from '@/main-bg.png';
 
+import { StyleProvider } from '@ant-design/cssinjs';
+
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <div className="bgWrap">
-        <Image
-          src={backgroundImage}
-          alt="background Image"
-          fill
-          priority
-          placeholder="blur"
-          quality={100}
-          objectFit="cover"
-        />
-      </div>
-      <div className={styles.wrapper}>
-        <Header />
+      <StyleProvider hashPriority="high">
+        <div className="bgWrap">
+          <Image
+            src={backgroundImage}
+            alt="background Image"
+            fill
+            priority
+            placeholder="blur"
+            quality={100}
+            objectFit="cover"
+          />
+        </div>
+        <div className={styles.wrapper}>
+          <Header />
 
-        <Sidebar />
+          <Sidebar />
 
-        <News />
+          <News />
 
-        <main className={styles.main}>{children}</main>
+          <main className={styles.main}>{children}</main>
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </StyleProvider>
     </>
   );
 };

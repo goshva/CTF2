@@ -16,6 +16,7 @@ import steamIcon from '../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
 import Link from 'next/link';
 // import 'antd/dist/antd.css'; временно удалено
+// import { StyleProvider } from '@ant-design/cssinjs';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
