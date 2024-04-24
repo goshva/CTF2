@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
 import profileAvatar from '../../../public/profileAvatar.svg';
 import Image from 'next/image';
@@ -14,15 +14,29 @@ import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
 import Link from 'next/link';
-
+import jwt from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState('plusIcon');
   const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
   const [pistolState, setPistolState] = useState('plusIcon');
-
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loadings, setLoadings] = useState<boolean[]>([]);
+  const [decodedToken, setDecodedToken] = useState<any>('')
+  const [loadingCookies, setLoadingCookies] = useState(true);
 
+  useEffect(() => {
+    const jwtToken = Cookies.get('jwt');
+    if (jwtToken) {
+      const decodedToken = jwt.decode(jwtToken);
+      setDecodedToken(decodedToken);
+      console.log(decodedToken);
+      setIsAuthenticated(true);
+    }
+    setLoadingCookies(false); // Установка состояния загрузки в false при получении куки или его отсутствии
+  }, []); 
 
   const onChange: InputNumberProps['onChange'] = (newValue) => {
     setInputValue(newValue as number);
@@ -40,15 +54,11 @@ const Sidebar: FC = () => {
     setPistolState(pistolState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
   };
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   const handleOpenProfile = () => {
     setTimeout(() => {
       setIsAuthenticated(true);
     }, 1500);
   };
-
-  const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const enterLoading = (index: number) => {
     setLoadings((prevLoadings) => {
@@ -66,8 +76,25 @@ const Sidebar: FC = () => {
     }, 6000);
   };
 
-  // adding steam button
-
+  // if (loadingCookies) {
+  //   return (
+  //     <aside className={styles.sidebar}>
+  //     <div className={styles.profileSection}>
+  //         <div className={styles.buttonContainer}>
+  //           <Button
+  //             onClick={handleOpenProfile}
+  //             className={styles.steam_btn}
+  //             type="primary"
+  //             loading={loadings[0]}
+  //             onClickCapture={() => enterLoading(0)}>
+  //             <Image src={steamIcon} alt="steam icon" />
+  //             Lodaing...
+  //           </Button>
+  //         </div>
+  //     </div>
+  //     </aside>
+  //   );
+  // }
 
   return (
     <aside className={styles.sidebar}>
@@ -90,11 +117,11 @@ const Sidebar: FC = () => {
         {isAuthenticated && (
           <>
             <div className={styles.avatar}>
-              <Image src={profileAvatar} alt="avatar" />
+            <Image src={decodedToken.photos[1].value} alt="avatar" width={80} height={80} style={{ borderRadius: '50%' }}/>
             </div>
             <section>
               <article className={styles.name_email_content}>
-                <h3>Ivan Slinski</h3>
+                <h3>{decodedToken.displayName}</h3>
                 <div className={styles.line}></div>
                 <p>@lockinto</p>
               </article>
