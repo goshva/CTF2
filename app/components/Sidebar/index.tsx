@@ -283,12 +283,13 @@ const Sidebar: FC = () => {
           <section className={styles.select_section}>
             {/* <Menu
               style={{ width: 256, background: 'none', border: 'none' }}
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
+              // defaultSelectedKeys={['1']}
+              // defaultOpenKeys={['sub1']}
               mode="inline">
               <Menu.SubMenu
                 style={{ background: '#131d2c', width: '300px', color: 'white' }}
                 onTitleClick={toggleIcon}
+                key="sub1"
                 title={
                   <span
                     style={{
@@ -304,6 +305,7 @@ const Sidebar: FC = () => {
                 <Menu.SubMenu
                   style={{ background: '#243766', width: '300px', color: 'white' }}
                   onTitleClick={toggleIconPistol}
+                  key="sub2"
                   title={
                     <span
                       style={{
@@ -393,10 +395,10 @@ const Sidebar: FC = () => {
                 <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="32">
                   Фазы
                 </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} key="33">
+                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="33">
                   Раритетность
                 </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} key="34">
+                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="34">
                   Качество
                 </Menu.Item>
               </Menu.SubMenu>
