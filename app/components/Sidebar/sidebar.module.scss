@@ -303,3 +303,37 @@
     }
   }
 }
+
+// for chat
+.chatSelect {
+  .findUser {
+    width: 320px;
+    height: 40px;
+    background: #232a30;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: relative;
+
+    input {
+      outline: none;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+
+      &::placeholder {
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.downLine {
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  height: 1px;
+}

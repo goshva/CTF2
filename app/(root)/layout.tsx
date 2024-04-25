@@ -24,6 +24,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           objectFit="cover"
         />
       </div>
+      {/* <div className={styles.center}> */}
       <div className={styles.wrapper}>
         <Header />
 

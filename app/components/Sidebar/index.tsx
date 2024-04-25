@@ -8,13 +8,17 @@ import accauntIcon from '../../public/Account.svg';
 import settingsIcon from '../../public/settings-1.svg';
 import plusIcon from '../../public/plus.svg';
 import minusIcon from '../../public/minus.svg';
-import { Menu } from 'antd';
+import { Badge, Menu } from 'antd';
 import type { InputNumberProps } from 'antd';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import avatar from '../../public/avatar.png';
+import UserChatItem from '../UserChatItem';
+import loopIcon from '../../public/loop-chat-icon.svg';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -39,6 +43,7 @@ function getItem(
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState('plusIcon');
   const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
+  const pathname = usePathname();
 
   // guns state потом другые добавлю
   const [pistolState, setPistolState] = useState('plusIcon');
@@ -279,9 +284,10 @@ const Sidebar: FC = () => {
       </div>
 
       <div className={styles.middleSide}>
-        <div className={styles.select_wrapper}>
-          <section className={styles.select_section}>
-            {/* <Menu
+        {pathname === '/' && (
+          <div className={styles.select_wrapper}>
+            <section className={styles.select_section}>
+              {/* <Menu
               style={{ width: 256, background: 'none', border: 'none' }}
               // defaultSelectedKeys={['1']}
               // defaultOpenKeys={['sub1']}
@@ -403,32 +409,59 @@ const Sidebar: FC = () => {
                 </Menu.Item>
               </Menu.SubMenu>
             </Menu> */}
-            <Menu
-              style={{ width: 300, background: 'none', border: 'none' }}
-              mode="inline"
-              theme="dark"
-              items={items}
-            />
-          </section>
-        </div>
-        <div className={styles.float}>
-          <div className={styles.float_content}>
-            <h2>Float</h2>
-            <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
-            <Col span={8}>
-              <Slider
-                min={0.0}
-                max={1000}
-                onChange={onChange}
-                value={typeof inputValue === 'number' ? inputValue : 0}
-                step={0.01}
+              <Menu
+                style={{ width: 300, background: 'none', border: 'none' }}
+                mode="inline"
+                theme="dark"
+                items={items}
               />
-            </Col>
-            {/* <h2 className={styles.valueText}>{inputValue}</h2> */}
-            <h2 className={styles.valueText}>1.000</h2>
+            </section>
           </div>
-        </div>
+        )}
+
+        {pathname === '/chat' && (
+          <div className={styles.chatSelect}>
+            <div className={styles.findUser}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Image src={loopIcon} alt="loop" />
+                <input type="text" placeholder="Найти" />
+              </div>
+              <div className={styles.downLine}></div>
+            </div>
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+            <UserChatItem />
+          </div>
+        )}
+
+        {pathname === '/' && (
+          <div className={styles.float}>
+            <div className={styles.float_content}>
+              <h2>Float</h2>
+              <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
+              <Col span={8}>
+                <Slider
+                  min={0.0}
+                  max={1000}
+                  onChange={onChange}
+                  value={typeof inputValue === 'number' ? inputValue : 0}
+                  step={0.01}
+                />
+              </Col>
+              {/* <h2 className={styles.valueText}>{inputValue}</h2> */}
+              <h2 className={styles.valueText}>1.000</h2>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* {pathname === '/chat' && <div>hello</div>} */}
     </aside>
   );
 };
