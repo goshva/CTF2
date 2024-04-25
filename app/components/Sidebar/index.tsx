@@ -2,7 +2,7 @@
 
 import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
-import profileAvatar from '../../../../public/profile.svg';
+import profileAvatar from '../../../public/profile.svg';
 import Image from 'next/image';
 import accauntIcon from '../../../public/Account.svg';
 import settingsIcon from '../../../public/settings-1.svg';
