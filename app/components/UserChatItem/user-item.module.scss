@@ -7,6 +7,12 @@
   display: flex;
   position: relative;
 
+  &:hover {
+    transition: 400ms;
+    background: #273c75;
+    cursor: pointer;
+  }
+
   .item {
     display: flex;
     align-items: center;
