@@ -2,10 +2,10 @@
 
 import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
-import profileAvatar from '../../../public/profileAvatar.svg';
+import profileAvatar from '../../../../public/profile.svg';
 import Image from 'next/image';
-import accauntIcon from '../../public/Account.svg';
-import settingsIcon from '../../public/settings-1.svg';
+import accauntIcon from '../../../public/Account.svg';
+import settingsIcon from '../../../public/settings-1.svg';
 import plusIcon from '../../public/plus.svg';
 import minusIcon from '../../public/minus.svg';
 import { Badge, Menu } from 'antd';
