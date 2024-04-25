@@ -6,7 +6,7 @@ import { ShoppingCart } from 'lucide-react';
 
 // иконки роутов
 // import HomeIcon from '../../public/home.svg';
-import MessageIcon from '../../public/message.svg';
+import MessageIcon from '../../../public/message.svg';
 
 import logo from '@/logo.svg';
 
