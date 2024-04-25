@@ -7,7 +7,30 @@
   overflow: hidden;
   width: 100%;
   margin-left: -86px;
+  z-index: 1;
+  position: relative;
 }
+
+.smoke {
+  background-image: url("../../../public/smoke.png");
+  animation: animateClouds 30s linear infinite;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  &_delayed{
+    animation-delay: 15s;
+    transform: translateX(-100%);
+  }
+}
+
 
 .slide {
   width: 90%;
@@ -18,20 +41,29 @@
   justify-content: space-between;
   flex-shrink: 0;
   padding: 5px;
+  z-index: 2;
+  
 }
 
 .innerCarouselContainer {
   transition: 0.3s cubic-bezier(0.78, 0, 0.6, 0.91);
   display: flex;
-  background: linear-gradient(#04131E80, #203D5380);
+  z-index: 2;
+  
+    
 
   &_disabledTransition {
     transition: none;
+    z-index: 2;
   }
 
   &_loading {
     align-items: center;
     justify-content: center;
+    background-image: "../../../public/smoke.png";
+    position: absolute;
+    filter: blur(10px);
+    z-index: 2;
   }
 }
 
@@ -43,16 +75,19 @@
   padding: 0 0.25rem;
   cursor: pointer;
   transition: 0.4s ease-in-out;
+  z-index: 2;
 
   &:hover {
     filter: brightness(1.3);
     background-color: #737373;
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
+    z-index: 2;
   }
 
   &_reversed {
     transform: rotateZ(180deg);
+    z-index: 2;
   }
 }
 
@@ -63,6 +98,7 @@
   height: 100%;
   padding: 0 0.5rem;
   background: #5D6D7E;
+  z-index: 2;
 }
 
 .image {
@@ -71,6 +107,7 @@
   background-size: cover;
   height: 100%;
   min-width: 214px;
+  z-index: 2;
 }
 
 .text {
@@ -114,10 +151,12 @@
   transition: 0.3s ease-in-out;
   &:hover {
     filter: brightness(1.2);
+    z-index: 2;
   }
 
   &:not(:last-child) {
     margin-right: 4px;
+    z-index: 2;
   }
 }
 
@@ -144,10 +183,24 @@
     transform: scale(1.2);
   }
 }
+
 .loader {
   border-radius: 50%;
   background: white;
   width: 24px;
   height: 24px;
   animation: pulsate 1s ease-in-out infinite;
+  z-index: 2;
 }
+
+
+@keyframes animateClouds {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+

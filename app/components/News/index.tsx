@@ -106,6 +106,8 @@ const News = React.memo(() => {
 
   return (
     <div className={styles.carousel} ref={handleRef}>
+      <div className={styles.smoke} />
+      <div className={clsx(styles.smoke, styles.smoke_delayed)} />
       <div
         ref={innerCarouselContainerRef}
         className={clsx(
