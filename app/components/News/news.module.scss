@@ -1,22 +1,38 @@
-.carousel {
+.outerWrapper {
   color: white;
   background-color: rgba(40, 46, 51, 0.5);
   border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
-  display: flex;
   overflow: hidden;
-  width: 1030px;
+  grid-column: 2 / 3;
+  margin-right: 35px;
+}
 
-  @media (max-width: 1500px) {
-    width: 960px;
+.innerWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+
+.smoke {
+  background-image: url('../../../public/smoke.png');
+  animation: animateClouds 30s linear infinite;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(5px);
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  &_delayed {
+    animation-delay: 15s;
+    transform: translateX(-100%);
   }
-
-  @media (max-width: 1380px) {
-    width: 900px;
-  }
-
-  margin-left: 25px;
-  // margin-left: -120px;
 }
 
 .slide {
@@ -27,29 +43,51 @@
   flex-direction: row;
   justify-content: space-between;
   flex-shrink: 0;
+  padding: 5px;
+  z-index: 2;
 }
 
 .innerCarouselContainer {
   transition: 0.3s cubic-bezier(0.78, 0, 0.6, 0.91);
   display: flex;
+  z-index: 2;
+
+  &_disabledTransition {
+    transition: none;
+    z-index: 2;
+  }
+
+  &_loading {
+    align-items: center;
+    justify-content: center;
+    background-image: '../../../public/smoke.png';
+    position: absolute;
+    filter: blur(10px);
+    z-index: 2;
+  }
 }
 
 .slideControl {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 50%;
   padding: 0 0.25rem;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
+  z-index: 2;
 
   &:hover {
-    filter: brightness(1.2);
+    filter: brightness(1.3);
     background-color: #737373;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+    z-index: 2;
   }
 
   &_reversed {
     transform: rotateZ(180deg);
+    z-index: 2;
   }
 }
 
@@ -59,6 +97,8 @@
   justify-content: space-around;
   height: 100%;
   padding: 0 0.5rem;
+  background: #5d6d7e;
+  z-index: 2;
 }
 
 .image {
@@ -67,6 +107,7 @@
   background-size: cover;
   height: 100%;
   min-width: 214px;
+  z-index: 2;
 }
 
 .text {
@@ -83,11 +124,14 @@
 
 .title {
   color: #ff6243;
+  font-weight: bold;
 }
 
 .description {
-  color: black;
+  color: white;
   overflow: hidden;
+  font-weight: bold;
+  font-size: 13px;
   // flex: 1;
 }
 
@@ -107,9 +151,54 @@
   transition: 0.3s ease-in-out;
   &:hover {
     filter: brightness(1.2);
+    z-index: 2;
   }
 
   &:not(:last-child) {
     margin-right: 4px;
+    z-index: 2;
+  }
+}
+
+.commonBorderStyles {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+.borderText {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-right: 1px solid black;
+}
+.borderImage {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+@keyframes pulsate {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.loader {
+  border-radius: 50%;
+  background: white;
+  width: 24px;
+  height: 24px;
+  animation: pulsate 1s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes animateClouds {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
   }
 }

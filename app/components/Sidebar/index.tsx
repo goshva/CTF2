@@ -23,6 +23,7 @@ import loopIcon from '../../../public/loop-chat-icon.svg';
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
+import { useGetFriendListQuery } from '../../redux';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -50,21 +51,39 @@ const Sidebar: FC = () => {
   const [loadings, setLoadings] = useState<boolean[]>([]);
   const [decodedToken, setDecodedToken] = useState<any>('');
   const [loadingCookies, setLoadingCookies] = useState(true);
+  const [friendCount, setFriendCount] = useState<any>('');
+
+  const jwtToken = Cookies.get('jwt');
+  if (jwtToken) {
+    const decodedToken: any = jwt.decode(jwtToken);
+    if (decodedToken) {
+      const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
+      if (data) {
+        if (data.friendslist) {
+          const friendCount = data.friendslist.friends.length;
+          setFriendCount(friendCount);
+        }
+      }
+    }
+  }
 
   useEffect(() => {
-    const jwtToken = Cookies.get('jwt');
     if (jwtToken) {
       const decodedToken = jwt.decode(jwtToken);
       setDecodedToken(decodedToken);
       console.log(decodedToken);
       setIsAuthenticated(true);
     }
-    setLoadingCookies(false); // Установка состояния загрузки в false при получении куки или его отсутствии
+    setLoadingCookies(false);
   }, []);
+
   const pathname = usePathname();
 
   // guns state потом другые добавлю
   const [pistolState, setPistolState] = useState('plusIcon');
+
+  // menu border
+  const [menuBorder, setMenuBorder] = useState(false);
 
   const onChange: InputNumberProps['onChange'] = (newValue) => {
     setInputValue(newValue as number);
@@ -72,6 +91,7 @@ const Sidebar: FC = () => {
 
   const toggleIcon = () => {
     setIconState(iconState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setMenuBorder(!menuBorder);
   };
 
   const toggleIconSecond = () => {
@@ -104,139 +124,6 @@ const Sidebar: FC = () => {
       });
     }, 6000);
   };
-
-  // adding steam button
-
-  const items: MenuItem[] = [
-    getItem(
-      <span
-        onClick={toggleIcon}
-        style={{
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-        <span>Тип товара (переименовать)</span>
-        <Image src={iconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-      </span>,
-      'sub1',
-      null,
-      [
-        getItem(
-          <span
-            onClick={toggleIconPistol}
-            style={{
-              color: 'white',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <span>Пистолет</span>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </span>,
-          'sub3',
-          null,
-          [
-            getItem('Все пистолеты', '13'),
-            getItem('Five-Seven', '14'),
-            getItem('Glock-18', '15'),
-            getItem('P2000', '16'),
-            getItem('P250', '17'),
-            getItem('R8 Revolver', '18'),
-            getItem('Tec-9', '19'),
-            getItem('CZ75-Auto', '21'),
-            getItem('USP-S', '22'),
-            getItem('Desert Eagle', '23'),
-            getItem('Dual Berettas', '24'),
-          ],
-        ),
-        getItem(
-          <span>Винтовка</span>,
-          'sub4',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '25')],
-        ),
-        getItem(
-          <span>Снайперская винтовка</span>,
-          'sub5',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '26')],
-        ),
-        getItem(
-          <span>Пистолет-пулемет</span>,
-          'sub6',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '27')],
-        ),
-        getItem(
-          <span>Пулемет</span>,
-          'sub7',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '28')],
-        ),
-        getItem(
-          <span>Дробовик</span>,
-          'sub8',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '29')],
-        ),
-        getItem(
-          <span>Нож</span>,
-          'sub9',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '30')],
-        ),
-        getItem(
-          <span>Прочее</span>,
-          'sub10',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-          </div>,
-          [getItem('Пусто', '31')],
-        ),
-        // getItem('Снайперская винтовка', '25'),
-        // getItem('Пистолет-пулемет', '26'),
-        // getItem('Пулемет', '27'),
-        // getItem('Дробовик', '28'),
-        // getItem('Нож', '29'),
-        // getItem('Прочее', '30'),
-      ],
-    ),
-    getItem(
-      <span
-        onClick={toggleIconSecond}
-        style={{
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-        <span>Критерий</span>
-        <Image src={iconStateSecond === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-      </span>,
-      'sub11',
-      null,
-      [
-        getItem('Категория', '33'),
-        getItem('Фазы', '34'),
-        getItem('Раритетность', '35'),
-        getItem('Качество', '36'),
-      ],
-    ),
-  ];
 
   if (loadingCookies) {
     return (
@@ -282,11 +169,7 @@ const Sidebar: FC = () => {
           <>
             <div className={styles.avatar}>
               <Image
-                src={
-                  decodedToken && decodedToken.photos[1]
-                    ? decodedToken.photos[1].value
-                    : profileAvatar
-                }
+                src={decodedToken.photos[1] == '' ? '' : decodedToken.photos[1].value}
                 alt="avatar"
                 width={80}
                 height={80}
@@ -295,13 +178,19 @@ const Sidebar: FC = () => {
             </div>
             <section>
               <article className={styles.name_email_content}>
-                <h3>{decodedToken ? decodedToken.displayName : <div>Username</div>}</h3>
+                <h3>
+                  {decodedToken
+                    ? decodedToken.displayName.length > 12
+                      ? decodedToken.displayName.slice(0, 12) + '...'
+                      : decodedToken.displayName
+                    : '<div>Username</div>'}
+                </h3>
                 <div className={styles.line}></div>
-                <p>@lockinto</p>
+                <p>{decodedToken.id}</p>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
-                <p className={styles.friends_count}>308 Friends</p>
+                <p className={styles.friends_count}>{friendCount}Friends</p>
               </article>
               <article className={styles.desc}>
                 <p>
@@ -329,136 +218,30 @@ const Sidebar: FC = () => {
       <div className={styles.middleSide}>
         {pathname === '/' && (
           <div className={styles.select_wrapper}>
-            <section className={styles.select_section}>
-              {/* <Menu
-              style={{ width: 256, background: 'none', border: 'none' }}
-              // defaultSelectedKeys={['1']}
-              // defaultOpenKeys={['sub1']}
-              mode="inline">
-              <Menu.SubMenu
-                style={{ background: '#131d2c', width: '300px', color: 'white' }}
-                onTitleClick={toggleIcon}
-                key="sub1"
-                title={
-                  <span
-                    style={{
-                      color: 'white',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}>
-                    <span>Тип товара (переименовать)</span>
-                    <Image src={iconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-                  </span>
-                }>
-                <Menu.SubMenu
-                  style={{ background: '#243766', width: '300px', color: 'white' }}
-                  onTitleClick={toggleIconPistol}
-                  key="sub2"
-                  title={
-                    <span
-                      style={{
-                        color: 'white',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}>
-                      <span>Пистолет</span>
-                      <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-                    </span>
-                  }>
-                  <div className={styles.menuContainer}>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="13">
-                      Все пистолеты
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="14">
-                      Five-Seven
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="15">
-                      Glock-18
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="16">
-                      P2000
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="17">
-                      P250
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="18">
-                      R8 Revolver
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="19">
-                      Tec-9
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="21">
-                      CZ75-Auto
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="22">
-                      USP-S
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="23">
-                      Desert Eagle
-                    </Menu.Item>
-                    <Menu.Item style={{ color: 'white', background: '#5D6EAB' }} eventKey="24">
-                      Dual Berettas
-                    </Menu.Item>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <section className={styles.select_section}>
+                <button onClick={toggleIcon} className={styles.selectPole}>
+                  Тип товара (переименовать)
+                  <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+                </button>
+                {menuBorder && (
+                  <div className={styles.menuBorder}>
+                    <button className={styles.menuItem}>Пистолет</button>
+                    <button className={styles.menuItem}>Винтовка</button>
+                    <button className={styles.menuItem}>Снайперская винтовка</button>
+                    <button className={styles.menuItem}>Пистолет-пулемет</button>
+                    <button className={styles.menuItem}>Пулемет</button>
+                    <button className={styles.menuItem}>Дробовик</button>
+                    <button className={styles.menuItem}>Нож</button>
+                    <button className={styles.menuItem}>Прочее</button>
                   </div>
-                </Menu.SubMenu>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="25">
-                  Снайперская винтовка
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="26">
-                  Пистолет-пулемет
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="27">
-                  Пулемет
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="28">
-                  Дробовик
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="29">
-                  Нож
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="30">
-                  Прочее
-                </Menu.Item>
-              </Menu.SubMenu>
-              <Menu.SubMenu
-                style={{ background: '#131d2c', width: '300px', color: 'white' }}
-                key="sub3"
-                onTitleClick={toggleIconSecond}
-                title={
-                  <span
-                    style={{
-                      color: 'white',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}>
-                    <span>Критерий</span>
-                    <Image src={iconStateSecond === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-                  </span>
-                }>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="31">
-                  Категория
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="32">
-                  Фазы
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="33">
-                  Раритетность
-                </Menu.Item>
-                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="34">
-                  Качество
-                </Menu.Item>
-              </Menu.SubMenu>
-            </Menu> */}
-              <Menu
-                style={{ width: 300, background: 'none', border: 'none' }}
-                mode="inline"
-                theme="dark"
-                items={items}
-              />
-            </section>
+                )}
+                <button onClick={toggleIconSecond} className={styles.selectPole}>
+                  Критерий
+                  <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+                </button>
+              </section>
+            </div>
           </div>
         )}
 
