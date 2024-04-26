@@ -200,6 +200,9 @@ const Sidebar: FC = () => {
                   </div>
                 </Menu.SubMenu>
                 <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="14">
+                  Винтовка
+                </Menu.Item>
+                <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="14">
                   Снайперская винтовка
                 </Menu.Item>
                 <Menu.Item style={{ color: 'white', background: '#243766' }} eventKey="15">
