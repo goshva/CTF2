@@ -23,6 +23,7 @@ import loopIcon from '../../public/loop-chat-icon.svg';
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
+import {useGetFriendListQuery} from '../../redux'
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -50,17 +51,34 @@ const Sidebar: FC = () => {
   const [loadings, setLoadings] = useState<boolean[]>([]);
   const [decodedToken, setDecodedToken] = useState<any>('');
   const [loadingCookies, setLoadingCookies] = useState(true);
+  const [friendCount, setFriendCount] = useState<any>('');
 
+  const jwtToken = Cookies.get('jwt');
+  if (jwtToken) {
+    const decodedToken: any = jwt.decode(jwtToken);
+    if (decodedToken) {
+      const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
+      if (data) {
+        if (data.friendslist) {
+          const friendCount = data.friendslist.friends.length;
+          setFriendCount(friendCount);
+        } 
+      } 
+    }
+  }
+  
   useEffect(() => {
-    const jwtToken = Cookies.get('jwt');
     if (jwtToken) {
       const decodedToken = jwt.decode(jwtToken);
       setDecodedToken(decodedToken);
       console.log(decodedToken);
       setIsAuthenticated(true);
     }
-    setLoadingCookies(false); // Установка состояния загрузки в false при получении куки или его отсутствии
+    setLoadingCookies(false); 
   }, []);
+
+
+
   const pathname = usePathname();
 
   // guns state потом другые добавлю
@@ -283,9 +301,9 @@ const Sidebar: FC = () => {
             <div className={styles.avatar}>
               <Image
                 src={
-                  decodedToken && decodedToken.photos[1]
-                    ? decodedToken.photos[1].value
-                    : profileAvatar
+                  decodedToken.photos[1] == ''
+                    ? ''
+                    : decodedToken.photos[1].value
                 }
                 alt="avatar"
                 width={80}
@@ -295,17 +313,19 @@ const Sidebar: FC = () => {
             </div>
             <section>
               <article className={styles.name_email_content}>
-                <h3>{decodedToken ? decodedToken.displayName : <div>Username</div>}</h3>
+                <h3>
+                  {decodedToken ? (decodedToken.displayName.length > 12 ? decodedToken.displayName.slice(0, 12) + '...' : decodedToken.displayName) : '<div>Username</div>'}
+                </h3>
                 <div className={styles.line}></div>
-                <p>@lockinto</p>
+                <p>{decodedToken.id}</p>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
-                <p className={styles.friends_count}>308 Friends</p>
+                <p className={styles.friends_count}>{friendCount}Friends</p>
               </article>
               <article className={styles.desc}>
                 <p>
-                  Status: Не бойся противника, который практикует 10,000 ударов. Бойся того, кто
+                Status: Не бойся противника, который практикует 10,000 ударов. Бойся того, кто
                   практикует один удар 10,000 раз.
                 </p>
               </article>
