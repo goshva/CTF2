@@ -36,6 +36,7 @@
         font-size: 12px;
         white-space: nowrap;
         cursor: pointer;
+        flex: 1;
       }
 
       .line {
@@ -43,7 +44,7 @@
         background-color: white;
         height: 100%;
         position: absolute;
-        left: 135px;
+        left: 100px;
         cursor: pointer;
       }
 
@@ -51,7 +52,7 @@
         font-size: 10px;
         white-space: nowrap;
         position: absolute;
-        right: 28px;
+        right: 10px;
         cursor: pointer;
       }
     }
