@@ -6,6 +6,15 @@
   display: flex;
   overflow: hidden;
   width: 1030px;
+
+  @media (max-width: 1500px) {
+    width: 960px;
+  }
+
+  @media (max-width: 1380px) {
+    width: 900px;
+  }
+
   margin-left: 25px;
   // margin-left: -120px;
 }

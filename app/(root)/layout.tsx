@@ -36,6 +36,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
 
         <Footer />
       </div>
+      {/* </div> */}
     </>
   );
 };
