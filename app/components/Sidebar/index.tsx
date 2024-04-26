@@ -1,29 +1,32 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
-import styles from "./sidebar.module.scss";
-import profileAvatar from "../../../public/profile.svg";
-import Image from "next/image";
-import accauntIcon from "../../../public/Account.svg";
-import settingsIcon from "../../../public/settings-1.svg";
-import plusIcon from "../../../public/plus.svg";
-import minusIcon from "../../../public/minus.svg";
-import { Badge, Menu } from "antd";
-import type { InputNumberProps } from "antd";
-import { Col, InputNumber, Row, Slider, Space } from "antd";
-import { Button, Flex } from "antd";
-import steamIcon from "../../../public/steam-icon.svg";
-import type { MenuProps } from "antd";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import avatar from "../../../public/avatar.png";
-import UserChatItem from "../UserChatItem";
-import loopIcon from "../../../public/loop-chat-icon.svg";
+import { FC, useState, useEffect } from 'react';
+import styles from './sidebar.module.scss';
+import profileAvatar from '../../../public/profileAvatar.svg';
+import Image from 'next/image';
+import accauntIcon from '../../../public/Account.svg';
+import settingsIcon from '../../../public/settings-1.svg';
+import plusIcon from '../../../public/plus.svg';
+import minusIcon from '../../../public/minus.svg';
+import { Badge, Menu } from 'antd';
+import LogOutIcon from '../../../public/logout.svg'
+import type { InputNumberProps } from 'antd';
+import { Col, InputNumber, Row, Slider, Space } from 'antd';
+import { Button, Flex } from 'antd';
+import steamIcon from '../../public/steam-icon.svg';
+import type { MenuProps } from 'antd';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import avatar from '../../public/avatar.png';
+import UserChatItem from '../UserChatItem';
+import copy from '../../../public/copy.svg'
+import loopIcon from '../../../public/loop-chat-icon.svg';
+import { IUser } from '@/index';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
-import jwt from "jsonwebtoken";
-import Cookies from "js-cookie";
-import { useGetFriendListQuery } from "../../redux";
+import jwt from 'jsonwebtoken';
+import Cookies from 'js-cookie';
+import {useLazyGetFriendListQuery} from '../../redux'
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -43,39 +46,40 @@ function getItem(
   } as MenuItem;
 }
 
+
+
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState("plusIcon");
   const [iconStateSecond, setIconStateSecond] = useState("plusIcon");
   const [inputValue, setInputValue] = useState(parseFloat("0.000"));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
-  const [decodedToken, setDecodedToken] = useState<any>("");
+  // const [decodedToken, setDecodedToken] = useState<any>();
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>("");
 
-  const jwtToken = Cookies.get("jwt");
-  if (jwtToken) {
-    const decodedToken: any = jwt.decode(jwtToken);
-    if (decodedToken) {
-      const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
-      if (data) {
-        if (data.friendslist) {
-          const friendCount = data.friendslist.friends.length;
-          setFriendCount(friendCount);
-        }
-      }
-    }
-  }
+  const jwtToken = Cookies.get('jwt');
+  //@ts-ignore
+  const decodedToken : IUser = jwt.decode(jwtToken)
+  //@ts-ignore
+  const [getFriendsList, {data}] = useLazyGetFriendListQuery(decodedToken?.id)
 
   useEffect(() => {
-    if (jwtToken) {
-      const decodedToken = jwt.decode(jwtToken);
-      setDecodedToken(decodedToken);
-      console.log(decodedToken);
+    if (decodedToken) {
       setIsAuthenticated(true);
     }
     setLoadingCookies(false);
   }, []);
+
+  useEffect(() => {
+    const jwtToken = Cookies.get('jwt');
+    if (jwtToken){
+    }
+  }, [isAuthenticated]);
+
+  const handleCopy = () =>{
+    navigator.clipboard.writeText(decodedToken.id)
+  } 
 
   const pathname = usePathname();
 
@@ -101,11 +105,15 @@ const Sidebar: FC = () => {
   };
 
   const handleOpenProfile = () => {
-    window.location.href = "https://countertrade.vit.ooo/v1/auth/steam";
-    setTimeout(() => {
-      setIsAuthenticated(true);
-    }, 1500);
+    window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
+    //@ts-ignore
+    getFriendsList()
   };
+
+  const logout = () =>{
+    Cookies.remove('jwt')
+    setIsAuthenticated(false)
+  }
 
   const enterLoading = (index: number) => {
     setTimeout(() => {
@@ -338,11 +346,7 @@ const Sidebar: FC = () => {
           <>
             <div className={styles.avatar}>
               <Image
-                src={
-                  decodedToken.photos[1] == ""
-                    ? ""
-                    : decodedToken.photos[1].value
-                }
+                src={decodedToken.photos[1].value}
                 alt="avatar"
                 width={80}
                 height={80}
@@ -352,14 +356,12 @@ const Sidebar: FC = () => {
             <section>
               <article className={styles.name_email_content}>
                 <h3>
-                  {decodedToken
-                    ? decodedToken.displayName.length > 12
-                      ? decodedToken.displayName.slice(0, 12) + "..."
-                      : decodedToken.displayName
-                    : "<div>Username</div>"}
+                  {decodedToken ? (decodedToken?.displayName?.length > 22 ? 'decodedToken.displayName'.slice(0, 22) + '...' : decodedToken.displayName) : '<div>Username</div>'}
                 </h3>
-                <div className={styles.line}></div>
-                <p>{decodedToken.id}</p>
+                <div>
+                  <h3>ID:</h3>
+                </div>
+                <Image src={copy} onClick={handleCopy} alt="account icon"/>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -380,6 +382,7 @@ const Sidebar: FC = () => {
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
+                    <Image onClick={logout} src={LogOutIcon} alt="setting icon" />
                   </div>
                 </div>
               </footer>
