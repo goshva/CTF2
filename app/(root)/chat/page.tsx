@@ -2,18 +2,18 @@
 
 import React, { useState } from 'react';
 import styles from './chat.module.scss';
-import loopIcon from '../../public/loop-chat-icon.svg';
-import menuIcon from '../../public/chat-menu.svg';
+import loopIcon from '../../../public/loop-chat-icon.svg';
+import menuIcon from '../../../public/chat-menu.svg';
 import Image from 'next/image';
 
 // иконки
-import emojiIcon from '../../public/smile-emoji.svg';
-import clipIcon from '../../public/clip.svg';
-import videoAddIcon from '../../public/video-add.svg';
-import fileAddIcon from '../../public/add-file.svg';
-import photoAddIcon from '../../public/add-photo.svg';
-import drawerIcon from '../../public/drawer.svg';
-import avatar from '../../public/avatar.png';
+import emojiIcon from '../../../public/smile-emoji.svg';
+import clipIcon from '../../../public/clip.svg';
+import videoAddIcon from '../../../public/video-add.svg';
+import fileAddIcon from '../../../public/add-file.svg';
+import photoAddIcon from '../../../public/add-photo.svg';
+import drawerIcon from '../../../public/drawer.svg';
+import avatar from '../../../public/avatar.png';
 import Message from '@/components/Message';
 
 function Chat() {

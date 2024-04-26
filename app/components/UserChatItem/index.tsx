@@ -2,7 +2,7 @@ import { Badge } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import styles from './user-item.module.scss';
-import avatar from '../../public/avatar.png';
+import avatar from '../../../public/avatar.png';
 
 function UserChatItem() {
   return (

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
@@ -28,14 +28,14 @@ import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import {useLazyGetFriendListQuery} from '../../redux'
 
-type MenuItem = Required<MenuProps>['items'][number];
+type MenuItem = Required<MenuProps>["items"][number];
 
 function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
   children?: MenuItem[],
-  type?: 'group',
+  type?: "group"
 ): MenuItem {
   return {
     key,
@@ -49,14 +49,14 @@ function getItem(
 
 
 const Sidebar: FC = () => {
-  const [iconState, setIconState] = useState('plusIcon');
-  const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
-  const [inputValue, setInputValue] = useState(parseFloat('0.000'));
+  const [iconState, setIconState] = useState("plusIcon");
+  const [iconStateSecond, setIconStateSecond] = useState("plusIcon");
+  const [inputValue, setInputValue] = useState(parseFloat("0.000"));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
   // const [decodedToken, setDecodedToken] = useState<any>();
   const [loadingCookies, setLoadingCookies] = useState(true);
-  const [friendCount, setFriendCount] = useState<any>('');
+  const [friendCount, setFriendCount] = useState<any>("");
 
   const jwtToken = Cookies.get('jwt');
   //@ts-ignore
@@ -68,7 +68,7 @@ const Sidebar: FC = () => {
     if (decodedToken) {
       setIsAuthenticated(true);
     }
-    setLoadingCookies(false); 
+    setLoadingCookies(false);
   }, []);
 
   useEffect(() => {
@@ -85,22 +85,24 @@ const Sidebar: FC = () => {
   const pathname = usePathname();
 
   // guns state потом другые добавлю
-  const [pistolState, setPistolState] = useState('plusIcon');
+  const [pistolState, setPistolState] = useState("plusIcon");
 
-  const onChange: InputNumberProps['onChange'] = (newValue) => {
+  const onChange: InputNumberProps["onChange"] = (newValue) => {
     setInputValue(newValue as number);
   };
 
   const toggleIcon = () => {
-    setIconState(iconState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setIconState(iconState === "plusIcon" ? "minusIcon" : "plusIcon");
   };
 
   const toggleIconSecond = () => {
-    setIconStateSecond(iconStateSecond === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setIconStateSecond(
+      iconStateSecond === "plusIcon" ? "minusIcon" : "plusIcon"
+    );
   };
 
   const toggleIconPistol = () => {
-    setPistolState(pistolState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setPistolState(pistolState === "plusIcon" ? "minusIcon" : "plusIcon");
   };
 
   const handleOpenProfile = () => {
@@ -115,12 +117,6 @@ const Sidebar: FC = () => {
   }
 
   const enterLoading = (index: number) => {
-    setLoadings((prevLoadings) => {
-      const newLoadings = [...prevLoadings];
-      newLoadings[index] = true;
-      return newLoadings;
-    });
-
     setTimeout(() => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
@@ -137,100 +133,141 @@ const Sidebar: FC = () => {
       <span
         onClick={toggleIcon}
         style={{
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          color: "white",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}>
         <span>Тип товара (переименовать)</span>
-        <Image src={iconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+        <Image
+          src={iconState === "plusIcon" ? plusIcon : minusIcon}
+          alt="icon"
+        />
       </span>,
-      'sub1',
+      "sub1",
       null,
       [
         getItem(
           <span
             onClick={toggleIconPistol}
             style={{
-              color: 'white',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              color: "white",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}>
             <span>Пистолет</span>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </span>,
-          'sub3',
+          "sub3",
           null,
           [
-            getItem('Все пистолеты', '13'),
-            getItem('Five-Seven', '14'),
-            getItem('Glock-18', '15'),
-            getItem('P2000', '16'),
-            getItem('P250', '17'),
-            getItem('R8 Revolver', '18'),
-            getItem('Tec-9', '19'),
-            getItem('CZ75-Auto', '21'),
-            getItem('USP-S', '22'),
-            getItem('Desert Eagle', '23'),
-            getItem('Dual Berettas', '24'),
-          ],
+            getItem("Все пистолеты", "13"),
+            getItem("Five-Seven", "14"),
+            getItem("Glock-18", "15"),
+            getItem("P2000", "16"),
+            getItem("P250", "17"),
+            getItem("R8 Revolver", "18"),
+            getItem("Tec-9", "19"),
+            getItem("CZ75-Auto", "21"),
+            getItem("USP-S", "22"),
+            getItem("Desert Eagle", "23"),
+            getItem("Dual Berettas", "24"),
+          ]
         ),
         getItem(
           <span>Винтовка</span>,
-          'sub4',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub4",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '25')],
+          [getItem("Пусто", "25")]
         ),
         getItem(
           <span>Снайперская винтовка</span>,
-          'sub5',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub5",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '26')],
+          [getItem("Пусто", "26")]
         ),
         getItem(
           <span>Пистолет-пулемет</span>,
-          'sub6',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub6",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '27')],
+          [getItem("Пусто", "27")]
         ),
         getItem(
           <span>Пулемет</span>,
-          'sub7',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub7",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '28')],
+          [getItem("Пусто", "28")]
         ),
         getItem(
           <span>Дробовик</span>,
-          'sub8',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub8",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '29')],
+          [getItem("Пусто", "29")]
         ),
         getItem(
           <span>Нож</span>,
-          'sub9',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub9",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '30')],
+          [getItem("Пусто", "30")]
         ),
         getItem(
           <span>Прочее</span>,
-          'sub10',
-          <div onClick={toggleIconPistol} style={{ position: 'absolute', right: '30px' }}>
-            <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+          "sub10",
+          <div
+            onClick={toggleIconPistol}
+            style={{ position: "absolute", right: "30px" }}>
+            <Image
+              src={pistolState === "plusIcon" ? plusIcon : minusIcon}
+              alt="icon"
+            />
           </div>,
-          [getItem('Пусто', '31')],
+          [getItem("Пусто", "31")]
         ),
         // getItem('Снайперская винтовка', '25'),
         // getItem('Пистолет-пулемет', '26'),
@@ -238,28 +275,31 @@ const Sidebar: FC = () => {
         // getItem('Дробовик', '28'),
         // getItem('Нож', '29'),
         // getItem('Прочее', '30'),
-      ],
+      ]
     ),
     getItem(
       <span
         onClick={toggleIconSecond}
         style={{
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          color: "white",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}>
         <span>Критерий</span>
-        <Image src={iconStateSecond === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+        <Image
+          src={iconStateSecond === "plusIcon" ? plusIcon : minusIcon}
+          alt="icon"
+        />
       </span>,
-      'sub11',
+      "sub11",
       null,
       [
-        getItem('Категория', '33'),
-        getItem('Фазы', '34'),
-        getItem('Раритетность', '35'),
-        getItem('Качество', '36'),
-      ],
+        getItem("Категория", "33"),
+        getItem("Фазы", "34"),
+        getItem("Раритетность", "35"),
+        getItem("Качество", "36"),
+      ]
     ),
   ];
 
@@ -290,7 +330,7 @@ const Sidebar: FC = () => {
           <div className={styles.buttonContainer}>
             <Link
               href="https://countertrade.vit.ooo/v1/auth/steam"
-              style={{ textDecoration: 'none' }}>
+              style={{ textDecoration: "none" }}>
               <Button
                 onClick={handleOpenProfile}
                 className={styles.steam_btn}
@@ -311,7 +351,7 @@ const Sidebar: FC = () => {
                 alt="avatar"
                 width={80}
                 height={80}
-                style={{ borderRadius: '50%' }}
+                style={{ borderRadius: "50%" }}
               />
             </div>
             <section>
@@ -328,8 +368,8 @@ const Sidebar: FC = () => {
               </article>
               <article className={styles.desc}>
                 <p>
-                Status: Не бойся противника, который практикует 10,000 ударов. Бойся того, кто
-                  практикует один удар 10,000 раз.
+                  Status: Не бойся противника, который практикует 10,000 ударов.
+                  Бойся того, кто практикует один удар 10,000 раз.
                 </p>
               </article>
               <footer className={styles.downContnet}>
@@ -351,7 +391,7 @@ const Sidebar: FC = () => {
       </div>
 
       <div className={styles.middleSide}>
-        {pathname === '/' && (
+        {pathname === "/" && (
           <div className={styles.select_wrapper}>
             <section className={styles.select_section}>
               {/* <Menu
@@ -477,7 +517,7 @@ const Sidebar: FC = () => {
               </Menu.SubMenu>
             </Menu> */}
               <Menu
-                style={{ width: 300, background: 'none', border: 'none' }}
+                style={{ width: 300, background: "none", border: "none" }}
                 mode="inline"
                 theme="dark"
                 items={items}
@@ -486,10 +526,11 @@ const Sidebar: FC = () => {
           </div>
         )}
 
-        {pathname === '/chat' && (
+        {pathname === "/chat" && (
           <div className={styles.chatSelect}>
             <div className={styles.findUser}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Image src={loopIcon} alt="loop" />
                 <input type="text" placeholder="Найти" />
               </div>
@@ -507,7 +548,7 @@ const Sidebar: FC = () => {
           </div>
         )}
 
-        {pathname === '/' && (
+        {pathname === "/" && (
           <div className={styles.float}>
             <div className={styles.float_content}>
               <h2>Float</h2>
@@ -517,7 +558,7 @@ const Sidebar: FC = () => {
                   min={0.0}
                   max={1000}
                   onChange={onChange}
-                  value={typeof inputValue === 'number' ? inputValue : 0}
+                  value={typeof inputValue === "number" ? inputValue : 0}
                   step={0.01}
                 />
               </Col>
