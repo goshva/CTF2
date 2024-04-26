@@ -21,11 +21,12 @@ import avatar from '../../public/avatar.png';
 import UserChatItem from '../UserChatItem';
 import copy from '../../../public/copy.svg'
 import loopIcon from '../../public/loop-chat-icon.svg';
+import { IUser } from '@/index';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
-import {useGetFriendListQuery} from '../../redux'
+import {useLazyGetFriendListQuery} from '../../redux'
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -45,44 +46,41 @@ function getItem(
   } as MenuItem;
 }
 
+
+
 const Sidebar: FC = () => {
   const [iconState, setIconState] = useState('plusIcon');
   const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
-  const [decodedToken, setDecodedToken] = useState<any>('');
+  // const [decodedToken, setDecodedToken] = useState<any>();
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>('');
 
   const jwtToken = Cookies.get('jwt');
-  if (jwtToken) {
-    const decodedToken: any = jwt.decode(jwtToken);
-    if (decodedToken) {
-      const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
-      if (data) {
-        if (data.friendslist) {
-          const friendCount = data.friendslist.friends.length;
-          setFriendCount(friendCount);
-        } 
-      } 
-    }
-  }
+  //@ts-ignore
+  const decodedToken : IUser = jwt.decode(jwtToken)
+  //@ts-ignore
+  const [getFriendsList, {data}] = useLazyGetFriendListQuery(decodedToken?.id)
 
   useEffect(() => {
-    if (jwtToken) {
-      const decodedToken = jwt.decode(jwtToken);
-      setDecodedToken(decodedToken);
-      console.log(decodedToken);
+    if (decodedToken) {
       setIsAuthenticated(true);
     }
     setLoadingCookies(false); 
   }, []);
 
+  useEffect(() => {
+    const jwtToken = Cookies.get('jwt');
+    if (jwtToken){
+      console.log(isAuthenticated)
+    }
+  }, [isAuthenticated]);
+
   const handleCopy = () =>{
     navigator.clipboard.writeText(decodedToken.id)
   } 
-
 
   const pathname = usePathname();
 
@@ -107,14 +105,13 @@ const Sidebar: FC = () => {
 
   const handleOpenProfile = () => {
     window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
-    setTimeout(() => {
-      setIsAuthenticated(true);
-    }, 1500);
+    //@ts-ignore
+    getFriendsList()
   };
 
-  const logout =() =>{
+  const logout = () =>{
     Cookies.remove('jwt')
-    window.location.reload();
+    setIsAuthenticated(false)
   }
 
   const enterLoading = (index: number) => {
@@ -310,11 +307,7 @@ const Sidebar: FC = () => {
           <>
             <div className={styles.avatar}>
               <Image
-                src={
-                  decodedToken.photos[1] == ''
-                    ? ''
-                    : decodedToken.photos[1].value
-                }
+                src={decodedToken.photos[1].value}
                 alt="avatar"
                 width={80}
                 height={80}
@@ -324,10 +317,10 @@ const Sidebar: FC = () => {
             <section>
               <article className={styles.name_email_content}>
                 <h3>
-                  {decodedToken ? (decodedToken.displayName.length > 12 ? decodedToken.displayName.slice(0, 12) + '...' : decodedToken.displayName) : '<div>Username</div>'}
+                  {decodedToken ? (decodedToken?.displayName?.length > 22 ? 'decodedToken.displayName'.slice(0, 22) + '...' : decodedToken.displayName) : '<div>Username</div>'}
                 </h3>
-                {/* <div className={styles.line}></div> */}
-                <p><Image src={copy} onClick={handleCopy} alt="accaunt icon"/></p>
+                <p><h3>ID:</h3></p>
+                <Image src={copy} onClick={handleCopy} alt="account icon"/>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>

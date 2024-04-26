@@ -13,4 +13,4 @@ export const steamApi = createApi({
 });
 
 // Экспортируем методы для вызова API
-export const { useGetFriendListQuery } = steamApi;
+export const { useGetFriendListQuery, useLazyGetFriendListQuery } = steamApi;
