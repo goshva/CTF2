@@ -9,6 +9,7 @@ import settingsIcon from '../../public/settings-1.svg';
 import plusIcon from '../../public/plus.svg';
 import minusIcon from '../../public/minus.svg';
 import { Badge, Menu } from 'antd';
+import LogOutIcon from '../../../public/logout.svg'
 import type { InputNumberProps } from 'antd';
 import { Col, InputNumber, Row, Slider, Space } from 'antd';
 import { Button, Flex } from 'antd';
@@ -18,6 +19,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import avatar from '../../public/avatar.png';
 import UserChatItem from '../UserChatItem';
+import copy from '../../../public/copy.svg'
 import loopIcon from '../../public/loop-chat-icon.svg';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
@@ -66,7 +68,7 @@ const Sidebar: FC = () => {
       } 
     }
   }
-  
+
   useEffect(() => {
     if (jwtToken) {
       const decodedToken = jwt.decode(jwtToken);
@@ -77,6 +79,9 @@ const Sidebar: FC = () => {
     setLoadingCookies(false); 
   }, []);
 
+  const handleCopy = () =>{
+    navigator.clipboard.writeText(decodedToken.id)
+  } 
 
 
   const pathname = usePathname();
@@ -106,6 +111,11 @@ const Sidebar: FC = () => {
       setIsAuthenticated(true);
     }, 1500);
   };
+
+  const logout =() =>{
+    Cookies.remove('jwt')
+    window.location.reload();
+  }
 
   const enterLoading = (index: number) => {
     setLoadings((prevLoadings) => {
@@ -316,8 +326,8 @@ const Sidebar: FC = () => {
                 <h3>
                   {decodedToken ? (decodedToken.displayName.length > 12 ? decodedToken.displayName.slice(0, 12) + '...' : decodedToken.displayName) : '<div>Username</div>'}
                 </h3>
-                <div className={styles.line}></div>
-                <p>{decodedToken.id}</p>
+                {/* <div className={styles.line}></div> */}
+                <p><Image src={copy} onClick={handleCopy} alt="accaunt icon"/></p>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -338,6 +348,7 @@ const Sidebar: FC = () => {
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
+                    <Image onClick={logout} src={LogOutIcon} alt="setting icon" />
                   </div>
                 </div>
               </footer>
