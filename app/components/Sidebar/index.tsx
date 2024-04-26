@@ -4,10 +4,10 @@ import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
 import profileAvatar from '../../../public/profileAvatar.svg';
 import Image from 'next/image';
-import accauntIcon from '../../public/Account.svg';
-import settingsIcon from '../../public/settings-1.svg';
-import plusIcon from '../../public/plus.svg';
-import minusIcon from '../../public/minus.svg';
+import accauntIcon from '../../../public/Account.svg';
+import settingsIcon from '../../../public/settings-1.svg';
+import plusIcon from '../../../public/plus.svg';
+import minusIcon from '../../../public/minus.svg';
 import { Badge, Menu } from 'antd';
 import LogOutIcon from '../../../public/logout.svg'
 import type { InputNumberProps } from 'antd';
@@ -20,7 +20,7 @@ import { usePathname } from 'next/navigation';
 import avatar from '../../public/avatar.png';
 import UserChatItem from '../UserChatItem';
 import copy from '../../../public/copy.svg'
-import loopIcon from '../../public/loop-chat-icon.svg';
+import loopIcon from '../../../public/loop-chat-icon.svg';
 import { IUser } from '@/index';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
@@ -74,7 +74,6 @@ const Sidebar: FC = () => {
   useEffect(() => {
     const jwtToken = Cookies.get('jwt');
     if (jwtToken){
-      console.log(isAuthenticated)
     }
   }, [isAuthenticated]);
 
@@ -359,7 +358,9 @@ const Sidebar: FC = () => {
                 <h3>
                   {decodedToken ? (decodedToken?.displayName?.length > 22 ? 'decodedToken.displayName'.slice(0, 22) + '...' : decodedToken.displayName) : '<div>Username</div>'}
                 </h3>
-                <p><h3>ID:</h3></p>
+                <div>
+                  <h3>ID:</h3>
+                </div>
                 <Image src={copy} onClick={handleCopy} alt="account icon"/>
               </article>
               <article className={styles.user_info}>
