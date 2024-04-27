@@ -5,6 +5,11 @@ import { ShoppingCart } from 'lucide-react';
 
 function UserProductMarketItem() {
   const random = Math.random();
+
+  const handleAddToCart = () => {
+    console.log('add to cart');
+  };
+  
   return (
     <div className={styles.user}>
       <div className={styles.user__imageFloatWrapper}>
@@ -20,11 +25,10 @@ function UserProductMarketItem() {
       </div>
       <div className={styles.user__cartWrapper}>
         <p className={styles.user__cost}>{`${4234.3}`} ₽</p>
-        <button className={styles.user__buttonCart}>
+        <button className={styles.user__buttonCart} onClick={handleAddToCart}>
           <ShoppingCart size={20} />
         </button>
       </div>
-      <div className={styles.downLine}></div>
     </div>
   );
 }

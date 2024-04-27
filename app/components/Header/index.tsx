@@ -8,11 +8,7 @@ import { ShoppingCart } from "lucide-react";
 // import HomeIcon from '../../public/home.svg';
 import MessageIcon from "../../../public/message.svg";
 
-<<<<<<< HEAD
-import logo from '@/logo.svg';
-=======
 import logo from "@/logo.svg";
->>>>>>> develop
 
 const Header: FC = () => {
   return (

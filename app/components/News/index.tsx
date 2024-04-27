@@ -5,25 +5,46 @@ import Image from "next/image";
 import LeftArrow from "@/left-arrow.svg";
 import clsx from "clsx";
 
-const data = [
+interface ApiDataItem {
+  imageUrl: string;
+  title: string;
+  description: string;
+  hashTags: string[];
+}
+
+const API_DATA: ApiDataItem[] = [
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1713145872144-351db3748385?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "🎉 Обновление CSGO уже здесь! 🎉",
+    imageUrl: "first.png",
+    title: "🎉Обновление CSGO уже здесь! 🎉",
     description:
       'Valve объявила о значительных изменениях в режиме "Бой насмерть" в Counter-Strike: Global Offensive. Теперь игроки могут наслаждаться более быстрыми раундами и новой системой наград. Кроме того, внедрены исправления багов, улучшения производительности и оптимизация интерфейса. Подготовьтесь к улучшенному игровому опыту и новым вызовам! Поделитесь своими впечатлениями и стратегиями!',
     hashTags: ["PlayCSGO", "CSGOUpdate"],
   },
   {
-    imageUrl:
-      "https://images.unsplash.com/photo-1713145872144-351db3748385?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "🎉 Обновление CSGO уже здесь! 🎉",
+    imageUrl: "second.png",
+    title: "🚨 Новые обновления в CSGO! 🚨",
     description:
-      'nigga объявила о значительных изменениях в режиме "Бой насмерть" в Counter-Strike: Global Offensive. Теперь игроки могут наслаждаться более быстрыми раундами и новой системой наград. Кроме того, внедрены исправления багов, улучшения производительности и оптимизация интерфейса. Подготовьтесь к улучшенному игровому опыту и новым вызовам! Поделитесь своими впечатлениями и стратегиями!',
-    hashTags: ["PlayCSGO", "CSGOUpdate"],
+      "Внимание, игроки! Valve только что выпустила новый патч для Counter-Strike: Global Offensive,добавив улучшения карты Mirage и новый набор скинов для оружия. Проверьте новые тактические возможности и уникальные дизайны. Не пропустите шанс присоединиться к соревнованиям этого месяца с удвоенными XP. Будьте в курсе всех изменений и максимизируйте свои шансы на победу! ",
+    hashTags: ["CSGO", "gamingnews"],
+  },
+  {
+    imageUrl:
+      "https://images.unsplash.com/photo-1705615791178-d32cc2cdcd9c?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "🎉 2 Обновление CSGO уже здесь! 🎉",
+    description:
+      'Valve объявила о значительных изменениях в режиме "Бой насмерть" в Counter-Strike: Global Offensive. Теперь игроки могут наслаждаться более быстрыми раундами и новой системой наград. Кроме того, внедрены исправления багов, улучшения производительности и оптимизация интерфейса. Подготовьтесь к улучшенному игровому опыту и новым вызовам! Поделитесь своими впечатлениями и стратегиями!',
+    hashTags: ["CSGO", "CSGOUpdate"],
   },
 ];
+
+const postpone = (
+  cb: (...args: any[]) => unknown = () => undefined,
+  timeout = 300
+) => setTimeout(cb, timeout);
+
 const News = React.memo(() => {
+  const [data, setData] = React.useState([...API_DATA, API_DATA[0]]);
+  const [containerWidth, setContainerWidth] = React.useState(0);
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const innerCarouselContainerRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -33,8 +54,24 @@ const News = React.memo(() => {
         setCurrentSlide(currentSlide + (isNextSlide ? 1 : -1));
 
       if (isNextSlide) {
-        if (!data[currentSlide + 1]) {
-          return setCurrentSlide(0);
+        if (!data[currentSlide + 2]) {
+          setCurrentSlide(currentSlide + 1);
+
+          postpone(() => {
+            innerCarouselContainerRef.current?.classList.add(
+              styles.innerCarouselContainer_disabledTransition
+            );
+
+            setCurrentSlide(0);
+
+            postpone(() => {
+              innerCarouselContainerRef.current?.classList.remove(
+                styles.innerCarouselContainer_disabledTransition
+              );
+            }, 300);
+          }, 300);
+
+          return;
         }
 
         navigate();
@@ -47,13 +84,25 @@ const News = React.memo(() => {
 
   React.useEffect(() => {
     if (innerCarouselContainerRef.current) {
-      console.log("currentSlide", currentSlide);
       const innerCarouselContainer = innerCarouselContainerRef.current;
       innerCarouselContainer.style.transform = `translateX(-${
-        currentSlide * 90
-      }%)`;
+        currentSlide * (containerWidth * 0.9)
+      }px)`;
     }
   }, [currentSlide]);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => handleNavigateSlides(true)(), 180000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [handleNavigateSlides]);
+
+  const handleRef = React.useCallback((ref: HTMLDivElement) => {
+    const { width } = ref.getBoundingClientRect();
+    setContainerWidth(width);
+  }, []);
 
   return (
     <div className={styles.outerWrapper} ref={handleRef}>

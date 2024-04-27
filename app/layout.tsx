@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.scss';
-import Image from 'next/image';
-import { Providers } from './redux/providers';
-=======
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import Image from "next/image";
 import { Providers } from "./redux/providers";
->>>>>>> develop
 
 const inter = Inter({ subsets: ["latin"] });
 

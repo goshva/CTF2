@@ -2,7 +2,7 @@
 
 import styles from './marketproduct.module.scss';
 
-import productImage from '../../../../public/Ak47-anubis.png';
+import productImage from './mock/Ak47-anubis.png';
 import personIcon from '../../../../public/person.svg';
 
 import Image from 'next/image';
@@ -16,11 +16,21 @@ const PRODUCT_DATA = {
   subtitle: 'AK-47 | Legion of Anubis (Battle-Scarred)',
   category: 'Обычный',
   wear: 'BS - Закаленное в боях',
- 
-}; 
+};
 
 const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
-  console.log(params);
+  const handleConnectSalesman = () => {
+    console.log('connect salesman');
+  };
+
+  const handleAddCart = () => {
+    console.log('add cart');
+  };
+
+  const handleViewInGame = () => {
+    console.log('view in game');
+  };
+
   return (
     <div className={styles.product}>
       <div className={styles.product__imageButtonsWrapper}>
@@ -28,11 +38,17 @@ const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
           <Image src={productImage} alt="product" />
         </div>
         <div className={styles.product__buttonsWrapper}>
-          <button className={styles.product__buttonSalesman}>
+          <button
+            className={styles.product__buttonSalesman}
+            onClick={handleConnectSalesman}
+          >
             <Image src={personIcon} alt="person" />
             Связь с продавцом
           </button>
-          <button className={styles.product__buttonCart}>
+          <button
+            className={styles.product__buttonCart}
+            onClick={handleAddCart}
+          >
             <ShoppingCart size={20} />
             Добавить в корзину
           </button>
@@ -53,7 +69,10 @@ const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
             </div>
           </div>
         </div>
-        <button className={styles.product__buttonViewInGame}>
+        <button
+          className={styles.product__buttonViewInGame}
+          onClick={handleViewInGame}
+        >
           <Eye size={20} /> Осмотреть в игре
         </button>
       </div>
