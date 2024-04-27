@@ -32,8 +32,6 @@ import { NextPage } from 'next';
                     <Image src={seller.image} alt={seller.alt} width={20} height={20} />
                     <p>{seller.count}</p>
                 </div>
-                
-              
             ))}
           </div>
   
