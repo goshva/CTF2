@@ -56,216 +56,87 @@ const News = React.memo(() => {
   }, [currentSlide]);
 
   return (
-    <div className={styles.carousel}>
-      <div
-        ref={innerCarouselContainerRef}
-        className={styles.innerCarouselContainer}
-        style={
-          {
-            // width: `calc(${data.length * 100}%)`,
-          }
-        }>
-        {data.map(({ imageUrl, title, description, hashTags }, index) => (
-          <div className={styles.slide} key={`slide-${index}`}>
-            {index === currentSlide && (
-              <Image
-                src={LeftArrow}
-                alt="left-arrow"
-                className={styles.slideControl}
-                width={20}
-                height={24}
-                onClick={handleNavigateSlides(false)}
-              />
-            )}
-            <div
-              className={styles.image}
-              style={{
-                backgroundImage: `url(${imageUrl})`,
-              }}
-            />
-            <div className={styles.carouselContent}>
-              <div className={clsx(styles.text, styles.title)}>
-                {title}
-                {hashTags.map((hashTag, index) => (
-                  <span key={hashTag + index} className={styles.chip}>
-                    #{hashTag}
-                  </span>
-                ))}
-              </div>
-              <div className={clsx(styles.text, styles.description)}>
-                {description}
-              </div>
-            </div>
-            {index === currentSlide && (
-              <Image
-                src={LeftArrow}
-                alt="left-arrow"
-                className={clsx(
-                  styles.slideControl,
-                  styles.slideControl_reversed
+    <div className={styles.outerWrapper} ref={handleRef}>
+      <div className={styles.innerWrapper}>
+        <div className={styles.smoke} />
+        <div className={clsx(styles.smoke, styles.smoke_delayed)} />
+        <div
+          ref={innerCarouselContainerRef}
+          className={clsx(
+            styles.innerCarouselContainer,
+            !containerWidth && styles.innerCarouselContainer_loading
+          )}
+          style={{
+            width: `calc(${data.length * 100}%)`,
+          }}>
+          {!containerWidth ? (
+            <div className={styles.loader} />
+          ) : (
+            data.map(({ imageUrl, title, description, hashTags }, index) => (
+              <div
+                className={styles.slide}
+                key={`slide-${index}`}
+                style={{
+                  width: containerWidth * 0.9,
+                }}>
+                {index === currentSlide && (
+                  <Image
+                    src={LeftArrow}
+                    alt="left-arrow"
+                    className={styles.slideControl}
+                    width={20}
+                    height={24}
+                    onClick={handleNavigateSlides(false)}
+                  />
                 )}
-                width={20}
-                height={24}
-                onClick={handleNavigateSlides(true)}
-              />
-            )}
-          </div>
-        ))}
+                <div
+                  className={clsx(
+                    styles.image,
+                    styles.commonBorderStyles,
+                    styles.borderImage
+                  )}
+                  style={{
+                    backgroundImage: `url(${imageUrl})`,
+                  }}
+                />
+                <div
+                  className={clsx(
+                    styles.carouselContent,
+                    styles.commonBorderStyles,
+                    styles.borderText
+                  )}>
+                  <div className={clsx(styles.text, styles.title)}>
+                    {title}
+                    {hashTags.map((hashTag, index) => (
+                      <span key={hashTag + index} className={styles.chip}>
+                        #{hashTag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className={clsx(styles.text, styles.description)}>
+                    {description}
+                  </div>
+                </div>
+                {index === currentSlide && (
+                  <Image
+                    src={LeftArrow}
+                    alt="left-arrow"
+                    className={clsx(
+                      styles.slideControl,
+                      styles.slideControl_reversed
+                    )}
+                    width={20}
+                    height={24}
+                    onClick={handleNavigateSlides(true)}
+                  />
+                )}
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
 });
 
 export default News;
-
-// import { FC } from "react";
-// import styles from "./news.module.scss";
-// import Image from "next/image";
-// import leftArrow from "@/left-arrow.svg";
-
-// const News: FC = () => {
-//   return (
-//     <div
-//       style={{
-//         marginRight: 20,
-//         overflow: "hidden",
-//         backgroundColor: "rgba(40, 46, 51, 0.5)",
-//         borderRadius: 10,
-//         border: "1px solid black",
-//       }}>
-//       <div
-//         style={{
-//           display: "flex",
-//           border: "1px solid red",
-//           width: "100%",
-//         }}>
-//         <div
-//           style={{
-//             display: "flex",
-//             alignItems: "center",
-//             justifyContent: "center",
-//           }}>
-//           <button
-//             style={{
-//               borderRadius: 10,
-//               border: "2px solid red",
-//               marginLeft: 5,
-//               marginRight: 5,
-//               background: "transparent",
-//             }}>
-//             <Image src={leftArrow} width="20" height="20" alt="left arrow" />
-//           </button>
-//         </div>
-//         <div
-//           style={{
-//             border: "2px solid black",
-//             display: "flex",
-//             width: "800px",
-//             height: "110px",
-//             marginTop: "auto",
-//             marginBottom: "auto",
-//             borderRadius: "10px",
-//           }}>
-//           <div>
-//             <Image
-//               src="/avatar.png"
-//               alt="new_image"
-//               width={200}
-//               height={105}
-//               style={{ borderRadius: 10, border: "2px solid red" }}
-//             />
-//           </div>
-//           <div style={{ display: "flex", flexDirection: "column" }}>
-//             <div style={{ display: "flex", flexDirection: "row" }}>
-//               <h1>🚨 Новые обновления в CSGO! 🚨</h1>
-//               <div
-//                 style={{
-//                   borderRadius: 10,
-//                   border: "2px solid red",
-//                   background: "grey",
-//                 }}>
-//                 jskdasl
-//               </div>
-//             </div>
-//             <h2 style={{ fontSize: 12 }}>
-//               Внимание, игроки! Valve только что выпустила новый патч для
-//               Counter-Strike: Global Offensive, добавив улучшения карты Mirage и
-//               новый набор скинов для оружия. Проверьте новые тактические
-//               возможности и уникальные дизайны. Не пропустите шанс
-//               присоединиться к соревнованиям этого месяца с удвоенными XP.
-//               Будьте в курсе всех изменений и максимизируйте свои шансы на
-//               победу!
-//             </h2>
-//           </div>
-//         </div>
-//         <div
-//           style={{
-//             display: "flex",
-//             alignItems: "center",
-//             justifyContent: "center",
-//           }}>
-//           <button
-//             style={{
-//               borderRadius: 10,
-//               border: "2px solid red",
-//               marginLeft: 5,
-//               marginRight: 5,
-//               background: "transparent",
-//             }}>
-//             <Image
-//               src={leftArrow}
-//               width="20"
-//               height="20"
-//               alt="left arrow"
-//               style={{ transform: "rotate(180deg)" }}
-//             />
-//           </button>
-//         </div>
-//         <div
-//           style={{
-//             border: "2px solid black",
-//             display: "flex",
-//             width: "800px",
-//             height: "110px",
-//             marginTop: "auto",
-//             marginBottom: "auto",
-//             borderRadius: "10px",
-//           }}>
-//           <div>
-//             <Image
-//               src="/avatar.png"
-//               alt="new_image"
-//               width={200}
-//               height={105}
-//               style={{ borderRadius: 10, border: "2px solid red" }}
-//             />
-//           </div>
-//           <div style={{ display: "flex", flexDirection: "column" }}>
-//             <div style={{ display: "flex", flexDirection: "row" }}>
-//               <h1>🚨 Новые обновления в CSGO! 🚨</h1>
-//               <div
-//                 style={{
-//                   borderRadius: 10,
-//                   border: "2px solid red",
-//                   background: "grey",
-//                 }}>
-//                 jskdasl
-//               </div>
-//             </div>
-//             <h2 style={{ fontSize: 12 }}>
-//               Внимание, игроки! Valve только что выпустила новый патч для
-//               Counter-Strike: Global Offensive, добавив улучшения карты Mirage и
-//               новый набор скинов для оружия. Проверьте новые тактические
-//               возможности и уникальные дизайны. Не пропустите шанс
-//               присоединиться к соревнованиям этого месяца с удвоенными XP.
-//               Будьте в курсе всех изменений и максимизируйте свои шансы на
-//               победу!
-//             </h2>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default News;
