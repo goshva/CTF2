@@ -143,6 +143,12 @@
     justify-content: center;
     border: 1px solid black;
 
+    .productMarketSidebar{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -193,7 +199,7 @@
     justify-content: center;
     gap: 7px;
     margin-top: 10px;
-    margin-left: -40px;
+    margin-left: 0;
   }
 }
 
@@ -302,4 +308,38 @@
       background: #2a2a2a;
     }
   }
+}
+
+// for chat
+.chatSelect {
+  .findUser {
+    width: 320px;
+    height: 40px;
+    background: #232a30;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: relative;
+
+    input {
+      outline: none;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+
+      &::placeholder {
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.downLine {
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  height: 1px;
 }

@@ -1,10 +1,11 @@
 .product {
   display: flex;
   column-gap: 20px;
-  padding: 20px;
-
+  padding: 20px 20px 100px 20px;
+  background-color: #1b272f;
+  border-radius: 10px;
   &__imageWrapper {
-    background-image: url('../../../public/productBG.jpg');
+    background-image: url('../../../../public/productBG.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 10px;
@@ -53,12 +54,13 @@
 
   &__buttonViewInGame {
     background-color: transparent;
+    font-size: 14px;
   }
 
   &__infoWrapper {
     display: flex;
-		min-height: 500px; 
-		flex-shrink: 1;
+    min-height: 400px;
+    flex-shrink: 1;
     flex-grow: 1;
     justify-content: space-between;
     background-color: #2f2f2f;
@@ -102,6 +104,7 @@
 
   button {
     padding: 7px;
+    width: 185px;
     height: 40px;
     border-radius: 5px;
     color: white;

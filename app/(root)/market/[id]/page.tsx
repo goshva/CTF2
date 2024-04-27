@@ -2,8 +2,8 @@
 
 import styles from './marketproduct.module.scss';
 
-import productImage from '../../../public/Ak47-anubis.png';
-import personIcon from '../../../public/person.svg';
+import productImage from '../../../../public/Ak47-anubis.png';
+import personIcon from '../../../../public/person.svg';
 
 import Image from 'next/image';
 import { ShoppingCart, Eye } from 'lucide-react';
