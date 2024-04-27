@@ -214,7 +214,7 @@
       }
 
       &:hover {
-        transition: 1s;
+        transition: 300ms;
         background-color: #22334e;
       }
 
@@ -232,6 +232,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     .menuItem {
       width: 280px;
@@ -240,6 +244,45 @@
       background: #243766;
       border: none;
       color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+    }
+
+    .menuGunBorder {
+      width: 280px;
+      height: 100%;
+      background: #243766;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      .menuGunItem {
+        width: 260px;
+        height: 20px;
+        border-radius: 20px;
+        background: #5d6eab;
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        gap: 10px;
+
+        &:hover {
+          transition: 300ms;
+          background: rgb(71, 110, 207);
+        }
+      }
     }
   }
 }

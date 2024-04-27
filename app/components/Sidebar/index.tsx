@@ -44,8 +44,6 @@ function getItem(
 }
 
 const Sidebar: FC = () => {
-  const [iconState, setIconState] = useState('plusIcon');
-  const [iconStateSecond, setIconStateSecond] = useState('plusIcon');
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
@@ -75,32 +73,43 @@ const Sidebar: FC = () => {
       setIsAuthenticated(true);
     }
     setLoadingCookies(false);
+    setLoadingCookies(false);
   }, []);
 
   const pathname = usePathname();
 
-  // guns state потом другые добавлю
-  const [pistolState, setPistolState] = useState('plusIcon');
+  // icons
+  const [iconStateItem, setIconStateItem] = useState('plusIcon');
+  const [iconStateCriterion, setIconStateCriterion] = useState('plusIcon');
+  const [pistolIconState, setPistolIconState] = useState('plusIcon');
 
   // menu border
-  const [menuBorder, setMenuBorder] = useState(false);
+  const [itemMenuBorder, setItemMenuBorder] = useState(false);
+  const [criterionMenuBorder, setCriterionMenuBorder] = useState(false);
+
+  // Border states & guns state потом другые добавлю
+  const [pistolMenuBorder, setPistolMenuBorder] = useState(false);
 
   const onChange: InputNumberProps['onChange'] = (newValue) => {
     setInputValue(newValue as number);
   };
 
-  const toggleIcon = () => {
-    setIconState(iconState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
-    setMenuBorder(!menuBorder);
+  // открытия менюшек
+  const toggleIconItem = () => {
+    setIconStateItem(iconStateItem === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setItemMenuBorder(!itemMenuBorder);
   };
 
-  const toggleIconSecond = () => {
-    setIconStateSecond(iconStateSecond === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+  const toggleIconCriterion = () => {
+    setIconStateCriterion(iconStateCriterion === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setCriterionMenuBorder(!criterionMenuBorder);
   };
 
   const toggleIconPistol = () => {
-    setPistolState(pistolState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
+    setPistolMenuBorder(!pistolMenuBorder);
+    setPistolIconState(pistolIconState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
   };
+  // >>>>>>>>>>>>>>>>>>>>>>>>
 
   const handleOpenProfile = () => {
     window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
@@ -110,12 +119,6 @@ const Sidebar: FC = () => {
   };
 
   const enterLoading = (index: number) => {
-    setLoadings((prevLoadings) => {
-      const newLoadings = [...prevLoadings];
-      newLoadings[index] = true;
-      return newLoadings;
-    });
-
     setTimeout(() => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
@@ -220,26 +223,103 @@ const Sidebar: FC = () => {
           <div className={styles.select_wrapper}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <section className={styles.select_section}>
-                <button onClick={toggleIcon} className={styles.selectPole}>
+                <button onClick={toggleIconItem} className={styles.selectPole}>
                   Тип товара (переименовать)
-                  <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+                  <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
                 </button>
-                {menuBorder && (
-                  <div className={styles.menuBorder}>
-                    <button className={styles.menuItem}>Пистолет</button>
-                    <button className={styles.menuItem}>Винтовка</button>
-                    <button className={styles.menuItem}>Снайперская винтовка</button>
-                    <button className={styles.menuItem}>Пистолет-пулемет</button>
-                    <button className={styles.menuItem}>Пулемет</button>
-                    <button className={styles.menuItem}>Дробовик</button>
-                    <button className={styles.menuItem}>Нож</button>
-                    <button className={styles.menuItem}>Прочее</button>
+                {itemMenuBorder && (
+                  <div onClick={toggleIconPistol} className={styles.menuBorder}>
+                    <button className={styles.menuItem}>
+                      Пистолет
+                      <Image
+                        src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon}
+                        alt="icon"
+                      />
+                    </button>
+                    {pistolMenuBorder && (
+                      <div className={styles.menuGunBorder}>
+                        <button className={styles.menuGunItem}>
+                          Все пистолеты
+                          <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          Five-Seven <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          Glock-18 <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          P2000 <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          P250 <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          R8 Revolver <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          Tec-9
+                          <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          CZ75-Auto <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          USP-S <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          Desert Eagle <Image src={plusIcon} alt="icon" />
+                        </button>
+                        <button className={styles.menuGunItem}>
+                          Dual Berettas <Image src={plusIcon} alt="icon" />
+                        </button>
+                      </div>
+                    )}
+                    <button className={styles.menuItem}>
+                      Винтовка
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Снайперская винтовка
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Пистолет-пулемет
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Пулемет
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Дробовик
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Нож
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
+                    <button className={styles.menuItem}>
+                      Прочее
+                      <Image src={plusIcon} alt="icon" />
+                    </button>
                   </div>
                 )}
-                <button onClick={toggleIconSecond} className={styles.selectPole}>
+                <button onClick={toggleIconCriterion} className={styles.selectPole}>
                   Критерий
-                  <Image src={pistolState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+                  <Image
+                    src={iconStateCriterion === 'plusIcon' ? plusIcon : minusIcon}
+                    alt="icon"
+                  />
                 </button>
+                {criterionMenuBorder && (
+                  <div className={styles.menuBorder}>
+                    <button className={styles.menuItem}>Категория</button>
+                    <button className={styles.menuItem}>Фазы</button>
+                    <button className={styles.menuItem}>Раритетность</button>
+                    <button className={styles.menuItem}>Качество</button>
+                  </div>
+                )}
               </section>
             </div>
           </div>
