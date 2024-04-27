@@ -83,7 +83,6 @@ const Sidebar: FC = () => {
   };
 
   const pathname = usePathname();
-  console.log(pathname);
 
   // guns state потом другые добавлю
   const [pistolState, setPistolState] = useState('plusIcon');
