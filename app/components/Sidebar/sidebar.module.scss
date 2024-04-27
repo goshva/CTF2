@@ -158,8 +158,9 @@
       }
       &__trade {
         display: flex;
-        text-align: center;
+       align-items: center;
         column-gap: 3px;
+        font-size: 14px;
       }
     }
 
