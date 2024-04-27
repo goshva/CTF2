@@ -241,7 +241,7 @@ const Sidebar: FC = () => {
       </div>
 
       <div className={styles.middleSide}>
-        {pathname === '/' && (
+        {pathname === '/market' && (
           <div className={styles.select_wrapper}>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <section className={styles.select_section}>

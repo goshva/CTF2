@@ -7,17 +7,15 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(320px, 0fr) 2fr;
-  grid-template-rows: minmax(40px, 80px) minmax(80px, 130px) 1fr minmax(60px, 100px);
+  grid-template-rows: minmax(40px, 80px) minmax(80px, 130px) auto auto;
   grid-row-gap: 20px;
   grid-column-gap: 74px;
-
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: darken;
 }
 
 .main {
   color: white;
-  padding: 15px;
 }
 
 .mainWrapper {

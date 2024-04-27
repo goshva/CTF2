@@ -13,7 +13,7 @@ import logo from "@/logo.svg";
 const Header: FC = () => {
   return (
     <header className={styles.header}>
-      <div>
+      <div className="flex ml-5">
         <Link href={"/"}>
           <Image src={logo} alt="logo" width={260} height={30} quality={100} />
         </Link>
@@ -21,7 +21,7 @@ const Header: FC = () => {
         <Link href={"/market"} className={styles.cartLink}>
           <ShoppingCart size={36} />
         </Link>
-        <Link href={"/chat"} className={styles.cartLink}>
+        {/* <Link href={"/chat"} className={styles.cartLink}>
           <Image
             src={MessageIcon}
             alt="message image"
@@ -29,7 +29,7 @@ const Header: FC = () => {
             height={36}
             quality={100}
           />
-        </Link>
+        </Link> */}
       </div>
     </header>
   );
