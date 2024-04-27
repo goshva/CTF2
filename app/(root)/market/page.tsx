@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
+import Link from 'next/link';
+import { ShoppingCart } from 'lucide-react';
 
 import { NextPage } from 'next';
 
@@ -50,9 +52,9 @@ const products = [
           </div>
   
           <div className={styles.link}>
-            {/* <Link href="/market" className={styles.cartLink}>
-                <ShoppingCart size={14} />
-            </Link> */}
+            <Link href="/market" className={styles.cartLink}>
+              <ShoppingCart size={14} />
+            </Link>
           </div>
         </div>
       </div>
@@ -61,7 +63,7 @@ const products = [
 const MarketPage: NextPage = () => {
     const renderCards = () => {
         const cards: JSX.Element[] = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
         cards.push(<ProductCard key={i} product={products[i % products.length]} />);
         }
         return cards;
@@ -69,7 +71,7 @@ const MarketPage: NextPage = () => {
 
     return (
         <div className={styles.container}>
-        {renderCards()}
+          {renderCards()}
         </div>
     );
 };

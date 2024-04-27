@@ -1,16 +1,20 @@
+
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    max-width: 73vw;
+    max-width: 61.5vw;
     max-height: 65vh;
     background-color:rgba(4, 19, 30, 0.75);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.125);
-    padding: 20px 70px 20px 30px;
+    padding: 20px 40px 40px 30px;
     overflow-y: scroll;
+    scroll-margin-right: 10px;
+
 }
 
     .card {
@@ -106,19 +110,20 @@
 
 .container::-webkit-scrollbar {
     width: 12px;
-    padding: 1px;
-}
-
-.container::-webkit-scrollbar-track {
     background-color: rgba(118, 117, 117, 1);
     border-radius: 10px;
+    margin-left: -10px;
+    
 }
+
 
 .container::-webkit-scrollbar-thumb {
     width: 8px;
     background: #888;
     border-radius: 20px;
+    border: 1px solid rgba(118, 117, 117, 1);
     background-color: rgba(19, 37, 51, 1);
+    background-clip: content-box;
     cursor: pointer;
 }
 
