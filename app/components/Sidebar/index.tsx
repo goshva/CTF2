@@ -19,11 +19,13 @@ import { usePathname } from 'next/navigation';
 import avatar from '../../../public/avatar.png';
 import UserChatItem from '../UserChatItem';
 import loopIcon from '../../../public/loop-chat-icon.svg';
+import copy from '../../../public/copy.svg';
+import LogOutIcon from '../../../public/logout.svg';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
-import { useGetFriendListQuery } from '../../redux';
+import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -47,34 +49,47 @@ const Sidebar: FC = () => {
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
-  const [decodedToken, setDecodedToken] = useState<any>('');
+  // const [decodedToken, setDecodedToken] = useState<any>('');
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>('');
 
   const jwtToken = Cookies.get('jwt');
-  if (jwtToken) {
-    const decodedToken: any = jwt.decode(jwtToken);
-    if (decodedToken) {
-      const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
-      if (data) {
-        if (data.friendslist) {
-          const friendCount = data.friendslist.friends.length;
-          setFriendCount(friendCount);
-        }
-      }
-    }
-  }
+  //@ts-ignore
+  const decodedToken: IUser = jwt.decode(jwtToken);
+  //@ts-ignore
+  const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
+
+  // const jwtToken = Cookies.get('jwt');
+  // if (jwtToken) {
+  //   const decodedToken: any = jwt.decode(jwtToken);
+  //   if (decodedToken) {
+  //     const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
+  //     if (data) {
+  //       if (data.friendslist) {
+  //         const friendCount = data.friendslist.friends.length;
+  //         setFriendCount(friendCount);
+  //       }
+  //     }
+  //   }
+  // }
 
   useEffect(() => {
-    if (jwtToken) {
-      const decodedToken = jwt.decode(jwtToken);
-      setDecodedToken(decodedToken);
-      console.log(decodedToken);
+    if (decodedToken) {
       setIsAuthenticated(true);
     }
     setLoadingCookies(false);
     setLoadingCookies(false);
   }, []);
+
+  useEffect(() => {
+    const jwtToken = Cookies.get('jwt');
+    if (jwtToken) {
+    }
+  }, [isAuthenticated]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(decodedToken.id);
+  };
 
   const pathname = usePathname();
 
@@ -113,9 +128,13 @@ const Sidebar: FC = () => {
 
   const handleOpenProfile = () => {
     window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
-    setTimeout(() => {
-      setIsAuthenticated(true);
-    }, 1500);
+    //@ts-ignore
+    getFriendsList();
+  };
+
+  const logout = () => {
+    Cookies.remove('jwt');
+    setIsAuthenticated(false);
   };
 
   const enterLoading = (index: number) => {
@@ -188,8 +207,10 @@ const Sidebar: FC = () => {
                       : decodedToken.displayName
                     : '<div>Username</div>'}
                 </h3>
-                <div className={styles.line}></div>
-                <p>{decodedToken.id}</p>
+                <div>
+                  <h3>ID:</h3>
+                </div>
+                <Image src={copy} onClick={handleCopy} alt="account icon" />
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -210,6 +231,7 @@ const Sidebar: FC = () => {
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
+                    <Image onClick={logout} src={LogOutIcon} alt="setting icon" />
                   </div>
                 </div>
               </footer>
@@ -228,8 +250,8 @@ const Sidebar: FC = () => {
                   <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
                 </button>
                 {itemMenuBorder && (
-                  <div onClick={toggleIconPistol} className={styles.menuBorder}>
-                    <button className={styles.menuItem}>
+                  <div className={styles.menuBorder}>
+                    <button onClick={toggleIconPistol} className={styles.menuItem}>
                       Пистолет
                       <Image
                         src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon}
