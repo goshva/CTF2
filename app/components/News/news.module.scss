@@ -16,7 +16,7 @@
 }
 
 .smoke {
-  background-image: url("../../../public/smoke.png");
+  background-image: url('../../../public/smoke.png');
   animation: animateClouds 30s linear infinite;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,12 +29,11 @@
   width: 100%;
   height: 100%;
 
-  &_delayed{
+  &_delayed {
     animation-delay: 15s;
     transform: translateX(-100%);
   }
 }
-
 
 .slide {
   width: 90%;
@@ -46,15 +45,12 @@
   flex-shrink: 0;
   padding: 5px;
   z-index: 2;
-  
 }
 
 .innerCarouselContainer {
   transition: 0.3s cubic-bezier(0.78, 0, 0.6, 0.91);
   display: flex;
   z-index: 2;
-  
-    
 
   &_disabledTransition {
     transition: none;
@@ -64,7 +60,7 @@
   &_loading {
     align-items: center;
     justify-content: center;
-    background-image: "../../../public/smoke.png";
+    background-image: '../../../public/smoke.png';
     position: absolute;
     filter: blur(10px);
     z-index: 2;
@@ -101,7 +97,7 @@
   justify-content: space-around;
   height: 100%;
   padding: 0 0.5rem;
-  background: #5D6D7E;
+  background: #5d6d7e;
   z-index: 2;
 }
 
@@ -180,7 +176,8 @@
 }
 
 @keyframes pulsate {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0);
   }
   50% {
@@ -197,7 +194,6 @@
   z-index: 2;
 }
 
-
 @keyframes animateClouds {
   from {
     transform: translateX(-100%);
@@ -206,5 +202,3 @@
     transform: translateX(100%);
   }
 }
-
-
