@@ -3,27 +3,13 @@ import Image from 'next/image';
 import styles from './market.module.scss';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
+import { products } from './products';
 
 import { NextPage } from 'next';
 
 
 
 //Пример data для карточек продуктов
-const products = [
-    {
-        image: '/anubis.png',
-        alt: 'Product 1',
-        name: 'AK-47 | Легион Анубиса (Закалённое в боях)',
-        price: '454,98 ₽',
-        sellers: [
-        {
-            image: '/box.svg',
-            alt: '',
-            count: 16,
-        },
-        ],
-    }
-];
 
     const ProductCard: React.FC<{ product: typeof products[0] }> = ({ product }) => {
     return (
@@ -52,8 +38,8 @@ const products = [
           </div>
   
           <div className={styles.link}>
-            <Link href="/market" className={styles.cartLink}>
-              <ShoppingCart size={14} />
+            <Link href="/market" className={styles.cardLink}>
+              <ShoppingCart size={14} style={{ color: 'white' }} />
             </Link>
           </div>
         </div>
@@ -63,7 +49,7 @@ const products = [
 const MarketPage: NextPage = () => {
     const renderCards = () => {
         const cards: JSX.Element[] = [];
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < products.length; i++) {
         cards.push(<ProductCard key={i} product={products[i % products.length]} />);
         }
         return cards;
