@@ -210,7 +210,7 @@ const Sidebar: FC = () => {
                 <div>
                   <h3>ID:</h3>
                 </div>
-                <Image src={copy} onClick={handleCopy} alt="account icon" />
+                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer'/>
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
