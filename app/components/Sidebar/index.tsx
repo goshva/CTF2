@@ -356,6 +356,7 @@ const Sidebar: FC = () => {
               </div>
               <div className={styles.downLine}></div>
             </div>
+            {/* <UserChatItem />
             <UserChatItem />
             <UserChatItem />
             <UserChatItem />
@@ -363,8 +364,7 @@ const Sidebar: FC = () => {
             <UserChatItem />
             <UserChatItem />
             <UserChatItem />
-            <UserChatItem />
-            <UserChatItem />
+            <UserChatItem /> */}
           </div>
         )}
 

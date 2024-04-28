@@ -1,7 +1,7 @@
 .wrapper {
-  width: 95%;
+  width: 100%;
   margin-left: 0px;
-  height: 80%;
+  height: 100%;
   border-radius: 20px;
   background: #203d5380;
 
@@ -89,60 +89,44 @@
   }
 
   .chat {
-    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 65%;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     overflow: scroll;
     overflow-x: hidden;
-    height: 80%;
-
+    height: 50vh;
+  
+    /* Стили для скроллбара */
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
     }
-
+  
     &::-webkit-scrollbar-track {
       background: none;
     }
-
+  
     &::-webkit-scrollbar-thumb {
       background: #888;
       border-radius: 20px;
       cursor: pointer;
     }
-
+  
     &::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
-
-    // .message {
-    //   position: relative;
-    //   width: 500px;
-    //   height: 100%;
-    //   border-radius: 10px;
-    //   background-color: #2e3842;
-    //   padding: 10px;
-
-    //   //   если ты отправляешь то тгда это
-    //   &.own {
-    //     margin-left: 500px;
-    //   }
-
-    //   span {
-    //     position: absolute;
-    //     right: 10px;
-    //     bottom: 5px;
-    //     color: #8497a6;
-    //     font-size: 12px;
-    //   }
-    // }
   }
+  
 
   .input {
+
+    margin-top: 50vh;
     width: 100%;
-    height: 120px;
+    height:80px;
     background-color: #090b11;
     border-radius: 0 0 20px 20px;
     display: flex;
@@ -151,7 +135,7 @@
 
     .inputBorder {
       width: 90%;
-      height: 90px;
+      height: 50px;
       background: #464646;
       border-radius: 5px;
       padding: 30px;

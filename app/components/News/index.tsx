@@ -96,10 +96,12 @@ const News = React.memo(() => {
     };
   }, [handleNavigateSlides]);
 
-  const handleRef = React.useCallback((ref: HTMLDivElement) => {
+  const handleRef = React.useCallback((ref: HTMLDivElement | null) => {
+  if (ref) {
     const { width } = ref.getBoundingClientRect();
     setContainerWidth(width);
-  }, []);
+  }
+}, []);
 
   return (
     <div className={styles.outerWrapper} ref={handleRef}>
