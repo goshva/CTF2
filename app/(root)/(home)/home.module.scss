@@ -1,0 +1,217 @@
+.home {
+  width: 1095.2px;
+  //   width: 50%;
+  height: 50%;
+  background-color: #020e16cc;
+  border-radius: 20px;
+  overflow: auto;
+  overflow-x: hidden;
+
+  @media (max-width: 1500px) {
+    width: 940px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .header {
+    width: 1095.2px;
+    border-radius: 20px 20px 0px 0px;
+    height: 50px;
+    background: #000000;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 1500px) {
+      padding-right: 180px;
+    }
+
+    button {
+      width: 300px;
+      height: 30px;
+      border-radius: 10px;
+      border: none;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+
+      img {
+        cursor: pointer;
+      }
+
+      .dateText {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        span {
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .input_container {
+      width: 300px;
+      height: 30px;
+      border-radius: 10px;
+      border: none;
+      background: #dfdfdf;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        cursor: pointer;
+      }
+
+      input {
+        outline: none;
+        border: none;
+        background: transparent;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .post_container {
+    padding: 35px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+
+    @media (max-width: 1500px) {
+      width: 965px;
+      gap: 15px;
+      justify-content: flex-start;
+      margin-left: -15px;
+    }
+
+    .addPost {
+      width: 288px;
+      height: 340px;
+      border-radius: 15px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #7989a7;
+      cursor: pointer;
+    }
+
+    .PostCard {
+      width: 288px;
+      height: 340px;
+      border-radius: 15px;
+      background: #2f3541;
+
+      .top_of_card {
+        background: #191919;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 7px;
+        padding-top: 10px;
+        border-radius: 15px 15px 0px 0px;
+
+        .textsInfo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            cursor: pointer;
+          }
+
+          span {
+            color: #e5e7e9;
+            cursor: pointer;
+          }
+
+          p {
+            color: #e5e7e9;
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
+
+        .subscribe_button {
+          width: 100px;
+          height: 20px;
+          border-radius: 5px;
+          border: none;
+          background: #474b4f;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background: #666b70;
+          }
+        }
+      }
+
+      .content {
+        margin-top: 5px;
+
+        .postImage {
+          width: 266.25px;
+          height: 150px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+
+        h2 {
+          cursor: pointer;
+          margin-left: 15px;
+        }
+
+        .icons {
+          display: flex;
+          align-items: center;
+          width: 239px;
+          height: 24px;
+          margin-top: 35px;
+          margin-left: 15px;
+          gap: 10px;
+
+          span {
+            font-weight: 300;
+            font-size: 16px;
+            cursor: pointer;
+          }
+
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
