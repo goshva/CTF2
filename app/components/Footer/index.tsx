@@ -1,25 +1,24 @@
-"use client";
-import Image from "next/image";
-import { FC, useState } from "react";
+'use client';
+import Image from 'next/image';
+import { FC, useState } from 'react';
 
-import footerIcon from "@/Vector.svg";
-import { Button } from "../ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import footerIcon from '@/Vector.svg';
+import { Button } from '../ui/button';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
-import steamIcon from "@/steam-icon.svg";
-import tgIcon from "@/Telegram.png";
-import vcIcon from "@/Vk.png";
-import youtubeIcon from "@/youtube.png";
+import steamIcon from '@/steam-icon.svg';
+import tgIcon from '@/Telegram.png';
+import vcIcon from '@/Vk.png';
+import youtubeIcon from '@/youtube.png';
 
 const Footer: FC = () => {
   const [activeFooter, setActiveFooter] = useState(false);
   return (
     <div
-      style={{ gridColumn: "1 / 3" }}
+      style={{ gridColumn: '1 / 3' }}
       className={`absolute bottom-0 w-full flex flex-col justify-between bg-black/75 p-2 ${
-        activeFooter ? "h-[100px]" : "h-[30px]"
-      }`}
-    >
+        activeFooter ? 'h-[100px]' : 'h-[30px]'
+      }`}>
       <div className="container">
         <div className="flex gap-2">
           <Image src={footerIcon} alt="icon" width={15} height={17} />
@@ -27,16 +26,11 @@ const Footer: FC = () => {
         </div>
         <Button
           onClick={() => setActiveFooter(!activeFooter)}
-          size={"icon"}
+          size={'icon'}
           className={`absolute left-1/2  ${
-            activeFooter ? "top-3" : "top-1/2 translate-y-[-50%]"
-          } z-30 translate-x-[-50%]  bg-transparent hover:bg-transparent h-[30px] p-1`}
-        >
-          {!activeFooter ? (
-            <ChevronUp color="white" />
-          ) : (
-            <ChevronDown color="white" />
-          )}
+            activeFooter ? 'top-3' : 'top-1/2 translate-y-[-50%]'
+          } z-30 translate-x-[-50%]  bg-transparent hover:bg-transparent h-[30px] p-1`}>
+          {!activeFooter ? <ChevronUp color="white" /> : <ChevronDown color="white" />}
         </Button>
       </div>
       <div className="container">
