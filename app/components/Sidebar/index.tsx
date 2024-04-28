@@ -575,14 +575,16 @@ const Sidebar: FC = () => {
         {pathname.startsWith('/market/') && (
           <div className={styles.productMarketSidebar}>
             <div className={styles.productMarketSidebar__titleTradeWrapper}>
-              <p className={styles.productMarketSidebar__title}>AK-47 | Легион Анубиса</p>
+              <p className={styles.productMarketSidebar__title}>
+                AK-47 | Легион Анубиса
+              </p>
               <div className={styles.productMarketSidebar__trade}>
                 <Image src="/box.svg" alt="box" width={20} height={20} />
                 16
               </div>
             </div>
-            {new Array(20).fill(null).map(() => (
-              <UserProductMarketItem />
+            {new Array(20).fill(null).map((_, i) => (
+              <UserProductMarketItem key={i} />
             ))}
           </div>
         )}
