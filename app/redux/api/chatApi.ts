@@ -5,12 +5,15 @@ export const chatApi = createApi({
   reducerPath: 'chatApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://countertrade.vit.ooo/v1/api' }), // Укажите базовый URL вашего API
   endpoints: (builder) => ({
-    // Определение эндпоинта для получения списка друзей
     getUserChats: builder.query({
       query: (userId: string) => `/user/${userId}`,
+    }),
+
+    getChatMessages: builder.query({
+      query: (chatId: string) => `/chat/${chatId}`,
     }),
   }),
 });
 
 // Экспортируем методы для вызова API
-export const { useGetUserChatsQuery, useLazyGetUserChatsQuery } = chatApi;
+export const { useGetUserChatsQuery, useGetChatMessagesQuery } = chatApi;

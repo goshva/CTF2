@@ -5,27 +5,23 @@ import styles from './sidebarChat.module.scss';
 import Image from 'next/image';
 import UserChatItem from '../UserChatItem';
 import loopIcon from '../../../public/loop-chat-icon.svg';
-import { useDispatch } from 'react-redux';
-import { setCurrentChatId } from '../../redux';
+import { useSelector } from 'react-redux';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
-import jwt from 'jsonwebtoken';
-import Cookies from 'js-cookie';
 import {socket} from '../../(root)/chat/socket'
 import {useGetUserChatsQuery} from '../../redux'
+import Link from 'next/link';
 
 
 const ChatSidebar: FC = () => {
-  const dispatch = useDispatch();
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [chats, setChats] = useState<any[]>([])
 
-  const jwtToken = Cookies.get('jwt');
   //@ts-ignore
-  const decodedToken: IUser = jwt.decode(jwtToken);
+  const decodedToken = useSelector(state => state.auth.decodedToken);
   //@ts-ignore
-  const {data} = useGetUserChatsQuery(decodedToken?.id)
+  const {data, isLoading} = useGetUserChatsQuery(decodedToken?.id)
 
   interface sender  {
     id: number,
@@ -60,15 +56,9 @@ const ChatSidebar: FC = () => {
     messages: Message[];
   }
 
-  const handleChatClick = (chatId: string) => {
-    dispatch(setCurrentChatId(chatId));
-  };
-
   useEffect(() => {
     if (data) {
-      setChats(chats);
-
-      socket.emit('join room', chats.map((chat: Chat) => chat.id));
+      socket.emit('join room', data.chats.map((chat: Chat) => chat.id));
       
       const modifiedChats = data.chats.map((chat: Chat) => ({
         chatId: chat.id,
@@ -93,17 +83,22 @@ const ChatSidebar: FC = () => {
               </div>
               <div className={styles.downLine}></div>
             </div>
-          {chats.map((chat, index) => (
-            <UserChatItem  
-             key={index}
-             onClick={()=>handleChatClick(chat.chatId)}
-             avatar= {chat.avatar}
-             createdAt = {chat.createdAt}
-             chatId={chat.chatId}
-             chatName={chat.user} 
-             userTag = {chat.userTag}
-             lastMessage = {chat.lastMessage} />
-          ))}
+            {isLoading ? (
+          <div className={styles.textCenter}>Loading...</div>
+        ) : (
+          chats.map((chat, index) => (
+            <Link href={`/chat/${chat.chatId}`} key={index}>
+              <UserChatItem  
+                avatar={chat.avatar}
+                createdAt={chat.createdAt}
+                chatId={chat.chatId}
+                chatName={chat.user} 
+                userTag={chat.userTag}
+                lastMessage={chat.lastMessage} 
+              />
+            </Link>
+          ))
+        )}
           </div>
       </div>
     </aside>

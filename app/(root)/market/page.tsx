@@ -5,6 +5,7 @@ import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { NextPage } from 'next';
 import index from '@/components/ProductCard';
+import MarketSidebar from '@/components/MarketSidebar';
 
 
 //Пример data для карточек продуктов
@@ -69,9 +70,20 @@ const MarketPage: NextPage = () => {
     };
 
     return (
-        <div className={styles.container}>
-        {renderCards()}
+      <div className="container-fluid mt-[20px]">
+      <div className="row">
+        <div className="col-3">
+          <MarketSidebar />
         </div>
+        <div className="col-9">
+          <div className={styles.textCenter}>
+            <div className={styles.container}>
+              {renderCards()}
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
     );
 };
 

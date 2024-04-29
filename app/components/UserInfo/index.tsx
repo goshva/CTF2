@@ -15,6 +15,8 @@ import LogOutIcon from '../../../public/logout.svg';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
+import { useSelector } from 'react-redux';
+
 
 
 const UserInfo: FC = () => {
@@ -25,9 +27,10 @@ const UserInfo: FC = () => {
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>('');
 
-  const jwtToken = Cookies.get('jwt');
   //@ts-ignore
-  const decodedToken: IUser = jwt.decode(jwtToken);
+  const decodedToken = useSelector(state => state.auth.decodedToken);
+
+
   //@ts-ignore
   const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
 
@@ -35,7 +38,6 @@ const UserInfo: FC = () => {
     if (decodedToken) {
       setIsAuthenticated(true);
     }
-    setLoadingCookies(false);
     setLoadingCookies(false);
   }, []);
 

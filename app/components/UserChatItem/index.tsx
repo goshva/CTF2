@@ -11,13 +11,12 @@ interface UserChatItemProps {
   lastMessage: string | null;
   createdAt: string;
   avatar: string;
-  onClick: () => void;
 }
 
 
 const UserChatItem: React.FC<UserChatItemProps> = (props) => {
   return (
-    <div className={styles.userItem} onClick={props.onClick}>
+    <div className={styles.userItem}>
       <div className={styles.item}>
         <Image src={props.avatar} alt="avatar" width={60} height={60}/>
         <div className={styles.userText}>

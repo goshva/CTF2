@@ -7,7 +7,6 @@ import News from '@/components/News';
 
 import backgroundImage from '@/main-bg.png';
 import UserInfo from '@/components/UserInfo';
-import ChatSidebar from '@/components/ChatSidebar';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -29,7 +28,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
         <Header />
         <News />
         <UserInfo/>
-        {/* <ChatSidebar/> */}
+
         <main className={styles.main}>{children}</main>
 
         <Footer />

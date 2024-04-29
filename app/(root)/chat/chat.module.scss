@@ -5,6 +5,13 @@
   border-radius: 20px;
   background: #203d5380;
 
+  .textCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
   img {
     cursor: pointer;
   }

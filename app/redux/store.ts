@@ -2,14 +2,14 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { postApi } from './api/postApi';
 import { steamApi } from './api/steamApi';
 import { chatApi } from './api/chatApi';
-import chatReducer from './chatSlice';
+import authReducer from './authSlice';
 
 // Комбинируем все редукторы в один корневой редуктор
 const rootReducer = combineReducers({
   [postApi.reducerPath]: postApi.reducer,
   [steamApi.reducerPath]: steamApi.reducer,
   [chatApi.reducerPath]: chatApi.reducer,
-  chat: chatReducer,
+  auth: authReducer,
 });
 
 export const store = configureStore({
