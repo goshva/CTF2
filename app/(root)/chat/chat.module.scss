@@ -98,9 +98,10 @@
     gap: 30px;
     overflow: scroll;
     overflow-x: hidden;
-    height: 50vh;
-  
-    /* Стили для скроллбара */
+    // height: 80%;
+    height: 500px;
+    background: #33414c;
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
