@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import News from "@/components/News";
 
+
 import backgroundImage from "@/main-bg.png";
 
 // import { StyleProvider } from '@ant-design/cssinjs';

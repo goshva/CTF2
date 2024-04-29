@@ -36,9 +36,9 @@ import { NextPage } from 'next';
           </div>
   
           <div className={styles.link}>
-            <Link href="/market" className={styles.cardLink}>
-              <ShoppingCart size={14} style={{ color: 'white' }} />
-            </Link>
+          <Link href={`/market/${product.id}`} className={styles.cardLink}>
+  <ShoppingCart size={14} style={{ color: 'white' }} />
+</Link>
           </div>
         </div>
       </div>
