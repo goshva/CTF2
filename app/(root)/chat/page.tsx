@@ -18,11 +18,47 @@ import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { socket } from './socket';
 
 function Chat() {
   const [message, setMessage] = useState('');
   const [openClip, setClip] = useState(false);
   const [openMenu, setMenu] = useState(false);
+  const [AllMessages, setAllMessages] = useState<Message[]>([]);
+  const [userId, setUserId] = React.useState<number | null>(null);
+  const [chatId, setChatId] = React.useState('');
+
+  interface sender  {
+    id: number,
+    name: string,
+    UT: string,
+    avatar: string,
+    about: string,
+    registeredAt: Date,
+    role: string,
+    status: string
+  }
+
+  interface Message {
+    id: number;
+    text: string;
+    senderId: number;
+    chatId: string;
+    sender: sender;
+    createdAt: Date;
+  }
+
+  interface User {
+    id: number;
+    name: string;
+    UT: string | null;
+  }
+
+  interface Chat {
+    id: string;
+    users: User[];
+    messages: Message[];
+  }
 
   //@ts-ignore
   const currentChatId = useSelector((state: RootState) => state.chat.currentChatId);
@@ -34,6 +70,45 @@ function Chat() {
   const handleChooseChat = () =>{
     // console.log(currentChatId)
   }
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (message.trim() !== '') {
+      //получение времени отправления сообщения
+      const currentDate = new Date();
+      const hours = currentDate.getHours();
+      const minutes = currentDate.getMinutes();
+
+      const sendTime = `${hours}:${minutes}`;
+
+      socket.emit('message', {
+        text: message,
+        senderId: userId,
+        chatId: chatId,
+      });
+      setMessage('');
+    }
+  };
+
+  React.useEffect(() => {
+    socket.on('message', (data) => {
+      console.log(data)
+      if(chatId === data.chatId){
+        setAllMessages((prevMessages) => [...prevMessages, data]); 
+      }
+      console.log(AllMessages)
+    });
+  
+    socket.on('error', (data) => {
+      alert(JSON.stringify(data));
+    });
+  
+    return () => {
+      socket.off('message');
+      socket.off('error');
+    };
+  }, [socket]);
+
 
   const handleOpenMenu = () => {
     setMenu(!openMenu);

@@ -11,7 +11,7 @@ import { setCurrentChatId } from '../../redux';
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
-
+import {socket} from '../../(root)/chat/socket'
 import {useGetUserChatsQuery} from '../../redux'
 
 
@@ -62,11 +62,14 @@ const ChatSidebar: FC = () => {
 
   const handleChatClick = (chatId: string) => {
     dispatch(setCurrentChatId(chatId));
-    console.log(chatId)
   };
 
   useEffect(() => {
     if (data) {
+      setChats(chats);
+
+      socket.emit('join room', chats.map((chat: Chat) => chat.id));
+      
       const modifiedChats = data.chats.map((chat: Chat) => ({
         chatId: chat.id,
         user: chat.users.find((user: IUser) => user.id !== decodedToken?.id)?.name || 'Unknown',
