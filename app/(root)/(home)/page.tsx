@@ -4,7 +4,7 @@ import styles from './home.module.scss';
 import Image from 'next/image';
 import arrowDownIcon from '../../../public/arrowDown.svg';
 import SortIcon from '../../../public/SortIcon.svg';
-import loopIcon from '../../../public/loop-chat-icon.svg';
+import loopIcon from '../../../../public/loop-chat-icon.svg';
 import addPostLargeIcon from '../../../public/AddPostIconLarge.svg';
 import PostCard from '@/components/PostCard';
 
