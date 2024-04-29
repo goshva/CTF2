@@ -1,7 +1,7 @@
 .wrapper {
-  width: 1030px;
-  margin-left: 10px;
-  height: 700px;
+  width: 95%;
+  margin-left: 0px;
+  height: 80%;
   border-radius: 20px;
   background: #203d5380;
 
@@ -14,7 +14,7 @@
   }
 
   .header {
-    width: 1030px;
+    width: 100%;
     height: 60px;
     background: #1e1b1b;
     padding: 25px;
@@ -96,7 +96,9 @@
     gap: 10px;
     overflow: scroll;
     overflow-x: hidden;
+    // height: 80%;
     height: 500px;
+    background: #33414c;
 
     &::-webkit-scrollbar {
       width: 10px;
@@ -141,17 +143,16 @@
   }
 
   .input {
-    width: 1030px;
+    width: 100%;
     height: 120px;
     background-color: #090b11;
     border-radius: 0 0 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 
     .inputBorder {
-      width: 1010px;
+      width: 90%;
       height: 90px;
       background: #464646;
       border-radius: 5px;

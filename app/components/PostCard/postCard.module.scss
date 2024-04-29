@@ -1,0 +1,91 @@
+.PostCard {
+  width: 288px;
+  height: 340px;
+  border-radius: 15px;
+  background: #2f3541;
+
+  .top_of_card {
+    background: #191919;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-top: 10px;
+    border-radius: 15px 15px 0px 0px;
+
+    .textsInfo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        cursor: pointer;
+      }
+
+      span {
+        color: #e5e7e9;
+        cursor: pointer;
+      }
+
+      p {
+        color: #e5e7e9;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+
+    .subscribe_button {
+      width: 100px;
+      height: 20px;
+      border-radius: 5px;
+      border: none;
+      background: #474b4f;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        background: #666b70;
+      }
+    }
+  }
+
+  .content {
+    margin-top: 5px;
+
+    .postImage {
+      width: 266.25px;
+      height: 150px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    h2 {
+      cursor: pointer;
+      margin-left: 15px;
+      font-size: 24px;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      width: 239px;
+      height: 24px;
+      margin-top: 20px;
+      margin-left: 15px;
+      gap: 10px;
+
+      span {
+        font-weight: 300;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
