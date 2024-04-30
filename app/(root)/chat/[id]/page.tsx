@@ -86,6 +86,15 @@ function Chat() {
     }
   };
 
+  
+  const handleCreateNewChat = () => {
+    const friendId = prompt('Enter friendId');
+    socket.emit('create chat', {
+      user1Id: decodedToken.id,
+      user2Id: friendId,
+  });
+}
+
   useEffect(() => {
     socket.on('message', (data) => {
       setAllMessages((prevMessages) => [...prevMessages, data]); 
