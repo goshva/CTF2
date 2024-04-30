@@ -26,6 +26,7 @@ import LogOutIcon from '../../../public/logout.svg';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
+import UserProductMarketItem from '../UserProductMarketItem';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -157,7 +158,8 @@ const Sidebar: FC = () => {
               className={styles.steam_btn}
               type="primary"
               loading={loadings[0]}
-              onClickCapture={() => enterLoading(0)}>
+              onClickCapture={() => enterLoading(0)}
+            >
               <Image src={steamIcon} alt="steam icon" />
               Lodaing...
             </Button>
@@ -180,7 +182,8 @@ const Sidebar: FC = () => {
                 className={styles.steam_btn}
                 type="primary"
                 loading={loadings[0]}
-                onClickCapture={() => enterLoading(0)}>
+                onClickCapture={() => enterLoading(0)}
+              >
                 <Image src={steamIcon} alt="steam icon" />
                 Click me!
               </Button>
@@ -231,7 +234,11 @@ const Sidebar: FC = () => {
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
-                    <Image onClick={logout} src={LogOutIcon} alt="setting icon" />
+                    <Image
+                      onClick={logout}
+                      src={LogOutIcon}
+                      alt="setting icon"
+                    />
                   </div>
                 </div>
               </footer>
@@ -365,6 +372,23 @@ const Sidebar: FC = () => {
             <UserChatItem />
             <UserChatItem />
             <UserChatItem />
+          </div>
+        )}
+
+        {pathname.startsWith('/market/') && (
+          <div className={styles.productMarketSidebar}>
+            <div className={styles.productMarketSidebar__titleTradeWrapper}>
+              <p className={styles.productMarketSidebar__title}>
+                AK-47 | Легион Анубиса
+              </p>
+              <div className={styles.productMarketSidebar__trade}>
+                <Image src="/box.svg" alt="box" width={20} height={20} />
+                16
+              </div>
+            </div>
+            {new Array(20).fill(null).map((_, i) => (
+              <UserProductMarketItem key={i} />
+            ))}
           </div>
         )}
 
