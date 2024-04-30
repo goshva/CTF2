@@ -10,10 +10,18 @@ import arrowIcon from '../../../public/down-arrow.svg';
 import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
+import HomeSidebar from '@/components/HomeSidebar';
 
 const HomePage: NextPage = () => {
   return (
-    <div className={styles.home}>
+    <div className="container-fluid mt-[20px]">
+      <div className="row">
+        <div className="col-3">
+          <HomeSidebar />
+        </div>
+        <div className="col-8">
+        <div className={styles.wrapper}>
+        <div className={styles.home}>
       {/* Закомментированный код для заголовка */}
       <header className={styles.header}>
         <button>
@@ -69,6 +77,11 @@ const HomePage: NextPage = () => {
         </article>
       </div>
     </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  
   );
 };
 
