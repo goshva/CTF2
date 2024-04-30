@@ -62,16 +62,18 @@ const HomePage: NextPage = () => {
         </article>
       </div>
       <div className={styles.posts_wrapper}>
-        <div className={styles.posts_section}>
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div className={styles.posts_section}>
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+          </div>
         </div>
       </div>
     </div>
