@@ -145,6 +145,27 @@
     justify-content: center;
     border: 1px solid black;
 
+    .productMarketSidebar {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      &__titleTradeWrapper {
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #2f2f2f;
+      }
+      &__title {
+        color: #D9D9D9;
+      }
+      &__trade {
+        display: flex;
+       align-items: center;
+        column-gap: 3px;
+        font-size: 14px;
+      }
+    }
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
