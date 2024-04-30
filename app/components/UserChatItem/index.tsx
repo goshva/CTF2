@@ -2,21 +2,31 @@ import { Badge } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import styles from './user-item.module.scss';
-import avatar from '../../../public/avatar.png';
 
-function UserChatItem() {
+
+interface UserChatItemProps {
+  chatId: string;
+  chatName: string;
+  userTag: string | null;
+  lastMessage: string | null;
+  createdAt: string;
+  avatar: string;
+}
+
+
+const UserChatItem: React.FC<UserChatItemProps> = (props) => {
   return (
     <div className={styles.userItem}>
       <div className={styles.item}>
-        <Image src={avatar} alt="avatar" />
+        <Image src={props.avatar} alt="avatar" width={60} height={60}/>
         <div className={styles.userText}>
-          <span>Root</span>
+          <span>{props.chatName}</span>
           <p>
-            Привет, друг! Мне бы хотелось познакомиться с твоими знакомыми, которые занимаются....
+            {props.lastMessage}
           </p>
         </div>
       </div>
-      <span className={styles.sendedAt}>16:50</span>
+      <span className={styles.sendedAt}>{props.createdAt}</span>
       <div style={{ position: 'absolute', right: '14px', top: '35px' }}>
         <Badge style={{ border: 'none' }} color="#00B2FF" count={5} />
       </div>

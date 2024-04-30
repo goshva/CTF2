@@ -1,0 +1,138 @@
+.sidebar {
+  color: white;
+  height: 620px;
+
+  .middleSide {
+    width: 320px;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
+    margin-left: 25px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+}
+
+// .select_wrapper {
+//   height: 300px;
+//   overflow: auto;
+//   width: 100%;
+
+//   &::-webkit-scrollbar {
+//     width: 10px;
+//     height: 10px;
+//   }
+
+//   &::-webkit-scrollbar-track {
+//     background: none;
+//   }
+
+//   &::-webkit-scrollbar-thumb {
+//     background: #888;
+//     border-radius: 20px;
+//     cursor: pointer;
+//   }
+
+//   &::-webkit-scrollbar-thumb:hover {
+//     background: #555;
+//   }
+
+//   .select_section {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: column;
+//     gap: 7px;
+//     margin-top: 15px;
+
+//     .selectPole {
+//       position: relative;
+//       width: 300px;
+//       height: 24px;
+//       background-color: #131d2c;
+//       border: none;
+//       color: white;
+//       border-radius: 5px;
+//       padding: 5px;
+//       display: flex;
+//       align-items: center;
+//       cursor: pointer;
+
+//       p {
+//         color: white;
+//       }
+
+//       &:hover {
+//         transition: 300ms;
+//         background-color: #22334e;
+//       }
+
+//       img {
+//         position: absolute;
+//         right: 10px;
+//       }
+//     }
+//   }
+// }
+
+// for chat
+.chatSelect {
+  .findUser {
+    width: 320px;
+    height: 40px;
+    background: #232a30;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: relative;
+
+    input {
+      outline: none;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+
+      &::placeholder {
+        color: white;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.downLine {
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  height: 1px;
+}
+
+.textCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
