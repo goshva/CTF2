@@ -96,9 +96,11 @@ const News = React.memo(() => {
     };
   }, [handleNavigateSlides]);
 
-  const handleRef = React.useCallback((ref: HTMLDivElement) => {
-    const { width } = ref.getBoundingClientRect();
-    setContainerWidth(width);
+  const handleRef = React.useCallback((ref: HTMLDivElement | null) => {
+    if (ref) {
+      const { width } = ref.getBoundingClientRect();
+      setContainerWidth(width);
+    }
   }, []);
 
   return (
