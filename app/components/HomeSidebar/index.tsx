@@ -59,24 +59,12 @@ const HomeSidebar: FC = () => {
               <Link href="/">Home</Link>
             </li>
             <li className={styles.route}>
-              <Hash />
-              <Link href="/explore">Explore</Link>
-            </li>
-            <li className={styles.route}>
               <Bell />
               <Link href="/notifications">Notifications</Link>
             </li>
             <li className={styles.route}>
               <Mail />
               <Link href="/chat">Messages</Link>
-            </li>
-            <li className={styles.route}>
-              <ScrollText />
-              <Link href="/lists">Lists</Link>
-            </li>
-            <li className={styles.route}>
-              <User />
-              <Link href="/profile">Profile</Link>
             </li>
             <li className={styles.route}>
               <SlidersHorizontal />
