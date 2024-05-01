@@ -27,6 +27,17 @@ import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import UserProductMarketItem from '../UserProductMarketItem';
+import {
+  Bell,
+  Hash,
+  Home,
+  Mail,
+  ScrollText,
+  Search,
+  SlidersHorizontal,
+  User,
+  Users,
+} from 'lucide-react';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -158,8 +169,7 @@ const Sidebar: FC = () => {
               className={styles.steam_btn}
               type="primary"
               loading={loadings[0]}
-              onClickCapture={() => enterLoading(0)}
-            >
+              onClickCapture={() => enterLoading(0)}>
               <Image src={steamIcon} alt="steam icon" />
               Lodaing...
             </Button>
@@ -182,8 +192,7 @@ const Sidebar: FC = () => {
                 className={styles.steam_btn}
                 type="primary"
                 loading={loadings[0]}
-                onClickCapture={() => enterLoading(0)}
-              >
+                onClickCapture={() => enterLoading(0)}>
                 <Image src={steamIcon} alt="steam icon" />
                 Click me!
               </Button>
@@ -234,11 +243,7 @@ const Sidebar: FC = () => {
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
-                    <Image
-                      onClick={logout}
-                      src={LogOutIcon}
-                      alt="setting icon"
-                    />
+                    <Image onClick={logout} src={LogOutIcon} alt="setting icon" />
                   </div>
                 </div>
               </footer>
@@ -354,6 +359,45 @@ const Sidebar: FC = () => {
           </div>
         )}
 
+        {pathname === '/' && (
+          <div className={styles.home_sideBar}>
+            <div className={styles.findPost_input}>
+              <Search color="#e5e5e5" className={styles.searchIcon} />
+              <input type="text" placeholder="Найти пост" />
+            </div>
+            <ul className={styles.routes_section}>
+              <li className={styles.route}>
+                <Home />
+                <Link href="/">Home</Link>
+              </li>
+              <li className={styles.route}>
+                <Hash />
+                <Link href="/explore">Explore</Link>
+              </li>
+              <li className={styles.route}>
+                <Bell />
+                <Link href="/notifications">Notifications</Link>
+              </li>
+              <li className={styles.route}>
+                <Mail />
+                <Link href="/chat">Messages</Link>
+              </li>
+              <li className={styles.route}>
+                <ScrollText />
+                <Link href="/lists">Lists</Link>
+              </li>
+              <li className={styles.route}>
+                <User />
+                <Link href="/profile">Profile</Link>
+              </li>
+              <li className={styles.route}>
+                <SlidersHorizontal />
+                <Link href="/filters">Filters</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+
         {pathname === '/chat' && (
           <div className={styles.chatSelect}>
             <div className={styles.findUser}>
@@ -378,9 +422,7 @@ const Sidebar: FC = () => {
         {pathname.startsWith('/market/') && (
           <div className={styles.productMarketSidebar}>
             <div className={styles.productMarketSidebar__titleTradeWrapper}>
-              <p className={styles.productMarketSidebar__title}>
-                AK-47 | Легион Анубиса
-              </p>
+              <p className={styles.productMarketSidebar__title}>AK-47 | Легион Анубиса</p>
               <div className={styles.productMarketSidebar__trade}>
                 <Image src="/box.svg" alt="box" width={20} height={20} />
                 16
@@ -392,7 +434,7 @@ const Sidebar: FC = () => {
           </div>
         )}
 
-        {pathname === '/' && (
+        {pathname === '/market' && (
           <div className={styles.float}>
             <div className={styles.float_content}>
               <h2>Float</h2>
