@@ -16,4 +16,4 @@ export const chatApi = createApi({
 });
 
 // Экспортируем методы для вызова API
-export const { useGetUserChatsQuery, useGetChatMessagesQuery } = chatApi;
+export const { useGetUserChatsQuery, useLazyGetUserChatsQuery, useGetChatMessagesQuery } = chatApi;

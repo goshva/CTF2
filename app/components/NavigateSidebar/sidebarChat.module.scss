@@ -1,0 +1,22 @@
+.sidebar {
+  color: white;
+  height: 550px;
+
+  .middleSide {
+    width: 70%;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
+    margin-left: 25px;
+    border-radius: 15px;
+    padding-top: 5%;
+    padding-left: 10%;
+    display: flex;
+    border: 1px solid black;
+  }
+
+  .routes{
+    font-size: 20px;
+  }
+}

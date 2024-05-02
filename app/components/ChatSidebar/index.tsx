@@ -4,7 +4,7 @@ import { FC, useState, useEffect } from 'react';
 import styles from './sidebarChat.module.scss';
 import Image from 'next/image';
 import UserChatItem from '../UserChatItem';
-import loopIcon from '../../../public/loop-chat-icon.svg';
+import loopIcon from '@/loop-chat-icon.svg';
 import { useSelector } from 'react-redux';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';

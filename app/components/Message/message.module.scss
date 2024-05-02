@@ -1,14 +1,13 @@
 .message {
   position: relative;
-  width: 50%;
-  height: 100%;
+  width: 45%;
   border-radius: 10px;
   background-color: #2e3842;
   padding: 10px;
 
   //   если ты отправляешь то тогда это
   &.own {
-    margin-left: 50%;
+    margin-left: 55%;
   }
 
   span {
