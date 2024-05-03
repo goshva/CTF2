@@ -15,7 +15,7 @@ const Footer: FC = () => {
   const [activeFooter, setActiveFooter] = useState(false);
   return (
     <div
-      style={{ gridColumn: '1 / 3' }}
+      style={{ gridColumn: '1 / 3', display: 'block' }}
       className={`absolute bottom-0 w-full flex flex-col justify-between bg-black/75 p-2 ${
         activeFooter ? 'h-[100px]' : 'h-[30px]'
       }`}>

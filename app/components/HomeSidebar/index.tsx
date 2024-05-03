@@ -21,12 +21,21 @@ import UserChatItem from '../UserChatItem';
 import loopIcon from '../../../public/loop-chat-icon.svg';
 import copy from '../../../public/copy.svg';
 import LogOutIcon from '../../../public/logout.svg';
+import {
+  Bell,
+  Hash,
+  Home,
+  Mail,
+  ScrollText,
+  Search,
+  SlidersHorizontal,
+  User,
+  Users,
+} from 'lucide-react';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
-
 
 const HomeSidebar: FC = () => {
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
@@ -36,26 +45,49 @@ const HomeSidebar: FC = () => {
     setInputValue(newValue as number);
   };
 
-
   return (
     <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
-          <div className={styles.float}>
-            <div className={styles.float_content}>
-              <h2>Float</h2>
-              <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
-              <Col span={8}>
-                <Slider
-                  min={0.0}
-                  max={1000}
-                  onChange={onChange}
-                  value={typeof inputValue === 'number' ? inputValue : 0}
-                  step={0.01}
-                />
-              </Col>
-              <h2 className={styles.valueText}>1.000</h2>
-            </div>
+        <div className={styles.home_sideBar}>
+          <div className={styles.findPost_input}>
+            <Search color="#e5e5e5" className={styles.searchIcon} />
+            <input type="text" placeholder="Найти пост" />
           </div>
+          <ul className={styles.routes_section}>
+            <li className={styles.route}>
+              <Home />
+              <Link href="/">Home</Link>
+            </li>
+            <li className={styles.route}>
+              <Bell />
+              <Link href="/notifications">Notifications</Link>
+            </li>
+            <li className={styles.route}>
+              <Mail />
+              <Link href="/chat">Messages</Link>
+            </li>
+            <li className={styles.route}>
+              <SlidersHorizontal />
+              <Link href="/filters">Filters</Link>
+            </li>
+          </ul>
+        </div>
+        {/* <div className={styles.float}>
+          <div className={styles.float_content}>
+            <h2>Float</h2>
+            <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
+            <Col span={8}>
+              <Slider
+                min={0.0}
+                max={1000}
+                onChange={onChange}
+                value={typeof inputValue === 'number' ? inputValue : 0}
+                step={0.01}
+              />
+            </Col>
+            <h2 className={styles.valueText}>1.000</h2>
+          </div>
+        </div> */}
       </div>
     </aside>
   );

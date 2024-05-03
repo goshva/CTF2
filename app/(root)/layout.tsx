@@ -27,11 +27,9 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       <div className={styles.wrapper}>
         <Header />
         <News />
-        <UserInfo/>
+        <UserInfo />
 
         <main className={styles.main}>{children}</main>
-
-        <Footer />
       </div>
       {/* </div> */}
     </>
