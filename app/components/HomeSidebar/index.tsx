@@ -21,6 +21,9 @@ import UserChatItem from '../UserChatItem';
 import loopIcon from '../../../public/loop-chat-icon.svg';
 import copy from '../../../public/copy.svg';
 import LogOutIcon from '../../../public/logout.svg';
+import tgIcon from '@/Telegram.png';
+import vcIcon from '@/Vk.png';
+import youtubeIcon from '@/youtube.png';
 import {
   Bell,
   Hash,
@@ -72,22 +75,24 @@ const HomeSidebar: FC = () => {
             </li>
           </ul>
         </div>
-        {/* <div className={styles.float}>
-          <div className={styles.float_content}>
-            <h2>Float</h2>
-            <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
-            <Col span={8}>
-              <Slider
-                min={0.0}
-                max={1000}
-                onChange={onChange}
-                value={typeof inputValue === 'number' ? inputValue : 0}
-                step={0.01}
-              />
-            </Col>
-            <h2 className={styles.valueText}>1.000</h2>
-          </div>
-        </div> */}
+        <footer className={styles.chatFooter}>
+          <article className={styles.webpage_text}>
+            <span>@2024 COUNTER.TRADE.ru</span>
+          </article>
+          <section className={styles.links}>
+            <div className={styles.social_icons}>
+              <Image src={steamIcon} alt="steamIcon" />
+              <Image src={tgIcon} alt="tgIcon" />
+              <Image src={vcIcon} alt="vcIcon" />
+              <Image src={youtubeIcon} alt="youtubeIcon" />
+            </div>
+            <ul className={styles.routes_footer}>
+              <Link href="#!">Связаться с нами</Link>
+              <Link href="#!">Правила</Link>
+              <Link href="#!">Условия</Link>
+            </ul>
+          </section>
+        </footer>
       </div>
     </aside>
   );
