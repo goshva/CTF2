@@ -131,13 +131,13 @@
   .middleSide {
     position: relative;
     width: 320px;
-    height: 355px;
+    height: 375px;
     // height: 50vh;
     // height: 70%;
     overflow: auto;
     overflow-x: hidden;
     background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
-    margin-left: 35px;
+    margin-left: 25px;
     border-radius: 15px;
     margin-top: 20px;
     margin-top: 20px;
@@ -403,4 +403,42 @@
   width: 100%;
   left: 0;
   height: 1px;
+}
+
+// home sideBar
+.home_sideBar {
+  margin-top: 20px;
+  margin-left: -27px;
+
+  .findPost_input {
+    position: relative;
+
+    .searchIcon {
+      position: absolute;
+      left: 2px;
+      top: 5px;
+    }
+
+    input {
+      margin-bottom: 20px;
+      border: 1px solid #e5e5e5;
+      background: transparent;
+      outline: none;
+      border-radius: 7px;
+      height: 35px;
+      padding-left: 35px;
+      font-size: 15px;
+    }
+  }
+
+  .routes_section {
+    // padding-bottom: 37px;
+
+    .route {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding-bottom: 18px;
+    }
+  }
 }

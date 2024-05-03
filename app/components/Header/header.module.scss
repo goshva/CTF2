@@ -5,9 +5,15 @@
   background-color: #313436;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .cartLink {
   color: white;
   margin-left: 30px;
+}
+
+.globe_icon {
+  margin-right: 1.5rem;
+  cursor: pointer;
 }
