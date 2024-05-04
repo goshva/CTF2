@@ -105,7 +105,7 @@ const ChatSidebar: FC = () => {
             ))
           )}
         </div>
-        <footer className={styles.chatFooter}>
+        <footer className={styles.footer}>
           <article className={styles.webpage_text}>
             <span>@2024 COUNTER.TRADE.ru</span>
           </article>

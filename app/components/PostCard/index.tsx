@@ -44,8 +44,7 @@ function PostCard() {
     <div className={styles.post_card}>
       <article className={styles.high_content}>
         <Image className={styles.avatar} src={avatar} alt="avatar" />
-        <div style={{ marginTop: '50px' }}>
-          {/* vere tir 50 kushte marginLeft: '105px' */}
+        <div className="mt-10 mb-2">
           <div className={styles.infoTexts}>
             <span className={styles.userName}>Profile Name</span>
             <span className={styles.greyText}>@profie name</span>
@@ -58,9 +57,11 @@ function PostCard() {
               has been the industry's: bit.ly/2kvf6yj
             </p>
           </div>
-          <img
+          <Image
             className={styles.postImage}
-            src={'https://www.skinwallet.com/csgo/wp-content/uploads/2020/04/mugshot-1.png'}
+            width={700}
+            height={350}
+            src="https://www.skinwallet.com/csgo/wp-content/uploads/2020/04/mugshot-1.png"
             alt="post image"
           />
           <div className={styles.postIcons}>

@@ -38,17 +38,11 @@ const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
           <Image src={productImage} alt="product" />
         </div>
         <div className={styles.product__buttonsWrapper}>
-          <button
-            className={styles.product__buttonSalesman}
-            onClick={handleConnectSalesman}
-          >
+          <button className={styles.product__buttonSalesman} onClick={handleConnectSalesman}>
             <Image src={personIcon} alt="person" />
             Связь с продавцом
           </button>
-          <button
-            className={styles.product__buttonCart}
-            onClick={handleAddCart}
-          >
+          <button className={styles.product__buttonCart} onClick={handleAddCart}>
             <ShoppingCart size={20} />
             Добавить в корзину
           </button>
@@ -69,10 +63,7 @@ const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
             </div>
           </div>
         </div>
-        <button
-          className={styles.product__buttonViewInGame}
-          onClick={handleViewInGame}
-        >
+        <button className={styles.product__buttonViewInGame} onClick={handleViewInGame}>
           <Eye size={20} /> Осмотреть в игре
         </button>
       </div>
