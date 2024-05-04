@@ -1,5 +1,7 @@
+'use client';
+
 import { NextPage } from 'next';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './home.module.scss';
 import Image from 'next/image';
 import arrowDownIcon from '../../../public/arrowDown.svg';
@@ -13,48 +15,52 @@ import smileIcon from '../../../public/smile-emoji.svg';
 import HomeSidebar from '@/components/HomeSidebar';
 
 const HomePage: NextPage = () => {
+  const [value, setValue] = useState('');
+
+  // для будушего создания поста
+  const handleCreatePost = () => {
+    setValue('');
+  };
+
   return (
-    <div className="container-fluid mt-[20px]">
-      <div className="row">
-        <div className="col-3">
-          <HomeSidebar />
-        </div>
-        <div className="col-8">
-          <div className={styles.wrapper}>
-            <div className={styles.home}>
-              {/* Закомментированный код для заголовка */}
-              <div className={styles.inputBorder}>
-                <button>
-                  Everyone <Image src={arrowIcon} alt="arrow image" />
-                </button>
-                <textarea placeholder="What about post of trade?" />
-                <div className={styles.line}></div>
-                <article className={styles.downContent}>
-                  <div className={styles.icons}>
-                    <Image src={cubeIcon} alt="icon" />
-                    <Image src={clockIcon} alt="icon" />
-                    <Image src={smileIcon} alt="icon" />
-                  </div>
-                  <button>Post</button>
-                </article>
+    <div className={styles.home}>
+      <div className="flex">
+        <HomeSidebar />
+        <div className={styles.home}>
+          <div className={styles.inputBorder}>
+            <button>
+              Everyone <Image src={arrowIcon} alt="arrow image" />
+            </button>
+            <textarea
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder="What about post of trade?"
+            />
+            <div className={styles.line}></div>
+            <article className={styles.downContent}>
+              <div className={styles.icons}>
+                <Image src={cubeIcon} alt="icon" />
+                <Image src={clockIcon} alt="icon" />
+                <Image src={smileIcon} alt="icon" />
               </div>
-              {/* Контейнер для постов */}
-              <div className={styles.post_container}>
-                {/* Набор постов */}
-                <div className={styles.posts_wrapper}>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <div className={styles.posts_section}>
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                      <PostCard />
-                    </div>
-                  </div>
+              <button onClick={handleCreatePost}>Post</button>
+            </article>
+          </div>
+          {/* Контейнер для постов */}
+          <div className={styles.post_container}>
+            {/* Набор постов */}
+            <div className={styles.posts_wrapper}>
+              <div className="flex justify-center">
+                <div className={styles.posts_section}>
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
+                  <PostCard />
                 </div>
               </div>
 
