@@ -137,3 +137,41 @@
   align-items: center;
   height: 100%;
 }
+
+.search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+@media screen and (max-width: 1750px) {
+  .sidebar {
+    height:500px;
+  }
+
+}
+
+
+@media screen and (max-width: 1600px) {
+  .sidebar {
+    margin-left: 70px;
+    height:400px;
+    width: 250px;
+  }
+
+  .chatSelect {
+    .findUser {
+      width: 320px;
+      height: 40px;
+      background: #232a30;
+      padding-top: 10px;
+  }
+}
+
+.search{
+  margin-left : 25px; 
+}
+}
+

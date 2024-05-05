@@ -77,7 +77,7 @@ const ChatSidebar: FC = () => {
       <div className={styles.middleSide}>
           <div className={styles.chatSelect}>
             <div className={styles.findUser}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div className={styles.search}>
                 <Image src={loopIcon} alt="loop" />
                 <input type="text" placeholder="Найти" />
               </div>
