@@ -20,6 +20,8 @@ import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
+import NavigateSidebar from '@/components/NavigateSidebar';
+import HomeSidebar from '@/components/HomeSidebar';
 
 
 function Chat() {
@@ -136,11 +138,12 @@ function Chat() {
     <div className="container-fluid mt-[20px]">
       <div className="row">
         <div className="col-3">
-          <ChatSidebar />
+          <HomeSidebar/>
         </div>
-        <div className="col-8">
+        <div className="col-9">
+        <ChatSidebar />
         {isLoading ? (
-           <div className={styles.wrapper} style={{height: '600px' }}>
+           <div className={styles.wrapper}>
            <div className={styles.textCenter}>
              <div>Loading...</div>
            </div>
@@ -222,9 +225,9 @@ function Chat() {
       </section>
     </div>
     )}
+    </div>
         </div>
       </div>
-    </div>
   );
 }
 

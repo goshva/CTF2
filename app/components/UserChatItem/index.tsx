@@ -28,7 +28,7 @@ const UserChatItem: React.FC<UserChatItemProps> = (props) => {
       </div>
       <span className={styles.sendedAt}>{props.createdAt}</span>
       <div style={{ position: 'absolute', right: '14px', top: '35px' }}>
-        <Badge style={{ border: 'none' }} color="#00B2FF" count={5} />
+        <Badge style={{ border: 'none' }} color="#00B2FF" count={0} />
       </div>
       <div className={styles.downLine}></div>
     </div>

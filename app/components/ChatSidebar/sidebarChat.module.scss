@@ -1,16 +1,16 @@
 .sidebar {
   color: white;
-  height: 620px;
-
+  height: 550px;
+  width: 320px;
+  position: absolute;
+  
   .middleSide {
-    position: relative;
-    width: 320px;
+    width: 100%;
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
     background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
-    margin-left: 25px;
-    border-radius: 15px;
+    border-radius: 15px 0 0 15px;
     display: flex;
     justify-content: center;
     border: 1px solid black;
@@ -99,29 +99,6 @@
 
 // for chat
 .chatSelect {
-  max-height: 568px;
-  overflow: auto;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: none;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
   .findUser {
     width: 320px;
     height: 40px;
@@ -161,56 +138,40 @@
   height: 100%;
 }
 
-.footer {
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  position: absolute;
-  bottom: 0;
-  overflow: hidden;
-  padding-left: 10px;
-  // display: flex;
-  // flex-direction: column;
+.search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .webpage_text {
-    margin-bottom: 5px;
-    cursor: pointer;
 
-    span {
-      font-weight: 400;
-      font-size: 12px;
-      white-space: nowrap;
-    }
+
+@media screen and (max-width: 1750px) {
+  .sidebar {
+    height:500px;
   }
 
-  .links {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    white-space: nowrap;
-    font-size: 11px;
+}
 
-    .routes_footer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
 
-      a {
-        font-size: 12px;
-        cursor: pointer;
-      }
-    }
+@media screen and (max-width: 1600px) {
+  .sidebar {
+    margin-left: 70px;
+    height:400px;
+    width: 250px;
+  }
 
-    .social_icons {
-      display: flex;
-      align-items: center;
-      gap: 1px;
-
-      img {
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-    }
+  .chatSelect {
+    .findUser {
+      width: 320px;
+      height: 40px;
+      background: #232a30;
+      padding-top: 10px;
   }
 }
+
+.search{
+  margin-left : 25px; 
+}
+}
+
