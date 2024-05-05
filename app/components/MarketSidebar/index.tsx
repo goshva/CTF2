@@ -26,6 +26,9 @@ import LogOutIcon from '../../../public/logout.svg';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
+import tgIcon from '@/Telegram.png';
+import vcIcon from '@/Vk.png';
+import youtubeIcon from '@/youtube.png';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -132,7 +135,6 @@ const MarketSidebar: FC = () => {
     getFriendsList();
   };
 
-
   const enterLoading = (index: number) => {
     setTimeout(() => {
       setLoadings((prevLoadings) => {
@@ -146,109 +148,121 @@ const MarketSidebar: FC = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
-          <div className={styles.select_wrapper}>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <section className={styles.select_section}>
-                <button onClick={toggleIconItem} className={styles.selectPole}>
-                  Тип товара (переименовать)
-                  <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-                </button>
-                {itemMenuBorder && (
-                  <div className={styles.menuBorder}>
-                    <button onClick={toggleIconPistol} className={styles.menuItem}>
-                      Пистолет
-                      <Image
-                        src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon}
-                        alt="icon"
-                      />
-                    </button>
-                    {pistolMenuBorder && (
-                      <div className={styles.menuGunBorder}>
-                        <button className={styles.menuGunItem}>
-                          Все пистолеты
-                          <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          Five-Seven <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          Glock-18 <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          P2000 <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          P250 <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          R8 Revolver <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          Tec-9
-                          <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          CZ75-Auto <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          USP-S <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          Desert Eagle <Image src={plusIcon} alt="icon" />
-                        </button>
-                        <button className={styles.menuGunItem}>
-                          Dual Berettas <Image src={plusIcon} alt="icon" />
-                        </button>
-                      </div>
-                    )}
-                    <button className={styles.menuItem}>
-                      Винтовка
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Снайперская винтовка
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Пистолет-пулемет
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Пулемет
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Дробовик
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Нож
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                    <button className={styles.menuItem}>
-                      Прочее
-                      <Image src={plusIcon} alt="icon" />
-                    </button>
-                  </div>
-                )}
-                <button onClick={toggleIconCriterion} className={styles.selectPole}>
-                  Критерий
-                  <Image
-                    src={iconStateCriterion === 'plusIcon' ? plusIcon : minusIcon}
-                    alt="icon"
-                  />
-                </button>
-                {criterionMenuBorder && (
-                  <div className={styles.menuBorder}>
-                    <button className={styles.menuItem}>Категория</button>
-                    <button className={styles.menuItem}>Фазы</button>
-                    <button className={styles.menuItem}>Раритетность</button>
-                    <button className={styles.menuItem}>Качество</button>
-                  </div>
-                )}
-              </section>
-            </div>
+        <div className={styles.select_wrapper}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <section className={styles.select_section}>
+              <button onClick={toggleIconItem} className={styles.selectPole}>
+                Тип товара (переименовать)
+                <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+              </button>
+              {itemMenuBorder && (
+                <div className={styles.menuBorder}>
+                  <button onClick={toggleIconPistol} className={styles.menuItem}>
+                    Пистолет
+                    <Image src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+                  </button>
+                  {pistolMenuBorder && (
+                    <div className={styles.menuGunBorder}>
+                      <button className={styles.menuGunItem}>
+                        Все пистолеты
+                        <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        Five-Seven <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        Glock-18 <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        P2000 <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        P250 <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        R8 Revolver <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        Tec-9
+                        <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        CZ75-Auto <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        USP-S <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        Desert Eagle <Image src={plusIcon} alt="icon" />
+                      </button>
+                      <button className={styles.menuGunItem}>
+                        Dual Berettas <Image src={plusIcon} alt="icon" />
+                      </button>
+                    </div>
+                  )}
+                  <button className={styles.menuItem}>
+                    Винтовка
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Снайперская винтовка
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Пистолет-пулемет
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Пулемет
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Дробовик
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Нож
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                  <button className={styles.menuItem}>
+                    Прочее
+                    <Image src={plusIcon} alt="icon" />
+                  </button>
+                </div>
+              )}
+              <button onClick={toggleIconCriterion} className={styles.selectPole}>
+                Критерий
+                <Image src={iconStateCriterion === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
+              </button>
+              {criterionMenuBorder && (
+                <div className={styles.menuBorder}>
+                  <button className={styles.menuItem}>Категория</button>
+                  <button className={styles.menuItem}>Фазы</button>
+                  <button className={styles.menuItem}>Раритетность</button>
+                  <button className={styles.menuItem}>Качество</button>
+                </div>
+              )}
+            </section>
           </div>
+        </div>
+        <footer className={styles.footer}>
+          <article className={styles.webpage_text}>
+            <span>@2024 COUNTER.TRADE.ru</span>
+          </article>
+          <section className={styles.links}>
+            <div className={styles.social_icons}>
+              <Image src={steamIcon} alt="steamIcon" />
+              <Image src={tgIcon} alt="tgIcon" />
+              <Image src={vcIcon} alt="vcIcon" />
+              <Image src={youtubeIcon} alt="youtubeIcon" />
+            </div>
+            <ul className={styles.routes_footer}>
+              <Link href="#!">Связаться с нами</Link>
+              <Link href="#!">Правила</Link>
+              <Link href="#!">Условия</Link>
+            </ul>
+          </section>
+        </footer>
       </div>
     </aside>
   );

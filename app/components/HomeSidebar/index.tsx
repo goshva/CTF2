@@ -75,7 +75,23 @@ const HomeSidebar: FC = () => {
             </li>
           </ul>
         </div>
-        <footer className={styles.chatFooter}>
+        {/* <div className={styles.float}>
+          <div className={styles.float_content}>
+            <h2>Float</h2>
+            <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
+            <Col span={8}>
+              <Slider
+                min={0.0}
+                max={1000}
+                onChange={onChange}
+                value={typeof inputValue === 'number' ? inputValue : 0}
+                step={0.01}
+              />
+            </Col>
+            <h2 className={styles.valueText}>1.000</h2>
+          </div>
+        </div> */}
+        <footer className={styles.footer}>
           <article className={styles.webpage_text}>
             <span>@2024 COUNTER.TRADE.ru</span>
           </article>

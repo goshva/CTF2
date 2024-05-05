@@ -1,140 +1,9 @@
-// .home {
-//   width: 1095.2px;
-//   //   width: 50%;
-//   height: 675px;
-
-//   background-color: #020e16cc;
-//   border-radius: 20px;
-//   overflow: auto;
-//   overflow-x: hidden;
-
-//   @media (max-width: 1500px) {
-//     width: 940px;
-//   }
-
-//   &::-webkit-scrollbar {
-//     width: 10px;
-//     height: 10px;
-//   }
-
-//   &::-webkit-scrollbar-track {
-//     background: none;
-//   }
-
-//   &::-webkit-scrollbar-thumb {
-//     background: #888;
-//     border-radius: 20px;
-//     cursor: pointer;
-//   }
-
-//   &::-webkit-scrollbar-thumb:hover {
-//     background: #555;
-//   }
-
-//   .header {
-//     width: 1095.2px;
-//     border-radius: 20px 20px 0px 0px;
-//     height: 50px;
-//     background: #000000;
-//     padding-left: 30px;
-//     padding-right: 30px;
-//     padding-top: 10px;
-//     display: flex;
-//     justify-content: space-between;
-
-//     @media (max-width: 1500px) {
-//       padding-right: 180px;
-//     }
-
-//     button {
-//       width: 300px;
-//       height: 30px;
-//       border-radius: 10px;
-//       border: none;
-//       background: #ffffff;
-//       display: flex;
-//       justify-content: space-between;
-//       align-items: center;
-//       padding: 10px;
-//       cursor: pointer;
-
-//       img {
-//         cursor: pointer;
-//       }
-
-//       .dateText {
-//         display: flex;
-//         align-items: center;
-//         gap: 5px;
-
-//         span {
-//           font-size: 20px;
-//           cursor: pointer;
-//         }
-//       }
-//     }
-
-//     .input_container {
-//       width: 300px;
-//       height: 30px;
-//       border-radius: 10px;
-//       border: none;
-//       background: #dfdfdf;
-//       padding-left: 10px;
-//       padding-right: 10px;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-
-//       img {
-//         cursor: pointer;
-//       }
-
-//       input {
-//         outline: none;
-//         border: none;
-//         background: transparent;
-//         font-size: 16px;
-//       }
-//     }
-//   }
-
-//   .post_container {
-//     padding: 35px;
-//     display: flex;
-//     justify-content: center;
-//     flex-wrap: wrap;
-//     gap: 35px;
-
-//     @media (max-width: 1500px) {
-//       width: 965px;
-//       gap: 15px;
-//       justify-content: flex-start;
-//       margin-left: -15px;
-//     }
-
-//     .addPost {
-//       width: 288px;
-//       height: 340px;
-//       border-radius: 15px;
-//       border: 1px solid black;
-//       display: flex;
-//       justify-content: center;
-//       align-items: center;
-//       background-color: #7989a7;
-//       cursor: pointer;
-//     }
-//   }
-// }
-
 .home {
-  // max-width: 2000px;
+  width: 97vw;
 
   .inputBorder {
-    // width: 1090px;
-    max-width: 100%;
+    width: 100%;
     height: 232px;
-    // max-height: 50vh;
     background: #262c30;
     border-radius: 10px;
     padding: 20px;
@@ -191,7 +60,6 @@
     }
 
     .line {
-      // width: 1090px;
       width: 100%;
       position: absolute;
       left: 0;
@@ -219,6 +87,7 @@
         height: 30px;
         background: #1886d0;
         color: white;
+        border: none;
         border-radius: 20px;
         padding: 10px;
         text-align: center;
@@ -234,10 +103,8 @@
   }
 
   .posts_wrapper {
-    // width: 1090px;
     max-width: 100%;
-    max-height: 30vh;
-    // height: 700px;
+    max-height: 80vh;
     overflow: auto;
     overflow-x: hidden;
     background: #3b444b;
@@ -289,101 +156,6 @@
 
       &::placeholder {
         color: white;
-      }
-
-      .post_card {
-        width: 600px;
-        height: 459px;
-        padding: 65px;
-
-        .high_content {
-          display: flex;
-          gap: 15px;
-          align-items: center;
-          position: relative;
-
-          .avatar {
-            width: 52px;
-            height: 52px;
-            position: absolute;
-            top: 40px;
-            margin-left: 35px;
-          }
-
-          .infoTexts {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-            white-space: nowrap;
-            margin-top: -20px;
-
-            .dot {
-              color: #8a98a4;
-              margin-top: -8px;
-            }
-
-            span {
-              font-size: 16px;
-            }
-
-            .userName {
-              color: white;
-            }
-
-            .greyText {
-              color: #8a98a4;
-            }
-          }
-
-          .desc {
-            width: 700px;
-          }
-
-          .postImage {
-            width: 700px;
-            height: 350px;
-            cursor: pointer;
-            border-radius: 14px;
-            margin-top: 25px;
-          }
-
-          .postIcons {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-            margin-top: 15px;
-
-            .comments {
-              display: flex;
-              align-items: center;
-              gap: 3px;
-
-              span {
-                color: #8a98a4;
-              }
-            }
-
-            .share {
-              display: flex;
-              align-items: center;
-              gap: 3px;
-
-              span {
-                color: #8a98a4;
-              }
-            }
-
-            .like {
-              display: flex;
-              align-items: center;
-              gap: 3px;
-
-              span {
-                color: #8a98a4;
-              }
-            }
-          }
-        }
       }
     }
   }
