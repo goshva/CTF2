@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, FormEvent } from 'react';
+import React, { useEffect, useState, FormEvent, useRef } from 'react';
 import styles from '../chat.module.scss';
 import loopIcon from '../../../../public/loop-chat-icon.svg';
 import menuIcon from '../../../../public/chat-menu.svg';
@@ -25,6 +25,7 @@ import HomeSidebar from '@/components/HomeSidebar';
 
 
 function Chat() {
+  const chatRef = useRef<HTMLDivElement>(null);
   const [message, setMessage] = useState('');
   const [openClip, setClip] = useState(false);
   const [openMenu, setMenu] = useState(false);
@@ -96,6 +97,12 @@ function Chat() {
       user2Id: friendId,
   });
 }
+
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [AllMessages]);
 
   useEffect(() => {
     socket.on('message', (data) => {
@@ -178,7 +185,7 @@ function Chat() {
           )}
         </div>
       </nav>
-      <div className={styles.chat}>
+      <div className={styles.chat} ref={chatRef}>
       {AllMessages.map((msg, index) => (
               <Message 
               key={index} 
