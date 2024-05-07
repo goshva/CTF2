@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['avatars.steamstatic.com', 'skinwallet.com', 'www.skinwallet.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.steamstatic.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'skinwallet.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.skinwallet.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
 };
