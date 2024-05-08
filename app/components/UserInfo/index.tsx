@@ -128,8 +128,8 @@ const UserInfo: FC = () => {
               <article className={styles.name_email_content}>
                 <h3>
                   {decodedToken
-                    ? decodedToken.displayName.length > 12
-                      ? decodedToken.displayName.slice(0, 12) + '...'
+                    ? decodedToken.displayName.length > 20
+                      ? decodedToken.displayName.slice(0, 20) + '...'
                       : decodedToken.displayName
                     : '<div>Username</div>'}
                 </h3>
