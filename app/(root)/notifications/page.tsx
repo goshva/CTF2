@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './notifications.module.scss';
 import Notification from '@/components/Notification';
-import NavigateSidebar from '@/components/NavigateSidebar';
+import HomeSidebar from '@/components/HomeSidebar';
 
 
 function Notifications() {
@@ -12,7 +12,7 @@ function Notifications() {
     <div className="container-fluid mt-[20px]">
       <div className="row">
         <div className="col-3">
-          <NavigateSidebar />
+          <HomeSidebar />
         </div>
         <div className="col-8">
       <div className={styles.wrapper}>
