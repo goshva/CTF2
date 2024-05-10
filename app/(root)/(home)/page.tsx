@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './home.module.scss';
 import Image from 'next/image';
 import arrowDownIcon from '../../../public/arrowDown.svg';
@@ -13,6 +13,7 @@ import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import HomeSidebar from '@/components/HomeSidebar';
+import axios from '../../axios';
 
 const HomePage: NextPage = () => {
   const [value, setValue] = useState('');
@@ -20,7 +21,27 @@ const HomePage: NextPage = () => {
   // для будушего создания поста
   const handleCreatePost = () => {
     setValue('');
+    try {
+      axios.post('/post', value);
+      console.log('Пост успешно создан');
+    } catch (err) {
+      console.warn('Ошибка при создании поста', err);
+    }
   };
+
+  const [posts, setPosts] = useState([]);
+
+  // получение постов
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get('/post');
+      setPosts(res?.data);
+    };
+
+    getPosts();
+  }, []);
+
+  console.log('Посты', posts);
 
   return (
     <div className={styles.home}>
