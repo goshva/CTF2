@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from "react";
 import Image from "next/image";
 import styles from "./layout.module.scss";
@@ -30,7 +32,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
 
         <Sidebar />
 
-        <News />
+        {/* <News /> */}
 
         <main className={styles.main}>{children}</main>
 

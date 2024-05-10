@@ -1,11 +1,13 @@
-import {FC} from 'react'
+'use client'
+
+import { FC } from 'react'
 import styles from './footer.module.scss'
 
 
-const Footer:FC = () => {
+const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
-        Footer
+      Footer
     </footer>
   )
 }
