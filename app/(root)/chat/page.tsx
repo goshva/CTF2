@@ -15,8 +15,12 @@ import photoAddIcon from '../../../public/add-photo.svg';
 import drawerIcon from '../../../public/drawer.svg';
 import avatar from '../../../public/avatar.png';
 import Message from '@/components/Message';
+import { useTranslations } from "next-intl";
 
 function Chat() {
+
+  const t = useTranslations('translation')
+
   const [message, setMessage] = useState('');
   const [openClip, setClip] = useState(false);
   const [openMenu, setMenu] = useState(false);
@@ -60,11 +64,11 @@ function Chat() {
             <div className={styles.chatMenu}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Image onClick={handleCloseMenu} src={drawerIcon} alt="white clip" />
-                <h2 onClick={handleCloseMenu}>Очистить диалог</h2>
+                <h2 onClick={handleCloseMenu}>{t('cleanChat')}</h2>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Image onClick={handleCloseMenu} src={clipIcon} alt="white clip" />
-                <h2 onClick={handleCloseMenu}>Очистить диалог</h2>
+                <h2 onClick={handleCloseMenu}>{t('cleanChat')}</h2>
               </div>
             </div>
           )}
@@ -89,22 +93,22 @@ function Chat() {
               <div className={styles.addSomethingSection}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Image onClick={handleCloseClip} src={photoAddIcon} alt="photo add icon" />
-                  <h2 onClick={handleCloseClip}>Добавить фото</h2>
+                  <h2 onClick={handleCloseClip}>{t('addPhoto')}</h2>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Image onClick={handleCloseClip} src={fileAddIcon} alt="file add icon" />
-                  <h2 onClick={handleCloseClip}>Добавить файл</h2>
+                  <h2 onClick={handleCloseClip}>{t('addFile')}</h2>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Image onClick={handleCloseClip} src={videoAddIcon} alt="video add icon" />
-                  <h2 onClick={handleCloseClip}>Добавить видео</h2>
+                  <h2 onClick={handleCloseClip}>{t('addVideo')}</h2>
                 </div>
               </div>
             )}
             <Image onClick={handleOpenClip} src={clipIcon} alt="clipIcon" />
             <Image src={emojiIcon} alt="emoji icon" />
             <button onClick={handleSendMessage} className={styles.sendBtn}>
-              Send
+              {t('send')}
             </button>
           </div>
         </div>

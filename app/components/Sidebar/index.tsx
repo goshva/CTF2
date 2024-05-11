@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { FC, useState, useEffect } from "react";
 import styles from "./sidebar.module.scss";
@@ -24,6 +24,7 @@ import loopIcon from "../../../public/loop-chat-icon.svg";
 import jwt from "jsonwebtoken";
 import Cookies from "js-cookie";
 import { useGetFriendListQuery } from "../../redux";
+import { useTranslations } from "next-intl";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -52,6 +53,8 @@ const Sidebar: FC = () => {
   const [decodedToken, setDecodedToken] = useState<any>("");
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>("");
+
+  const t = useTranslations()
 
   const jwtToken = Cookies.get("jwt");
   if (jwtToken) {
@@ -129,7 +132,7 @@ const Sidebar: FC = () => {
           justifyContent: "space-between",
           alignItems: "center",
         }}>
-        <span>Тип товара (переименовать)</span>
+        <span>{t('productType')} (переименовать)</span>
         <Image
           src={iconState === "plusIcon" ? plusIcon : minusIcon}
           alt="icon"
@@ -147,7 +150,7 @@ const Sidebar: FC = () => {
               justifyContent: "space-between",
               alignItems: "center",
             }}>
-            <span>Пистолет</span>
+            <span>{t('pistol')}</span>
             <Image
               src={pistolState === "plusIcon" ? plusIcon : minusIcon}
               alt="icon"
@@ -170,7 +173,7 @@ const Sidebar: FC = () => {
           ]
         ),
         getItem(
-          <span>Винтовка</span>,
+          <span>{t('rifle')}</span>,
           "sub4",
           <div
             onClick={toggleIconPistol}
@@ -183,7 +186,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "25")]
         ),
         getItem(
-          <span>Снайперская винтовка</span>,
+          <span>{t('sniperRifle')}</span>,
           "sub5",
           <div
             onClick={toggleIconPistol}
@@ -196,7 +199,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "26")]
         ),
         getItem(
-          <span>Пистолет-пулемет</span>,
+          <span>{t('subGun')}</span>,
           "sub6",
           <div
             onClick={toggleIconPistol}
@@ -209,7 +212,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "27")]
         ),
         getItem(
-          <span>Пулемет</span>,
+          <span>{t('machineGun')}</span>,
           "sub7",
           <div
             onClick={toggleIconPistol}
@@ -222,7 +225,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "28")]
         ),
         getItem(
-          <span>Дробовик</span>,
+          <span>{t('shotgun')}</span>,
           "sub8",
           <div
             onClick={toggleIconPistol}
@@ -235,7 +238,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "29")]
         ),
         getItem(
-          <span>Нож</span>,
+          <span>{t('knife')}</span>,
           "sub9",
           <div
             onClick={toggleIconPistol}
@@ -248,7 +251,7 @@ const Sidebar: FC = () => {
           [getItem("Пусто", "30")]
         ),
         getItem(
-          <span>Прочее</span>,
+          <span>{t('other')}</span>,
           "sub10",
           <div
             onClick={toggleIconPistol}
@@ -294,6 +297,7 @@ const Sidebar: FC = () => {
     ),
   ];
 
+
   if (loadingCookies) {
     return (
       <aside className={styles.sidebar}>
@@ -306,7 +310,7 @@ const Sidebar: FC = () => {
               loading={loadings[0]}
               onClickCapture={() => enterLoading(0)}>
               <Image src={steamIcon} alt="steam icon" />
-              Lodaing...
+              {t('loading')}
             </Button>
           </div>
         </div>
@@ -329,7 +333,7 @@ const Sidebar: FC = () => {
                 loading={loadings[0]}
                 onClickCapture={() => enterLoading(0)}>
                 <Image src={steamIcon} alt="steam icon" />
-                Click me!
+                {t('clickMe')}
               </Button>
             </Link>
           </div>
@@ -363,7 +367,7 @@ const Sidebar: FC = () => {
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
-                <p className={styles.friends_count}>{friendCount}Friends</p>
+                <p className={styles.friends_count}>{friendCount}{t('friends')}</p>
               </article>
               <article className={styles.desc}>
                 <p>
@@ -373,10 +377,10 @@ const Sidebar: FC = () => {
               </article>
               <footer className={styles.downContnet}>
                 <div className={styles.links}>
-                  <h3>INVENTORY</h3>
+                  <h3>{t('inventory')}</h3>
                   <h3>STEAM</h3>
-                  <h3>MY LINKS</h3>
-                  <h3>WRITE</h3>
+                  <h3>{t('myLinks')}</h3>
+                  <h3>{t('write')}</h3>
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
@@ -530,7 +534,7 @@ const Sidebar: FC = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Image src={loopIcon} alt="loop" />
-                <input type="text" placeholder="Найти" />
+                <input type="text" placeholder={t('search')} />
               </div>
               <div className={styles.downLine}></div>
             </div>
@@ -549,7 +553,7 @@ const Sidebar: FC = () => {
         {pathname === "/" && (
           <div className={styles.float}>
             <div className={styles.float_content}>
-              <h2>Float</h2>
+              <h2>{t('float')}</h2>
               <h2 className={styles.valueText}>{inputValue.toFixed(3)}</h2>
               <Col span={8}>
                 <Slider

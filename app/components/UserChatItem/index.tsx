@@ -1,10 +1,16 @@
+'use client'
+
 import { Badge } from 'antd';
 import Image from 'next/image';
 import React from 'react';
 import styles from './user-item.module.scss';
 import avatar from '../../../public/avatar.png';
+import { useTranslations } from "next-intl";
 
 function UserChatItem() {
+
+  const t = useTranslations('translation')
+
   return (
     <div className={styles.userItem}>
       <div className={styles.item}>
@@ -12,7 +18,7 @@ function UserChatItem() {
         <div className={styles.userText}>
           <span>Root</span>
           <p>
-            Привет, друг! Мне бы хотелось познакомиться с твоими знакомыми, которые занимаются....
+            {t('chatGreeting')}
           </p>
         </div>
       </div>
