@@ -13,28 +13,43 @@ import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import HomeSidebar from '@/components/HomeSidebar';
-import axios from '../../axios';
+// import axios from '../../axios'; для реальных  постов их сервера
+import axios from 'axios';
+
+interface UserType {
+  userName: string;
+  avatar: string;
+}
+
+export interface PostType {
+  createdAt: string;
+  image: string;
+  desc: string;
+  user: UserType;
+  id: string;
+}
 
 const HomePage: NextPage = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string>('');
 
   // для будушего создания поста
   const handleCreatePost = () => {
     setValue('');
     try {
-      axios.post('/post', value);
+      // axios.post('/post', value); жду бекенда
       console.log('Пост успешно создан');
     } catch (err) {
       console.warn('Ошибка при создании поста', err);
     }
   };
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
 
   // получение постов
   useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get('/post');
+      // const res = await axios.get('/post'); для реал постов
+      const res = await axios.get('https://663e6894e1913c4767978fca.mockapi.io/posts');
       setPosts(res?.data);
     };
 
@@ -68,24 +83,11 @@ const HomePage: NextPage = () => {
             </article>
           </div>
           {/* Контейнер для постов */}
-          <div className={styles.post_container}>
-            {/* Набор постов */}
-            <div className={styles.posts_wrapper}>
-              <div className="flex justify-center">
-                <div className={styles.posts_section}>
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                  <PostCard />
-                </div>
-              </div>
-
-              {/* Ввод иконок и кнопки для создания поста */}
+          <div className={styles.posts_wrapper}>
+            <div className={styles.posts_section}>
+              {posts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
             </div>
           </div>
         </div>
