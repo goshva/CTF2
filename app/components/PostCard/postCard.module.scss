@@ -1,225 +1,71 @@
-// .PostCard {
-//   width: 288px;
-//   height: 340px;
-//   border-radius: 15px;
-//   background: #2f3541;
+.postCard {
+  max-width: 700px;
+  max-height: 600px;
 
-//   .top_of_card {
-//     background: #191919;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//     padding-left: 10px;
-//     padding-right: 10px;
-//     padding-bottom: 7px;
-//     padding-top: 10px;
-//     border-radius: 15px 15px 0px 0px;
-
-//     .textsInfo {
-//       display: flex;
-//       align-items: center;
-//       gap: 10px;
-
-//       img {
-//         cursor: pointer;
-//       }
-
-//       span {
-//         color: #e5e7e9;
-//         cursor: pointer;
-//       }
-
-//       p {
-//         color: #e5e7e9;
-//         font-size: 12px;
-//         cursor: pointer;
-//       }
-//     }
-
-//     .subscribe_button {
-//       width: 100px;
-//       height: 20px;
-//       border-radius: 5px;
-//       border: none;
-//       background: #474b4f;
-//       color: white;
-//       cursor: pointer;
-//       font-size: 14px;
-
-//       &:hover {
-//         background: #666b70;
-//       }
-//     }
-//   }
-
-//   .content {
-//     margin-top: 5px;
-
-//     .postImage {
-//       width: 266.25px;
-//       height: 150px;
-//       border-radius: 10px;
-//       cursor: pointer;
-//     }
-
-//     h2 {
-//       cursor: pointer;
-//       margin-left: 15px;
-//       font-size: 24px;
-//     }
-
-//     .icons {
-//       display: flex;
-//       align-items: center;
-//       width: 239px;
-//       height: 24px;
-//       margin-top: 20px;
-//       margin-left: 15px;
-//       gap: 10px;
-
-//       span {
-//         font-weight: 300;
-//         font-size: 16px;
-//         cursor: pointer;
-//       }
-
-//       img {
-//         cursor: pointer;
-//       }
-//     }
-//   }
-// }
-
-.post_card {
-  width: 600px;
-  height: 459px;
-  padding: 65px;
-
-  .high_content {
+  .highContent {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    align-items: center;
     position: relative;
+    gap: 25px;
+    margin-bottom: 15px;
 
     .avatar {
-      // width: 52px;
-      // height: 52px;
-      // position: absolute;
-      // top: 40px;
-      // margin-left: 35px;
-      // cursor: pointer;
       width: 52px;
       height: 52px;
+      cursor: pointer;
       position: absolute;
-      left: -185px;
-      top: 35px;
-      cursor: pointer;
-    }
+      left: -75px;
+      top: 10px;
 
-    .infoTexts {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-      white-space: nowrap;
-      margin-top: -20px;
-
-      .dot {
-        color: #8a98a4;
-        margin-top: -8px;
+      @media (max-width: 1330px) {
+        display: none;
       }
 
-      span {
-        font-size: 16px;
-        cursor: pointer;
-      }
-
-      .userName {
-        color: white;
-      }
-
-      .greyText {
-        color: #8a98a4;
-      }
-    }
-
-    .desc {
-      width: 700px;
-    }
-
-    .postImage {
-      cursor: pointer;
-      border-radius: 14px;
-      margin-top: 25px;
-    }
-
-    .postIcons {
-      display: flex;
-      gap: 50px;
-      align-items: center;
-      margin-top: 15px;
-
-      .comments {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-
-        span {
-          color: #8a98a4;
-        }
-      }
-
-      .share {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-
-        span {
-          color: #8a98a4;
-        }
-      }
-
-      .like {
-        display: flex;
-        align-items: center;
-        gap: 3px;
-
-        span {
-          color: #8a98a4;
-        }
-      }
-    }
-  }
-
-  .commentSection {
-    .comment_input {
-      width: 700px;
-      height: 180px;
-      background: #262c30;
-      border-radius: 10px;
-      padding: 20px;
-      position: relative;
-      margin-top: 15px;
-
-      .commentAvatar {
-        width: 52px;
-        height: 52px;
-      }
-
-      textarea {
+      img {
         width: 100%;
-        height: 80px;
-        resize: none;
-        background: transparent;
-        outline: none;
-        color: white;
-        font-size: 15px;
-        padding-top: 20px;
-        padding-left: 0px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    .userInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 1.58px;
+
+      .userText {
+        display: flex;
+        gap: 5px;
+
+        .userName {
+          font-weight: 700;
+        }
+
+        .greyText {
+          color: #8a98a4;
+          font-weight: 400;
+        }
+
+        .createdAt {
+          color: #8a98a4;
+          font-weight: 400;
+        }
+
+        .dot {
+          // точка
+          margin-top: -5px;
+          color: #8a98a4;
+        }
+      }
+
+      .desc {
+        max-height: 150px;
+        overflow-y: auto;
+        font-weight: 400;
 
         &::-webkit-scrollbar {
           width: 10px;
-          height: 10px;
+          height: 15px;
         }
 
         &::-webkit-scrollbar-track {
@@ -235,96 +81,33 @@
         &::-webkit-scrollbar-thumb:hover {
           background: #555;
         }
-
-        &::placeholder {
-          color: white;
-        }
-      }
-
-      .line {
-        width: 700px;
-        position: absolute;
-        top: 115px;
-        left: 0;
-        height: 1px;
-        background: #ffffff7a;
-      }
-      .downContent {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 27px;
-
-        .icons {
-          display: flex;
-          gap: 15px;
-
-          img {
-            cursor: pointer;
-          }
-        }
-        button {
-          display: flex;
-          justify-content: center;
-          width: 65px;
-          height: 30px;
-          background: #1886d0;
-          color: white;
-          border-radius: 20px;
-          padding: 10px;
-          text-align: center;
-          align-items: center;
-          font-size: 15px;
-          cursor: pointer;
-
-          &:hover {
-            background: #2a9eeb;
-          }
-        }
       }
     }
-    .userComment {
-      position: relative;
+  }
+
+  .postImage {
+    margin-bottom: 15px;
+    img {
       width: 700px;
-      height: 100%;
-      margin-top: 15px;
+      height: 335px;
       border-radius: 14px;
-      background: #262c30;
-      padding: 9px 20px;
-      overflow: auto;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
 
-      &::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
+  .icons {
+    display: flex;
+    gap: 40px;
+    align-items: center;
 
-      &::-webkit-scrollbar-track {
-        background: none;
-      }
+    .icon {
+      display: flex;
+      gap: 2px;
+      align-items: center;
 
-      &::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-
-      &::placeholder {
-        color: white;
-      }
-
-      .content_comment {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-
-      .comment {
-        margin-left: -268px;
-        margin-top: 35px;
+      span {
+        color: #8a98a4;
       }
     }
   }
