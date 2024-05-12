@@ -13,8 +13,8 @@ import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import HomeSidebar from '@/components/HomeSidebar';
+import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
 // import axios from '../../axios'; для реальных  постов их сервера
-import axios from 'axios';
 
 interface UserType {
   userName: string;
@@ -31,32 +31,22 @@ export interface PostType {
 
 const HomePage: NextPage = () => {
   const [value, setValue] = useState<string>('');
+  // получение постов
+  const { data = [] as PostType[] } = useGetAllPostsQuery({});
+
+  // создания поста
+  const [addPost, { isError }] = useCreatePostsMutation();
 
   // для будушего создания поста
-  const handleCreatePost = () => {
+  const handleCreatePost = async () => {
     setValue('');
     try {
-      // axios.post('/post', value); жду бекенда
+      // await addPost(value).unwrap(); создания нового поста
       console.log('Пост успешно создан');
     } catch (err) {
       console.warn('Ошибка при создании поста', err);
     }
   };
-
-  const [posts, setPosts] = useState<PostType[]>([]);
-
-  // получение постов
-  useEffect(() => {
-    const getPosts = async () => {
-      // const res = await axios.get('/post'); для реал постов
-      const res = await axios.get('https://663e6894e1913c4767978fca.mockapi.io/posts');
-      setPosts(res?.data);
-    };
-
-    getPosts();
-  }, []);
-
-  console.log('Посты', posts);
 
   return (
     <div className={styles.home}>
@@ -85,7 +75,7 @@ const HomePage: NextPage = () => {
           {/* Контейнер для постов */}
           <div className={styles.posts_wrapper}>
             <div className={styles.posts_section}>
-              {posts.map((post) => (
+              {data.map((post: PostType) => (
                 <PostCard key={post.id} post={post} />
               ))}
             </div>
