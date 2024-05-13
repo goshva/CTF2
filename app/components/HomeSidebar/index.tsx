@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
 import profileAvatar from '../../../public/profile.svg';
 import Image from 'next/image';
@@ -25,8 +25,8 @@ import tgIcon from '@/Telegram.png';
 import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
 import {
-  Bell,
-  Hash,
+  Bell, FacebookIcon, FanIcon,
+  Hash, Heart,
   Home,
   Mail,
   ScrollText,
@@ -35,6 +35,7 @@ import {
   User,
   Users,
 } from 'lucide-react';
+import {Alike, Loved_by_the_King} from "next/dist/compiled/@next/font/dist/google";
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -58,19 +59,23 @@ const HomeSidebar: FC = () => {
           </div>
           <ul className={styles.routes_section}>
             <li className={styles.route}>
-              <Home />
+              <Home/>
               <Link href="/">Home</Link>
             </li>
             <li className={styles.route}>
-              <Bell />
+              <Bell/>
               <Link href="/notifications">Notifications</Link>
             </li>
             <li className={styles.route}>
-              <Mail />
+              <Mail/>
               <Link href="/chat">Messages</Link>
             </li>
             <li className={styles.route}>
-              <SlidersHorizontal />
+              <Heart />
+              <Link href="/favorites">Favorites</Link>
+            </li>
+            <li className={styles.route}>
+              <SlidersHorizontal/>
               <Link href="/filters">Filters</Link>
             </li>
           </ul>
