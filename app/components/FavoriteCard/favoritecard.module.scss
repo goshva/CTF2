@@ -1,0 +1,48 @@
+.message {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #2e3842;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn_sort{
+    display: flex;
+    gap: 80px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 110px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 20px;
+    padding: 14px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column; /* Изменяем направление flex на столбцовое */
+    align-items: flex-start; /* Выравниваем элементы по левому краю */
+    gap: 5px; /* Уменьшаем промежуток между элементами */
+  }
+
+  .imageContainer {
+    position: relative;
+  }
+
+  span {
+    position: relative;
+    color: #8497a6;
+  }
+}
