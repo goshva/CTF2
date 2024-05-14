@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './layout.module.scss';
@@ -11,6 +13,7 @@ import UserInfo from '@/components/UserInfo';
 // import { StyleProvider } from '@ant-design/cssinjs';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
+
   return (
     <>
       <div className="bgWrap">

@@ -14,6 +14,8 @@ import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import HomeSidebar from '@/components/HomeSidebar';
 import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
+import { useTranslations } from 'next-intl';
+
 // import axios from '../../axios'; для реальных  постов их сервера
 
 interface UserType {
@@ -30,6 +32,9 @@ export interface PostType {
 }
 
 const HomePage: NextPage = () => {
+
+  const t = useTranslations();
+
   const [value, setValue] = useState<string>('');
   // получение постов
   const { data = [] as PostType[] } = useGetAllPostsQuery({});
@@ -55,7 +60,7 @@ const HomePage: NextPage = () => {
         <div className={styles.home}>
           <div className={styles.inputBorder}>
             <button>
-              Everyone <Image src={arrowIcon} alt="arrow image" />
+              {t('everyone')} <Image src={arrowIcon} alt="arrow image" />
             </button>
             <textarea
               value={value}
@@ -69,7 +74,7 @@ const HomePage: NextPage = () => {
                 <Image src={clockIcon} alt="icon" />
                 <Image src={smileIcon} alt="icon" />
               </div>
-              <button onClick={handleCreatePost}>Post</button>
+              <button onClick={handleCreatePost}>{t('post')}</button>
             </article>
           </div>
           {/* Контейнер для постов */}

@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from 'react';
 import styles from './header.module.scss';
 import Link from 'next/link';

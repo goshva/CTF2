@@ -8,9 +8,10 @@ import loopIcon from '@/loop-chat-icon.svg';
 import { useSelector } from 'react-redux';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
-import {socket} from '../../../app/(root)/chat/socket'
-import {useGetUserChatsQuery} from '@/redux'
+import { socket } from '../../../app/(root)/chat/socket'
+import { useGetUserChatsQuery } from '@/redux'
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 
 const ChatSidebar: FC = () => {
@@ -21,9 +22,9 @@ const ChatSidebar: FC = () => {
   //@ts-ignore
   const decodedToken = useSelector(state => state.auth.decodedToken);
   //@ts-ignore
-  const {data, isLoading} = useGetUserChatsQuery(decodedToken?.id)
+  const { data, isLoading } = useGetUserChatsQuery(decodedToken?.id)
 
-  interface sender  {
+  interface sender {
     id: number,
     name: string,
     UT: string,
@@ -59,7 +60,7 @@ const ChatSidebar: FC = () => {
   useEffect(() => {
     if (data) {
       socket.emit('join room', data.chats.map((chat: Chat) => chat.id));
-      
+
       const modifiedChats = data.chats.map((chat: Chat) => ({
         chatId: chat.id,
         user: chat.users.find((user: IUser) => user.id !== decodedToken?.id)?.name || 'Unknown',
@@ -71,35 +72,36 @@ const ChatSidebar: FC = () => {
     }
   }, [data]);
 
+  const t = useTranslations()
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
-          <div className={styles.chatSelect}>
-            <div className={styles.findUser}>
-              <div className={styles.search}>
-                <Image src={loopIcon} alt="loop" />
-                <input type="text" placeholder="Найти" />
-              </div>
-              <div className={styles.downLine}></div>
+        <div className={styles.chatSelect}>
+          <div className={styles.findUser}>
+            <div className={styles.search}>
+              <Image src={loopIcon} alt="loop" />
+              <input type="text" placeholder="Найти" />
             </div>
-            {isLoading ? (
-          <div className={styles.textCenter}>Loading...</div>
-        ) : (
-          chats.map((chat, index) => (
-            <Link href={`/chat/${chat.chatId}`} key={index}>
-              <UserChatItem  
-                avatar={chat.avatar}
-                createdAt={chat.createdAt}
-                chatId={chat.chatId}
-                chatName={chat.user} 
-                userTag={chat.userTag}
-                lastMessage={chat.lastMessage} 
-              />
-            </Link>
-          ))
-        )}
+            <div className={styles.downLine}></div>
           </div>
+          {isLoading ? (
+            <div className={styles.textCenter}>{t('loading')}</div>
+          ) : (
+            chats.map((chat, index) => (
+              <Link href={`/chat/${chat.chatId}`} key={index}>
+                <UserChatItem
+                  avatar={chat.avatar}
+                  createdAt={chat.createdAt}
+                  chatId={chat.chatId}
+                  chatName={chat.user}
+                  userTag={chat.userTag}
+                  lastMessage={chat.lastMessage}
+                />
+              </Link>
+            ))
+          )}
+        </div>
       </div>
     </aside>
   );

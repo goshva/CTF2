@@ -27,6 +27,7 @@ import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import UserProductMarketItem from '../UserProductMarketItem';
+import { useTranslations } from 'next-intl';
 import {
   Bell,
   Hash,
@@ -64,6 +65,9 @@ const Sidebar: FC = () => {
   // const [decodedToken, setDecodedToken] = useState<any>('');
   const [loadingCookies, setLoadingCookies] = useState(true);
   const [friendCount, setFriendCount] = useState<any>('');
+
+  const t = useTranslations();
+
 
   const jwtToken = Cookies.get('jwt');
   //@ts-ignore
@@ -194,7 +198,7 @@ const Sidebar: FC = () => {
                 loading={loadings[0]}
                 onClickCapture={() => enterLoading(0)}>
                 <Image src={steamIcon} alt="steam icon" />
-                Click me!
+                {t('clickMe')}
               </Button>
             </Link>
           </div>
@@ -222,7 +226,7 @@ const Sidebar: FC = () => {
                 <div>
                   <h3>ID:</h3>
                 </div>
-                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer'/>
+                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer' />
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -236,10 +240,10 @@ const Sidebar: FC = () => {
               </article>
               <footer className={styles.downContnet}>
                 <div className={styles.links}>
-                  <h3>INVENTORY</h3>
+                  <h3>{t('inventory')}</h3>
                   <h3>STEAM</h3>
-                  <h3>MY LINKS</h3>
-                  <h3>WRITE</h3>
+                  <h3>{t('myLinks')}</h3>
+                  <h3>{t('write')}</h3>
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />
@@ -258,13 +262,13 @@ const Sidebar: FC = () => {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <section className={styles.select_section}>
                 <button onClick={toggleIconItem} className={styles.selectPole}>
-                  Тип товара (переименовать)
+                  {t('productType')} (переименовать)
                   <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
                 </button>
                 {itemMenuBorder && (
                   <div className={styles.menuBorder}>
                     <button onClick={toggleIconPistol} className={styles.menuItem}>
-                      Пистолет
+                      {t('pistol')}
                       <Image
                         src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon}
                         alt="icon"
@@ -273,7 +277,7 @@ const Sidebar: FC = () => {
                     {pistolMenuBorder && (
                       <div className={styles.menuGunBorder}>
                         <button className={styles.menuGunItem}>
-                          Все пистолеты
+                          {t('allPistole')}
                           <Image src={plusIcon} alt="icon" />
                         </button>
                         <button className={styles.menuGunItem}>
@@ -310,31 +314,31 @@ const Sidebar: FC = () => {
                       </div>
                     )}
                     <button className={styles.menuItem}>
-                      Винтовка
+                      {t('rifle')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Снайперская винтовка
+                      {t('sniperRifle')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Пистолет-пулемет
+                      {t('subGun')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Пулемет
+                      {t('muchineGun')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Дробовик
+                      {t('shotgun')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Нож
+                      {t('knife')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                     <button className={styles.menuItem}>
-                      Прочее
+                      {t('other')}
                       <Image src={plusIcon} alt="icon" />
                     </button>
                   </div>
@@ -348,10 +352,10 @@ const Sidebar: FC = () => {
                 </button>
                 {criterionMenuBorder && (
                   <div className={styles.menuBorder}>
-                    <button className={styles.menuItem}>Категория</button>
-                    <button className={styles.menuItem}>Фазы</button>
-                    <button className={styles.menuItem}>Раритетность</button>
-                    <button className={styles.menuItem}>Качество</button>
+                    <button className={styles.menuItem}>{t('categories')}</button>
+                    <button className={styles.menuItem}>{t('phase')}</button>
+                    <button className={styles.menuItem}>{t('rarity')}</button>
+                    <button className={styles.menuItem}>{t('quality')}</button>
                   </div>
                 )}
               </section>
@@ -368,31 +372,31 @@ const Sidebar: FC = () => {
             <ul className={styles.routes_section}>
               <li className={styles.route}>
                 <Home />
-                <Link href="/">Home</Link>
+                <Link href="/">{t('home')}</Link>
               </li>
               <li className={styles.route}>
                 <Hash />
-                <Link href="/explore">Explore</Link>
+                <Link href="/explore">{t('explore')}</Link>
               </li>
               <li className={styles.route}>
                 <Bell />
-                <Link href="/notifications">Notifications</Link>
+                <Link href="/notifications">{t('notifications')}</Link>
               </li>
               <li className={styles.route}>
                 <Mail />
-                <Link href="/chat">Messages</Link>
+                <Link href="/chat">{t('messages')}</Link>
               </li>
               <li className={styles.route}>
                 <ScrollText />
-                <Link href="/lists">Lists</Link>
+                <Link href="/lists">{t('lists')}</Link>
               </li>
               <li className={styles.route}>
                 <User />
-                <Link href="/profile">Profile</Link>
+                <Link href="/profile">{t('profile')}</Link>
               </li>
               <li className={styles.route}>
                 <SlidersHorizontal />
-                <Link href="/filters">Filters</Link>
+                <Link href="/filters">{t('filters')}</Link>
               </li>
             </ul>
           </div>
