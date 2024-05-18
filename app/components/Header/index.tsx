@@ -9,6 +9,7 @@ import { Globe, ShoppingCart } from 'lucide-react';
 import MessageIcon from '../../../public/message.svg';
 
 import logo from '@/logo.svg';
+import LanguageChanger from '../LanguageChanger/LanguageChanger';
 
 const Header: FC = () => {
   return (
@@ -32,7 +33,8 @@ const Header: FC = () => {
         </Link> */}
       </div>
       <div className={styles.globe_icon}>
-        <Globe />
+        {/* <Globe /> */}
+        <LanguageChanger />
       </div>
     </header>
   );

@@ -15,7 +15,7 @@ import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import arrowIcon from '../../../public/arrowDown.svg';
-import { PostType } from '@/(root)/(home)/page';
+import { PostType } from '@/[lang]/(root)/(home)/page';
 import { format } from 'timeago.js';
 
 interface PropsTypes {

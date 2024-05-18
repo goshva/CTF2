@@ -35,6 +35,7 @@ import {
   User,
   Users,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -42,6 +43,8 @@ type MenuItem = Required<MenuProps>['items'][number];
 
 const HomeSidebar: FC = () => {
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
+
+  const { t } = useTranslation()
 
   // icons
   const onChange: InputNumberProps['onChange'] = (newValue) => {
@@ -59,19 +62,19 @@ const HomeSidebar: FC = () => {
           <ul className={styles.routes_section}>
             <li className={styles.route}>
               <Home />
-              <Link href="/">Home</Link>
+              <Link href="/">{t('home')}</Link>
             </li>
             <li className={styles.route}>
               <Bell />
-              <Link href="/notifications">Notifications</Link>
+              <Link href="/notifications">{t('notifications')}</Link>
             </li>
             <li className={styles.route}>
               <Mail />
-              <Link href="/chat">Messages</Link>
+              <Link href="/chat">{t('messages')}</Link>
             </li>
             <li className={styles.route}>
               <SlidersHorizontal />
-              <Link href="/filters">Filters</Link>
+              <Link href="/filters">{t('filters')}</Link>
             </li>
           </ul>
         </div>
@@ -103,9 +106,9 @@ const HomeSidebar: FC = () => {
               <Image src={youtubeIcon} alt="youtubeIcon" />
             </div>
             <ul className={styles.routes_footer}>
-              <Link href="#!">Связаться с нами</Link>
-              <Link href="#!">Правила</Link>
-              <Link href="#!">Условия</Link>
+              <Link href="#!">{t('contactUs')}</Link>
+              <Link href="#!">{t('rules')}</Link>
+              <Link href="#!">{t('terms')}</Link>
             </ul>
           </section>
         </footer>
