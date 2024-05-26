@@ -1,7 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './home.module.scss';
 import Image from 'next/image';
 import arrowDownIcon from '../../../public/arrowDown.svg';
@@ -16,21 +16,45 @@ import HomeSidebar from '@/components/HomeSidebar';
 import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
 // import axios from '../../axios'; для реальных  постов их сервера
 
-interface UserType {
-  userName: string;
+interface AuthorType {
+  id: string;
+  name: string;
   avatar: string;
 }
 
-export interface PostType {
-  createdAt: string;
-  image: string;
-  desc: string;
-  user: UserType;
+interface TagsType {
   id: string;
+  name: string;
+  createdAt: string;
+}
+
+interface ThemeType {
+  id: string;
+  name: string;
+  createdAt: string;
+}
+
+type CountType = {
+  likes: number;
+};
+
+export interface PostType {
+  id: string;
+  createdAt: string;
+  content: string;
+  img: string;
+  authorId: string;
+  themeId: string;
+  author: AuthorType;
+  comments: string[];
+  tags: TagsType;
+  theme: ThemeType;
+  _count: CountType;
 }
 
 const HomePage: NextPage = () => {
   const [value, setValue] = useState<string>('');
+  const buttonRef = useRef<HTMLButtonElement>(null);
   // получение постов
   const { data = [] as PostType[] } = useGetAllPostsQuery({});
 
@@ -39,28 +63,41 @@ const HomePage: NextPage = () => {
 
   // для будушего создания поста
   const handleCreatePost = async () => {
-    setValue('');
     try {
       // await addPost(value).unwrap(); создания нового поста
       console.log('Пост успешно создан');
+      setValue('');
     } catch (err) {
       console.warn('Ошибка при создании поста', err);
     }
+  };
+
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    if (buttonRef.current && buttonRef.current.contains(e.relatedTarget as Node)) {
+      return;
+    }
+    setIsFocused(false);
   };
 
   return (
     <div className={styles.home}>
       <div className="flex">
         <HomeSidebar />
-        <div className={styles.home}>
-          <div className={styles.inputBorder}>
-            <button>
-              Everyone <Image src={arrowIcon} alt="arrow image" />
-            </button>
+        <div className={styles.homeContent}>
+          <div style={{ height: isFocused ? '280px' : '140px' }} className={styles.inputBorder}>
             <textarea
+              style={{ height: isFocused ? '170px' : '40px' }}
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder="What about post of trade?"
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              placeholder="Написать пост"
             />
             <div className={styles.line}></div>
             <article className={styles.downContent}>
@@ -69,17 +106,36 @@ const HomePage: NextPage = () => {
                 <Image src={clockIcon} alt="icon" />
                 <Image src={smileIcon} alt="icon" />
               </div>
-              <button onClick={handleCreatePost}>Post</button>
+              <button ref={buttonRef} onClick={handleCreatePost}>
+                Отправить
+              </button>
             </article>
           </div>
+
+          <article className={styles.advertisingBlock}>
+            <Image
+              src="https://skincashier.com/blog/wp-content/uploads/sites/9/2020/07/csgo-skins-economy-800x450.jpg"
+              alt="advertising"
+              layout="fill"
+            />
+          </article>
+
           {/* Контейнер для постов */}
-          <div className={styles.posts_wrapper}>
+          <div style={{ marginTop: isFocused ? '0px' : '-160px' }} className={styles.postsWrapper}>
             <div className={styles.posts_section}>
               {data.map((post: PostType) => (
                 <PostCard key={post.id} post={post} />
               ))}
             </div>
           </div>
+
+          <article className={styles.advertisingBlock}>
+            <Image
+              src="https://mir-s3-cdn-cf.behance.net/projects/404/4088ae195194999.Y3JvcCw5ODEsNzY3LDQ4LDM0.jpg"
+              alt="advertising"
+              layout="fill"
+            />
+          </article>
         </div>
       </div>
     </div>
