@@ -9,7 +9,7 @@
 
     .inputBorder {
       position: relative;
-      width: 95%;
+      width: 100%;
       // height: 232px;
       height: 140px;
       background: #292b2c;
@@ -119,7 +119,7 @@
     .postsWrapper {
       display: flex;
       justify-content: center;
-      width: 95%;
+      width: 100%;
       height: 700px;
       // max-height: max-content;
       overflow: auto;
@@ -127,8 +127,9 @@
       background: #292b2c;
       border-radius: 10px;
       border: 2px solid #474c52;
-      padding-top: 22px;
+      padding-top: 30px;
       padding-bottom: 22px;
+      padding-left: 20px;
       grid-column: span 2;
 
       &::-webkit-scrollbar {
@@ -153,7 +154,7 @@
       .posts_section {
         display: flex;
         flex-direction: column;
-        gap: 70px;
+        gap: 80px;
 
         &::-webkit-scrollbar {
           width: 10px;
@@ -183,6 +184,7 @@
     .advertisingBlock {
       position: relative;
       width: 20vw;
+      // max-width: 275px;
       height: 297px;
       border-radius: 12px;
       cursor: pointer;

@@ -52,11 +52,26 @@ export interface PostType {
   _count: CountType;
 }
 
+// for fake api
+interface UserFake {
+  userName: string;
+  avatar: string;
+}
+
+export interface PostFake {
+  createdAt: string;
+  image: string;
+  desc: string;
+  user: UserFake;
+  id: string;
+}
+
 const HomePage: NextPage = () => {
   const [value, setValue] = useState<string>('');
   const buttonRef = useRef<HTMLButtonElement>(null);
   // получение постов
-  const { data = [] as PostType[] } = useGetAllPostsQuery({});
+  // const { data = [] as PostType[] } = useGetAllPostsQuery({});
+  const { data = [] as PostFake[] } = useGetAllPostsQuery({});
 
   // создания поста
   const [addPost, { isError }] = useCreatePostsMutation();
@@ -84,6 +99,8 @@ const HomePage: NextPage = () => {
     }
     setIsFocused(false);
   };
+
+  console.log('post', data);
 
   return (
     <div className={styles.home}>
@@ -123,7 +140,7 @@ const HomePage: NextPage = () => {
           {/* Контейнер для постов */}
           <div style={{ marginTop: isFocused ? '0px' : '-160px' }} className={styles.postsWrapper}>
             <div className={styles.posts_section}>
-              {data.map((post: PostType) => (
+              {data.map((post: PostFake) => (
                 <PostCard key={post.id} post={post} />
               ))}
             </div>
