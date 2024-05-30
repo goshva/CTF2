@@ -1,7 +1,9 @@
 .sidebar {
   color: white;
-  height: 550px;
-  width: 320px;
+  height: 480px;
+  width: 80px;
+  margin-left: 30px;
+  margin-top: 20px;
   position: absolute;
   
   .middleSide {
@@ -10,7 +12,7 @@
     overflow: auto;
     overflow-x: hidden;
     background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
-    border-radius: 15px 0 0 15px;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     border: 1px solid black;
@@ -36,66 +38,6 @@
   }
 }
 
-// .select_wrapper {
-//   height: 300px;
-//   overflow: auto;
-//   width: 100%;
-
-//   &::-webkit-scrollbar {
-//     width: 10px;
-//     height: 10px;
-//   }
-
-//   &::-webkit-scrollbar-track {
-//     background: none;
-//   }
-
-//   &::-webkit-scrollbar-thumb {
-//     background: #888;
-//     border-radius: 20px;
-//     cursor: pointer;
-//   }
-
-//   &::-webkit-scrollbar-thumb:hover {
-//     background: #555;
-//   }
-
-//   .select_section {
-//     display: flex;
-//     justify-content: center;
-//     flex-direction: column;
-//     gap: 7px;
-//     margin-top: 15px;
-
-//     .selectPole {
-//       position: relative;
-//       width: 300px;
-//       height: 24px;
-//       background-color: #131d2c;
-//       border: none;
-//       color: white;
-//       border-radius: 5px;
-//       padding: 5px;
-//       display: flex;
-//       align-items: center;
-//       cursor: pointer;
-
-//       p {
-//         color: white;
-//       }
-
-//       &:hover {
-//         transition: 300ms;
-//         background-color: #22334e;
-//       }
-
-//       img {
-//         position: absolute;
-//         right: 10px;
-//       }
-//     }
-//   }
-// }
 
 // for chat
 .chatSelect {

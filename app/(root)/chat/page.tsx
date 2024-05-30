@@ -11,16 +11,18 @@ function Chat() {
   return (
     <div className="container-fluid mt-[20px]">
       <div className="row">
-      <div className="col-3">
-          <HomeSidebar/>
+      <div className="col-4">     
+      3
         </div>
-        <div className="col-9">
-          <ChatSidebar />
-        <div className={styles.wrapper} style={{borderRadius:'0 15px 15px 0'}}>
+        <div className="col-4">  
+        <ChatSidebar/>
+        <div className={styles.wrapper}>
           <div className={styles.textCenter}>
-            <div>Select chat for start</div>
+          </div>
           </div>
         </div>
+        <div className="col-4">     
+      3
         </div>
       </div>
     </div>
