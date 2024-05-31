@@ -10,6 +10,7 @@
     .inputBorder {
       position: relative;
       width: 100%;
+      z-index: 2;
       // height: 232px;
       height: 140px;
       background: #292b2c;
@@ -118,7 +119,9 @@
 
     .postsWrapper {
       display: flex;
+      position: relative;
       justify-content: center;
+      z-index: 1;
       width: 100%;
       height: 700px;
       // max-height: max-content;
@@ -181,20 +184,46 @@
       }
     }
 
-    .advertisingBlock {
+    .inputBlock {
       position: relative;
-      width: 20vw;
-      // max-width: 275px;
-      height: 297px;
-      border-radius: 12px;
-      cursor: pointer;
+      width: 177px;
+      height: 40px;
+      background: #292b2c;
+      border-radius: 10px;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 130px;
+        height: 40px;
+        background: transparent;
+        outline: none;
+        padding-left: 5px;
+      }
 
       img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        cursor: pointer;
       }
+
+      // .advertisingBlock {
+      //   position: relative;
+      //   width: 20vw;
+      //   // max-width: 275px;
+      //   height: 297px;
+      //   border-radius: 12px;
+      //   cursor: pointer;
+
+      //   img {
+      //     object-fit: cover;
+      //     width: 100%;
+      //     height: 100%;
+      //     border-radius: 12px;
+      //   }
+      // }
     }
   }
 }

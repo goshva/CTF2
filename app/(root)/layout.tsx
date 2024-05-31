@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import News from '@/components/News';
 
+// import backgroundImage from '@/main-bg.png';
 import backgroundImage from '@/main-bg.png';
 import UserInfo from '@/components/UserInfo';
 
