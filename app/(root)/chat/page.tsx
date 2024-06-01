@@ -12,7 +12,6 @@ function Chat() {
     <div className="container-fluid mt-[20px]">
       <div className="row">
       <div className="col-4">     
-      3
         </div>
         <div className="col-4">  
         <ChatSidebar/>
@@ -22,10 +21,16 @@ function Chat() {
           </div>
         </div>
         <div className="col-4">     
-      3
+        <div className={styles.friendsBlock}>
+        <div className={styles.friendsText}>
+          <strong>FRIENDS</strong>
+          <span className={styles.friendsValue}>365</span>
+          </div>
+              <div className={styles.downLine}></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   );
 }
 

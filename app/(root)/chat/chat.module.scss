@@ -1,9 +1,37 @@
-.wrapper {
-  width: 650px;
-  height: 600px;
+.friendsBlock{
+  width: 270px;
+  height: 550px;
   border-radius: 20px;
   background: #203d5380;
-  border-radius: 20px;
+  border-radius: 10px;
+  margin-left: 30px;
+  position: absolute;
+}
+
+.friendsValue{
+  margin-left: 50%;
+}
+
+.friendsText{
+  font-size: 20px;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.downLine {
+  position: absolute;
+  margin-top: 15px;
+  background-color: #ffffff;
+  width: 100%;
+  left: 0;
+  height: 1px;
+}
+
+.wrapper {
+  width: 650px;
+  height: 550px;
+  border-radius: 10px;
+  background: #203d5380;
   position: absolute;
 
   .textCenter {
@@ -130,20 +158,21 @@
   
 
   .input {
-    margin-top: 430px;
-    width: 100%;
+    padding-left: 10px;
+    margin-top: 410px;
+    margin-left: 22%;
+    width: 75%;
     height:60px;
     background-color: #090b11;
-    border-radius: 0 0 20px 0;
+    border-radius:10px;
     display: flex;
-    justify-content: center;
     align-items: center;
 
     .inputBorder {
-      width: 90%;
+      width: 70%;
       height: 40px;
       background: #464646;
-      border-radius: 5px;
+      border-radius: 30px;
       padding: 30px;
       padding-left: 15px;
       outline: none;

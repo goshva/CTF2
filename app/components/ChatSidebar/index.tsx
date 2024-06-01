@@ -76,13 +76,6 @@ const ChatSidebar: FC = () => {
     <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
           <div className={styles.chatSelect}>
-            <div className={styles.findUser}>
-              <div className={styles.search}>
-                <Image src={loopIcon} alt="loop" />
-                <input type="text" placeholder="Найти" />
-              </div>
-              <div className={styles.downLine}></div>
-            </div>
             {isLoading ? (
           <div className={styles.textCenter}>Loading...</div>
         ) : (
