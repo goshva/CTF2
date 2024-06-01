@@ -1,5 +1,4 @@
 .sidebar {
-  color: white;
   height: 510px;
   width: 80px;
   margin-left: 30px;
@@ -11,11 +10,10 @@
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
-    background: linear-gradient(0deg, #04131e80 0%, #203d5380 100%);
-    border-radius: 15px;
+    background-color: #292B2C;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
-    border: 1px solid black;
 
     &::-webkit-scrollbar {
       width: 10px;
@@ -42,7 +40,7 @@
 // for chat
 .chatSelect {
   .findUser {
-    width: 320px;
+    width: 120px;
     height: 40px;
     background: #232a30;
     padding-top: 10px;
@@ -53,11 +51,11 @@
       outline: none;
       border: none;
       background: transparent;
-      color: white;
+      color: #D9D9D9;
       font-size: 16px;
 
       &::placeholder {
-        color: white;
+        color: #D9D9D9;
         font-size: 16px;
       }
     }
@@ -67,7 +65,7 @@
 .downLine {
   position: absolute;
   bottom: 0px;
-  background-color: #ffffff;
+  background-color: #696969;
   width: 100%;
   left: 0;
   height: 1px;
@@ -84,6 +82,10 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.searchInput{
+  background-color: #696969;
 }
 
 

@@ -147,7 +147,6 @@ function Chat() {
       <div className="col-4">     
         </div>
         <div className="col-4">
-        <ChatSidebar />
         {isLoading ? (
            <div className={styles.wrapper}>
            <div className={styles.textCenter}>
@@ -156,7 +155,8 @@ function Chat() {
            </div>
         ) : (
       <div className={styles.wrapper}>
-      <nav className={styles.header}>
+        <ChatSidebar />
+      {/* <nav className={styles.header}>
         <div className={styles.textsItem}>
           <Image width={50} height={50} style={{ borderRadius: '50%' }} src={photoAddIcon} alt="avatar" />
           <div className={styles.infoTexts}>
@@ -183,7 +183,7 @@ function Chat() {
             </div>
           )}
         </div>
-      </nav>
+      </nav> */}
       <div className={styles.chat} ref={chatRef}>
       {AllMessages.map((msg, index) => (
               <Message 
@@ -195,8 +195,10 @@ function Chat() {
             ))}
       </div>
       <section className={styles.input}>
-      <Image onClick={handleOpenClip} src={clipIcon} alt="clipIcon" />
-      <Image src={emojiIcon} alt="emoji icon" />
+      <div className={styles.icons}>
+        <Image onClick={handleOpenClip} src={clipIcon} alt="clipIcon" className={styles.icon} />
+        <Image src={emojiIcon} alt="emoji icon" className={styles.icon} />
+        </div>
         <div className={styles.inputBorder}>
           
         <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSend(e)}>
@@ -237,7 +239,9 @@ function Chat() {
         <div className={styles.friendsBlock}>
         <div className={styles.friendsText}>
           <strong>FRIENDS</strong>
-          <span className={styles.friendsValue}>365</span>
+          <span className={styles.friendsValue}>
+            <strong>365</strong>
+            </span>
           </div>
               <div className={styles.downLine}></div>
             </div>
