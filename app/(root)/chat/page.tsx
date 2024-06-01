@@ -14,9 +14,10 @@ function Chat() {
       <div className="col-4">     
         </div>
         <div className="col-4">  
-        <ChatSidebar/>
         <div className={styles.wrapper}>
+        <ChatSidebar/>
           <div className={styles.textCenter}>
+            Choose chat for start!
           </div>
           </div>
         </div>
