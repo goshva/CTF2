@@ -4,9 +4,8 @@ import styles from './layout.module.scss';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import backgroundImage from '@/main-bg.png';
-import UserInfo from '@/components/UserInfo';
-import News from '@/components/News';
-import LanguageChanger from '@/components/LanguageChanger/LanguageChanger';
+import UserInfo from '../../components/UserInfo';
+import News from '../../components/News/index';
 import initTranslations from '../i18n';
 import TranslationsProvider from '../../components/TranslationsProvider/TranslationsProvider';
 

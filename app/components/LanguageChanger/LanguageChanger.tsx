@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -25,10 +24,6 @@ export default function LanguageChanger() {
         router.push(`/${newLocale}`);
         router.refresh();
     };
-
-    useEffect(() => {
-        console.log("Current Locale:", currentLocale);
-    }, [currentLocale]);
 
     return (
         <div className="btn-group">

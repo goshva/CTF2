@@ -1,6 +1,6 @@
 import i18nConfig from '@/i18nConfig';
 import '../../globals.scss';
-import '../../bootstrap-grid.min.css';
+import "@/bootstrap-grid.min.css"
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';

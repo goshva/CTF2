@@ -1,0 +1,189 @@
+/* components/UserProfile.module.css */
+.container {
+  background-color: #1a1a1a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo,
+.searchBar,
+.languageIcon {
+  background-color: #444;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 1280px;
+  margin-top: 20px; /* Добавляем отступ сверху */
+}
+
+.profilesAndBalance {
+  display: flex;
+  justify-content: space-between;
+  width: 1225px;
+  margin-left: 36px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.myProfile,
+.otherProfile,
+.balance {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.myProfile {
+  width: 275px;
+  height: 283px;
+}
+
+.otherProfile {
+  width: 373px;
+  height: 283px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+  justify-content: center;
+}
+
+.otherProfile .avatar {
+  background-color: #444;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px; /* Отступ снизу для аватара */
+}
+
+.otherProfile .profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Выровнять элементы влево */
+  gap: 5px; /* Отступы между элементами */
+}
+
+.otherProfile .rating {
+  align-self: flex-end; /* Выровнять рейтинг вправо */
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.otherProfile button {
+  background-color: #444;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.otherProfile button:hover {
+  background-color: #555;
+}
+
+.otherProfile .icon {
+  background-color: #444;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  align-self: flex-start; /* Выровнять иконку влево */
+}
+
+.balance {
+  width: 177px;
+  height: 200px;
+}
+
+.avatar {
+  background-color: #444;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rating {
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 56px;
+  height: 56px;
+}
+
+.sidebarAndContent {
+  display: flex;
+  gap: 20px;
+}
+
+.contentAndActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.productSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.productCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.productCard {
+  background-color: #444;
+  width: 166px;
+  height: 166px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 275px; /* Устанавливаем фиксированную ширину */
+}
+
+.actions button {
+  background-color: #444;
+  width: 275px;
+  height: 63px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #555;
+}
