@@ -9,16 +9,15 @@ function UserProductMarketItem() {
   const handleAddToCart = () => {
     console.log('add to cart');
   };
-  
+
   return (
     <div className={styles.user}>
       <div className={styles.user__imageFloatWrapper}>
         <Image className={styles.user__image} src={avatar} alt="avatar" />
         <div className={styles.user__float}>
           <div
-            className={`${styles.user__online} ${
-              random > 0.5 ? styles.user__online_active : ''
-            }`}
+            className={`${styles.user__online} ${random > 0.5 ? styles.user__online_active : ''
+              }`}
           ></div>
           <p>{`Float: ${random.toFixed(4)}`}</p>
         </div>

@@ -16,6 +16,8 @@ import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 
 
 
@@ -33,6 +35,8 @@ const UserInfo: FC = () => {
 
   //@ts-ignore
   const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (decodedToken) {
@@ -85,7 +89,7 @@ const UserInfo: FC = () => {
               loading={loadings[0]}
               onClickCapture={() => enterLoading(0)}>
               <Image src={steamIcon} alt="steam icon" />
-              Lodaing...
+              {t('loading')}
             </Button>
           </div>
         </div>
@@ -108,7 +112,7 @@ const UserInfo: FC = () => {
                 loading={loadings[0]}
                 onClickCapture={() => enterLoading(0)}>
                 <Image src={steamIcon} alt="steam icon" />
-                Click me!
+                {t('clickMe')}
               </Button>
             </Link>
           </div>
@@ -136,7 +140,7 @@ const UserInfo: FC = () => {
                 <div>
                   <h3>ID:</h3>
                 </div>
-                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer'/>
+                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer' />
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -150,10 +154,10 @@ const UserInfo: FC = () => {
               </article>
               <footer className={styles.downContnet}>
                 <div className={styles.links}>
-                  <h3>INVENTORY</h3>
+                  <h3>{t('inventoru')}</h3>
                   <h3>STEAM</h3>
-                  <h3>MY LINKS</h3>
-                  <h3>WRITE</h3>
+                  <h3>{t('myLinks')}</h3>
+                  <h3>{t('write')}</h3>
                   <div className={styles.icons}>
                     <Image src={accauntIcon} alt="accaunt icon" />
                     <Image src={settingsIcon} alt="setting icon" />

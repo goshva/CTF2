@@ -29,6 +29,7 @@ import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import tgIcon from '@/Telegram.png';
 import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
+import { useTranslation } from 'react-i18next';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -61,6 +62,8 @@ const MarketSidebar: FC = () => {
   const decodedToken: IUser = jwt.decode(jwtToken);
   //@ts-ignore
   const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
+
+  const { t } = useTranslation()
 
   // const jwtToken = Cookies.get('jwt');
   // if (jwtToken) {
@@ -152,19 +155,19 @@ const MarketSidebar: FC = () => {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <section className={styles.select_section}>
               <button onClick={toggleIconItem} className={styles.selectPole}>
-                Тип товара (переименовать)
+                {t('productType')} (переименовать)
                 <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
               </button>
               {itemMenuBorder && (
                 <div className={styles.menuBorder}>
                   <button onClick={toggleIconPistol} className={styles.menuItem}>
-                    Пистолет
+                    {t('pistol')}
                     <Image src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
                   </button>
                   {pistolMenuBorder && (
                     <div className={styles.menuGunBorder}>
                       <button className={styles.menuGunItem}>
-                        Все пистолеты
+                        {t('allPistole')}
                         <Image src={plusIcon} alt="icon" />
                       </button>
                       <button className={styles.menuGunItem}>
@@ -201,45 +204,45 @@ const MarketSidebar: FC = () => {
                     </div>
                   )}
                   <button className={styles.menuItem}>
-                    Винтовка
+                    {t('rifle')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Снайперская винтовка
+                    {t('sniperRifle')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Пистолет-пулемет
+                    {t('subGun')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Пулемет
+                    {t('machineGun')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Дробовик
+                    {t('shotgun')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Нож
+                    {t('knife')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                   <button className={styles.menuItem}>
-                    Прочее
+                    {t('other')}
                     <Image src={plusIcon} alt="icon" />
                   </button>
                 </div>
               )}
               <button onClick={toggleIconCriterion} className={styles.selectPole}>
-                Критерий
+                {t('criterion')}
                 <Image src={iconStateCriterion === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
               </button>
               {criterionMenuBorder && (
                 <div className={styles.menuBorder}>
-                  <button className={styles.menuItem}>Категория</button>
-                  <button className={styles.menuItem}>Фазы</button>
-                  <button className={styles.menuItem}>Раритетность</button>
-                  <button className={styles.menuItem}>Качество</button>
+                  <button className={styles.menuItem}>{t('category')}</button>
+                  <button className={styles.menuItem}>{t('phase')}</button>
+                  <button className={styles.menuItem}>{t('rarity')}</button>
+                  <button className={styles.menuItem}>{t('quality')}</button>
                 </div>
               )}
             </section>
@@ -257,9 +260,9 @@ const MarketSidebar: FC = () => {
               <Image src={youtubeIcon} alt="youtubeIcon" />
             </div>
             <ul className={styles.routes_footer}>
-              <Link href="#!">Связаться с нами</Link>
-              <Link href="#!">Правила</Link>
-              <Link href="#!">Условия</Link>
+              <Link href="#!">{t('contactUs')}</Link>
+              <Link href="#!">{t('rules')}</Link>
+              <Link href="#!">{t('terms')}</Link>
             </ul>
           </section>
         </footer>
