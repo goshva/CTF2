@@ -35,7 +35,7 @@
       }
 
       textarea {
-        width: 100%;
+        width: 75%;
         resize: none;
         background: transparent;
         outline: none;
@@ -184,15 +184,32 @@
       }
     }
 
+    .searchBox {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #2a2a2a;
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
     .inputBlock {
-      position: relative;
+      // position: relative;
       width: 177px;
       height: 40px;
       background: #292b2c;
       border-radius: 10px;
-      padding-left: 10px;
+      padding-left: 5px;
       display: flex;
       align-items: center;
+      position: absolute;
+      right: 0;
+      top: 15px;
 
       input {
         width: 130px;

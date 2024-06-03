@@ -10,8 +10,11 @@
   grid-template-rows: minmax(40px, 80px) minmax(80px, 130px) auto auto 30px;
   grid-row-gap: 20px;
   grid-column-gap: 74px;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: darken;
+  filter: brightness(1.2); /* Увеличение яркости на 20% */
+  object-fit: cover; /* Покрытие всего контейнера */
+  background-blend-mode: lighten; /* Усиление яркости */
+  // background-color: rgba(0, 0, 0, 0.5);
+  // background-blend-mode: darken;
 }
 
 .main {
