@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import Cookies from 'js-cookie';
 
+const baseUrl = process.env.BASE_API_URL
+
 const token = Cookies.get('jwt');
 export const postApi = createApi({
   reducerPath: 'postsApi',
   tagTypes: ['Posts'],
   baseQuery: fetchBaseQuery({
-    // baseUrl: 'https://countertrade.vit.ooo/v1/api',
-    baseUrl: 'https://663e6894e1913c4767978fca.mockapi.io',
+    baseUrl,
     prepareHeaders: (headers) => {
       headers.set('Content-type', 'application/json');
       return headers;
