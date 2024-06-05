@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import News from '@/components/News';
 
 // import backgroundImage from '@/main-bg.png';
-import backgroundImage from '@/main-bg.png';
+import backgroundImage from '../../public/background.jpg';
 import UserInfo from '@/components/UserInfo';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
@@ -17,8 +17,8 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       <div className="bgWrap">
         <Image
           src={backgroundImage}
-          alt="background Image"
-          fill
+          alt="Background Image"
+          layout="fill"
           priority
           placeholder="blur"
           quality={100}

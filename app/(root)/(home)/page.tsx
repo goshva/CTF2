@@ -9,7 +9,7 @@ import SortIcon from '../../../public/SortIcon.svg';
 import addPostLargeIcon from '../../../public/AddPostIconLarge.svg';
 import PostCard from '@/components/PostCard';
 import arrowIcon from '../../../public/down-arrow.svg';
-import cubeIcon from '../../../public/cube-icon.svg';
+import gunIcon from '../../../public/gun-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import cameraIcon from '../../../public/camera-icon.svg';
@@ -107,6 +107,8 @@ const HomePage: NextPage = () => {
 
   console.log('post', data);
 
+  const [searchOpened, setSearchOpened] = React.useState(false);
+
   return (
     <div className={styles.home}>
       <div className="flex">
@@ -122,23 +124,33 @@ const HomePage: NextPage = () => {
               onBlur={handleBlur}
               placeholder="Написать пост"
             />
+            {!searchOpened && (
+              <div onClick={() => setSearchOpened(!searchOpened)} className={styles.searchBox}>
+                <Image src={loopIcon} alt="loopIcon" />
+              </div>
+            )}
+            {searchOpened && (
+              <div className={styles.inputBlock}>
+                <Image
+                  onClick={() => setSearchOpened(!searchOpened)}
+                  src={loopIcon}
+                  alt="loopIcon"
+                />
+                <input placeholder="Найти пост" type="text" />
+              </div>
+            )}
             <div className={styles.line}></div>
             <article className={styles.downContent}>
               <div className={styles.icons}>
                 <Image src={cameraIcon} alt="icon" />
                 <Image src={playIcon} alt="icon" />
                 <Image src={fileIcon} alt="icon" />
-                <Image src={cubeIcon} alt="icon" />
+                <Image src={gunIcon} alt="icon" />
               </div>
               <button ref={buttonRef} onClick={handleCreatePost}>
                 Отправить
               </button>
             </article>
-          </div>
-
-          <div className={styles.inputBlock}>
-            <Image src={loopIcon} alt="loopIcon" />
-            <input placeholder="Найти пост" type="text" />
           </div>
 
           {/* Контейнер для постов */}
