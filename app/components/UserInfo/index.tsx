@@ -89,6 +89,15 @@ const UserInfo: FC = () => {
     );
   }
 
+  let displayName = 'User name';
+
+  if (isAuthenticated && decodedToken) {
+    displayName = decodedToken.displayName;
+    if (displayName.length > 20) {
+      displayName = displayName.slice(0, 20) + '...';
+    }
+  }
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.profileSection}>
@@ -102,16 +111,30 @@ const UserInfo: FC = () => {
             />
           </div>
           <div className={styles.textInfo}>
-            <h2>User name</h2>
+            <h2>{displayName}</h2>
             <p>status</p>
           </div>
         </div>
 
         <div className={styles.loginContent}>
-          <button className={styles.login_btn}>
-            <Image src={steamIcon} alt="steam icon" />
-            <span>Login</span>
-          </button>
+          <Link
+            href="https://countertrade.vit.ooo/v1/auth/steam"
+            style={{ textDecoration: 'none' }}>
+            <button
+              onClick={handleOpenProfile}
+              onClickCapture={() => enterLoading(0)}
+              className={styles.login_btn}>
+              {isAuthenticated ? (
+                <Image
+                  src={decodedToken.photos[1] == '' ? '' : decodedToken.photos[1].value}
+                  alt="steam icon"
+                />
+              ) : (
+                <Image src={steamIcon} alt="steam icon" />
+              )}
+              <span>Login</span>
+            </button>
+          </Link>
 
           <article className={styles.loginText}>
             <p>Log in via Steam to use the site functionality</p>
@@ -123,6 +146,8 @@ const UserInfo: FC = () => {
             <Image src={settingsIcon} alt="setting icon" />
           </div>
         </div>
+
+        {/* С НИЗУ СТАРЫЙ КОД  */}
 
         {/* {!isAuthenticated && (
           <div className={styles.buttonContainer}>
