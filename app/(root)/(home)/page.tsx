@@ -19,6 +19,7 @@ import HomeSidebar from '@/components/HomeSidebar';
 import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
 import loopIcon from '../../../public/loop-icon.svg';
 import { Search } from 'lucide-react';
+import activeLoopIcon from '../../../public/active-loop-icon.svg';
 // import axios from '../../axios'; для реальных  постов их сервера
 
 interface AuthorType {
@@ -107,7 +108,25 @@ const HomePage: NextPage = () => {
 
   console.log('post', data);
 
-  const [searchOpened, setSearchOpened] = React.useState(false);
+  const [searchOpened, setSearchOpened] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+      setSearchOpened(false);
+    }
+  };
+
+  useEffect(() => {
+    if (searchOpened) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [searchOpened]);
 
   return (
     <div className={styles.home}>
@@ -124,21 +143,23 @@ const HomePage: NextPage = () => {
               onBlur={handleBlur}
               placeholder="Написать пост"
             />
-            {!searchOpened && (
-              <div onClick={() => setSearchOpened(!searchOpened)} className={styles.searchBox}>
-                <Image src={loopIcon} alt="loopIcon" />
-              </div>
-            )}
-            {searchOpened && (
-              <div className={styles.inputBlock}>
-                <Image
-                  onClick={() => setSearchOpened(!searchOpened)}
-                  src={loopIcon}
-                  alt="loopIcon"
-                />
-                <input placeholder="Найти пост" type="text" />
-              </div>
-            )}
+            <div ref={searchRef}>
+              {!searchOpened && (
+                <div onClick={() => setSearchOpened(!searchOpened)} className={styles.searchBox}>
+                  <Image src={loopIcon} alt="loopIcon" />
+                </div>
+              )}
+              {searchOpened && (
+                <div className={styles.inputBlock}>
+                  <Image
+                    onClick={() => setSearchOpened(!searchOpened)}
+                    src={activeLoopIcon}
+                    alt="loopIcon"
+                  />
+                  <input placeholder="Search by posts" type="text" />
+                </div>
+              )}
+            </div>
             <div className={styles.line}></div>
             <article className={styles.downContent}>
               <div className={styles.icons}>

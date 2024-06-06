@@ -4,7 +4,7 @@ import { FC, useState, useEffect } from 'react';
 import styles from './sidebar.module.scss';
 import Image from 'next/image';
 import accauntIcon from '../../../public/Account.svg';
-import settingsIcon from '../../../public/settings-1.svg';
+import settingsIcon from '../../../public/icons-settings.svg';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../../public/steam-icon.svg';
 import Link from 'next/link';
@@ -17,8 +17,6 @@ import Cookies from 'js-cookie';
 import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
 
-
-
 const UserInfo: FC = () => {
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -28,8 +26,7 @@ const UserInfo: FC = () => {
   const [friendCount, setFriendCount] = useState<any>('');
 
   //@ts-ignore
-  const decodedToken = useSelector(state => state.auth.decodedToken);
-
+  const decodedToken = useSelector((state) => state.auth.decodedToken);
 
   //@ts-ignore
   const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
@@ -50,7 +47,6 @@ const UserInfo: FC = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText(decodedToken.id);
   };
-
 
   const handleOpenProfile = () => {
     window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
@@ -96,7 +92,39 @@ const UserInfo: FC = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.profileSection}>
-        {!isAuthenticated && (
+        <div className={styles.userInfo_container}>
+          <div className={styles.avatar}>
+            <Image
+              width={50}
+              height={50}
+              src="https://avatarfiles.alphacoders.com/365/365525.png"
+              alt="avatar"
+            />
+          </div>
+          <div className={styles.textInfo}>
+            <h2>User name</h2>
+            <p>status</p>
+          </div>
+        </div>
+
+        <div className={styles.loginContent}>
+          <button className={styles.login_btn}>
+            <Image src={steamIcon} alt="steam icon" />
+            <span>Login</span>
+          </button>
+
+          <article className={styles.loginText}>
+            <p>Log in via Steam to use the site functionality</p>
+          </article>
+        </div>
+
+        <div className={styles.lastIcon}>
+          <div className={styles.settingIcon}>
+            <Image src={settingsIcon} alt="setting icon" />
+          </div>
+        </div>
+
+        {/* {!isAuthenticated && (
           <div className={styles.buttonContainer}>
             <Link
               href="https://countertrade.vit.ooo/v1/auth/steam"
@@ -136,7 +164,12 @@ const UserInfo: FC = () => {
                 <div>
                   <h3>ID:</h3>
                 </div>
-                <Image src={copy} onClick={handleCopy} alt="account icon" className='cursor-pointer'/>
+                <Image
+                  src={copy}
+                  onClick={handleCopy}
+                  alt="account icon"
+                  className="cursor-pointer"
+                />
               </article>
               <article className={styles.user_info}>
                 <p>Moscow, Russia</p>
@@ -163,7 +196,7 @@ const UserInfo: FC = () => {
               </footer>
             </section>
           </>
-        )}
+        )} */}
       </div>
     </aside>
   );

@@ -202,21 +202,25 @@
       // position: relative;
       width: 177px;
       height: 40px;
-      background: #292b2c;
+      background: #2a2a2a;
       border-radius: 10px;
       padding-left: 5px;
       display: flex;
       align-items: center;
       position: absolute;
-      right: 0;
+      right: 15px;
       top: 15px;
 
       input {
-        width: 130px;
+        width: 75%;
         height: 40px;
         background: transparent;
         outline: none;
         padding-left: 5px;
+
+        &::placeholder {
+          color: grey;
+        }
       }
 
       img {
