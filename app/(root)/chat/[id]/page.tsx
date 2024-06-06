@@ -144,11 +144,9 @@ function Chat() {
   return (
     <div className="container-fluid mt-[20px]">
       <div className="row">
-        <div className="col-3">
-          <HomeSidebar/>
+      <div className="col-4">     
         </div>
-        <div className="col-9">
-        <ChatSidebar />
+        <div className="col-4">
         {isLoading ? (
            <div className={styles.wrapper}>
            <div className={styles.textCenter}>
@@ -157,14 +155,15 @@ function Chat() {
            </div>
         ) : (
       <div className={styles.wrapper}>
-      <nav className={styles.header}>
+        <ChatSidebar />
+      {/* <nav className={styles.header}>
         <div className={styles.textsItem}>
-          <Image width={50} height={50} style={{ borderRadius: '50%' }} src={otherUsers[0].avatar} alt="avatar" />
+          <Image width={50} height={50} style={{ borderRadius: '50%' }} src={photoAddIcon} alt="avatar" />
           <div className={styles.infoTexts}>
             <span>
-              <strong>{otherUsers[0].name}</strong>
+              <strong>123</strong>
             </span>
-            <p>ID:{otherUsers[0].id}</p>
+            <p>ID:123</p>
           </div>
         </div>
         <div className={styles.iconsItem}>
@@ -184,7 +183,7 @@ function Chat() {
             </div>
           )}
         </div>
-      </nav>
+      </nav> */}
       <div className={styles.chat} ref={chatRef}>
       {AllMessages.map((msg, index) => (
               <Message 
@@ -196,7 +195,12 @@ function Chat() {
             ))}
       </div>
       <section className={styles.input}>
+      <div className={styles.icons}>
+        <Image onClick={handleOpenClip} src={clipIcon} alt="clipIcon" className={styles.icon} />
+        <Image src={emojiIcon} alt="emoji icon" className={styles.icon} />
+        </div>
         <div className={styles.inputBorder}>
+          
         <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSend(e)}>
           <input
             value={message}
@@ -222,17 +226,26 @@ function Chat() {
                 </div>
               </div>
             )}
-            <Image onClick={handleOpenClip} src={clipIcon} alt="clipIcon" />
-            <Image src={emojiIcon} alt="emoji icon" />
-            <button onClick={(e) => handleSend(e)} className={styles.sendBtn}>
-              Send
-            </button>
           </div>
         </div>
+        <button onClick={(e) => handleSend(e)} className={styles.sendBtn}>
+              Отправить
+          </button>
       </section>
     </div>
     )}
     </div>
+    <div className="col-4">     
+        <div className={styles.friendsBlock}>
+        <div className={styles.friendsText}>
+          <strong>FRIENDS</strong>
+          <span className={styles.friendsValue}>
+            <strong>365</strong>
+            </span>
+          </div>
+              <div className={styles.downLine}></div>
+            </div>
+          </div>
         </div>
       </div>
   );

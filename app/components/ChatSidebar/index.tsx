@@ -79,7 +79,7 @@ const ChatSidebar: FC = () => {
             <div className={styles.findUser}>
               <div className={styles.search}>
                 <Image src={loopIcon} alt="loop" />
-                <input type="text" placeholder="Найти" />
+                <input className={styles.searchInput} type="text" placeholder="Найти" />
               </div>
               <div className={styles.downLine}></div>
             </div>
