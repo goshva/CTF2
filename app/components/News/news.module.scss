@@ -1,12 +1,116 @@
 .outerWrapper {
   color: white;
-  background-color: rgba(40, 46, 51, 0.5);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  // background-color: rgba(40, 46, 51, 0.5);
+  // border-radius: 10px;
   overflow: hidden;
-  grid-column: 2 / 3;
+  height: max-content;
+  // grid-column: 2 / 3;
   margin-right: 35px;
+  display: flex;
+  gap: 22px;
+
+  // arrows
+  .leftArrow {
+    position: absolute;
+    top: 65px;
+    left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #1886d0;
+    border-radius: 50%;
+
+    img {
+      width: 9px;
+      height: 9px;
+    }
+
+    &:hover {
+      background: #1886d0;
+      border: 1px solid #d9d9d9;
+    }
+  }
+
+  .rightArrow {
+    position: absolute;
+    top: 65px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #1886d0;
+    border-radius: 50%;
+
+    img {
+      width: 9px;
+      height: 9px;
+    }
+
+    &:hover {
+      background: #1886d0;
+      border: 1px solid #d9d9d9;
+    }
+  }
+
+  .newsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .bigNews {
+      // width: 750px;
+      position: relative;
+      width: 50vw;
+      height: 180px;
+      background-color: #474c52;
+      border-radius: 10px;
+      margin-bottom: 12px;
+
+      @media (max-width: 1180px) {
+        width: 45vw;
+      }
+    }
+
+    .smallNews {
+      // width: 250px;
+      position: relative;
+      width: 15vw;
+      height: 180px;
+      background-color: blue;
+      border-radius: 10px;
+      margin-bottom: 12px;
+
+      @media (max-width: 1285px) {
+        width: 12vw;
+      }
+    }
+  }
+
+  .sliderDots {
+    display: flex;
+    gap: 5px;
+    border-radius: 50px;
+    z-index: 2;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50px;
+      cursor: pointer;
+
+      &:active {
+        background: #42b5ff;
+      }
+    }
+  }
 }
+
+// старый код снизу пока не удалю пригодиться
 
 .innerWrapper {
   width: 100%;

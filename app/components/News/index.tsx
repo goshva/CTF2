@@ -3,6 +3,7 @@ import * as React from 'react';
 import styles from './news.module.scss';
 import Image from 'next/image';
 import LeftArrow from '@/left-arrow.svg';
+import RightArrow from '@/right-arrow.svg';
 import clsx from 'clsx';
 
 interface ApiDataItem {
@@ -103,9 +104,47 @@ const News = React.memo(() => {
     }
   }, []);
 
+  // new functions
+
   return (
     <div className={styles.outerWrapper} ref={handleRef}>
-      <div className={styles.innerWrapper}>
+      <section className={styles.newsContainer}>
+        <div className={styles.bigNews}>
+          <button className={styles.leftArrow}>
+            <Image src={LeftArrow} alt="arrow icon" />
+          </button>
+          <button className={styles.rightArrow}>
+            <Image src={RightArrow} alt="arrow icon" />
+          </button>
+        </div>
+
+        <article className={styles.sliderDots}>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+        </article>
+      </section>
+
+      <section className={styles.newsContainer}>
+        <div className={styles.smallNews}>
+          <button className={styles.leftArrow}>
+            <Image src={LeftArrow} alt="arrow icon" />
+          </button>
+          <button className={styles.rightArrow}>
+            <Image src={RightArrow} alt="arrow icon" />
+          </button>
+        </div>
+
+        <article className={styles.sliderDots}>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
+        </article>
+      </section>
+
+      {/* <div className={styles.innerWrapper}>
         <div className={styles.smoke} />
         <div className={clsx(styles.smoke, styles.smoke_delayed)} />
         <div
@@ -173,7 +212,7 @@ const News = React.memo(() => {
             ))
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 });
