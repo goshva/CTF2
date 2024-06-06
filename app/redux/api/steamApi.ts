@@ -8,7 +8,7 @@ export const steamApi = createApi({
   endpoints: (builder) => ({
     // Определение эндпоинта для получения списка друзей
     getFriendList: builder.query({
-      query: (steamId: string) => `/getFriends/${steamId}`,
+      query: (steamId: string) => `/v1/api/getFriends/${steamId}`,
     }),
   }),
 });
