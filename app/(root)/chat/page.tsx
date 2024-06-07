@@ -7,9 +7,9 @@ import ChatSidebar from '@/components/ChatSidebar';
 function Chat() {
   
   return (
-    <div className="container-fluid mt-[20px]">
+    <div className="container-fluid mt-[60px]">
       <div className="row">
-      <div className="col-4">     
+      <div className="col-2">     
         </div>
         <div className="col-4">  
         <div className={styles.wrapper}>
