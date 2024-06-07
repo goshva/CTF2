@@ -1,9 +1,7 @@
 'use client';
 
-import NavigateSidebar from '@/components/NavigateSidebar';
 import styles from './chat.module.scss';
 import ChatSidebar from '@/components/ChatSidebar';
-import HomeSidebar from '@/components/HomeSidebar';
 
 
 function Chat() {
