@@ -7,11 +7,11 @@ export const chatApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }), // Укажите базовый URL вашего API
   endpoints: (builder) => ({
     getUserChats: builder.query({
-      query: (userId: string) => `/user/${userId}`,
+      query: (userId: string) => `/v1/api/user/${userId}`,
     }),
 
     getChatMessages: builder.query({
-      query: (chatId: string) => `/chat/${chatId}`,
+      query: (chatId: string) => `/v1/api/chat/${chatId}`,
     }),
   }),
 });

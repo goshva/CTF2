@@ -49,6 +49,7 @@ function getItem(
 }
 
 const MarketSidebar: FC = () => {
+  const baseUrl = process.env.BASE_URL
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
@@ -130,7 +131,7 @@ const MarketSidebar: FC = () => {
   // >>>>>>>>>>>>>>>>>>>>>>>>
 
   const handleOpenProfile = () => {
-    window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
+    window.location.href = `${baseUrl}/v1/auth/steam`;
     //@ts-ignore
     getFriendsList();
   };
