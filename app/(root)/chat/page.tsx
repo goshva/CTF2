@@ -1,17 +1,15 @@
 'use client';
 
-import NavigateSidebar from '@/components/NavigateSidebar';
 import styles from './chat.module.scss';
 import ChatSidebar from '@/components/ChatSidebar';
-import HomeSidebar from '@/components/HomeSidebar';
 
 
 function Chat() {
   
   return (
-    <div className="container-fluid mt-[20px]">
+    <div className="container-fluid mt-[60px]">
       <div className="row">
-      <div className="col-4">     
+      <div className="col-2">     
         </div>
         <div className="col-4">  
         <div className={styles.wrapper}>
