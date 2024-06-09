@@ -50,7 +50,9 @@ const UserInfo: FC = () => {
   };
 
   const handleOpenProfile = () => {
-    window.location.href = `${baseUrl}/v1/auth/steam`;
+    let url = `${process.env.BASE_URL}/auth/steam`
+    console.log(url)
+    // window.location.href = url;
     //@ts-ignore
     getFriendsList();
   };
@@ -119,7 +121,7 @@ const UserInfo: FC = () => {
 
         <div className={styles.loginContent}>
           <Link
-            href={`${baseUrl}/v1/auth/steam`}
+            href={`${process.env.BASE_URL}/auth/steam`}
             style={{ textDecoration: 'none' }}>
             <button
               onClick={handleOpenProfile}
