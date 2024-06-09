@@ -14,6 +14,7 @@ import fileAddIcon from '../../../../public/add-file.svg';
 import photoAddIcon from '../../../../public/add-photo.svg';
 import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
+import HomeSidebar from '@/components/HomeSidebar';
 import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
@@ -142,6 +143,7 @@ function Chat() {
     <div className="container-fluid mt-[60px]">
       <div className="row">
       <div className="col-2">     
+      <HomeSidebar />
         </div>
         <div className="col-4">
         {isLoading ? (
@@ -205,15 +207,13 @@ function Chat() {
     )}
     </div>
     <div className="col-4">     
-        <div className={styles.friendsBlock}>
-        <div className={styles.friendsText}>
-          <strong>FRIENDS</strong>
-          <span className={styles.friendsValue}>
-            <strong>365</strong>
-            </span>
+    <div className={styles.friendsBlock}>
+        <div className={styles.webTitle}>
+            <h2>FRIENDS
+            <span className={styles.friendsValue}>365</span>
+            </h2>
           </div>
-              <div className={styles.downLine}></div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
