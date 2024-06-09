@@ -1,14 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import Cookies from 'js-cookie';
 
-const baseUrl = process.env.BASE_API_URL;
 
 const token = Cookies.get('jwt');
 export const postApi = createApi({
   reducerPath: 'postsApi',
   tagTypes: ['Posts'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://663e6894e1913c4767978fca.mockapi.io',
+    baseUrl: process.env.BASE_API_URL,
     prepareHeaders: (headers) => {
       headers.set('Content-type', 'application/json');
       return headers;
@@ -19,16 +18,16 @@ export const postApi = createApi({
     getAllPosts: builder.query({
       // query: () => `/post/`,
       query: () => `/posts/`,
-      providesTags: ({ result }) =>
-        result
-          ? [
-              ...result.map(({ id }: { id: string }) => ({
-                type: 'Posts',
-                id,
-              })),
-              { type: 'Posts', id: 'LIST' },
-            ]
-          : [{ type: 'Posts', id: 'LIST' }],
+      // providesTags: ({ results }) =>
+      //   results
+      //     ? [
+      //         ...results.map(({ id }: { id: string }) => ({
+      //           type: 'Posts',
+      //           id,
+      //         })),
+      //         { type: 'Posts', id: 'LIST' },
+      //       ]
+      //     : [{ type: 'Posts', id: 'LIST' }],
     }),
     //GET by ID
     getPostById: builder.query({
