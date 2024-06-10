@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import Cookies from 'js-cookie';
 
-
 const token = Cookies.get('jwt');
 export const postApi = createApi({
   reducerPath: 'postsApi',
@@ -16,8 +15,8 @@ export const postApi = createApi({
   endpoints: (builder) => ({
     //GET
     getAllPosts: builder.query({
-      // query: () => `/post/`,
-      query: () => `/posts/`,
+      // query: () => `/posts/`,
+      query: () => `/post/`,
       // providesTags: ({ results }) =>
       //   results
       //     ? [
