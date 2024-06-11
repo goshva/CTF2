@@ -19,6 +19,8 @@ import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
+import ChatRecomedation from '@/components/ChatRecomedation';
+import UserInfo from '@/components/UserInfo';
 
 
 
@@ -140,12 +142,27 @@ function Chat() {
   };
 
   return (
-    <div className="container-fluid mt-[60px]">
+  <div className="container-fluid">
+    <div>
       <div className="row">
-      <div className="col-2">     
-      <HomeSidebar />
+      <div className="col-1">
         </div>
-        <div className="col-4">
+        <div className="col-2">
+        <UserInfo/>
+        </div>
+        <div className="col-8">
+          <ChatRecomedation/>
+        </div>
+      </div>
+      <div className="row">
+      <div className="col-1">
+        </div>
+      <div className="col-2">
+        <div className='sidebar'>
+      <HomeSidebar />
+      </div>
+        </div>
+        <div className="col-5">
         {isLoading ? (
            <div className={styles.wrapper}>
            <div className={styles.textCenter}>
@@ -193,7 +210,7 @@ function Chat() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Image onClick={handleCloseClip} src={videoAddIcon} alt="video add icon" />
-                  <h2 onClick={handleCloseClip}>Добавить видео</h2>
+                  <h2 onClick={handleCreateNewChat}>Добавить видео</h2>
                 </div>
               </div>
             )}
@@ -206,7 +223,7 @@ function Chat() {
     </div>
     )}
     </div>
-    <div className="col-4">     
+    <div className="col-3">     
     <div className={styles.friendsBlock}>
         <div className={styles.webTitle}>
             <h2>FRIENDS
@@ -216,6 +233,7 @@ function Chat() {
           </div>
           </div>
         </div>
+      </div>
       </div>
   );
 }
