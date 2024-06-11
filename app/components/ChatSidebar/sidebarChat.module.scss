@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 1750px) {
   .sidebar {
-    height:500px;
+    height:465px;
   }
 
 }
@@ -100,22 +100,18 @@
 
 @media screen and (max-width: 1600px) {
   .sidebar {
-    margin-left: 70px;
-    height:400px;
-    width: 250px;
+    margin-left: 20px;
+    height:365px;
+    width: 70px;
   }
 
-  .chatSelect {
-    .findUser {
-      width: 320px;
-      height: 40px;
-      background: #232a30;
-      padding-top: 10px;
-  }
 }
 
-.search{
-  margin-left : 25px; 
-}
+@media screen and (max-width: 1500px) {
+  .sidebar {
+    margin-left: 20px;
+    height:265px;
+    width: 70px;
+  }
 }
 

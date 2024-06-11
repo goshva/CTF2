@@ -18,6 +18,7 @@ import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
 
 const UserInfo: FC = () => {
+  const baseUrl = process.env.BASE_URL
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
@@ -49,7 +50,9 @@ const UserInfo: FC = () => {
   };
 
   const handleOpenProfile = () => {
-    window.location.href = 'https://countertrade.vit.ooo/v1/auth/steam';
+    let url = `${process.env.BASE_URL}/auth/steam`
+    console.log(url)
+    // window.location.href = url;
     //@ts-ignore
     getFriendsList();
   };
@@ -118,7 +121,7 @@ const UserInfo: FC = () => {
 
         <div className={styles.loginContent}>
           <Link
-            href="https://countertrade.vit.ooo/v1/auth/steam"
+            href={`${process.env.BASE_URL}/auth/steam`}
             style={{ textDecoration: 'none' }}>
             <button
               onClick={handleOpenProfile}
@@ -152,7 +155,7 @@ const UserInfo: FC = () => {
         {/* {!isAuthenticated && (
           <div className={styles.buttonContainer}>
             <Link
-              href="https://countertrade.vit.ooo/v1/auth/steam"
+              href={`${baseUrl}/v1/auth/steam`}
               style={{ textDecoration: 'none' }}>
               <Button
                 onClick={handleOpenProfile}

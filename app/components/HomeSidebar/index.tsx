@@ -46,57 +46,73 @@ const HomeSidebar: FC = () => {
           <nav className={styles.router_section}>
             <ul className={styles.links}>
               {path == '/' ? (
-                <li
-                  style={{ backgroundColor: '#161918', color: '#0F629A' }}
-                  className={styles.link}>
-                  <Image src={homeIcon} alt="homeIcon" />
-                  <Link href="/">Home</Link>
-                </li>
+                <Link href="/">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={homeIcon} alt="homeIcon" />
+                    Home
+                  </li>
+                </Link>
               ) : (
-                <li className={styles.link}>
-                  <Image src={homeIcon} alt="homeIcon" />
-                  <Link href="/">Home</Link>
-                </li>
+                <Link href="/">
+                  <li className={styles.link}>
+                    <Image src={homeIcon} alt="homeIcon" />
+                    Home
+                  </li>
+                </Link>
               )}
               {path === '/profile' ? (
-                <li
-                  style={{ backgroundColor: '#161918', color: '#0F629A' }}
-                  className={styles.link}>
-                  <Image src={profileIcon} alt="profileIcon" />
-                  <Link href="/profile">Profile</Link>
-                </li>
+                <Link href="/profile">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={profileIcon} alt="profileIcon" />
+                    Profile
+                  </li>
+                </Link>
               ) : (
-                <li className={styles.link}>
-                  <Image src={profileIcon} alt="profileIcon" />
-                  <Link href="/profile">Profile</Link>
-                </li>
+                <Link href="/profile">
+                  <li className={styles.link}>
+                    <Image src={profileIcon} alt="profileIcon" />
+                    Profile
+                  </li>
+                </Link>
               )}
               {path === '/chat' ? (
-                <li
-                  style={{ backgroundColor: '#161918', color: '#0F629A' }}
-                  className={styles.link}>
-                  <Image src={messengerIcon} alt="messengerIcon" />
-                  <Link href="/chat">Messenger</Link>
-                </li>
+                <Link href="/chat">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={messengerIcon} alt="messengerIcon" />
+                    Messenger
+                  </li>
+                </Link>
               ) : (
-                <li className={styles.link}>
-                  <Image src={messengerIcon} alt="messengerIcon" />
-                  <Link href="/chat">Messenger</Link>
-                </li>
+                <Link href="/chat">
+                  <li className={styles.link}>
+                    <Image src={messengerIcon} alt="messengerIcon" />
+                    Messenger
+                  </li>
+                </Link>
               )}
 
               {path === '/favorites' ? (
-                <li
-                  style={{ backgroundColor: '#161918', color: '#0F629A' }}
-                  className={styles.link}>
-                  <Image src={bookMarkIcon} alt="bookMarkIcon" />
-                  <Link href="/favorites">BookMark</Link>
-                </li>
+                <Link href="/favorites">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={bookMarkIcon} alt="bookMarkIcon" />
+                    BookMark
+                  </li>
+                </Link>
               ) : (
-                <li className={styles.link}>
-                  <Image src={bookMarkIcon} alt="bookMarkIcon" />
-                  <Link href="/favorites">BookMark</Link>
-                </li>
+                <Link href="/favorites">
+                  <li className={styles.link}>
+                    <Image src={bookMarkIcon} alt="bookMarkIcon" />
+                    BookMark
+                  </li>
+                </Link>
               )}
             </ul>
           </nav>

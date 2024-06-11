@@ -12,16 +12,13 @@ import clipIcon from '../../../../public/clip.svg';
 import videoAddIcon from '../../../../public/video-add.svg';
 import fileAddIcon from '../../../../public/add-file.svg';
 import photoAddIcon from '../../../../public/add-photo.svg';
-import drawerIcon from '../../../../public/drawer.svg';
-import avatar from '../../../../public/avatar.png';
 import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
 import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
-import NavigateSidebar from '@/components/NavigateSidebar';
-import HomeSidebar from '@/components/HomeSidebar';
+
 
 
 function Chat() {
@@ -142,9 +139,9 @@ function Chat() {
   };
 
   return (
-    <div className="container-fluid mt-[20px]">
+    <div className="container-fluid mt-[60px]">
       <div className="row">
-      <div className="col-4">     
+      <div className="col-2">     
         </div>
         <div className="col-4">
         {isLoading ? (
@@ -156,34 +153,6 @@ function Chat() {
         ) : (
       <div className={styles.wrapper}>
         <ChatSidebar />
-      {/* <nav className={styles.header}>
-        <div className={styles.textsItem}>
-          <Image width={50} height={50} style={{ borderRadius: '50%' }} src={photoAddIcon} alt="avatar" />
-          <div className={styles.infoTexts}>
-            <span>
-              <strong>123</strong>
-            </span>
-            <p>ID:123</p>
-          </div>
-        </div>
-        <div className={styles.iconsItem}>
-          <Image src={loopIcon} alt="loop icon" />
-          <button className={styles.blockBtn}>Block</button>
-          <Image onClick={handleOpenMenu} src={menuIcon} alt="menu icon" />
-          {openMenu && (
-            <div className={styles.chatMenu}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Image onClick={handleCloseMenu} src={drawerIcon} alt="white clip" />
-                <h2 onClick={handleCloseMenu}>Очистить диалог</h2>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Image onClick={handleCloseMenu} src={clipIcon} alt="white clip" />
-                <h2 onClick={handleCloseMenu}>Очистить диалог</h2>
-              </div>
-            </div>
-          )}
-        </div>
-      </nav> */}
       <div className={styles.chat} ref={chatRef}>
       {AllMessages.map((msg, index) => (
               <Message 
