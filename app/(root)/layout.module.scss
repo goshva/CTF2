@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .wrapper {
   min-height: 100vh;
   display: grid;
@@ -13,9 +14,11 @@
   filter: brightness(1.2); /* Увеличение яркости на 20% */
   object-fit: cover; /* Покрытие всего контейнера */
   background-blend-mode: lighten; /* Усиление яркости */
-  // background-color: rgba(0, 0, 0, 0.5);
-  // background-blend-mode: darken;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 
 .main {
   grid-row: 3 / 5;
