@@ -21,6 +21,7 @@ import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
 import ChatRecomedation from '@/components/ChatRecomedation';
 import UserInfo from '@/components/UserInfo';
+import Balance from '@/components/Balance';
 
 
 
@@ -142,27 +143,24 @@ function Chat() {
   };
 
   return (
-  <div className="container-fluid">
+  <div className="container mt-[20px]">
     <div>
       <div className="row">
-      <div className="col-1">
-        </div>
-        <div className="col-2">
+        <div className="col-3">
         <UserInfo/>
         </div>
-        <div className="col-8">
+        <div className="col-7">
           <ChatRecomedation/>
+        </div>
+        <div className="col-2">
+        <Balance/>
         </div>
       </div>
       <div className="row">
-      <div className="col-1">
+        <div className={`col-3  ${styles.sidebar}`}>
+              <HomeSidebar />
         </div>
-      <div className="col-2">
-        <div className='sidebar'>
-      <HomeSidebar />
-      </div>
-        </div>
-        <div className="col-5">
+        <div className="col-7">
         {isLoading ? (
            <div className={styles.wrapper}>
            <div className={styles.textCenter}>
@@ -223,7 +221,7 @@ function Chat() {
     </div>
     )}
     </div>
-    <div className="col-3">     
+    <div className="col-2">     
     <div className={styles.friendsBlock}>
         <div className={styles.webTitle}>
             <h2>FRIENDS

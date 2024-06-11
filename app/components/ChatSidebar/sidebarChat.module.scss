@@ -1,8 +1,8 @@
 .sidebar {
-  height: 439px;
-  width: 77px;
-  margin-left: 15px;
-  margin-top: 15px;
+  height: 23vw;
+  width: 4vw;
+  margin-left: 1vw;
+  margin-top: 1vw;
   position: absolute;
   
   .middleSide {
@@ -86,32 +86,5 @@
 
 .searchInput{
   background-color: #696969;
-}
-
-
-
-@media screen and (max-width: 1750px) {
-  .sidebar {
-    height:465px;
-  }
-
-}
-
-
-@media screen and (max-width: 1600px) {
-  .sidebar {
-    margin-left: 20px;
-    height:365px;
-    width: 70px;
-  }
-
-}
-
-@media screen and (max-width: 1500px) {
-  .sidebar {
-    margin-left: 20px;
-    height:265px;
-    width: 70px;
-  }
 }
 
