@@ -25,13 +25,13 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
         />
       </div>
       {/* <div className={styles.center}> */}
-      <div className={styles.wrapper}>
-        <Header />
-        <UserInfo />
-        <News />
+      {/* <div className={styles.wrapper}> */}
+      <Header />
+      {/* <UserInfo /> */}
+      {/* <News /> */}
 
-        <main className={styles.main}>{children}</main>
-      </div>
+      <main className={styles.main}>{children}</main>
+      {/* </div> */}
       {/* </div> */}
     </>
   );

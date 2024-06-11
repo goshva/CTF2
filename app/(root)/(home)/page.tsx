@@ -4,21 +4,14 @@ import { NextPage } from 'next';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './home.module.scss';
 import Image from 'next/image';
-import arrowDownIcon from '../../../public/arrowDown.svg';
-import SortIcon from '../../../public/SortIcon.svg';
-import addPostLargeIcon from '../../../public/AddPostIconLarge.svg';
 import PostCard from '@/components/PostCard';
-import arrowIcon from '../../../public/down-arrow.svg';
 import gunIcon from '../../../public/gun-icon.svg';
-import clockIcon from '../../../public/clock-icon.svg';
-import smileIcon from '../../../public/smile-emoji.svg';
 import cameraIcon from '../../../public/camera-icon.svg';
 import playIcon from '../../../public/play-icon.svg';
 import fileIcon from '../../../public/file-icon.svg';
 import HomeSidebar from '@/components/HomeSidebar';
 import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
 import loopIcon from '../../../public/loop-icon.svg';
-import { Search } from 'lucide-react';
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
 // import axios from '../../axios'; для реальных  постов их сервера
 

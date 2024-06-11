@@ -1,0 +1,332 @@
+.container {
+  background-color: #1a1a1a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Сначала Sidebar, потом остальное содержимое */
+  grid-template-rows: auto auto; /* Для Header и остального содержимого */
+  width: 100%;
+  max-width: 1280px;
+  gap: 20px;
+}
+
+.sidebar {
+  grid-row: 1 / 3; /* Sidebar будет растягиваться на две строки */
+}
+
+.profilesAndBalance {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  grid-column: 2 / 3; /* Охватывает второй столбец */
+}
+
+.userProfile {
+  width: 571px;
+  height: 58px;
+  background: #181819;
+  display: flex;
+  border-radius: 0px 10px 0px 10px;
+  border: 1px solid #42b5ff;
+  color: #42b5ff;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance {
+  background-color: #333;
+  height: 60px;
+  width: 165px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 0px 10px 0px 10px;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  position: relative;
+}
+
+.balanceInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.balanceText {
+  font-weight: bold;
+  font-size: 0.8em; /* Уменьшенный размер шрифта */
+}
+
+.amount {
+  font-size: 0.8em; /* Уменьшенный размер шрифта */
+}
+
+.cartContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cartIcon {
+  background-color: #444;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; /* Уменьшенная ширина */
+  height: 30px; /* Уменьшенная высота */
+}
+
+.cartCount {
+  background-color: #02841e;
+  border-radius: 50%;
+  padding: 2px 5px; /* Отрегулированный отступ */
+  font-size: 0.7em; /* Уменьшенный размер шрифта */
+  color: white;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.myProfile {
+  width: 275px;
+  height: 283px;
+}
+
+.otherProfile {
+  width: 570px;
+  background-color: #3a4340;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column; /* Stack profileInfoLeft and profileInfoRight vertically */
+  align-items: center;
+  height: 100%; /* Ensure it takes full height */
+  margin: 20px 0px 0px 20px;
+}
+
+.profileInfoLeft {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start; /* Align items to the left */
+  margin-bottom: auto; /* Pushes the container to the top */
+  width: 100%;
+}
+
+.profileStatus {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileInfoRight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 530px;
+  margin-bottom: 20px;
+}
+
+.userName {
+  font-weight: bold;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.status {
+  color: #ccc;
+  margin-right: 10px;
+}
+
+.info {
+  color: #ccc;
+  margin-right: 10px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.steamIcon {
+  width: 30px;
+  height: 30px;
+  background-color: #444;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.writeButton {
+  background-color: #555;
+  color: #fff;
+  height: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.addButton {
+  background-color: #555;
+  color: #fff;
+  height: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.writeButton:hover,
+.addButton:hover {
+  background-color: #666;
+}
+
+.rating {
+  background-color: #02841e;
+  width: 41px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  top: 65px;
+  right: 20px;
+}
+
+.sidebarAndContent {
+  display: flex;
+  gap: 20px;
+  grid-column: 2 / 3; /* Охватывает второй столбец */
+}
+
+.contentAndActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.productSection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #3a4340;
+  max-height: 495px; /* Устанавливаем максимальную высоту для контейнера с прокруткой */
+  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.productCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.productCard {
+  background-color: #444;
+  width: 166px;
+  height: 166px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Стилизация полосы прокрутки для WebKit-браузеров */
+.productSection::-webkit-scrollbar {
+  width: 12px;
+}
+
+.productSection::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 10px;
+  position: relative;
+}
+
+.productSection::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+  position: relative;
+}
+
+.productSection::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Используем псевдоэлементы для создания отступов */
+.productSection::-webkit-scrollbar-track:before,
+.productSection::-webkit-scrollbar-track:after {
+  content: "";
+  display: block;
+  height: 20px; /* Высота отступа */
+  background: transparent;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 275px;
+}
+
+.actions button {
+  background-color: #444;
+  max-width: 175px;
+  min-width: 90px;
+  height: 40px;
+  padding: 8px 20px 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #555;
+}
+
+.actionsWithSkins {
+  height: 275px;
+  width: 278px;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+}
+
+.actionInventory {
+  height: 70px;
+  width: 100%;
+  border-radius: 0px 10px 0px 10px;
+  border: 1px solid #42b5ff;
+  margin-bottom: 20px;
+}
+
+.actionsSellSkins {
+  height: 70px;
+  width: 100%;
+}
