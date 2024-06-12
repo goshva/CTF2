@@ -13,6 +13,7 @@ import HomeSidebar from '@/components/HomeSidebar';
 import { useGetAllPostsQuery, useCreatePostsMutation } from '@/redux';
 import loopIcon from '../../../public/loop-icon.svg';
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
+import News from '@/components/News';
 // import axios from '../../axios'; для реальных  постов их сервера
 
 interface AuthorType {
@@ -125,8 +126,9 @@ const HomePage: NextPage = () => {
 
   return (
     <div className={styles.home}>
-      <div className="flex">
-        <HomeSidebar />
+      <div className="flex flex-col">
+        <News />
+        {/* <HomeSidebar /> */}
         <div className={styles.homeContent}>
           <div style={{ height: isFocused ? '280px' : '140px' }} className={styles.inputBorder}>
             {/* <div style={{ height: '280px' }} className={styles.inputBorder}> */}

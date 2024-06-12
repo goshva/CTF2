@@ -52,7 +52,10 @@
     background: #1c1c1c;
     border: none;
     text-align: center;
-    border: 1px solid #42b5ff;
+
+    &:hover {
+      border: 1px solid #42b5ff;
+    }
 
     h2 {
       color: #42b5ff;

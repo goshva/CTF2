@@ -127,7 +127,7 @@ const News = React.memo(() => {
         </article>
       </section>
 
-      <section className={styles.newsContainer}>
+      {/* <section className={styles.newsContainer}>
         <div className={styles.smallNews}>
           <button className={styles.leftArrow}>
             <Image src={LeftArrow} alt="arrow icon" />
@@ -142,7 +142,7 @@ const News = React.memo(() => {
           <div className={styles.dot}></div>
           <div className={styles.dot}></div>
         </article>
-      </section>
+      </section> */}
 
       {/* <div className={styles.innerWrapper}>
         <div className={styles.smoke} />

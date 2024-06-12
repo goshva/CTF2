@@ -17,16 +17,16 @@ export const postApi = createApi({
     getAllPosts: builder.query({
       // query: () => `/posts/`,
       query: () => `/post/`,
-      // providesTags: ({ results }) =>
-      //   results
-      //     ? [
-      //         ...results.map(({ id }: { id: string }) => ({
-      //           type: 'Posts',
-      //           id,
-      //         })),
-      //         { type: 'Posts', id: 'LIST' },
-      //       ]
-      //     : [{ type: 'Posts', id: 'LIST' }],
+      providesTags: ({ results }) =>
+        results
+          ? [
+              ...results.map(({ id }: { id: string }) => ({
+                type: 'Posts',
+                id,
+              })),
+              { type: 'Posts', id: 'LIST' },
+            ]
+          : [{ type: 'Posts', id: 'LIST' }],
     }),
     //GET by ID
     getPostById: builder.query({

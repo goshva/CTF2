@@ -62,13 +62,16 @@
     align-items: center;
 
     .bigNews {
-      // width: 750px;
+      width: 800px;
       position: relative;
-      width: 50vw;
       height: 180px;
-      background-color: #474c52;
+      background-color: #323232;
       border-radius: 10px;
       margin-bottom: 12px;
+
+      @media (max-width: 1235px) {
+        width: 700px;
+      }
 
       @media (max-width: 1180px) {
         width: 45vw;
