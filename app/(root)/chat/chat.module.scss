@@ -1,15 +1,42 @@
 .friendsBlock{
-  width: 270px;
-  height: 550px;
+  margin-top: -2vw;
+  margin-left: -6vw;
+  width: 15vw;
+  height: 25vw;
   border-radius: 20px;
-  background: #3A4340;
+  background: #1c1c1c;
   border-radius: 10px;
-  margin-left: 90px;
   position: absolute;
 }
 
+
+.sidebar {
+  margin-top: 1vw;
+}
+
+.webTitle {
+  display: flex;
+  padding-left: 30px;
+  padding-top: 15px;
+  width: 100%;
+  height: 58px;
+  border-radius: 0px 10px 0px 10px;
+  background: #1c1c1c;
+  border: none;
+  text-align: center;
+  border: 1px solid #42b5ff;
+
+  h2 {
+    color: #D9D9D9;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
 .friendsValue{
-  margin-left: 50%;
+  opacity: 0.5;
+  margin-left: 140%;
   color: #D9D9D9;
 }
 
@@ -30,10 +57,11 @@
 }
 
 .wrapper {
-  width: 650px;
-  height: 550px;
+  width: 31vw;
+  height: 25vw;
   border-radius: 10px;
-  margin-left: 60px;
+  margin-left: 40px;
+  margin-top: -2vw;
   background: #3A4340;
   position: absolute;
   
@@ -131,15 +159,16 @@
   }
 
   .chat {
-    margin-left: 125px;
+    margin-left: 6vw;
     margin-top: 3%;
     position: absolute;
-    height: 440px;
-    width: 505px;
+    height: 19vw;
+    width: 24vw;
     padding: 30px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    border: white 1px solid;
     gap: 30px;
     overflow: scroll;
     overflow-x: hidden;
@@ -169,10 +198,10 @@
 
   .input {
     padding-left: 10px;
-    margin-top: 470px;
-    margin-left: 125px;
-    width: 78%;
-    height:60px;
+    margin-top: 21vw;
+    margin-left: 6vw;
+    width: 24vw;
+    height: 3vw;
     background-color: #292B2C;
     border-radius:10px;
     display: flex;
@@ -280,105 +309,46 @@
 
 @media screen and (max-width: 1750px) {
   .friendsBlock{
-    width: 240px;
-    height: 500px;
-    margin-left: 170px;
+    margin-top: -4vw;
+    margin-left: -10vw;
   }
 
   .friendsValue{
-    margin-left: 40%;
-    color: #D9D9D9;
+    margin-left: 100%;
   }
 
   .wrapper {
-    height: 500px;
-    margin-left: 90px;
-
-    .input {
-      margin-top: 420px;
-      width: 79%;
-      height:60px;
-    }
-
-    .chat {
-      width: 79%;
-      height: 390px;
-  }
+    margin-top: -4vw;
 }
 }
 
 @media screen and (max-width: 1600px) {
   .friendsBlock{
-    width: 190px;
-    height: 400px;
-    margin-left: 200px;
+    margin-top: -6vw;
+    margin-left: -15vw;
   }
 
   .friendsValue{
-    margin-left: 28%;
-    color: #D9D9D9;
+    margin-left: 80%;
   }
-  
+
   .wrapper {
-    width: 565px;
-    height: 400px;
-    margin-left: 130px;
-
-    .input {
-      margin-left: 105px;
-      margin-top: 320px;
-      width: 79%;
-      height:60px;
-    }
-
-    .chat {
-      margin-left: 105px;
-      height: 290px;
-      width: 445px;
-  }
-  .sendBtn {
-    margin-left: 3px;
-  }
+    margin-top: -6vw;
 }
-
 }
 
 @media screen and (max-width: 1500px) {
   .friendsBlock{
-    width: 160px;
-    height: 300px;
-    margin-left: 230px;
+    margin-top: -9vw;
+    margin-left: -17vw;
   }
 
   .friendsValue{
-    margin-left: 15%;
-    color: #D9D9D9;
+    margin-left: 55%;
   }
 
   .wrapper {
-    width: 470px;
-    height: 300px;
-    margin-left: 170px;
-
-    .input {
-      margin-top: 240px;
-      width: 76%;
-      height:40px;
-
-      .inputBorder {
-        margin-left: 5px;
-        width: 50%;
-        height: 30px;
-      }
-    }
-
-    .chat {
-      height: 220px;
-      width: 355px;
-  }
-
-  .sendBtn {
-    height: 30px;
-  }
+    margin-top: -9vw;
 }
 }
+

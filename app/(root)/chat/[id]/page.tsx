@@ -14,10 +14,14 @@ import fileAddIcon from '../../../../public/add-file.svg';
 import photoAddIcon from '../../../../public/add-photo.svg';
 import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
+import HomeSidebar from '@/components/HomeSidebar';
 import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
+import ChatRecomedation from '@/components/ChatRecomedation';
+import UserInfo from '@/components/UserInfo';
+import Balance from '@/components/Balance';
 
 
 
@@ -139,11 +143,24 @@ function Chat() {
   };
 
   return (
-    <div className="container-fluid mt-[60px]">
+  <div className="container mt-[20px]">
+    <div>
       <div className="row">
-      <div className="col-2">     
+        <div className="col-3">
+        <UserInfo/>
         </div>
-        <div className="col-4">
+        <div className="col-7">
+          <ChatRecomedation/>
+        </div>
+        <div className="col-2">
+        <Balance/>
+        </div>
+      </div>
+      <div className="row">
+        <div className={`col-3  ${styles.sidebar}`}>
+              <HomeSidebar />
+        </div>
+        <div className="col-7">
         {isLoading ? (
            <div className={styles.wrapper}>
            <div className={styles.textCenter}>
@@ -191,7 +208,7 @@ function Chat() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <Image onClick={handleCloseClip} src={videoAddIcon} alt="video add icon" />
-                  <h2 onClick={handleCloseClip}>Добавить видео</h2>
+                  <h2 onClick={handleCreateNewChat}>Добавить видео</h2>
                 </div>
               </div>
             )}
@@ -204,18 +221,17 @@ function Chat() {
     </div>
     )}
     </div>
-    <div className="col-4">     
-        <div className={styles.friendsBlock}>
-        <div className={styles.friendsText}>
-          <strong>FRIENDS</strong>
-          <span className={styles.friendsValue}>
-            <strong>365</strong>
-            </span>
+    <div className="col-2">     
+    <div className={styles.friendsBlock}>
+        <div className={styles.webTitle}>
+            <h2>FRIENDS
+            <span className={styles.friendsValue}>365</span>
+            </h2>
           </div>
-              <div className={styles.downLine}></div>
-            </div>
+          </div>
           </div>
         </div>
+      </div>
       </div>
   );
 }
