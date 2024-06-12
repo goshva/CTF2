@@ -69,9 +69,9 @@ const MarketPage: NextPage = () => {
   return (
     <div className="container-fluid mt-[20px]">
       <div className="row">
-        <div className="col-3">
+        {/* <div className="col-3">
           <MarketSidebar />
-        </div>
+        </div> */}
         <div className="col-9">
           <div className={styles.textCenter}>
             <div className={styles.container}>{renderCards()}</div>

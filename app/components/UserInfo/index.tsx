@@ -18,7 +18,7 @@ import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
 
 const UserInfo: FC = () => {
-  const baseUrl = process.env.BASE_URL
+  const baseUrl = process.env.BASE_URL;
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
@@ -50,8 +50,8 @@ const UserInfo: FC = () => {
   };
 
   const handleOpenProfile = () => {
-    let url = `${process.env.BASE_URL}/auth/steam`
-    console.log(url)
+    let url = `${process.env.BASE_URL}/auth/steam`;
+    console.log(url);
     // window.location.href = url;
     //@ts-ignore
     getFriendsList();
@@ -120,9 +120,7 @@ const UserInfo: FC = () => {
         </div>
 
         <div className={styles.loginContent}>
-          <Link
-            href={`${process.env.BASE_URL}/auth/steam`}
-            style={{ textDecoration: 'none' }}>
+          <Link href={`${process.env.BASE_URL}/auth/steam`} style={{ textDecoration: 'none' }}>
             <button
               onClick={handleOpenProfile}
               onClickCapture={() => enterLoading(0)}
