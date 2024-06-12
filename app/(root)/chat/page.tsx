@@ -3,6 +3,7 @@ import styles from './chat.module.scss';
 import ChatSidebar from '@/components/ChatSidebar';
 import Balance from '@/components/Balance';
 import { Metadata } from 'next';
+import FriendsChat from '@/components/FriendsChat';
 
 
 export const metadata: Metadata ={
@@ -27,14 +28,7 @@ export default async function Chat() {
           </div>
         </div>
         <div className="col-2">
-          <div className={styles.friendsBlock}>
-            <div className={styles.webTitle}>
-              <h2>
-                FRIENDS
-                <span className={styles.friendsValue}>365</span>
-              </h2>
-            </div>
-          </div>
+          <FriendsChat/>
         </div>
       </div>
     </div>

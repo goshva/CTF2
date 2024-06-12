@@ -18,6 +18,7 @@ import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
 import ChatRecomedation from '@/components/ChatRecomedation';
 import Balance from '@/components/Balance';
+import FriendsChat from '@/components/FriendsChat';
 
 function Chat() {
   const chatRef = useRef<HTMLDivElement>(null);
@@ -223,15 +224,8 @@ function Chat() {
             )}
           </div>
           <div className="col-2">
-            <div className={styles.friendsBlock}>
-              <div className={styles.webTitle}>
-                <h2>
-                  FRIENDS
-                  <span className={styles.friendsValue}>365</span>
-                </h2>
-              </div>
-            </div>
-          </div>
+          <FriendsChat/>
+        </div>
         </div>
     </div>
   );
