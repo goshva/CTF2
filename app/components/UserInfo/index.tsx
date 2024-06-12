@@ -129,6 +129,8 @@ const UserInfo: FC = () => {
                 <Image
                   src={decodedToken.photos[1] == '' ? '' : decodedToken.photos[1].value}
                   alt="steam icon"
+                  width={100}
+                  height={100}
                 />
               ) : (
                 <Image src={steamIcon} alt="steam icon" />

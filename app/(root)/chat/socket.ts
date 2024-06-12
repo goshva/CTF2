@@ -2,6 +2,6 @@
 
 import { io } from 'socket.io-client';
 const baseUrl = process.env.BASE_URL
-export const socket = io(`wss://${baseUrl}`, {
+export const socket = io(`wss://ctforumtest.ru`, {
     path: "/v1/socket"
   });

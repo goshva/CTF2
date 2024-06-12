@@ -14,10 +14,14 @@ import fileAddIcon from '../../../../public/add-file.svg';
 import photoAddIcon from '../../../../public/add-photo.svg';
 import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
+import HomeSidebar from '@/components/HomeSidebar';
 import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
+import ChatRecomedation from '@/components/ChatRecomedation';
+import UserInfo from '@/components/UserInfo';
+import Balance from '@/components/Balance';
 
 function Chat() {
   const chatRef = useRef<HTMLDivElement>(null);
@@ -134,92 +138,110 @@ function Chat() {
   };
 
   return (
-    <div className="container-fluid mt-[60px]">
-      <div className="row">
-        <div className="col-2"></div>
-        <div className="col-4">
-          {isLoading ? (
-            <div className={styles.wrapper}>
-              <div className={styles.textCenter}>
-                <div>Loading...</div>
-              </div>
-            </div>
-          ) : (
-            <div className={styles.wrapper}>
-              <ChatSidebar />
-              <div className={styles.chat} ref={chatRef}>
-                {AllMessages.map((msg, index) => (
-                  <Message
-                    key={index}
-                    messageValue={msg.text}
-                    userName={msg.sender.name}
-                    own={msg.senderId === decodedToken?.id}
-                    createdAt={msg.createdAt}
-                  />
-                ))}
-              </div>
-              <section className={styles.input}>
-                <div className={styles.icons}>
-                  <Image
-                    onClick={handleOpenClip}
-                    src={clipIcon}
-                    alt="clipIcon"
-                    className={styles.icon}
-                  />
-                  <Image src={emojiIcon} alt="emoji icon" className={styles.icon} />
-                </div>
-                <div className={styles.inputBorder}>
-                  <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSend(e)}>
-                    <input
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      type="text"
-                      placeholder="Написать сообщение"
-                    />
-                  </form>
-                  <div className={styles.inputIcons}>
-                    {openClip && (
-                      <div className={styles.addSomethingSection}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <Image
-                            onClick={handleCloseClip}
-                            src={photoAddIcon}
-                            alt="photo add icon"
-                          />
-                          <h2 onClick={handleCloseClip}>Добавить фото</h2>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <Image onClick={handleCloseClip} src={fileAddIcon} alt="file add icon" />
-                          <h2 onClick={handleCloseClip}>Добавить файл</h2>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          <Image
-                            onClick={handleCloseClip}
-                            src={videoAddIcon}
-                            alt="video add icon"
-                          />
-                          <h2 onClick={handleCloseClip}>Добавить видео</h2>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <button onClick={(e) => handleSend(e)} className={styles.sendBtn}>
-                  Отправить
-                </button>
-              </section>
-            </div>
-          )}
+    <div className="container mt-[20px]">
+      <div>
+        <div className="row">
+          <div className="col-3">
+            <UserInfo />
+          </div>
+          <div className="col-7">
+            <ChatRecomedation />
+          </div>
+          <div className="col-2">
+            <Balance />
+          </div>
         </div>
-        <div className="col-4">
-          <div className={styles.friendsBlock}>
-            <div className={styles.friendsText}>
-              <strong>FRIENDS</strong>
-              <span className={styles.friendsValue}>
-                <strong>365</strong>
-              </span>
+        <div className="row">
+          <div className={`col-3  ${styles.sidebar}`}>
+            <HomeSidebar />
+          </div>
+          <div className="col-7">
+            {isLoading ? (
+              <div className={styles.wrapper}>
+                <div className={styles.textCenter}>
+                  <div>Loading...</div>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.wrapper}>
+                <ChatSidebar />
+                <div className={styles.chat} ref={chatRef}>
+                  {AllMessages.map((msg, index) => (
+                    <Message
+                      key={index}
+                      messageValue={msg.text}
+                      userName={msg.sender.name}
+                      own={msg.senderId === decodedToken?.id}
+                      createdAt={msg.createdAt}
+                    />
+                  ))}
+                </div>
+                <section className={styles.input}>
+                  <div className={styles.icons}>
+                    <Image
+                      onClick={handleOpenClip}
+                      src={clipIcon}
+                      alt="clipIcon"
+                      className={styles.icon}
+                    />
+                    <Image src={emojiIcon} alt="emoji icon" className={styles.icon} />
+                  </div>
+                  <div className={styles.inputBorder}>
+                    <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleSend(e)}>
+                      <input
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        type="text"
+                        placeholder="Написать сообщение"
+                      />
+                    </form>
+                    <div className={styles.inputIcons}>
+                      {openClip && (
+                        <div className={styles.addSomethingSection}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <Image
+                              onClick={handleCloseClip}
+                              src={photoAddIcon}
+                              alt="photo add icon"
+                            />
+                            <h2 onClick={handleCloseClip}>Добавить фото</h2>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <Image
+                              onClick={handleCloseClip}
+                              src={fileAddIcon}
+                              alt="file add icon"
+                            />
+                            <h2 onClick={handleCloseClip}>Добавить файл</h2>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <Image
+                              onClick={handleCloseClip}
+                              src={videoAddIcon}
+                              alt="video add icon"
+                            />
+                            <h2 onClick={handleCreateNewChat}>Добавить видео</h2>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <button onClick={(e) => handleSend(e)} className={styles.sendBtn}>
+                    Отправить
+                  </button>
+                </section>
+              </div>
+            )}
+          </div>
+          <div className="col-2">
+            <div className={styles.friendsBlock}>
+              <div className={styles.webTitle}>
+                <h2>
+                  FRIENDS
+                  <span className={styles.friendsValue}>365</span>
+                </h2>
+              </div>
             </div>
-            <div className={styles.downLine}></div>
           </div>
         </div>
       </div>
