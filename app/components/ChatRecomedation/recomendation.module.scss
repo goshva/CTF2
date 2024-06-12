@@ -1,4 +1,3 @@
-.outerWrapper {
 
   .webTitle {
     display: flex;
@@ -19,7 +18,6 @@
       cursor: pointer;
     }
   }
-  // arrows
   .leftArrow {
     position: absolute;
     top: 85px;
@@ -66,11 +64,8 @@
     }
   }
 
-  .newsContainer {
-    display: flex;
-    flex-direction: column;
 
-    .bigNews {
+  .RecomendationCard {
       margin-left: 40px;
       position: relative;
       width: 36vw;
@@ -78,7 +73,5 @@
       background: #1c1c1c;
       border-radius: 10px;
       margin-bottom: 12px;
-    }
-
   }
-}
+

@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState, FormEvent, useRef } from 'react';
 import styles from '../chat.module.scss';
-import loopIcon from '../../../../public/loop-chat-icon.svg';
-import menuIcon from '../../../../public/chat-menu.svg';
 import Image from 'next/image';
 
 // иконки
@@ -14,14 +12,13 @@ import fileAddIcon from '../../../../public/add-file.svg';
 import photoAddIcon from '../../../../public/add-photo.svg';
 import Message from '@/components/Message';
 import ChatSidebar from '@/components/ChatSidebar';
-import HomeSidebar from '@/components/HomeSidebar';
 import { useSelector } from 'react-redux';
 import { socket } from '../socket';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
 import ChatRecomedation from '@/components/ChatRecomedation';
-import UserInfo from '@/components/UserInfo';
 import Balance from '@/components/Balance';
+import { Metadata } from 'next';
 
 function Chat() {
   const chatRef = useRef<HTMLDivElement>(null);
@@ -138,13 +135,9 @@ function Chat() {
   };
 
   return (
-    <div className="container mt-[20px]">
-      <div>
+    <div className={styles.container}>
         <div className="row">
-          <div className="col-3">
-            <UserInfo />
-          </div>
-          <div className="col-7">
+          <div className="col-10">
             <ChatRecomedation />
           </div>
           <div className="col-2">
@@ -152,10 +145,7 @@ function Chat() {
           </div>
         </div>
         <div className="row">
-          <div className={`col-3  ${styles.sidebar}`}>
-            <HomeSidebar />
-          </div>
-          <div className="col-7">
+          <div className="col-10">
             {isLoading ? (
               <div className={styles.wrapper}>
                 <div className={styles.textCenter}>
@@ -244,7 +234,6 @@ function Chat() {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }
