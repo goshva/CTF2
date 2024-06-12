@@ -18,7 +18,6 @@ import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/redux';
 import ChatRecomedation from '@/components/ChatRecomedation';
 import Balance from '@/components/Balance';
-import { Metadata } from 'next';
 
 function Chat() {
   const chatRef = useRef<HTMLDivElement>(null);

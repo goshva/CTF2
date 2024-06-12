@@ -1,12 +1,14 @@
-'use client';
-
 import ChatRecomedation from '@/components/ChatRecomedation';
 import styles from './chat.module.scss';
 import ChatSidebar from '@/components/ChatSidebar';
 import Balance from '@/components/Balance';
+import { Metadata } from 'next';
 
 
-function Chat() {
+export const metadata: Metadata ={
+  title:"Messages"
+}
+export default async function Chat() {
   return (
     <div className={styles.container}>
       <div className="row">
@@ -39,4 +41,3 @@ function Chat() {
   );
 }
 
-export default Chat;

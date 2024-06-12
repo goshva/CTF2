@@ -3,9 +3,14 @@ import Image from 'next/image';
 import styles from './market.module.scss';
 import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
-import { NextPage } from 'next';
+import { Metadata, NextPage } from 'next';
 import index from '@/components/ProductCard';
 import MarketSidebar from '@/components/MarketSidebar';
+
+
+export const metadata: Metadata ={
+  title:"Market"
+}
 
 //Пример data для карточек продуктов
 const products = [

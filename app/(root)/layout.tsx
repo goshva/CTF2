@@ -16,8 +16,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata ={
   title:{
     absolute: "",
-    default: "Counter Trade",
-    template: "Counter Trade | %s",
+    default: "",
   }
 }
 const HomeLayout = ({ children }: { children: ReactNode }) => {

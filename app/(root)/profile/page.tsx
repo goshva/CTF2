@@ -3,6 +3,11 @@ import styles from './UserProfile.module.css';
 import Header from '@/components/Header';
 import UserInfo from '@/components/UserInfo';
 import HomeSidebar from '@/components/HomeSidebar';
+import { Metadata } from 'next';
+
+export const metadata: Metadata ={
+    title:"Profile"
+  }
 
 const UserProfile = () => {
     return (
