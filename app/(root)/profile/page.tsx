@@ -1,5 +1,13 @@
 import React from 'react';
 import styles from './UserProfile.module.css';
+import Header from '@/components/Header';
+import UserInfo from '@/components/UserInfo';
+import HomeSidebar from '@/components/HomeSidebar';
+import { Metadata } from 'next';
+
+export const metadata: Metadata ={
+    title:"Profile"
+  }
 
 const UserProfile = () => {
     return (
@@ -7,6 +15,9 @@ const UserProfile = () => {
             <div className={styles.container}>
                 <main className={styles.mainContent}>
                     <div className={styles.profilesAndBalance}>
+                        <div className={styles.myProfile}>
+                            <UserInfo />
+                        </div>
                         <div className={styles.otherProfile}>
                             <div className={styles.userProfile}>USER PROFILE</div>
                             <div className={styles.profileInfo}>
@@ -46,6 +57,9 @@ const UserProfile = () => {
                         </div>
                     </div>
                     <div className={styles.sidebarAndContent}>
+                        <div className={styles.sidebar}>
+                            <HomeSidebar />
+                        </div>
                         <div className={styles.contentAndActions}>
                             <div className={`${styles.productSection} overflow-auto`}>
                                 <div className={styles.productCards}>

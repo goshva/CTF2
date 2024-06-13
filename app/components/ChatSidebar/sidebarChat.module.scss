@@ -16,7 +16,7 @@
     justify-content: center;
 
     &::-webkit-scrollbar {
-      width: 10px;
+      width: 1px;
       height: 10px;
     }
 
@@ -24,29 +24,13 @@
       background: none;
     }
 
-    &::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 20px;
-      cursor: pointer;
-    }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
   }
 }
 
 
 // for chat
 .chatSelect {
-  .findUser {
-    width: 120px;
-    height: 40px;
-    background: #232a30;
-    padding-top: 10px;
-    padding-left: 20px;
-    position: relative;
-
     input {
       outline: none;
       border: none;
@@ -59,7 +43,6 @@
         font-size: 16px;
       }
     }
-  }
 }
 
 .downLine {

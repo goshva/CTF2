@@ -12,9 +12,16 @@ import News from '@/components/News';
 import backgroundImage from '../../public/background.jpg';
 import UserInfo from '@/components/UserInfo';
 import HomeSidebar from '@/components/HomeSidebar';
+import { Metadata } from 'next';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
+export const metadata: Metadata ={
+  title:{
+    absolute: "",
+    default: "",
+  }
+}
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   return (

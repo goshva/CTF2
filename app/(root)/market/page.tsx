@@ -2,6 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
 import { NextPage } from 'next';
+import { Link } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
+import { Metadata, NextPage } from 'next';
+import index from '@/components/ProductCard';
 import MarketSidebar from '@/components/MarketSidebar';
 import { IProduct } from '@/index';
 import iconCart from '../../../public/Icons-basket.svg'
@@ -9,6 +13,11 @@ import iconPrice from '../../../public/icons-price.svg'
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
 
+
+
+export const metadata: Metadata ={
+  title:"Market"
+}
 
 //Пример data для карточек продуктов
 const products = [
