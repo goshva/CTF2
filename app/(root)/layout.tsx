@@ -1,4 +1,7 @@
+'use client';
+
 import { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import styles from './layout.module.scss';
 import Footer from '@/components/Footer';
@@ -12,6 +15,7 @@ import UserInfo from '@/components/UserInfo';
 // import { StyleProvider } from '@ant-design/cssinjs';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
   return (
     <>
       <div className="bgWrap">
@@ -27,8 +31,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       {/* <div className={styles.center}> */}
       <div className={styles.wrapper}>
         <Header />
-        <UserInfo />
-        <News />
+        {pathname === '/' ? <News /> : null}
 
         <main className={styles.main}>{children}</main>
       </div>
