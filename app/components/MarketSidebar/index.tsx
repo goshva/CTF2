@@ -1,7 +1,8 @@
 'use client';
 
+import classNames from 'classnames';
 import { FC, useState, useEffect } from 'react';
-import styles from './sidebar.module.scss';
+import styles from './marketSidebar.module.scss';
 import profileAvatar from '../../../public/profile.svg';
 import Image from 'next/image';
 import accauntIcon from '../../../public/Account.svg';
@@ -10,7 +11,7 @@ import plusIcon from '../../../public/plus.svg';
 import minusIcon from '../../../public/minus.svg';
 import { Badge, Menu } from 'antd';
 import type { InputNumberProps } from 'antd';
-import { Col, InputNumber, Row, Slider, Space } from 'antd';
+import { Col, Row, Input, InputNumber, Slider, Space, Checkbox } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
@@ -21,249 +22,173 @@ import UserChatItem from '../UserChatItem';
 import loopIcon from '../../../public/loop-chat-icon.svg';
 import copy from '../../../public/copy.svg';
 import LogOutIcon from '../../../public/logout.svg';
-// import 'antd/dist/antd.css'; временно удалено
-// import { StyleProvider } from '@ant-design/cssinjs';
-import jwt from 'jsonwebtoken';
-import Cookies from 'js-cookie';
-import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import tgIcon from '@/Telegram.png';
 import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
+import checkedIcon from '@/checked-icon.svg'
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: 'group',
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  } as MenuItem;
-}
+// new icons
+import homeIcon from '../../../public/home-new-icon.svg';
+import profileIcon from '../../../public/profile-new-icon.svg';
+import messengerIcon from '../../../public/messenger-new-icon.svg';
+import bookMarkIcon from '../../../public/bookmark-new-icon.svg';
 
 const MarketSidebar: FC = () => {
-  const baseUrl = process.env.BASE_URL
-  const [inputValue, setInputValue] = useState(parseFloat('0.000'));
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loadings, setLoadings] = useState<boolean[]>([]);
-  // const [decodedToken, setDecodedToken] = useState<any>('');
-  const [loadingCookies, setLoadingCookies] = useState(true);
-  const [friendCount, setFriendCount] = useState<any>('');
+  const path = usePathname();
 
-  const jwtToken = Cookies.get('jwt');
-  //@ts-ignore
-  const decodedToken: IUser = jwt.decode(jwtToken);
-  //@ts-ignore
-  const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
-
-  // const jwtToken = Cookies.get('jwt');
-  // if (jwtToken) {
-  //   const decodedToken: any = jwt.decode(jwtToken);
-  //   if (decodedToken) {
-  //     const { data, error, isLoading } = useGetFriendListQuery(decodedToken.id);
-  //     if (data) {
-  //       if (data.friendslist) {
-  //         const friendCount = data.friendslist.friends.length;
-  //         setFriendCount(friendCount);
-  //       }
-  //     }
-  //   }
-  // }
-
-  useEffect(() => {
-    if (decodedToken) {
-      setIsAuthenticated(true);
-    }
-    setLoadingCookies(false);
-    setLoadingCookies(false);
-  }, []);
-
-  useEffect(() => {
-    const jwtToken = Cookies.get('jwt');
-    if (jwtToken) {
-    }
-  }, [isAuthenticated]);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(decodedToken.id);
+  const onChange = (value: number | number[]) => {
+    console.log('onChange: ', value);
   };
 
-  const pathname = usePathname();
-
-  // icons
-  const [iconStateItem, setIconStateItem] = useState('plusIcon');
-  const [iconStateCriterion, setIconStateCriterion] = useState('plusIcon');
-  const [pistolIconState, setPistolIconState] = useState('plusIcon');
-
-  // menu border
-  const [itemMenuBorder, setItemMenuBorder] = useState(false);
-  const [criterionMenuBorder, setCriterionMenuBorder] = useState(false);
-
-  // Border states & guns state потом другые добавлю
-  const [pistolMenuBorder, setPistolMenuBorder] = useState(false);
-
-  const onChange: InputNumberProps['onChange'] = (newValue) => {
-    setInputValue(newValue as number);
-  };
-
-  // открытия менюшек
-  const toggleIconItem = () => {
-    setIconStateItem(iconStateItem === 'plusIcon' ? 'minusIcon' : 'plusIcon');
-    setItemMenuBorder(!itemMenuBorder);
-  };
-
-  const toggleIconCriterion = () => {
-    setIconStateCriterion(iconStateCriterion === 'plusIcon' ? 'minusIcon' : 'plusIcon');
-    setCriterionMenuBorder(!criterionMenuBorder);
-  };
-
-  const toggleIconPistol = () => {
-    setPistolMenuBorder(!pistolMenuBorder);
-    setPistolIconState(pistolIconState === 'plusIcon' ? 'minusIcon' : 'plusIcon');
-  };
-  // >>>>>>>>>>>>>>>>>>>>>>>>
-
-  const handleOpenProfile = () => {
-    window.location.href = `${baseUrl}/v1/auth/steam`;
-    //@ts-ignore
-    getFriendsList();
-  };
-
-  const enterLoading = (index: number) => {
-    setTimeout(() => {
-      setLoadings((prevLoadings) => {
-        const newLoadings = [...prevLoadings];
-        newLoadings[index] = false;
-        return newLoadings;
-      });
-    }, 6000);
+  const onChangeComplete = (value: number | number[]) => {
+    console.log('onChangeComplete: ', value);
   };
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
-        <div className={styles.select_wrapper}>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <section className={styles.select_section}>
-              <button onClick={toggleIconItem} className={styles.selectPole}>
-                Тип товара (переименовать)
-                <Image src={iconStateItem === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-              </button>
-              {itemMenuBorder && (
-                <div className={styles.menuBorder}>
-                  <button onClick={toggleIconPistol} className={styles.menuItem}>
-                    Пистолет
-                    <Image src={pistolIconState === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-                  </button>
-                  {pistolMenuBorder && (
-                    <div className={styles.menuGunBorder}>
-                      <button className={styles.menuGunItem}>
-                        Все пистолеты
-                        <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        Five-Seven <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        Glock-18 <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        P2000 <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        P250 <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        R8 Revolver <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        Tec-9
-                        <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        CZ75-Auto <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        USP-S <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        Desert Eagle <Image src={plusIcon} alt="icon" />
-                      </button>
-                      <button className={styles.menuGunItem}>
-                        Dual Berettas <Image src={plusIcon} alt="icon" />
-                      </button>
-                    </div>
-                  )}
-                  <button className={styles.menuItem}>
-                    Винтовка
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Снайперская винтовка
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Пистолет-пулемет
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Пулемет
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Дробовик
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Нож
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                  <button className={styles.menuItem}>
-                    Прочее
-                    <Image src={plusIcon} alt="icon" />
-                  </button>
-                </div>
+        <div className={styles.home_sideBar}>
+          <div className={styles.webTitle}>
+            <h2>WEBSITE BAR</h2>
+          </div>
+          <nav className={styles.router_section}>
+            <ul className={styles.links}>
+              {path == '/' ? (
+                <Link href="/">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={homeIcon} alt="homeIcon" />
+                    Home
+                  </li>
+                </Link>
+              ) : (
+                <Link href="/">
+                  <li className={styles.link}>
+                    <Image src={homeIcon} alt="homeIcon" />
+                    Home
+                  </li>
+                </Link>
               )}
-              <button onClick={toggleIconCriterion} className={styles.selectPole}>
-                Критерий
-                <Image src={iconStateCriterion === 'plusIcon' ? plusIcon : minusIcon} alt="icon" />
-              </button>
-              {criterionMenuBorder && (
-                <div className={styles.menuBorder}>
-                  <button className={styles.menuItem}>Категория</button>
-                  <button className={styles.menuItem}>Фазы</button>
-                  <button className={styles.menuItem}>Раритетность</button>
-                  <button className={styles.menuItem}>Качество</button>
-                </div>
+              {path === '/profile' ? (
+                <Link href="/profile">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={profileIcon} alt="profileIcon" />
+                    Profile
+                  </li>
+                </Link>
+              ) : (
+                <Link href="/profile">
+                  <li className={styles.link}>
+                    <Image src={profileIcon} alt="profileIcon" />
+                    Profile
+                  </li>
+                </Link>
               )}
-            </section>
+              {path === '/chat' ? (
+                <Link href="/chat">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={messengerIcon} alt="messengerIcon" />
+                    Messenger
+                  </li>
+                </Link>
+              ) : (
+                <Link href="/chat">
+                  <li className={styles.link}>
+                    <Image src={messengerIcon} alt="messengerIcon" />
+                    Messenger
+                  </li>
+                </Link>
+              )}
+
+              {path === '/favorites' ? (
+                <Link href="/favorites">
+                  <li
+                    style={{ backgroundColor: '#161918', color: '#0F629A' }}
+                    className={styles.link}>
+                    <Image src={bookMarkIcon} alt="bookMarkIcon" />
+                    BookMark
+                  </li>
+                </Link>
+              ) : (
+                <Link href="/favorites">
+                  <li className={styles.link}>
+                    <Image src={bookMarkIcon} alt="bookMarkIcon" />
+                    BookMark
+                  </li>
+                </Link>
+              )}
+            </ul>
+          </nav>
+        </div>
+        <div className={styles.filterContainer}>
+          <div className={styles.filterTitle}>
+            <h3>FILTER</h3>
+          </div>
+          <div className={styles.filters}>
+            <div className={styles.filterBox}>
+
+              <div className={styles.bigInputBox}>
+                <Input variant="borderless" className={classNames(styles.filterInput, styles.priceInput)} placeholder="Price" />
+              </div>
+
+              <div className={styles.sliderInputsBox}>
+                <Input className={classNames(styles.filterInput, styles.antInputNumber)} />
+                <b>-</b>
+                <Input className={classNames(styles.filterInput, styles.antInputNumber)} />
+              </div>
+
+              <div className={styles.sliderBox}>
+                <Slider
+                  range
+                  step={1}
+                  defaultValue={[0, 50]}
+                  onChange={onChange}
+                  onChangeComplete={onChangeComplete}
+                />
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <Input variant="borderless" className={classNames(styles.filterInput, styles.priceInput)} placeholder="Delivery speed" />
+              </div>
+
+              <div className={styles.checkboxContainer}>
+                <label htmlFor="instantly" className={styles.customCheckbox}>
+                  <input name="instantly" type="checkbox" id="instantly" className={styles.hiddenCheckbox} />
+                  <div className={styles.checkbox}>
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt='checkedIcon'/>
+                  </div>
+                  <span>Instantly</span>
+                </label>
+                <label htmlFor="delayed" className={styles.customCheckbox}>
+                  <input name="delayed" type="checkbox" id="delayed" className={styles.hiddenCheckbox} />
+                  <div className={styles.checkbox}>
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt='checkedIcon' />
+                  </div>
+                  <span>About 15 min.</span>
+                </label>
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <div id="colorList" className={styles.colorList}>
+                  <span className={styles.btnName}>Color</span>
+                  <span className={styles.plusSymbol}>+</span>
+                </div>
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <div id="colorList" className={styles.colorList}>
+                  <span className={styles.btnName}>Color</span>
+                  <span className={styles.plusSymbol}>+</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <footer className={styles.footer}>
-          <article className={styles.webpage_text}>
-            <span>@2024 COUNTER.TRADE.ru</span>
-          </article>
-          <section className={styles.links}>
-            <div className={styles.social_icons}>
-              <Image src={steamIcon} alt="steamIcon" />
-              <Image src={tgIcon} alt="tgIcon" />
-              <Image src={vcIcon} alt="vcIcon" />
-              <Image src={youtubeIcon} alt="youtubeIcon" />
-            </div>
-            <ul className={styles.routes_footer}>
-              <Link href="#!">Связаться с нами</Link>
-              <Link href="#!">Правила</Link>
-              <Link href="#!">Условия</Link>
-            </ul>
-          </section>
-        </footer>
       </div>
     </aside>
   );
