@@ -3,7 +3,11 @@ import HomeSidebar from '@/components/HomeSidebar';
 import styles from '@/(root)/favorites/favorites.module.scss';
 
 import FavoriteCard from '@/components/FavoriteCard';
+import { Metadata } from 'next';
 
+export const metadata: Metadata ={
+  title:"Bookmark"
+}
 function Page() {
   return (
     <div className="container-fluid mt-[20px]">
