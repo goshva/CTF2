@@ -1,7 +1,7 @@
 .sidebar {
   grid-column: 1 / 2;
   grid-row: 2 / 4;
-  margin-right: 50px;
+  // margin-right: 50px;
 
   color: white;
 
@@ -13,17 +13,22 @@
     margin-left: 35px;
     border: 2px solid black;
     position: relative;
+    margin-bottom: 20px;
 
     .userInfo_container {
       width: 100%;
       height: 70px;
+      cursor: pointer;
       border-radius: 0px 10px 0px 10px;
       background: #181819;
       display: flex;
       gap: 15px;
       padding: 10px;
       margin-bottom: 10px;
-      border: 1px solid #42b5ff;
+
+      &:hover {
+        border: 1px solid #42b5ff;
+      }
 
       .avatar {
         width: 50px;
@@ -65,6 +70,14 @@
         font-size: 14px;
         width: 220px;
       }
+    }
+
+    .info_block {
+      font-size: 14px;
+      margin-top: 30px;
+      font-weight: 400;
+      padding-left: 30px;
+      margin-bottom: 60px;
     }
 
     .lastIcon {
