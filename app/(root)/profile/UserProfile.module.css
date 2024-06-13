@@ -5,12 +5,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
 }
 
 .mainContent {
   display: grid;
-  grid-template-columns: 1fr 3fr; /* Сначала Sidebar, потом остальное содержимое */
   grid-template-rows: auto auto; /* Для Header и остального содержимого */
   width: 100%;
   max-width: 1280px;
