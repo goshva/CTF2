@@ -1,0 +1,256 @@
+.homeContent {
+  width: 800px;
+  margin-top: 30px;
+
+  @media (max-width: 1235px) {
+    width: 700px;
+  }
+
+  @media (max-width: 1180px) {
+    width: 45vw;
+  }
+
+  .inputBorder {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    // height: 232px;
+    height: 140px;
+    background: #292b2c;
+    border-radius: 10px;
+    border: 2px solid #474c52;
+    padding: 20px;
+    grid-column: span 2;
+
+    button {
+      display: flex;
+      gap: 5px;
+      width: 110px;
+      height: 20px;
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      border-radius: 20px;
+      padding: 14px;
+      align-items: center;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    textarea {
+      width: 75%;
+      resize: none;
+      background: transparent;
+      outline: none;
+      color: white;
+      font-size: 15px;
+      padding-top: 10px;
+      padding-left: 0px;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      &::placeholder {
+        color: #888;
+        font-size: 17px;
+        cursor: pointer;
+      }
+    }
+
+    .line {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 70px;
+      height: 1px;
+      background: #474c52;
+    }
+    .downContent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      bottom: 20px;
+      width: 95%;
+
+      .icons {
+        display: flex;
+        gap: 15px;
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        width: 120px;
+        height: 40px;
+        background: #1886d0;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        align-items: center;
+        font-size: 15px;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:hover {
+          background: #2a9eeb;
+        }
+      }
+    }
+  }
+
+  .postsWrapper {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+    height: 700px;
+    // max-height: max-content;
+    overflow: auto;
+    overflow-x: hidden;
+    background: #292b2c;
+    border-radius: 10px;
+    border: 2px solid #474c52;
+    padding-top: 30px;
+    padding-bottom: 22px;
+    padding-left: 20px;
+    grid-column: span 2;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .posts_section {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+
+  .searchBox {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #2a2a2a;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    box-shadow: 4px 4px 20px 0px #5a5a5a40 inset;
+  }
+
+  .inputBlock {
+    // position: relative;
+    width: 177px;
+    height: 40px;
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    box-shadow: 4px 4px 20px 0px #5a5a5a40 inset;
+
+    input {
+      width: 75%;
+      height: 40px;
+      background: transparent;
+      outline: none;
+      padding-left: 5px;
+      color: white;
+
+      &::placeholder {
+        color: grey;
+      }
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    // .advertisingBlock {
+    //   position: relative;
+    //   width: 20vw;
+    //   // max-width: 275px;
+    //   height: 297px;
+    //   border-radius: 12px;
+    //   cursor: pointer;
+
+    //   img {
+    //     object-fit: cover;
+    //     width: 100%;
+    //     height: 100%;
+    //     border-radius: 12px;
+    //   }
+    // }
+  }
+}
