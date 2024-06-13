@@ -18,7 +18,7 @@ import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
 
 const UserInfo: FC = () => {
-  const baseUrl = process.env.BASE_URL
+  const baseUrl = process.env.BASE_URL;
   const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
@@ -50,7 +50,9 @@ const UserInfo: FC = () => {
   };
 
   const handleOpenProfile = () => {
-    window.location.href = `${baseUrl}/v1/auth/steam`;
+    let url = `${process.env.BASE_URL}/auth/steam`;
+    console.log(url);
+    // window.location.href = url;
     //@ts-ignore
     getFriendsList();
   };
@@ -104,12 +106,21 @@ const UserInfo: FC = () => {
       <div className={styles.profileSection}>
         <div className={styles.userInfo_container}>
           <div className={styles.avatar}>
-            <Image
-              width={50}
-              height={50}
-              src="https://avatarfiles.alphacoders.com/365/365525.png"
-              alt="avatar"
-            />
+            {isAuthenticated ? (
+              <Image
+                src={decodedToken?.photos[1] == '' ? '' : decodedToken?.photos[1].value}
+                alt="steam avatar"
+                width={100}
+                height={100}
+              />
+            ) : (
+              <Image
+                width={100}
+                height={100}
+                src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-8.jpg"
+                alt="steam avatar"
+              />
+            )}
           </div>
           <div className={styles.textInfo}>
             <h2>{displayName}</h2>
@@ -117,30 +128,31 @@ const UserInfo: FC = () => {
           </div>
         </div>
 
-        <div className={styles.loginContent}>
-          <Link
-            href={`${baseUrl}/v1/auth/steam`}
-            style={{ textDecoration: 'none' }}>
-            <button
-              onClick={handleOpenProfile}
-              onClickCapture={() => enterLoading(0)}
-              className={styles.login_btn}>
-              {isAuthenticated ? (
-                <Image
-                  src={decodedToken.photos[1] == '' ? '' : decodedToken.photos[1].value}
-                  alt="steam icon"
-                />
-              ) : (
-                <Image src={steamIcon} alt="steam icon" />
-              )}
-              <span>Login</span>
-            </button>
-          </Link>
+        {!isAuthenticated && (
+          <>
+            <div className={styles.loginContent}>
+              <Link href={`${process.env.BASE_URL}/auth/steam`} style={{ textDecoration: 'none' }}>
+                <button
+                  onClick={handleOpenProfile}
+                  onClickCapture={() => enterLoading(0)}
+                  className={styles.login_btn}>
+                  <Image src={steamIcon} alt="steam icon" />
+                  <span>Login</span>
+                </button>
+              </Link>
 
-          <article className={styles.loginText}>
-            <p>Log in via Steam to use the site functionality</p>
-          </article>
-        </div>
+              <article className={styles.loginText}>
+                <p>Log in via Steam to use the site functionality</p>
+              </article>
+            </div>
+          </>
+        )}
+
+        {isAuthenticated && (
+          <div className={styles.info_block}>
+            <p>Information is absent.</p>
+          </div>
+        )}
 
         <div className={styles.lastIcon}>
           <div className={styles.settingIcon}>

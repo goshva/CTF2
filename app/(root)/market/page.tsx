@@ -71,6 +71,7 @@ const MarketPage: NextPage = () => {
         </div>
         <section className="">
           <MarketHeader />
+
           <div className={styles.textCenter}>
             <div className={styles.container}>{renderCards()}</div>
           </div>

@@ -11,6 +11,7 @@ import News from '@/components/News';
 // import backgroundImage from '@/main-bg.png';
 import backgroundImage from '../../public/background.jpg';
 import UserInfo from '@/components/UserInfo';
+import HomeSidebar from '@/components/HomeSidebar';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -28,14 +29,19 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           quality={100}
         />
       </div>
-      {/* <div className={styles.center}> */}
-      <div className={styles.wrapper}>
-        <Header />
-        {pathname === '/' ? <News /> : null}
 
-        <main className={styles.main}>{children}</main>
+      <Header />
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          {/* только эти 2 компонента остаються */}
+          <div className={styles.left_section}>
+            <UserInfo />
+            <HomeSidebar />
+          </div>
+          {/* тут динамическое */}
+          <main className={styles.main}>{children}</main>
+        </div>
       </div>
-      {/* </div> */}
     </>
   );
 };

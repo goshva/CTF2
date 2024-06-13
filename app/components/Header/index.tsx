@@ -64,46 +64,53 @@ const Header: FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className="flex ml-5">
-        <Link href={'/'}>
-          <Image src={logo} alt="logo" width={260} height={30} quality={100} />
-        </Link>
-
-        <Link onClick={() => setOpenLink(!openLink)} href={'/market'} className={styles.cartLink}>
-          <div style={{ height: openLink ? '82px' : '22px' }} className={styles.openLink}></div>
-          <h1>MARKET</h1>
-        </Link>
-      </div>
-      <section className={styles.headerIcons}>
-        {!openInput && (
-          <div onClick={() => setOpenInput(true)} className={styles.icons_section}>
-            <Image src={loopIcon} alt="loopIcon" />
+      <div className={styles.container}>
+        <div className={styles.header_content}>
+          <div className={styles.left}>
+            <Link href={'/'}>
+              <Image src={logo} alt="logo" width={260} height={30} quality={100} />
+            </Link>
+            <Link
+              onClick={() => setOpenLink(!openLink)}
+              href={openLink ? '/' : '/market'}
+              className={styles.cartLink}>
+              <div style={{ height: openLink ? '82px' : '22px' }} className={styles.openLink}></div>
+              <h1>MARKET</h1>
+            </Link>
           </div>
-        )}
-        {openInput && (
-          <div ref={inputRef} className={styles.find_Input}>
-            <Image onClick={() => setOpenInput(false)} src={activeLoopIcon} alt="loopIcon" />
-            <input type="text" placeholder="find on the website" />
-          </div>
-        )}
-        <div ref={languageIconRef} className={styles.icons_section}>
-          <Image
-            onClick={handleMakeIconActive}
-            src={showLanguageIcon ? activeLanguageIcon : languageIcon}
-            alt="languageIcon"
-          />
-          {openLanugageSelector && (
-            <article className={styles.selectLanguage_section}>
-              <span>En</span>
-              <div className="flex justify-center">
-                <hr />
+          <div className={styles.right}>
+            <section className={styles.headerIcons}>
+              {!openInput && (
+                <div onClick={() => setOpenInput(true)} className={styles.icons_section}>
+                  <Image src={loopIcon} alt="loopIcon" />
+                </div>
+              )}
+              {openInput && (
+                <div ref={inputRef} className={styles.find_Input}>
+                  <Image onClick={() => setOpenInput(false)} src={activeLoopIcon} alt="loopIcon" />
+                  <input type="text" placeholder="find on the website" />
+                </div>
+              )}
+              <div ref={languageIconRef} className={styles.icons_section}>
+                <Image
+                  onClick={handleMakeIconActive}
+                  src={showLanguageIcon ? activeLanguageIcon : languageIcon}
+                  alt="languageIcon"
+                />
+                {openLanugageSelector && (
+                  <article className={styles.selectLanguage_section}>
+                    <span onClick={handleMakeIconActive}>En</span>
+                    <div className="flex justify-center">
+                      <hr />
+                    </div>
+                    <span onClick={handleMakeIconActive}>Ru</span>
+                  </article>
+                )}
               </div>
-              <span>Ru</span>
-            </article>
-          )}
+            </section>
+          </div>
         </div>
-        <div></div>
-      </section>
+      </div>
     </header>
   );
 };

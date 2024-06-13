@@ -41,7 +41,7 @@ const API_DATA: ApiDataItem[] = [
 const postpone = (cb: (...args: any[]) => unknown = () => undefined, timeout = 300) =>
   setTimeout(cb, timeout);
 
-const News = React.memo(() => {
+const ChatRecomedation = React.memo(() => {
   const [data, setData] = React.useState([...API_DATA, API_DATA[0]]);
   const [containerWidth, setContainerWidth] = React.useState(0);
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -110,6 +110,11 @@ const News = React.memo(() => {
     <div className={styles.outerWrapper} ref={handleRef}>
       <section className={styles.newsContainer}>
         <div className={styles.bigNews}>
+        <div className={styles.friendsBlock}>
+        <div className={styles.webTitle}>
+            <h2>FRIENDS</h2>
+          </div>
+          </div>
           <button className={styles.leftArrow}>
             <Image src={LeftArrow} alt="arrow icon" />
           </button>
@@ -117,104 +122,9 @@ const News = React.memo(() => {
             <Image src={RightArrow} alt="arrow icon" />
           </button>
         </div>
-
-        <article className={styles.sliderDots}>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-        </article>
       </section>
-
-      {/* <section className={styles.newsContainer}>
-        <div className={styles.smallNews}>
-          <button className={styles.leftArrow}>
-            <Image src={LeftArrow} alt="arrow icon" />
-          </button>
-          <button className={styles.rightArrow}>
-            <Image src={RightArrow} alt="arrow icon" />
-          </button>
-        </div>
-
-        <article className={styles.sliderDots}>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-          <div className={styles.dot}></div>
-        </article>
-      </section> */}
-
-      {/* <div className={styles.innerWrapper}>
-        <div className={styles.smoke} />
-        <div className={clsx(styles.smoke, styles.smoke_delayed)} />
-        <div
-          ref={innerCarouselContainerRef}
-          className={clsx(
-            styles.innerCarouselContainer,
-            !containerWidth && styles.innerCarouselContainer_loading,
-          )}
-          style={{
-            width: `calc(${data.length * 100}%)`,
-          }}>
-          {!containerWidth ? (
-            <div className={styles.loader} />
-          ) : (
-            data.map(({ imageUrl, title, description, hashTags }, index) => (
-              <div
-                className={styles.slide}
-                key={`slide-${index}`}
-                style={{
-                  width: containerWidth * 0.9,
-                }}>
-                {index === currentSlide && (
-                  <Image
-                    src={LeftArrow}
-                    alt="left-arrow"
-                    className={styles.slideControl}
-                    width={20}
-                    height={24}
-                    onClick={handleNavigateSlides(false)}
-                  />
-                )}
-                <div
-                  className={clsx(styles.image, styles.commonBorderStyles, styles.borderImage)}
-                  style={{
-                    backgroundImage: `url(${imageUrl})`,
-                  }}
-                />
-                <div
-                  className={clsx(
-                    styles.carouselContent,
-                    styles.commonBorderStyles,
-                    styles.borderText,
-                  )}>
-                  <div className={clsx(styles.text, styles.title)}>
-                    {title}
-                    {hashTags.map((hashTag, index) => (
-                      <span key={hashTag + index} className={styles.chip}>
-                        #{hashTag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className={clsx(styles.text, styles.description)}>{description}</div>
-                </div>
-                {index === currentSlide && (
-                  <Image
-                    src={LeftArrow}
-                    alt="left-arrow"
-                    className={clsx(styles.slideControl, styles.slideControl_reversed)}
-                    width={20}
-                    height={24}
-                    onClick={handleNavigateSlides(true)}
-                  />
-                )}
-              </div>
-            ))
-          )}
-        </div>
-      </div> */}
     </div>
   );
 });
 
-export default News;
+export default ChatRecomedation;
