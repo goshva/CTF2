@@ -109,12 +109,10 @@
     position: absolute;
     height: 19vw;
     width: 24vw;
-    padding: 30px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     border: white 1px solid;
-    gap: 30px;
     overflow: scroll;
     overflow-x: hidden;
     background-color: #292b2c;
@@ -126,11 +124,12 @@
     }
 
     &::-webkit-scrollbar-track {
+      margin-top: 1px;
       background: none;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #888;
+      background: white;
       border-radius: 20px;
       cursor: pointer;
     }

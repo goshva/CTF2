@@ -13,7 +13,7 @@ const FriendsChatItem  = () => {
       <Image
               width={50}
               height={50}
-              src="https://avatarfiles.alphacoders.com/365/365525.png"
+              src="/avatar.png"
               alt="avatar"
             />
         </div>
