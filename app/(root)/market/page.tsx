@@ -1,19 +1,22 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
-import { Link } from 'lucide-react';
-import { ShoppingCart } from 'lucide-react';
 import { NextPage } from 'next';
-import index from '@/components/ProductCard';
 import MarketSidebar from '@/components/MarketSidebar';
+import { IProduct } from '@/index';
+import iconCart from '../../../public/Icons-basket.svg'
+import iconPrice from '../../../public/icons-price.svg'
+import UserInfo from '@/components/UserInfo';
+import MarketHeader from '@/components/MarketHeader';
+
 
 //Пример data для карточек продуктов
 const products = [
   {
     image: '/anubis.png',
     alt: 'Product 1',
-    name: 'AK-47 | Легион Анубиса (Закалённое в боях)',
-    price: '454,98 ₽',
+    name: 'AK-47',
+    price: '454,98',
     sellers: [
       {
         image: '/box.svg',
@@ -24,36 +27,29 @@ const products = [
   },
 ];
 
-const ProductCard: React.FC<{ product: (typeof products)[0] }> = ({ product }) => {
+const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.titleCard}>
-        <Image src={product.image} alt={product.alt} width={200} height={200} />
-        <div className={styles.title}>
-          <h3>{product.name}</h3>
-        </div>
+
+      <div>
+        <Image className={styles.productImg} src={product.image} alt={product.alt} width={200} height={200} />
       </div>
 
-      <div className={styles.botCard}>
-        <div className={styles.price}>
-          <p>{product.price}</p>
-        </div>
-
-        <div className={styles.sellers}>
-          {product.sellers.map((seller, index) => (
-            <div key={index} className={styles.seller}>
-              <Image src={seller.image} alt={seller.alt} width={20} height={20} />
-              <p>{seller.count}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.link}>
-          <Link href="/market" className={styles.cartLink}>
-            <ShoppingCart size={14} />
-          </Link>
-        </div>
+      <div className={styles.title}>
+        <h3>{product.name}</h3>
       </div>
+
+      <div className={styles.price}>
+        <span>
+          {product.price}
+        </span>
+        <Image src={iconPrice} alt='iconPrice' width={20} height={20} />
+      </div>
+
+      <button type="button" className={styles.buying}>
+        <Image src={iconCart} alt='icon-basket' width={29} height={29} />
+        <p>Add to cart</p>
+      </button>
     </div>
   );
 };
@@ -67,16 +63,18 @@ const MarketPage: NextPage = () => {
   };
 
   return (
-    <div className="container-fluid mt-[20px]">
-      <div className="row">
-        <div className="col-3">
+    <div className={styles.mainContainer}>
+      <div className="flex">
+        <div className={styles.aside}>
+          <UserInfo />
           <MarketSidebar />
         </div>
-        <div className="col-9">
+        <section className="">
+          <MarketHeader />
           <div className={styles.textCenter}>
             <div className={styles.container}>{renderCards()}</div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
