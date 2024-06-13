@@ -31,7 +31,7 @@ const ChatRecomedation = () => {
   return (
     <div className={styles.RecomendationCard}>
       <div className={styles.webTitle}>
-        <h2>FRIENDS</h2>
+        <h2>RECOMMENDATIONS FROM FRIENDS</h2>
       </div>
       <button className={styles.leftArrow} onClick={scrollLeft}>
         <Image src={LeftArrow} alt="arrow icon" />
