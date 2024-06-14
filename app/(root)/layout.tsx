@@ -13,12 +13,12 @@ import { Metadata } from 'next';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
-export const metadata: Metadata ={
-  title:{
-    absolute: "",
-    default: "",
-  }
-}
+export const metadata: Metadata = {
+  title: {
+    absolute: '',
+    default: '',
+  },
+};
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
@@ -32,6 +32,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           quality={100}
         />
       </div>
+
       <Header />
       <div className={styles.container}>
         <div className={styles.wrapper}>
@@ -40,7 +41,6 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
             <UserInfo />
             <HomeSidebar />
           </div>
-
           {/* тут динамическое */}
           <main className={styles.main}>{children}</main>
         </div>

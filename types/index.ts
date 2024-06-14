@@ -22,6 +22,7 @@ interface IAuthor {
   status: string;
 }
 
+
 // {
 //   "provider": "steam",
 //   "_json": {
@@ -94,4 +95,16 @@ interface IComment {
   childComments?: [];
 }
 
-export type { IPost, IUser };
+interface IProduct {
+  image: string;
+  alt: string;
+  name: string;
+  price: string;
+  sellers: {
+    image: string;
+    alt: string;
+    count: number;
+  }[];
+}
+
+export type { IPost, IUser, IProduct };
