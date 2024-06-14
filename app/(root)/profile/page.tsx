@@ -1,16 +1,10 @@
 import React from 'react';
 import styles from './UserProfile.module.css';
-<<<<<<< HEAD
-=======
-import Header from '@/components/Header';
-import UserInfo from '@/components/UserInfo';
-import HomeSidebar from '@/components/HomeSidebar';
 import { Metadata } from 'next';
 
-export const metadata: Metadata ={
-    title:"Profile"
-  }
->>>>>>> 0071aa237ad7c3fa0a557f80ea063636a8d5dd90
+export const metadata: Metadata = {
+    title: "Profile"
+}
 
 const UserProfile = () => {
     return (
@@ -18,12 +12,6 @@ const UserProfile = () => {
             <div className={styles.container}>
                 <main className={styles.mainContent}>
                     <div className={styles.profilesAndBalance}>
-<<<<<<< HEAD
-=======
-                        <div className={styles.myProfile}>
-                            <UserInfo />
-                        </div>
->>>>>>> 0071aa237ad7c3fa0a557f80ea063636a8d5dd90
                         <div className={styles.otherProfile}>
                             <div className={styles.userProfile}>USER PROFILE</div>
                             <div className={styles.profileInfo}>
@@ -63,12 +51,6 @@ const UserProfile = () => {
                         </div>
                     </div>
                     <div className={styles.sidebarAndContent}>
-<<<<<<< HEAD
-=======
-                        <div className={styles.sidebar}>
-                            <HomeSidebar />
-                        </div>
->>>>>>> 0071aa237ad7c3fa0a557f80ea063636a8d5dd90
                         <div className={styles.contentAndActions}>
                             <div className={`${styles.productSection} overflow-auto`}>
                                 <div className={styles.productCards}>
