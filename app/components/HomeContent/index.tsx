@@ -66,10 +66,10 @@ function HomeContent() {
   const [value, setValue] = useState<string>('');
   const buttonRef = useRef<HTMLButtonElement>(null);
   // получение постов
-  const { data = [] as PostType[] } = useGetAllPostsQuery({});
+  // const { data = [] as PostType[] } = useGetAllPostsQuery({});
 
-  console.log('real posts', data);
-  // const { data = [] as PostFake[] } = useGetAllPostsQuery({});
+  // console.log('real posts', data);
+  const { data = [] as PostFake[] } = useGetAllPostsQuery({});
 
   // создания поста
   const [addPost, { isError }] = useCreatePostsMutation();
@@ -166,7 +166,7 @@ function HomeContent() {
         {/* Контейнер для постов */}
         <div style={{ marginTop: isFocused ? '-40px' : '-23px' }} className={styles.postsWrapper}>
           <div className={styles.posts_section}>
-            {data.map((post: PostType) => (
+            {data.map((post: PostFake) => (
               <PostCard key={post.id} post={post} />
             ))}
           </div>
