@@ -1,6 +1,7 @@
-
+'use client';
 
 import { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import styles from './layout.module.scss';
 import Footer from '@/components/Footer';
@@ -22,6 +23,7 @@ export const metadata: Metadata ={
   }
 }
 const HomeLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
   return (
     <>
       <div className="bgWrap">
