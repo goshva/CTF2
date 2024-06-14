@@ -1,4 +1,7 @@
+'use client';
+
 import { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import styles from './layout.module.scss';
 import Footer from '@/components/Footer';
@@ -20,6 +23,7 @@ export const metadata: Metadata ={
   }
 }
 const HomeLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
   return (
     <>
       <div className="bgWrap">
@@ -32,6 +36,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           quality={100}
         />
       </div>
+
       <Header />
       <div className={styles.container}>
         <div className={styles.wrapper}>
@@ -40,7 +45,6 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
             <UserInfo />
             <HomeSidebar />
           </div>
-
           {/* тут динамическое */}
           <main className={styles.main}>{children}</main>
         </div>
