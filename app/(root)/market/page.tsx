@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
-import { NextPage } from 'next';
 import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
