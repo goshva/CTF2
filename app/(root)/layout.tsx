@@ -1,9 +1,7 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './layout.module.scss';
-import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import News from '@/components/News';
 
 // import backgroundImage from '@/main-bg.png';
 import backgroundImage from '../../public/background.jpg';
@@ -13,12 +11,12 @@ import { Metadata } from 'next';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
-export const metadata: Metadata ={
-  title:{
-    absolute: "",
-    default: "",
-  }
-}
+export const metadata: Metadata = {
+  title: {
+    absolute: '',
+    default: '',
+  },
+};
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>

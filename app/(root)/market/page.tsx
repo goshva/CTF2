@@ -1,23 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
-import { NextPage } from 'next';
 import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import index from '@/components/ProductCard';
 import MarketSidebar from '@/components/MarketSidebar';
 import { IProduct } from '@/index';
-import iconCart from '../../../public/Icons-basket.svg'
-import iconPrice from '../../../public/icons-price.svg'
+import iconCart from '../../../public/Icons-basket.svg';
+import iconPrice from '../../../public/icons-price.svg';
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
 
-
-
-export const metadata: Metadata ={
-  title:"Market"
-}
+export const metadata: Metadata = {
+  title: 'Market',
+};
 
 //Пример data для карточек продуктов
 const products = [
@@ -39,9 +36,14 @@ const products = [
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className={styles.card}>
-
       <div>
-        <Image className={styles.productImg} src={product.image} alt={product.alt} width={200} height={200} />
+        <Image
+          className={styles.productImg}
+          src={product.image}
+          alt={product.alt}
+          width={200}
+          height={200}
+        />
       </div>
 
       <div className={styles.title}>
@@ -49,14 +51,12 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
       </div>
 
       <div className={styles.price}>
-        <span>
-          {product.price}
-        </span>
-        <Image src={iconPrice} alt='iconPrice' width={20} height={20} />
+        <span>{product.price}</span>
+        <Image src={iconPrice} alt="iconPrice" width={20} height={20} />
       </div>
 
       <button type="button" className={styles.buying}>
-        <Image src={iconCart} alt='icon-basket' width={29} height={29} />
+        <Image src={iconCart} alt="icon-basket" width={29} height={29} />
         <p>Add to cart</p>
       </button>
     </div>
