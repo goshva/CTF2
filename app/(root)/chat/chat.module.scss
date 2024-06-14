@@ -1,3 +1,22 @@
 .container{
   margin-left: -55px;
 }
+.wrapper {
+  margin-top: 0.5vw;
+  width: 31vw;
+  height: 25vw;
+  border-radius: 10px;
+  margin-left: 40px;
+  background: #3a4340;
+  position: absolute;
+
+  .textCenter {
+    color: #d9d9d9;
+    margin-left: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+}
