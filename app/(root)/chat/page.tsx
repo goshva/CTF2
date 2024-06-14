@@ -9,7 +9,7 @@ import FriendsChat from '@/components/FriendsChat';
 export const metadata: Metadata ={
   title:"Messages"
 }
-export default async function Chat() {
+function Chat() {
   return (
     <div className={styles.container}>
       <div className="row">
@@ -35,3 +35,4 @@ export default async function Chat() {
   );
 }
 
+export default Chat;
