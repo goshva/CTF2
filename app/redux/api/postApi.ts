@@ -6,7 +6,8 @@ export const postApi = createApi({
   reducerPath: 'postsApi',
   tagTypes: ['Posts'],
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.BASE_API_URL,
+    // baseUrl: process.env.BASE_API_URL,
+    baseUrl: 'https://663e6894e1913c4767978fca.mockapi.io',
     prepareHeaders: (headers) => {
       headers.set('Content-type', 'application/json');
       return headers;
@@ -15,8 +16,8 @@ export const postApi = createApi({
   endpoints: (builder) => ({
     //GET
     getAllPosts: builder.query({
-      // query: () => `/posts/`,
-      query: () => `/post/`,
+      query: () => `/posts/`,
+      // query: () => `/post/`,
       providesTags: ({ results }) =>
         results
           ? [

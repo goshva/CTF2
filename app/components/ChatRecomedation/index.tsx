@@ -1,130 +1,58 @@
 'use client';
 import * as React from 'react';
-import styles from './news.module.scss';
+import { useRef } from 'react';
+import styles from './recomendation.module.scss';
 import Image from 'next/image';
 import LeftArrow from '@/left-arrow.svg';
 import RightArrow from '@/right-arrow.svg';
-import clsx from 'clsx';
+import RecomendationItem from '../RecomendationItem';
 
-interface ApiDataItem {
-  imageUrl: string;
-  title: string;
-  description: string;
-  hashTags: string[];
-}
+const ChatRecomedation = () => {
+  const itemsRef = useRef<HTMLDivElement>(null);
 
-const API_DATA: ApiDataItem[] = [
-  {
-    imageUrl: 'first.png',
-    title: '🎉Обновление CSGO уже здесь! 🎉',
-    description:
-      'Valve объявила о значительных изменениях в режиме "Бой насмерть" в Counter-Strike: Global Offensive. Теперь игроки могут наслаждаться более быстрыми раундами и новой системой наград. Кроме того, внедрены исправления багов, улучшения производительности и оптимизация интерфейса. Подготовьтесь к улучшенному игровому опыту и новым вызовам! Поделитесь своими впечатлениями и стратегиями!',
-    hashTags: ['PlayCSGO', 'CSGOUpdate'],
-  },
-  {
-    imageUrl: 'second.png',
-    title: '🚨 Новые обновления в CSGO! 🚨',
-    description:
-      'Внимание, игроки! Valve только что выпустила новый патч для Counter-Strike: Global Offensive,добавив улучшения карты Mirage и новый набор скинов для оружия. Проверьте новые тактические возможности и уникальные дизайны. Не пропустите шанс присоединиться к соревнованиям этого месяца с удвоенными XP. Будьте в курсе всех изменений и максимизируйте свои шансы на победу! ',
-    hashTags: ['CSGO', 'gamingnews'],
-  },
-  {
-    imageUrl:
-      'https://images.unsplash.com/photo-1705615791178-d32cc2cdcd9c?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: '🎉 2 Обновление CSGO уже здесь! 🎉',
-    description:
-      'Valve объявила о значительных изменениях в режиме "Бой насмерть" в Counter-Strike: Global Offensive. Теперь игроки могут наслаждаться более быстрыми раундами и новой системой наград. Кроме того, внедрены исправления багов, улучшения производительности и оптимизация интерфейса. Подготовьтесь к улучшенному игровому опыту и новым вызовам! Поделитесь своими впечатлениями и стратегиями!',
-    hashTags: ['CSGO', 'CSGOUpdate'],
-  },
-];
-
-const postpone = (cb: (...args: any[]) => unknown = () => undefined, timeout = 300) =>
-  setTimeout(cb, timeout);
-
-const ChatRecomedation = React.memo(() => {
-  const [data, setData] = React.useState([...API_DATA, API_DATA[0]]);
-  const [containerWidth, setContainerWidth] = React.useState(0);
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const innerCarouselContainerRef = React.useRef<HTMLDivElement | null>(null);
-
-  const handleNavigateSlides = React.useCallback(
-    (isNextSlide: boolean) => () => {
-      const navigate = () => setCurrentSlide(currentSlide + (isNextSlide ? 1 : -1));
-
-      if (isNextSlide) {
-        if (!data[currentSlide + 2]) {
-          setCurrentSlide(currentSlide + 1);
-
-          postpone(() => {
-            innerCarouselContainerRef.current?.classList.add(
-              styles.innerCarouselContainer_disabledTransition,
-            );
-
-            setCurrentSlide(0);
-
-            postpone(() => {
-              innerCarouselContainerRef.current?.classList.remove(
-                styles.innerCarouselContainer_disabledTransition,
-              );
-            }, 300);
-          }, 300);
-
-          return;
-        }
-
-        navigate();
-      } else if (!isNextSlide && currentSlide - 1 >= 0) {
-        navigate();
-      }
-    },
-    [currentSlide],
-  );
-
-  React.useEffect(() => {
-    if (innerCarouselContainerRef.current) {
-      const innerCarouselContainer = innerCarouselContainerRef.current;
-      innerCarouselContainer.style.transform = `translateX(-${
-        currentSlide * (containerWidth * 0.9)
-      }px)`;
+  const scrollLeft = () => {
+    if (itemsRef.current) {
+      itemsRef.current.scrollBy({
+        left: -120, // Регулируйте это значение в зависимости от размера элементов
+        behavior: 'smooth',
+      });
     }
-  }, [currentSlide]);
+  };
 
-  React.useEffect(() => {
-    const interval = setInterval(() => handleNavigateSlides(true)(), 180000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [handleNavigateSlides]);
-
-  const handleRef = React.useCallback((ref: HTMLDivElement | null) => {
-    if (ref) {
-      const { width } = ref.getBoundingClientRect();
-      setContainerWidth(width);
+  const scrollRight = () => {
+    if (itemsRef.current) {
+      itemsRef.current.scrollBy({
+        left: 120, // Регулируйте это значение в зависимости от размера элементов
+        behavior: 'smooth',
+      });
     }
-  }, []);
-
-  // new functions
+  };
 
   return (
-    <div className={styles.outerWrapper} ref={handleRef}>
-      <section className={styles.newsContainer}>
-        <div className={styles.bigNews}>
-        <div className={styles.friendsBlock}>
-        <div className={styles.webTitle}>
-            <h2>FRIENDS</h2>
-          </div>
-          </div>
-          <button className={styles.leftArrow}>
-            <Image src={LeftArrow} alt="arrow icon" />
-          </button>
-          <button className={styles.rightArrow}>
-            <Image src={RightArrow} alt="arrow icon" />
-          </button>
-        </div>
-      </section>
+    <div className={styles.RecomendationCard}>
+      <div className={styles.webTitle}>
+        <h2>RECOMMENDATIONS FROM FRIENDS</h2>
+      </div>
+      <button className={styles.leftArrow} onClick={scrollLeft}>
+        <Image src={LeftArrow} alt="arrow icon" />
+      </button>
+      <div className={styles.items} ref={itemsRef}>
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+        <RecomendationItem />
+      </div>
+      <button className={styles.rightArrow} onClick={scrollRight}>
+        <Image src={RightArrow} alt="arrow icon" />
+      </button>
     </div>
   );
-});
+};
 
 export default ChatRecomedation;
