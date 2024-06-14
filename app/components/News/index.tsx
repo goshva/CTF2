@@ -40,12 +40,14 @@ interface ApiDataItem {
 
 const images = [
   'https://cdn.esportfire-services.com/web/assets/images/partners/skinport/CSGO_Banner_Tall.png',
-  'https://i.redd.it/fbs2df73gl0b1.jpg',
   'https://cdn.sanity.io/images/dmtcrhxp/production/aa3b376d756c19073f53f5890fe7a7ab16f6bf16-1600x900.webp?q=30&auto=format',
   'https://csgocaseopening.com/wp-content/uploads/2022/11/csgo-cases.jpg.webp',
   'https://blog.scope.gg/content/images/2021/02/ceb7e6ae311eba8c0e764abb4f8be.jpeg',
-  'https://cdna.artstation.com/p/assets/images/images/032/058/120/large/merakdan-desing-11csgo.jpg?1605355951',
   'https://www.videogamer.com/wp-content/uploads/counter-strike-2-ranks-rating-maps.jpg',
+  'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/27a18038293935.575c35f30e6d9.png',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJtJqoJ3D5vS9PsWdWf7PE4OkvY9qbvBcVew&s',
+  'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/header.jpg?t=1716504320',
+  'https://i0.wp.com/5ergiveaways.com/wp-content/uploads/2019/06/Twitch-Cover.png?fit=1200%2C380&ssl=1',
 ];
 
 const postpone = (cb: (...args: any[]) => unknown = () => undefined, timeout = 300) =>
