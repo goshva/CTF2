@@ -56,10 +56,12 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
         <Image src={iconPrice} alt="iconPrice" width={20} height={20} />
       </div>
 
-      <button type="button" className={styles.buying}>
-        <Image src={iconCart} alt="icon-basket" width={29} height={29} />
-        <p>Add to cart</p>
-      </button>
+      <div className={styles.btnBorder}>
+        <button type="button" className={styles.buying}>
+          <Image src={iconCart} alt="icon-basket" width={29} height={29} />
+          <p>Add to cart</p>
+        </button>
+      </div>
     </div>
   );
 };

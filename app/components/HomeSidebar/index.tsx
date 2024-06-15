@@ -44,6 +44,9 @@ const MarketSidebar: FC = () => {
     colors: [],
   })
 
+
+  const isMarket = (): boolean => path === '/market'
+
   const onChangeStart = (value: number[]) => {
     const [min, max] = Array.isArray(value) ? value : [value, value];
 
@@ -179,10 +182,16 @@ const MarketSidebar: FC = () => {
           </nav>
         </div>
         <div className={styles.filterContainer}>
-          <div className={styles.filterTitle}>
+          <div className={clsx(
+            styles.filterTitle,
+            !isMarket() && styles.filterTitle__disabled
+          )}>
             <h3>FILTER</h3>
           </div>
-          <form className={styles.filters}>
+          <form className={clsx(
+            styles.filters,
+            isMarket() && styles.filters__active
+          )}>
             <div className={styles.filterBox}>
 
               <div className={styles.bigInputBox}>

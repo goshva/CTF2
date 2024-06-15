@@ -37,8 +37,12 @@ const MarketHeader: FC = () => {
         </div>
         <div className={styles.cart}>
           <div className={styles.cartButtons}>
-            <button className={styles.cartBtn} type="button">Сonclusion</button>
-            <button className={styles.cartBtn} type="button">Replenish</button>
+            <div className={styles.btnBorder}>
+              <button className={styles.cartBtn} type="button">Сonclusion</button>
+            </div>
+            <div className={styles.btnBorder}>
+              <button className={styles.cartBtn} type="button">Replenish</button>
+            </div>
           </div>
           <div className={styles.cartIcon}>
             <Image src={iconCart} alt="currencyIcon" />
