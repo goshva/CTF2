@@ -8,30 +8,28 @@ import loopIcon from '@/loop-chat-icon.svg';
 import { useSelector } from 'react-redux';
 // import 'antd/dist/antd.css'; временно удалено
 // import { StyleProvider } from '@ant-design/cssinjs';
-import {socket} from '../../../app/(root)/chat/socket'
-import {useGetUserChatsQuery} from '@/redux'
+import { socket } from '../../../app/(root)/chat/socket';
+import { useGetUserChatsQuery } from '@/redux';
 import Link from 'next/link';
 
-
 const ChatSidebar: FC = () => {
-
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [chats, setChats] = useState<any[]>([])
+  const [chats, setChats] = useState<any[]>([]);
 
   //@ts-ignore
-  const decodedToken = useSelector(state => state.auth.decodedToken);
+  const decodedToken = useSelector((state) => state.auth.decodedToken);
   //@ts-ignore
-  const {data, isLoading} = useGetUserChatsQuery(decodedToken?.id)
+  const { data, isLoading } = useGetUserChatsQuery(decodedToken?.id);
 
-  interface sender  {
-    id: number,
-    name: string,
-    UT: string,
-    avatar: string,
-    about: string,
-    registeredAt: Date,
-    role: string,
-    status: string
+  interface sender {
+    id: number;
+    name: string;
+    UT: string;
+    avatar: string;
+    about: string;
+    registeredAt: Date;
+    role: string;
+    status: string;
   }
 
   interface Message {
@@ -58,38 +56,37 @@ const ChatSidebar: FC = () => {
 
   useEffect(() => {
     if (data) {
-      socket.emit('join room', data.chats.map((chat: Chat) => chat.id));
-      
+      socket.emit(
+        'join room',
+        data.chats.map((chat: Chat) => chat.id),
+      );
+
       const modifiedChats = data.chats.map((chat: Chat) => ({
         chatId: chat.id,
         user: chat.users.find((user: IUser) => user.id !== decodedToken?.id)?.name || 'Unknown',
         avatar: chat.users.find((user: IUser) => user.id !== decodedToken?.id)?.avatar || null,
         lastMessage: chat.messages.length > 0 ? chat.messages[chat.messages.length - 1].text : null,
-        createdAt: chat.messages.length > 0 ? chat.messages[chat.messages.length - 1].createdAt : null
+        createdAt:
+          chat.messages.length > 0 ? chat.messages[chat.messages.length - 1].createdAt : null,
       }));
       setChats(modifiedChats);
     }
   }, [data]);
 
-
   return (
-<aside className={styles.sidebar}>
+    <aside className={styles.sidebar}>
       <div className={styles.middleSide}>
         <div className={styles.chatSelect}>
-          <div className={styles.findUser}>
-          </div>
+          <div className={styles.findUser}></div>
           {isLoading ? (
             <div className={styles.textCenter}>Loading...</div>
           ) : (
-              chats.map((chat, index) => (
-            <Link href={`/chat/${chat.chatId}`} key={index}>
-              <UserChatItem  
-                avatar={chat.avatar}
-                chatId={chat.chatId}
-              />
-            </Link>
-          ))
-        )}
+            chats.map((chat, index) => (
+              <Link href={`/chat/${chat.chatId}`} key={index}>
+                <UserChatItem avatar={chat.avatar} chatId={chat.chatId} />
+              </Link>
+            ))
+          )}
         </div>
       </div>
     </aside>

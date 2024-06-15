@@ -1,10 +1,10 @@
 .container {
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 .header {
-  height: 80px;
+  height: 108px;
   margin-bottom: 20px;
   padding-top: 10px;
   padding-top: 20px;
@@ -13,7 +13,7 @@
 
   .header_content {
     position: relative;
-    margin: 0 45px;
+    margin: 10px 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +25,7 @@
 
       .cartLink {
         color: white;
-        margin-left: 180px;
+        margin-left: 130px;
         position: relative;
         cursor: pointer;
 
@@ -34,7 +34,7 @@
           width: 160px;
           border-radius: 10px;
           background: #1886d0;
-          top: -32px;
+          top: -46px;
           left: -27px;
           z-index: 1;
         }
