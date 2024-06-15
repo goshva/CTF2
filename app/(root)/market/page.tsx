@@ -74,12 +74,9 @@ const MarketPage: NextPage = () => {
     <div className={styles.mainContainer}>
       <div className="flex">
         <div className={styles.aside}>
-          <UserInfo />
-          <MarketSidebar />
         </div>
         <section className="">
           <MarketHeader />
-
           <div className={styles.textCenter}>
             <div className={styles.container}>{renderCards(fakeData)}</div>
           </div>
