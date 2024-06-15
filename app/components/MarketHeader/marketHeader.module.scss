@@ -83,6 +83,13 @@
     border: 1px solid #3A4340;
     margin-bottom: 10px;
     display: inline;
+    &:hover {
+        border: 1px solid #1886D0;
+      }
+    
+      &:active {
+        background: #0F629A;
+      }
   }
 }
 
