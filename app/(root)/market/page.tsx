@@ -1,23 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './market.module.scss';
-import { NextPage } from 'next';
 import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import index from '@/components/ProductCard';
 import MarketSidebar from '@/components/MarketSidebar';
 import { IProduct } from '@/index';
-import iconCart from '../../../public/Icons-basket.svg'
-import iconPrice from '../../../public/icons-price.svg'
+import iconCart from '../../../public/Icons-basket.svg';
+import iconPrice from '../../../public/icons-price.svg';
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
+import fakeData from './fakeData';
 
-
-
-export const metadata: Metadata ={
-  title:"Market"
-}
+export const metadata: Metadata = {
+  title: 'Market',
+};
 
 //Пример data для карточек продуктов
 const products = [
@@ -39,9 +37,14 @@ const products = [
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className={styles.card}>
-
       <div>
-        <Image className={styles.productImg} src={product.image} alt={product.alt} width={200} height={200} />
+        <Image
+          className={styles.productImg}
+          src={product.image}
+          alt={product.alt}
+          width={200}
+          height={200}
+        />
       </div>
 
       <div className={styles.title}>
@@ -49,25 +52,23 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
       </div>
 
       <div className={styles.price}>
-        <span>
-          {product.price}
-        </span>
-        <Image src={iconPrice} alt='iconPrice' width={20} height={20} />
+        <span>{product.price}</span>
+        <Image src={iconPrice} alt="iconPrice" width={20} height={20} />
       </div>
 
-      <button type="button" className={styles.buying}>
-        <Image src={iconCart} alt='icon-basket' width={29} height={29} />
-        <p>Add to cart</p>
-      </button>
+      <div className={styles.btnBorder}>
+        <button type="button" className={styles.buying}>
+          <Image src={iconCart} alt="icon-basket" width={29} height={29} />
+          <p>Add to cart</p>
+        </button>
+      </div>
     </div>
   );
 };
 const MarketPage: NextPage = () => {
-  const renderCards = () => {
-    const cards: JSX.Element[] = [];
-    for (let i = 0; i < 20; i++) {
-      cards.push(<ProductCard key={i} product={products[i % products.length]} />);
-    }
+  const renderCards = (data: IProduct[]) => {
+    const cards: JSX.Element[] = data.map((product: IProduct, index: number) => (<ProductCard key={index} product={product} />));
+
     return cards;
   };
 
@@ -75,14 +76,11 @@ const MarketPage: NextPage = () => {
     <div className={styles.mainContainer}>
       <div className="flex">
         <div className={styles.aside}>
-          <UserInfo />
-          <MarketSidebar />
         </div>
         <section className="">
           <MarketHeader />
-
           <div className={styles.textCenter}>
-            <div className={styles.container}>{renderCards()}</div>
+            <div className={styles.container}>{renderCards(fakeData)}</div>
           </div>
         </section>
       </div>

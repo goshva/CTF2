@@ -3,8 +3,8 @@ import styles from './UserProfile.module.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Profile"
-}
+    title: 'Profile',
+};
 
 const UserProfile = () => {
     return (

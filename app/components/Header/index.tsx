@@ -19,8 +19,10 @@ import languageIcon from '../../../public/no-active-language.svg';
 // когда активны
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
 import activeLanguageIcon from '../../../public/active-language.svg';
+import { usePathname } from 'next/navigation';
 
 const Header: FC = () => {
+  const path = usePathname();
   const [openLink, setOpenLink] = useState(false);
   const [openInput, setOpenInput] = useState(false);
   const [openLanugageSelector, setOpenLanguageSelector] = useState(false);
@@ -74,7 +76,9 @@ const Header: FC = () => {
               onClick={() => setOpenLink(!openLink)}
               href={openLink ? '/' : '/market'}
               className={styles.cartLink}>
-              <div style={{ height: openLink ? '82px' : '22px' }} className={styles.openLink}></div>
+              <div
+                style={{ height: openLink || path === '/market' ? '97px' : '22px' }}
+                className={styles.openLink}></div>
               <h1>MARKET</h1>
             </Link>
           </div>

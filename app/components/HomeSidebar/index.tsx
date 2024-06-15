@@ -1,6 +1,7 @@
 'use client';
 
-import { FC, useState, useEffect } from 'react';
+import clsx from 'clsx';
+import { FC, useState, useEffect, ChangeEvent } from 'react';
 import styles from './sidebar.module.scss';
 import profileAvatar from '../../../public/profile.svg';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ import plusIcon from '../../../public/plus.svg';
 import minusIcon from '../../../public/minus.svg';
 import { Badge, Menu } from 'antd';
 import type { InputNumberProps } from 'antd';
-import { Col, InputNumber, Row, Slider, Space } from 'antd';
+import { Col, Row, Input, InputNumber, Slider, Space, Checkbox } from 'antd';
 import { Button, Flex } from 'antd';
 import steamIcon from '../../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
@@ -24,6 +25,7 @@ import LogOutIcon from '../../../public/logout.svg';
 import tgIcon from '@/Telegram.png';
 import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
+import checkedIcon from '@/checked-icon.svg';
 
 // new icons
 import homeIcon from '../../../public/home-new-icon.svg';
@@ -31,10 +33,69 @@ import profileIcon from '../../../public/profile-new-icon.svg';
 import messengerIcon from '../../../public/messenger-new-icon.svg';
 import bookMarkIcon from '../../../public/bookmark-new-icon.svg';
 
-const HomeSidebar: FC = () => {
+const MarketSidebar: FC = () => {
   const path = usePathname();
+  const [filters, setFilters] = useState({
+    minPrice: 0,
+    maxPrice: 2000,
+    about15min: false,
+    instantly: false,
+    colors: [],
+  });
 
-  console.log('path', path);
+  const isMarket = (): boolean => path === '/market';
+
+  const onChangeStart = (value: number[]) => {
+    const [min, max] = Array.isArray(value) ? value : [value, value];
+
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      minPrice: min,
+      maxPrice: max,
+    }));
+  };
+
+  /* const onChangeComplete = (value: number | number[]) => {
+    const maxPrice = Array.isArray(value) ? value[0] : value;
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      maxPrice: maxPrice,
+    }))
+  };
+ */
+  const onChangeInputStart = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      minPrice: Number(value),
+    }));
+  };
+
+  const onChangeInputComplete = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      maxPrice: Number(value),
+    }));
+  };
+
+  const checkedAbout = (event: ChangeEvent<HTMLInputElement>) => {
+    const checkedValue = event.target.checked;
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      about15min: checkedValue,
+    }));
+  };
+
+  const checkedInstantly = (event: ChangeEvent<HTMLInputElement>) => {
+    const checkedValue = event.target.checked;
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      instantly: checkedValue,
+    }));
+  };
+
+  console.log(filters);
 
   return (
     <aside className={styles.sidebar}>
@@ -45,7 +106,7 @@ const HomeSidebar: FC = () => {
           </div>
           <nav className={styles.router_section}>
             <ul className={styles.links}>
-              {path == '/' ? (
+              {path === '/' ? (
                 <Link href="/">
                   <li
                     style={{ backgroundColor: '#161918', color: '#0F629A' }}
@@ -117,12 +178,104 @@ const HomeSidebar: FC = () => {
             </ul>
           </nav>
         </div>
-        <footer className={styles.downFilter}>
-          <h1>FILTER</h1>
-        </footer>
+        <div className={styles.filterContainer}>
+          <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
+            <h3>FILTER</h3>
+          </div>
+          <form className={clsx(styles.filters, isMarket() && styles.filters__active)}>
+            <div className={styles.filterBox}>
+              <div className={styles.bigInputBox}>
+                <Input
+                  variant="borderless"
+                  className={clsx(styles.filterInput, styles.priceInput)}
+                  placeholder="Price"
+                />
+              </div>
+
+              <div className={styles.sliderInputsBox}>
+                <Input
+                  value={filters.minPrice}
+                  onChange={onChangeInputStart}
+                  className={clsx(styles.filterInput, styles.antInputNumber)}
+                />
+                <b>-</b>
+                <Input
+                  value={filters.maxPrice}
+                  onChange={onChangeInputComplete}
+                  className={clsx(styles.filterInput, styles.antInputNumber)}
+                />
+              </div>
+
+              <div className={styles.sliderBox}>
+                <Slider
+                  range
+                  step={1}
+                  min={50}
+                  max={2000}
+                  defaultValue={[2000, 2000]}
+                  onChange={onChangeStart}
+                  value={[filters.minPrice, filters.maxPrice]}
+                />
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <Input
+                  variant="borderless"
+                  className={clsx(styles.filterInput, styles.priceInput)}
+                  placeholder="Delivery speed"
+                />
+              </div>
+
+              <div className={styles.checkboxContainer}>
+                <label htmlFor="instantly" className={styles.customCheckbox}>
+                  <input
+                    checked={filters.instantly}
+                    onChange={checkedInstantly}
+                    name="instantly"
+                    type="checkbox"
+                    id="instantly"
+                    className={styles.hiddenCheckbox}
+                  />
+                  <div className={styles.checkbox}>
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
+                  </div>
+                  <span>Instantly</span>
+                </label>
+                <label htmlFor="delayed" className={styles.customCheckbox}>
+                  <input
+                    checked={filters.about15min}
+                    onChange={checkedAbout}
+                    name="delayed"
+                    type="checkbox"
+                    id="delayed"
+                    className={styles.hiddenCheckbox}
+                  />
+                  <div className={styles.checkbox}>
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
+                  </div>
+                  <span>About 15 min.</span>
+                </label>
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <div id="colorList" className={styles.colorList}>
+                  <span className={styles.btnName}>Color</span>
+                  <span className={styles.plusSymbol}>+</span>
+                </div>
+              </div>
+
+              <div className={styles.bigInputBox}>
+                <div id="colorList" className={styles.colorList}>
+                  <span className={styles.btnName}>Rarity</span>
+                  <span className={styles.plusSymbol}>+</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </aside>
   );
 };
 
-export default HomeSidebar;
+export default MarketSidebar;
