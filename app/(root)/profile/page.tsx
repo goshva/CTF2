@@ -54,15 +54,15 @@ const UserProfile = () => {
                         <div className={styles.contentAndActions}>
                             <div className={`${styles.productSection} overflow-auto`}>
                                 <div className={styles.productCards}>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
-                                    <div className={styles.productCard}>Карточка товара</div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
                                 </div>
                             </div>
                             <div className={styles.actionsWithSkins}>

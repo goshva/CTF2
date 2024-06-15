@@ -16,12 +16,12 @@ import { Metadata } from 'next';
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
-export const metadata: Metadata ={
-  title:{
-    absolute: "",
-    default: "",
-  }
-}
+// export const metadata: Metadata = {
+//   title: {
+//     absolute: "",
+//     default: "",
+//   }
+// }
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   return (
