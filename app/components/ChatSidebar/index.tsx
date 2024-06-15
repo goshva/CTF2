@@ -77,26 +77,19 @@ const ChatSidebar: FC = () => {
       <div className={styles.middleSide}>
         <div className={styles.chatSelect}>
           <div className={styles.findUser}>
-            {/* Контент для findUser */}
           </div>
           {isLoading ? (
             <div className={styles.textCenter}>Loading...</div>
           ) : (
-            <div>
-              <Link href={`/chat/1`}>
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-                <UserChatItem />
-              </Link>
-              
-            </div>
-          )}
+              chats.map((chat, index) => (
+            <Link href={`/chat/${chat.chatId}`} key={index}>
+              <UserChatItem  
+                avatar={chat.avatar}
+                chatId={chat.chatId}
+              />
+            </Link>
+          ))
+        )}
         </div>
       </div>
     </aside>
