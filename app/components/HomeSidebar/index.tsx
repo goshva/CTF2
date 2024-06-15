@@ -27,7 +27,6 @@ import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
 import checkedIcon from '@/checked-icon.svg';
 
-
 // new icons
 import homeIcon from '../../../public/home-new-icon.svg';
 import profileIcon from '../../../public/profile-new-icon.svg';
@@ -42,20 +41,18 @@ const MarketSidebar: FC = () => {
     about15min: false,
     instantly: false,
     colors: [],
-  })
+  });
 
-
-  const isMarket = (): boolean => path === '/market'
+  const isMarket = (): boolean => path === '/market';
 
   const onChangeStart = (value: number[]) => {
     const [min, max] = Array.isArray(value) ? value : [value, value];
-
 
     setFilters((prevFilters: typeof filters) => ({
       ...prevFilters,
       minPrice: min,
       maxPrice: max,
-    }))
+    }));
   };
 
   /* const onChangeComplete = (value: number | number[]) => {
@@ -87,7 +84,7 @@ const MarketSidebar: FC = () => {
     setFilters((prevFilters: typeof filters) => ({
       ...prevFilters,
       about15min: checkedValue,
-    }))
+    }));
   };
 
   const checkedInstantly = (event: ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +92,7 @@ const MarketSidebar: FC = () => {
     setFilters((prevFilters: typeof filters) => ({
       ...prevFilters,
       instantly: checkedValue,
-    }))
+    }));
   };
 
   console.log(filters);
@@ -109,7 +106,7 @@ const MarketSidebar: FC = () => {
           </div>
           <nav className={styles.router_section}>
             <ul className={styles.links}>
-              {path == '/' ? (
+              {path === '/' ? (
                 <Link href="/">
                   <li
                     style={{ backgroundColor: '#161918', color: '#0F629A' }}
@@ -182,26 +179,31 @@ const MarketSidebar: FC = () => {
           </nav>
         </div>
         <div className={styles.filterContainer}>
-          <div className={clsx(
-            styles.filterTitle,
-            !isMarket() && styles.filterTitle__disabled
-          )}>
+          <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
             <h3>FILTER</h3>
           </div>
-          <form className={clsx(
-            styles.filters,
-            isMarket() && styles.filters__active
-          )}>
+          <form className={clsx(styles.filters, isMarket() && styles.filters__active)}>
             <div className={styles.filterBox}>
-
               <div className={styles.bigInputBox}>
-                <Input variant="borderless" className={clsx(styles.filterInput, styles.priceInput)} placeholder="Price" />
+                <Input
+                  variant="borderless"
+                  className={clsx(styles.filterInput, styles.priceInput)}
+                  placeholder="Price"
+                />
               </div>
 
               <div className={styles.sliderInputsBox}>
-                <Input value={filters.minPrice} onChange={onChangeInputStart} className={clsx(styles.filterInput, styles.antInputNumber)} />
+                <Input
+                  value={filters.minPrice}
+                  onChange={onChangeInputStart}
+                  className={clsx(styles.filterInput, styles.antInputNumber)}
+                />
                 <b>-</b>
-                <Input value={filters.maxPrice} onChange={onChangeInputComplete} className={clsx(styles.filterInput, styles.antInputNumber)} />
+                <Input
+                  value={filters.maxPrice}
+                  onChange={onChangeInputComplete}
+                  className={clsx(styles.filterInput, styles.antInputNumber)}
+                />
               </div>
 
               <div className={styles.sliderBox}>
@@ -217,21 +219,39 @@ const MarketSidebar: FC = () => {
               </div>
 
               <div className={styles.bigInputBox}>
-                <Input variant="borderless" className={clsx(styles.filterInput, styles.priceInput)} placeholder="Delivery speed" />
+                <Input
+                  variant="borderless"
+                  className={clsx(styles.filterInput, styles.priceInput)}
+                  placeholder="Delivery speed"
+                />
               </div>
 
               <div className={styles.checkboxContainer}>
                 <label htmlFor="instantly" className={styles.customCheckbox}>
-                  <input checked={filters.instantly} onChange={checkedInstantly} name="instantly" type="checkbox" id="instantly" className={styles.hiddenCheckbox} />
+                  <input
+                    checked={filters.instantly}
+                    onChange={checkedInstantly}
+                    name="instantly"
+                    type="checkbox"
+                    id="instantly"
+                    className={styles.hiddenCheckbox}
+                  />
                   <div className={styles.checkbox}>
-                    <Image className={styles.checkedIcon} src={checkedIcon} alt='checkedIcon' />
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
                   </div>
                   <span>Instantly</span>
                 </label>
                 <label htmlFor="delayed" className={styles.customCheckbox}>
-                  <input checked={filters.about15min} onChange={checkedAbout} name="delayed" type="checkbox" id="delayed" className={styles.hiddenCheckbox} />
+                  <input
+                    checked={filters.about15min}
+                    onChange={checkedAbout}
+                    name="delayed"
+                    type="checkbox"
+                    id="delayed"
+                    className={styles.hiddenCheckbox}
+                  />
                   <div className={styles.checkbox}>
-                    <Image className={styles.checkedIcon} src={checkedIcon} alt='checkedIcon' />
+                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
                   </div>
                   <span>About 15 min.</span>
                 </label>
