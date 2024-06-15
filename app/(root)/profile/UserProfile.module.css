@@ -1,7 +1,7 @@
 .container {
-  background-color: #1a1a1a;
+  background-color: transparent;
   color: #fff;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@
 
 .userProfile {
   width: 571px;
-  height: 58px;
+  height: 50px;
   background: #181819;
   display: flex;
   border-radius: 0px 10px 0px 10px;
@@ -102,7 +102,7 @@
 .otherProfile {
   width: 570px;
   background-color: #3a4340;
-  border-radius: 10px;
+  border-radius: 16px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -119,7 +119,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 250px;
+  height: 200px;
   width: 571px;
 }
 
@@ -233,7 +233,7 @@
   flex-direction: column;
   flex: 1;
   background-color: #3a4340;
-  max-height: 365px;
+  max-height: 388px;
   width: 571px;
   overflow-y: auto; /* Добавляем вертикальную прокрутку */
   position: relative;
@@ -330,4 +330,35 @@
 .actionsSellSkins {
   height: 70px;
   width: 100%;
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 5px;
+  }
+
+  .profilesAndBalance {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profileInfo,
+  .otherProfile,
+  .userProfile,
+  .productSection {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .productCards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .balance,
+  .actions,
+  .actionsWithSkins {
+    width: 100%;
+    max-width: 100%;
+  }
 }
