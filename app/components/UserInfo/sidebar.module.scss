@@ -1,7 +1,7 @@
 .sidebar {
   grid-column: 1 / 2;
   grid-row: 2 / 4;
-  margin-bottom: 20px;
+
   color: white;
 
   .profileSection {
@@ -12,7 +12,7 @@
     margin-left: 35px;
     border: 2px solid black;
     position: relative;
-    margin-bottom: 20px;
+
 
     .userInfo_container {
       width: 100%;
