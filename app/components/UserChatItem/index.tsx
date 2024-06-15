@@ -4,12 +4,16 @@ import styles from './user-item.module.scss';
 
 
 
+interface UserChatItemProps {
+  chatId: string;
+  avatar: string;
+}
 
-const UserChatItem = () => {
+const UserChatItem: React.FC<UserChatItemProps> = (props) => {
   return (
     <div className={styles.userItem}>
       <div className={styles.item}>
-        <Image src='/avatar.png' alt="avatar" width={60} height={60}/>
+        <Image src={props.avatar} alt="avatar" width={60} height={60}/>
       </div>
     </div>
   );

@@ -138,12 +138,14 @@ function ChatWindow() {
               <div className={styles.wrapper}>
                 <ChatSidebar />
                 <div className={styles.chat} ref={chatRef}>
-                    <Message own={true}/>
-                    <Message own={false}/>
-                    <Message own={true}/>
-                    <Message own={false}/>
-                    <Message own={true}/>
-                    <Message own={false}/>
+                {AllMessages.map((msg, index) => (
+                    <Message
+                      key={index}
+                      messageValue={msg.text}
+                      avatar={msg.sender.avatar}
+                      own={msg.senderId === decodedToken?.id}
+                    />
+                  ))}
                 </div>
                 <section className={styles.input}>
                   <div className={styles.icons}>
