@@ -12,6 +12,7 @@ import iconCart from '../../../public/Icons-basket.svg'
 import iconPrice from '../../../public/icons-price.svg'
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
+import fakeData from './fakeData';
 
 
 
@@ -63,11 +64,9 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   );
 };
 const MarketPage: NextPage = () => {
-  const renderCards = () => {
-    const cards: JSX.Element[] = [];
-    for (let i = 0; i < 20; i++) {
-      cards.push(<ProductCard key={i} product={products[i % products.length]} />);
-    }
+  const renderCards = (data: IProduct[]) => {
+    const cards: JSX.Element[] = data.map((product: IProduct, index: number) => (<ProductCard key={index} product={product} />));
+
     return cards;
   };
 
@@ -82,7 +81,7 @@ const MarketPage: NextPage = () => {
           <MarketHeader />
 
           <div className={styles.textCenter}>
-            <div className={styles.container}>{renderCards()}</div>
+            <div className={styles.container}>{renderCards(fakeData)}</div>
           </div>
         </section>
       </div>
