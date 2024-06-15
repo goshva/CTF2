@@ -83,15 +83,17 @@ const ChatSidebar: FC = () => {
             <div className={styles.textCenter}>Loading...</div>
           ) : (
             <div>
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
-              <UserChatItem />
+              <Link href={`/chat/1`}>
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+                <UserChatItem />
+              </Link>
               
             </div>
           )}
