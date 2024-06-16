@@ -5,14 +5,14 @@
   color: white;
 
   .profileSection {
-    width: 320px;
-    height: 265px;
+    width: 275px;
+    // height: 265px;
+    height: 250px;
     background-color: #3a4340;
     border-radius: 16px;
-    margin-left: 35px;
+    // margin-left: 35px;
     border: 2px solid black;
     position: relative;
-
 
     .userInfo_container {
       width: 100%;
@@ -45,7 +45,7 @@
 
     .loginContent {
       padding-left: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
 
       .login_btn {
         width: 169px;
