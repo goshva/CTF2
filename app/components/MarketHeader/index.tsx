@@ -15,7 +15,7 @@ const MarketHeader: FC = () => {
     <section className={styles.mainContainer}>
       <nav className={styles.navBox}>
         <ul className={styles.marketNav}>
-          <div className={styles.linkBorder}>
+          <div className={clsx(styles.linkBorder, styles.linkBorder__active)}>
             <li className={clsx(styles.navItem, styles.navItem__active)}>
               <Link href="#">Market</Link>
             </li>

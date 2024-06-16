@@ -179,8 +179,10 @@ const MarketSidebar: FC = () => {
           </nav>
         </div>
         <div className={styles.filterContainer}>
-          <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
-            <h3>FILTER</h3>
+          <div className={styles.titleBorder}>
+            <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
+              <h3>FILTER</h3>
+            </div>
           </div>
           <div className={clsx(styles.filters, isMarket() && styles.filters__active)}>
             <div className={styles.filterBox}>
