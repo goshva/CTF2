@@ -164,7 +164,9 @@ function HomeContent() {
         </div>
 
         {/* Контейнер для постов */}
-        <div style={{ marginTop: '-40px' }} className={styles.postsWrapper}>
+        <div
+          style={{ marginTop: '-40px', height: isFocused ? '22vh' : '' }}
+          className={styles.postsWrapper}>
           <div className={styles.posts_section}>
             {data.map((post: PostFake) => (
               <PostCard key={post.id} post={post} />
