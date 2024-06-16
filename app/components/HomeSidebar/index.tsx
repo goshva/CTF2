@@ -182,7 +182,7 @@ const MarketSidebar: FC = () => {
           <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
             <h3>FILTER</h3>
           </div>
-          <form className={clsx(styles.filters, isMarket() && styles.filters__active)}>
+          <div className={clsx(styles.filters, isMarket() && styles.filters__active)}>
             <div className={styles.filterBox}>
               <div className={styles.bigInputBox}>
                 <Input
@@ -271,7 +271,7 @@ const MarketSidebar: FC = () => {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </aside>
