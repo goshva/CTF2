@@ -3,6 +3,7 @@ import { postApi } from './api/postApi';
 import { steamApi } from './api/steamApi';
 import { chatApi } from './api/chatApi';
 import authReducer from './authSlice';
+import filtersReducer from './marketFilterSlice'
 
 // Комбинируем все редукторы в один корневой редуктор
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   [steamApi.reducerPath]: steamApi.reducer,
   [chatApi.reducerPath]: chatApi.reducer,
   auth: authReducer,
+  marketFilters: filtersReducer,
 });
 
 export const store = configureStore({
