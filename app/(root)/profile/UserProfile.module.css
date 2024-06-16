@@ -280,7 +280,7 @@
 /* Используем псевдоэлементы для создания отступов */
 .productSection::-webkit-scrollbar-track:before,
 .productSection::-webkit-scrollbar-track:after {
-  content: "";
+  content: '';
   display: block;
   height: 20px; /* Высота отступа */
   background: transparent;
