@@ -4,10 +4,31 @@
   .middleSide {
     position: relative;
     width: 275px;
-    height: 388px;
+    overflow-y: scroll;
+    // height: 388px;
+    height: 338px;
     background: #3a4340;
     border-radius: 0px 10px 15px 15px;
     border: 1px solid black;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
   }
 }
 
@@ -16,6 +37,7 @@
   .webTitle {
     display: flex;
     justify-content: center;
+    cursor: pointer;
     align-items: center;
     width: 100%;
     height: 58px;
@@ -27,10 +49,14 @@
 
     &:hover {
       border: 1px solid #42b5ff;
+
+      h2 {
+        color: #42b5ff;
+      }
     }
 
     h2 {
-      color: #42b5ff;
+      color: white;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
@@ -38,10 +64,10 @@
   }
 
   .router_section {
-    background-color: #232927;
-    border-radius: 10px;
     width: 255px;
     height: 260px;
+    background-color: #232927;
+    border-radius: 10px;
     margin: 10px auto 10px auto;
     padding: 20px;
     box-shadow: 4px 4px 20px 0px #04040440 inset;

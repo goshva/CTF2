@@ -3,7 +3,7 @@
   grid-row: 1 / 4;
   margin-right: 20px;
   margin-left: 10px;
-  color: #D9D9D9;
+  color: #d9d9d9;
 
   .middleSide {
     position: relative;
@@ -83,7 +83,7 @@
   h3 {
     font-size: 16px;
     font-weight: 700;
-    color: #D9D9D9
+    color: #d9d9d9;
   }
 }
 
@@ -122,7 +122,7 @@
     background: none;
   }
   &::-webkit-scrollbar-thumb {
-    background: #D9D9D9;
+    background: #d9d9d9;
     border-radius: 10px;
     cursor: pointer;
   }
@@ -148,7 +148,7 @@
     font-size: 18px;
     line-height: 18px;
     padding-left: 10px;
-    color: #D9D9D9;
+    color: #d9d9d9;
   }
 }
 .priceInput:focus::placeholder {
@@ -156,7 +156,7 @@
 }
 
 .antInputNumber {
-  border: 1px solid #3A4340;
+  border: 1px solid #3a4340;
   border-radius: 5px;
   width: 79px;
   height: 27px;
@@ -176,15 +176,15 @@
 }
 
 .filterInput {
-  color: #D9D9D9;
-  background: #1C1C1C;
+  color: #d9d9d9;
+  background: #1c1c1c;
   &:hover {
-    background: #3A4340;
+    background: #3a4340;
   }
 
   &:focus {
-    background: #1C1C1C;
-    border: 1px solid #0F629A;
+    background: #1c1c1c;
+    border: 1px solid #0f629a;
   }
 }
 
@@ -203,16 +203,15 @@
   margin-bottom: 10px;
 }
 
-
 .customCheckbox {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
   input:checked + .checkbox {
-    border: 1px solid #0F629A;
+    border: 1px solid #0f629a;
     .checkedIcon {
-        display: block;
-      }
+      display: block;
+    }
   }
 }
 
@@ -222,7 +221,7 @@
   border-radius: 5px;
   width: 30px;
   height: 30px;
-  border: 1px solid #3A4340;
+  border: 1px solid #3a4340;
   background: #181819;
   display: flex;
   align-items: center;
@@ -246,7 +245,7 @@
   border-radius: 10px;
   width: 215px;
   height: 39px;
-  background: #3A4340;
+  background: #3a4340;
   display: flex;
   align-items: center;
   justify-content: space-between;
