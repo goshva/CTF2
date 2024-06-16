@@ -26,6 +26,8 @@ import tgIcon from '@/Telegram.png';
 import vcIcon from '@/Vk.png';
 import youtubeIcon from '@/youtube.png';
 import checkedIcon from '@/checked-icon.svg';
+import { setStateFilters, getFilters } from '@/redux/marketFilterSlice';
+import { useDispatch } from 'react-redux';
 
 // new icons
 import homeIcon from '../../../public/home-new-icon.svg';
@@ -33,7 +35,9 @@ import profileIcon from '../../../public/profile-new-icon.svg';
 import messengerIcon from '../../../public/messenger-new-icon.svg';
 import bookMarkIcon from '../../../public/bookmark-new-icon.svg';
 
+
 const MarketSidebar: FC = () => {
+  const dispatch = useDispatch();
   const path = usePathname();
   const [filters, setFilters] = useState({
     minPrice: 0,
@@ -42,6 +46,11 @@ const MarketSidebar: FC = () => {
     instantly: false,
     colors: [],
   });
+  const [isActiveFilters, setIsActiveFilters] = useState(false);
+
+  useEffect(() => {
+    dispatch(setStateFilters(filters))
+  }, [filters])
 
   const isMarket = (): boolean => path === '/market';
 
@@ -94,8 +103,6 @@ const MarketSidebar: FC = () => {
       instantly: checkedValue,
     }));
   };
-
-  console.log(filters);
 
   return (
     <aside className={styles.sidebar}>
@@ -179,12 +186,17 @@ const MarketSidebar: FC = () => {
           </nav>
         </div>
         <div className={styles.filterContainer}>
-          <div className={styles.titleBorder}>
-            <div className={clsx(styles.filterTitle, !isMarket() && styles.filterTitle__disabled)}>
+          <button
+            onClick={() => setIsActiveFilters(!isActiveFilters)}
+            disabled={!isMarket()}
+            type="button"
+            className={clsx(styles.titleBorder, isActiveFilters && isMarket() && styles.titleBorder__active)}
+          >
+            <div className={clsx(styles.filterTitle, isActiveFilters && isMarket() && styles.filterTitle__active)}>
               <h3>FILTER</h3>
             </div>
-          </div>
-          <div className={clsx(styles.filters, isMarket() && styles.filters__active)}>
+          </button>
+          <div className={clsx(styles.filters, isActiveFilters && isMarket() && styles.filters__active)}>
             <div className={styles.filterBox}>
               <div className={styles.bigInputBox}>
                 <Input
