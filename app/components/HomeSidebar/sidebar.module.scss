@@ -25,6 +25,7 @@
     text-align: center;
     margin-bottom: 10px;
 
+
     &:hover {
       border: 1px solid #42b5ff;
     }
@@ -68,22 +69,37 @@
   }
 }
 
-.filterTitle {
+.titleBorder {
+  width: 100%;
+  height: 58px;
+  padding: 1px;
+  background: #1c1c1c;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 58px;
-  background: #1c1c1c;
   border-radius: 0 10px;
-  margin-bottom: 10px;
-
-  h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #d9d9d9;
+  .filterTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #1c1c1c;
+    border-radius: 0 10px;
+    &:active {
+      background: #0F629A;
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #d9d9d9;
+    }
+  }
+  &:hover {
+    background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%);
   }
 }
+
 
 .filterTitle__disabled {
   border-radius: 0 0 10px 10px;
@@ -99,6 +115,7 @@
 .filterContainer {
   display: flex;
   flex-direction: column;
+  background: #3a4340;
 }
 
 .filters {
@@ -108,14 +125,14 @@
 .filters__active {
   flex-direction: column;
   display: flex;
-  padding: 0 10px;
+  padding: 10px;
+  height: auto;
 }
 
 .filterBox {
   box-shadow: inset 4px 4px 20px 0 rgba(4, 4, 4, 0.25);
   background: #232927;
   border-radius: 10px;
-  margin-bottom: 10px;
   padding: 20px 10px;
   width: 100%;
   max-height: 370px;

@@ -5,21 +5,33 @@ import { Tabs } from 'antd';
 import iconPrice from '../../../public/icons-price.svg'
 import currencyIcon from '../../../public/currencyIcon.svg'
 import iconCart from '../../../public/Icons-basket.svg'
+import Link from 'next/link';
+import clsx from 'clsx';
 
 
 const MarketHeader: FC = () => {
   console.log('')
   return (
     <section className={styles.mainContainer}>
-      <div className={styles.marketNav}>
-        {/* <nav>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </nav> */}
-      </div>
+      <nav className={styles.navBox}>
+        <ul className={styles.marketNav}>
+          <div className={clsx(styles.linkBorder, styles.linkBorder__active)}>
+            <li className={clsx(styles.navItem, styles.navItem__active)}>
+              <Link href="#">Market</Link>
+            </li>
+          </div>
+          <div className={styles.linkBorder}>
+            <li className={styles.navItem}>
+              <Link href="#">Sell skin</Link>
+            </li>
+          </div>
+          <div className={styles.linkBorder}>
+            <li className={styles.navItem}>
+              <Link href="#">Story</Link>
+            </li>
+          </div>
+        </ul>
+      </nav>
       <div className={styles.cartBox}>
         <div className={styles.balance}>
           <div className={styles.balanceTitle}>
