@@ -5,7 +5,6 @@ import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import { Metadata, NextPage } from 'next';
 import index from '@/components/ProductCard';
-import MarketSidebar from '@/components/MarketSidebar';
 import { IProduct } from '@/index';
 import iconCart from '../../../public/Icons-basket.svg';
 import iconPrice from '../../../public/icons-price.svg';
@@ -75,8 +74,6 @@ const MarketPage: NextPage = () => {
   return (
     <div className={styles.mainContainer}>
       <div className="flex">
-        <div className={styles.aside}>
-        </div>
         <section className="">
           <MarketHeader />
           <div className={styles.textCenter}>
