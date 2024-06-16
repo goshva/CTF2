@@ -123,7 +123,7 @@ function HomeContent() {
   return (
     <div>
       <div className={styles.homeContent}>
-        <div style={{ height: isFocused ? '280px' : '140px' }} className={styles.inputBorder}>
+        <div style={{ height: isFocused ? '280px' : '120px' }} className={styles.inputBorder}>
           <textarea
             style={{ height: isFocused ? '170px' : '40px' }}
             value={value}
