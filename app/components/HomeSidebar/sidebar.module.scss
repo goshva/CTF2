@@ -86,7 +86,9 @@
     height: 100%;
     background: #1c1c1c;
     border-radius: 0 10px;
-
+    &:active {
+      background: #0F629A;
+    }
     h3 {
       font-size: 16px;
       font-weight: 700;
