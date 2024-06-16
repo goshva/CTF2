@@ -1,4 +1,7 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import styles from './market.module.scss';
 import { Link } from 'lucide-react';
@@ -11,27 +14,14 @@ import iconPrice from '../../../public/icons-price.svg';
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
 import fakeData from './fakeData';
+import { getFilters } from '@/redux/marketFilterSlice'
+import { colorFilter, priceRangeFilter} from '@/lib/utils';
+import Item from 'antd/es/list/Item';
+import { IFilters } from '@/index';
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: 'Market',
 };
-
-//Пример data для карточек продуктов
-const products = [
-  {
-    image: '/anubis.png',
-    alt: 'Product 1',
-    name: 'AK-47',
-    price: '454,98',
-    sellers: [
-      {
-        image: '/box.svg',
-        alt: '',
-        count: 16,
-      },
-    ],
-  },
-];
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
@@ -65,23 +55,33 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   );
 };
 const MarketPage: NextPage = () => {
+  const [filters, setFilters] = useState<IFilters>({
+    minPrice: 0,
+    maxPrice: 2000,
+    about15min: false,
+    instantly: false,
+    colors: [],
+  });
+  const stateFilters = useSelector(getFilters)
+
+  useEffect(() => {
+    setFilters(stateFilters);
+  }, [stateFilters]);
+
   const renderCards = (data: IProduct[]) => {
-    const cards: JSX.Element[] = data.map((product: IProduct, index: number) => (<ProductCard key={index} product={product} />));
+    const cards: JSX.Element[] = data.filter((product) => priceRangeFilter(filters.minPrice, filters.maxPrice, product.price))
+      .map((product: IProduct, index: number) => (<ProductCard key={index} product={product} />));
 
     return cards;
   };
 
   return (
-    <div className={styles.mainContainer}>
-      <div className="flex">
-        <section className="">
-          <MarketHeader />
-          <div className={styles.textCenter}>
-            <div className={styles.container}>{renderCards(fakeData)}</div>
-          </div>
-        </section>
+    <section className={styles.mainContainer}>
+      <MarketHeader />
+      <div className={styles.textCenter}>
+        <div className={styles.container}>{renderCards(fakeData)}</div>
       </div>
-    </div>
+    </section>
   );
 };
 
