@@ -15,15 +15,21 @@ const MarketHeader: FC = () => {
     <section className={styles.mainContainer}>
       <nav className={styles.navBox}>
         <ul className={styles.marketNav}>
-          <li className={clsx(styles.navItem, styles.navItem__active)}>
-            <Link href="#">Market</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="#">Sell skin</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="#">Story</Link>
-          </li>
+          <div className={styles.linkBorder}>
+            <li className={clsx(styles.navItem, styles.navItem__active)}>
+              <Link href="#">Market</Link>
+            </li>
+          </div>
+          <div className={styles.linkBorder}>
+            <li className={styles.navItem}>
+              <Link href="#">Sell skin</Link>
+            </li>
+          </div>
+          <div className={styles.linkBorder}>
+            <li className={styles.navItem}>
+              <Link href="#">Story</Link>
+            </li>
+          </div>
         </ul>
       </nav>
       <div className={styles.cartBox}>
