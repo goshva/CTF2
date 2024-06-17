@@ -107,4 +107,12 @@ interface IProduct {
   }[];
 }
 
-export type { IPost, IUser, IProduct };
+interface IFilters {
+  minPrice: number,
+  maxPrice: number,
+  about15min: boolean,
+  instantly: boolean,
+  colors: string[],
+  }
+
+export type { IPost, IUser, IProduct, IFilters };
