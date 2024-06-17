@@ -142,6 +142,10 @@
     padding-left: 20px;
     grid-column: span 2;
 
+    @media (max-height: 768px) {
+      height: 42vh;
+    }
+
     @media (min-height: 1080px) {
       height: 59vh;
     }

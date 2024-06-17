@@ -105,7 +105,7 @@ const MarketSidebar: FC = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.middleSide}>
+      <div style={{ height: path === '/market' ? '355px' : '' }} className={styles.middleSide}>
         <div className={styles.home_sideBar}>
           <div className={styles.webTitle}>
             <h2>WEBSITE BAR</h2>

@@ -11,6 +11,10 @@
     border-radius: 0px 10px 15px 15px;
     border: 1px solid black;
 
+    @media (max-height: 768px) {
+      height: 310px;
+    }
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -72,6 +76,10 @@
     padding: 20px;
     box-shadow: 4px 4px 20px 0px #04040440 inset;
 
+    @media (max-height: 768px) {
+      height: 230px;
+    }
+
     .links {
       .link {
         display: flex;
@@ -84,6 +92,10 @@
         cursor: pointer;
         transition: 400ms all ease-in;
         font-weight: 500;
+
+        @media (max-height: 768px) {
+          margin-bottom: 10px;
+        }
 
         &:hover {
           background: #3a4340;
