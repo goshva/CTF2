@@ -146,7 +146,7 @@ const MarketSidebar: FC = () => {
                   </li>
                 </Link>
               )}
-              {path === '/chat' ? (
+              {/^\/chat(\/.*)?$/.test(path) ? (
                 <Link href="/chat">
                   <li
                     style={{ backgroundColor: '#161918', color: '#0F629A' }}
@@ -163,7 +163,6 @@ const MarketSidebar: FC = () => {
                   </li>
                 </Link>
               )}
-
               {path === '/favorites' ? (
                 <Link href="/favorites">
                   <li

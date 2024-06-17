@@ -13,7 +13,7 @@ const UserChatItem: React.FC<UserChatItemProps> = (props) => {
   return (
     <div className={styles.userItem}>
       <div className={styles.item}>
-        <Image src={props.avatar} alt="avatar" width={60} height={60}/>
+        <Image className={styles.avatar} src={props.avatar} alt="avatar" width={60} height={60}/>
       </div>
     </div>
   );

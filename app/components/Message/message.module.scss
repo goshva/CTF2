@@ -10,7 +10,7 @@
   p {
     background-color: #0F629A;
     margin: 5px;
-    padding: 10px 15px 10px 15px;
+    padding: 0.5vw 0.5vw 0.5vw 0.5vw;
     max-width: 100%;
     word-wrap: break-word; 
     overflow-wrap: break-word;
@@ -36,6 +36,8 @@
 }
 
 .avatar{
+  height: 3vw;
+  width: 3vw;
   border-radius: 50px;
   flex-shrink: 0;
 }
