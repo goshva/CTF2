@@ -1,6 +1,6 @@
 .friendsBlock {
   margin-top: 0.5vw;
-  margin-left: -6.5vw;
+  margin-left: -6.7vw;
   width: 15vw;
   background: #1c1c1c;
   border-radius: 10px;
@@ -9,27 +9,27 @@
 
 .webTitle {
   display: flex;
-  padding-left: 30px;
-  padding-top: 15px;
+  padding-left: 1vw;
+  padding-top: 0.9vw;
   width: 100%;
-  height: 58px;
+  height: 3.2vw;
   border-radius: 0px 10px 0px 10px;
   background: #1c1c1c;
   border: none;
   text-align: center;
   border: 1px solid #42b5ff;
-  cursor: pointer; /* Добавляем указатель для обозначения кликабельности */
+  cursor: pointer; 
 
   h2 {
     color: #d9d9d9;
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: 700;
   }
 }
 
 .friendsValue {
   opacity: 0.5;
-  margin-left: 7vw;
+  margin-left: 6vw;
   color: #d9d9d9;
 }
 
@@ -38,11 +38,11 @@
   overflow-x: hidden;
   width: 100%;
   max-height: 21vw;
-  transition: max-height 0.5s ease; /* Добавляем плавный переход для изменения максимальной высоты */
+  transition: max-height 0.5s ease; 
 }
 
 .items::-webkit-scrollbar {
-  width: 10px;
+  width: 0.5vw;
   height: 20px;
 }
 
@@ -73,22 +73,4 @@
   margin-top: 15px;
   margin-left: 10px;
   color: #d9d9d9;
-}
-
-@media screen and (max-width: 1750px) {
-  .friendsValue {
-    margin-left: 100%;
-  }
-}
-
-@media screen and (max-width: 1600px) {
-  .friendsValue {
-    margin-left: 80%;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .friendsValue {
-    margin-left: 55%;
-  }
 }

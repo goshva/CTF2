@@ -1,11 +1,17 @@
 .friendItem{
   color: white;
-  min-width: 100px; // Задает фиксированную ширину для каждого элемента
-  flex: 0 0 auto; // Элементы не сжимаются и не растягиваются
-  margin: 0 10px; // Добавляет отступы между элементами
+  min-width: 100px;
+  flex: 0 0 auto; 
+  margin: 0 0.5vw;
 }
 
 .avatar{
+  height: 3vw;
+  width: 3vw;
   text-align: center;
-  margin-left: 15px;
+  margin-left: 0.4vw;
+}
+
+.text{
+  font-size: 0.9vw;
 }

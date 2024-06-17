@@ -115,7 +115,7 @@
 
     /* Стили для скроллбара */
     &::-webkit-scrollbar {
-      width: 10px;
+      width: 0.5vw;
       height: 10px;
     }
 
@@ -136,7 +136,6 @@
   }
 
   .input {
-    padding-left: 10px;
     margin-top: 21vw;
     margin-left: 6vw;
     width: 24vw;
@@ -148,25 +147,22 @@
 
     .icons {
       display: flex;
-      align-items: center;
+      margin-left: 0.4vw;
+      height: 1.3vw;
     }
 
-    .icon {
-      margin-left: 5px;
-    }
 
     .icon:last-child {
-      margin-left: 10px;
+      margin-left: 0.4vw;
     }
 
     .inputBorder {
-      margin-left: 10px;
-      width: 60%;
-      height: 40px;
+      margin-left: 0.5vw;
+      width: 59%;
+      height: 2vw;
       background: #464646;
       border-radius: 30px;
-      padding: 30px;
-      padding-left: 15px;
+      padding: 1vw;
       outline: none;
       border: none;
       padding-top: 0px;
@@ -174,13 +170,13 @@
       position: relative;
 
       input {
-        width: 100%;
+        width: 13vw;
         background: transparent;
         outline: none;
         border: none;
-        padding-top: 10px;
+        padding-top: 0.4vw;
         color: #d9d9d9;
-        font-size: 13px;
+        font-size: 0.8vw;
 
         &::placeholder {
           color: #d9d9d9;
@@ -231,10 +227,11 @@
 
 .sendBtn {
   color: #d9d9d9;
-  margin-left: 10px;
-  height: 35px;
-  font-size: 15px;
-  padding: 5px 10px;
+  margin-right: 0.3vw;
+  margin-left: 0.4vw;
+  height: 2vw;
+  font-size: 0.8vw;
+  padding: 0.2vw 0.7vw;
   background-color: #0f629a;
   border: none;
   border-radius: 10px;
