@@ -4,7 +4,7 @@
   .middleSide {
     position: relative;
     width: 275px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     // height: 388px;
     height: 338px;
     background: #3a4340;
@@ -46,7 +46,6 @@
     border: none;
     text-align: center;
     margin-bottom: 10px;
-
 
     &:hover {
       border: 1px solid #42b5ff;
@@ -99,7 +98,7 @@
   width: 100%;
   height: 58px;
   padding: 1px;
-  background: #474C52;
+  background: #474c52;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,9 +111,9 @@
     background: #1c1c1c;
     margin: 0;
     color: #d9d9d9;
-    
+
     &:active {
-      background: #0F629A;
+      background: #0f629a;
     }
     h3 {
       font-size: 16px;
@@ -122,7 +121,7 @@
     }
     &__active {
       border-radius: 0 10px;
-      color: #42B5FF;
+      color: #42b5ff;
     }
   }
   &__active {
