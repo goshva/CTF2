@@ -123,9 +123,9 @@ function HomeContent() {
   return (
     <div>
       <div className={styles.homeContent}>
-        <div style={{ height: isFocused ? '280px' : '120px' }} className={styles.inputBorder}>
+        <div style={{ height: isFocused ? '200px' : '120px' }} className={styles.inputBorder}>
           <textarea
-            style={{ height: isFocused ? '170px' : '40px' }}
+            style={{ height: isFocused ? '100px' : '40px' }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onFocus={handleFocus}
@@ -165,7 +165,8 @@ function HomeContent() {
 
         {/* Контейнер для постов */}
         <div
-          style={{ marginTop: '-40px', height: isFocused ? '22vh' : '' }}
+          // style={{ marginTop: '-40px', height: isFocused ? '30vh' : '' }}
+          style={{ marginTop: '-40px' }}
           className={styles.postsWrapper}>
           <div className={styles.posts_section}>
             {data.map((post: PostFake) => (
