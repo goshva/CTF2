@@ -11,13 +11,14 @@ const FriendsChatItem  = () => {
       <div className={styles.item}>
         <div>
       <Image
+              className={styles.avatar}
               width={50}
               height={50}
               src="/avatar.png"
               alt="avatar"
             />
         </div>
-      <div>User name</div>
+      <div className={styles.text}>User name</div>
       <div><Image src={messageIcon} alt="messageIcon" /></div>
       </div>
     </div>

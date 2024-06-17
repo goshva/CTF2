@@ -1,9 +1,9 @@
 .friendItem{
-  margin-left: 0.7vw;
+  margin-left: 0.5vw;
   text-align: center;
   color: white;
   display:inline-block;
-  width: 100%;
+  width: 16vw;
 }
 
 .item {
@@ -18,4 +18,13 @@
 
 .item div:last-child {
   margin-right: 0; 
+}
+
+.avatar{
+  height: 3vw;
+  width: 3vw;
+}
+
+.text{
+  font-size: 1vw;
 }
