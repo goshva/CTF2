@@ -35,7 +35,6 @@ import profileIcon from '../../../public/profile-new-icon.svg';
 import messengerIcon from '../../../public/messenger-new-icon.svg';
 import bookMarkIcon from '../../../public/bookmark-new-icon.svg';
 
-
 const MarketSidebar: FC = () => {
   const dispatch = useDispatch();
   const path = usePathname();
@@ -49,8 +48,8 @@ const MarketSidebar: FC = () => {
   const [isActiveFilters, setIsActiveFilters] = useState(false);
 
   useEffect(() => {
-    dispatch(setStateFilters(filters))
-  }, [filters])
+    dispatch(setStateFilters(filters));
+  }, [filters]);
 
   const isMarket = (): boolean => path === '/market';
 
@@ -106,7 +105,7 @@ const MarketSidebar: FC = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.middleSide}>
+      <div style={{ height: path === '/market' ? '355px' : '' }} className={styles.middleSide}>
         <div className={styles.home_sideBar}>
           <div className={styles.webTitle}>
             <h2>WEBSITE BAR</h2>
@@ -184,108 +183,120 @@ const MarketSidebar: FC = () => {
             </ul>
           </nav>
         </div>
-        <div className={styles.filterContainer}>
-          <button
-            onClick={() => setIsActiveFilters(!isActiveFilters)}
-            disabled={!isMarket()}
-            type="button"
-            className={clsx(styles.titleBorder, isActiveFilters && isMarket() && styles.titleBorder__active)}
-          >
-            <div className={clsx(styles.filterTitle, isActiveFilters && isMarket() && styles.filterTitle__active)}>
-              <h3>FILTER</h3>
-            </div>
-          </button>
-          <div className={clsx(styles.filters, isActiveFilters && isMarket() && styles.filters__active)}>
-            <div className={styles.filterBox}>
-              <div className={styles.bigInputBox}>
-                <Input
-                  variant="borderless"
-                  className={clsx(styles.filterInput, styles.priceInput)}
-                  placeholder="Price"
-                />
+        {isMarket() && (
+          <div className={styles.filterContainer}>
+            <button
+              onClick={() => setIsActiveFilters(!isActiveFilters)}
+              disabled={!isMarket()}
+              type="button"
+              className={clsx(
+                styles.titleBorder,
+                isActiveFilters && isMarket() && styles.titleBorder__active,
+              )}>
+              <div
+                className={clsx(
+                  styles.filterTitle,
+                  isActiveFilters && isMarket() && styles.filterTitle__active,
+                )}>
+                <h3>FILTER</h3>
               </div>
-
-              <div className={styles.sliderInputsBox}>
-                <Input
-                  value={filters.minPrice}
-                  onChange={onChangeInputStart}
-                  className={clsx(styles.filterInput, styles.antInputNumber)}
-                />
-                <b>-</b>
-                <Input
-                  value={filters.maxPrice}
-                  onChange={onChangeInputComplete}
-                  className={clsx(styles.filterInput, styles.antInputNumber)}
-                />
-              </div>
-
-              <div className={styles.sliderBox}>
-                <Slider
-                  range
-                  step={1}
-                  min={50}
-                  max={2000}
-                  defaultValue={[2000, 2000]}
-                  onChange={onChangeStart}
-                  value={[filters.minPrice, filters.maxPrice]}
-                />
-              </div>
-
-              <div className={styles.bigInputBox}>
-                <Input
-                  variant="borderless"
-                  className={clsx(styles.filterInput, styles.priceInput)}
-                  placeholder="Delivery speed"
-                />
-              </div>
-
-              <div className={styles.checkboxContainer}>
-                <label htmlFor="instantly" className={styles.customCheckbox}>
-                  <input
-                    checked={filters.instantly}
-                    onChange={checkedInstantly}
-                    name="instantly"
-                    type="checkbox"
-                    id="instantly"
-                    className={styles.hiddenCheckbox}
+            </button>
+            <div
+              className={clsx(
+                styles.filters,
+                isActiveFilters && isMarket() && styles.filters__active,
+              )}>
+              <div className={styles.filterBox}>
+                <div className={styles.bigInputBox}>
+                  <Input
+                    variant="borderless"
+                    className={clsx(styles.filterInput, styles.priceInput)}
+                    placeholder="Price"
                   />
-                  <div className={styles.checkbox}>
-                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
-                  </div>
-                  <span>Instantly</span>
-                </label>
-                <label htmlFor="delayed" className={styles.customCheckbox}>
-                  <input
-                    checked={filters.about15min}
-                    onChange={checkedAbout}
-                    name="delayed"
-                    type="checkbox"
-                    id="delayed"
-                    className={styles.hiddenCheckbox}
-                  />
-                  <div className={styles.checkbox}>
-                    <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
-                  </div>
-                  <span>About 15 min.</span>
-                </label>
-              </div>
-
-              <div className={styles.bigInputBox}>
-                <div id="colorList" className={styles.colorList}>
-                  <span className={styles.btnName}>Color</span>
-                  <span className={styles.plusSymbol}>+</span>
                 </div>
-              </div>
 
-              <div className={styles.bigInputBox}>
-                <div id="colorList" className={styles.colorList}>
-                  <span className={styles.btnName}>Rarity</span>
-                  <span className={styles.plusSymbol}>+</span>
+                <div className={styles.sliderInputsBox}>
+                  <Input
+                    value={filters.minPrice}
+                    onChange={onChangeInputStart}
+                    className={clsx(styles.filterInput, styles.antInputNumber)}
+                  />
+                  <b>-</b>
+                  <Input
+                    value={filters.maxPrice}
+                    onChange={onChangeInputComplete}
+                    className={clsx(styles.filterInput, styles.antInputNumber)}
+                  />
+                </div>
+
+                <div className={styles.sliderBox}>
+                  <Slider
+                    range
+                    step={1}
+                    min={50}
+                    max={2000}
+                    defaultValue={[2000, 2000]}
+                    onChange={onChangeStart}
+                    value={[filters.minPrice, filters.maxPrice]}
+                  />
+                </div>
+
+                <div className={styles.bigInputBox}>
+                  <Input
+                    variant="borderless"
+                    className={clsx(styles.filterInput, styles.priceInput)}
+                    placeholder="Delivery speed"
+                  />
+                </div>
+
+                <div className={styles.checkboxContainer}>
+                  <label htmlFor="instantly" className={styles.customCheckbox}>
+                    <input
+                      checked={filters.instantly}
+                      onChange={checkedInstantly}
+                      name="instantly"
+                      type="checkbox"
+                      id="instantly"
+                      className={styles.hiddenCheckbox}
+                    />
+                    <div className={styles.checkbox}>
+                      <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
+                    </div>
+                    <span>Instantly</span>
+                  </label>
+                  <label htmlFor="delayed" className={styles.customCheckbox}>
+                    <input
+                      checked={filters.about15min}
+                      onChange={checkedAbout}
+                      name="delayed"
+                      type="checkbox"
+                      id="delayed"
+                      className={styles.hiddenCheckbox}
+                    />
+                    <div className={styles.checkbox}>
+                      <Image className={styles.checkedIcon} src={checkedIcon} alt="checkedIcon" />
+                    </div>
+                    <span>About 15 min.</span>
+                  </label>
+                </div>
+
+                <div className={styles.bigInputBox}>
+                  <div id="colorList" className={styles.colorList}>
+                    <span className={styles.btnName}>Color</span>
+                    <span className={styles.plusSymbol}>+</span>
+                  </div>
+                </div>
+
+                <div className={styles.bigInputBox}>
+                  <div id="colorList" className={styles.colorList}>
+                    <span className={styles.btnName}>Rarity</span>
+                    <span className={styles.plusSymbol}>+</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </aside>
   );

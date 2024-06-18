@@ -120,12 +120,30 @@ function HomeContent() {
     };
   }, [searchOpened]);
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isHighScreen, setIsHighScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      setIsSmallScreen(width === 1280 && height === 720);
+      setIsHighScreen(height > 1080);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div>
       <div className={styles.homeContent}>
-        <div style={{ height: isFocused ? '280px' : '140px' }} className={styles.inputBorder}>
+        <div style={{ height: isFocused ? '200px' : '120px' }} className={styles.inputBorder}>
           <textarea
-            style={{ height: isFocused ? '170px' : '40px' }}
+            style={{ height: isFocused ? '100px' : '40px' }}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onFocus={handleFocus}
@@ -164,7 +182,12 @@ function HomeContent() {
         </div>
 
         {/* Контейнер для постов */}
-        <div style={{ marginTop: isFocused ? '-40px' : '-23px' }} className={styles.postsWrapper}>
+        <div
+          style={{
+            height: isHighScreen ? '' : isFocused ? (isSmallScreen ? '30vh' : '32.5vh') : '',
+          }}
+          // style={{ marginTop: '-40px' }}
+          className={styles.postsWrapper}>
           <div className={styles.posts_section}>
             {data.map((post: PostFake) => (
               <PostCard key={post.id} post={post} />
