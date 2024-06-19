@@ -180,6 +180,10 @@
   margin-right: 10px;
 }
 
+.profiletatus {
+  margin-top: 20px;
+}
+
 .writeButton {
   background-color: #555;
   color: #fff;
@@ -256,6 +260,10 @@
   text-align: center;
 }
 
+.productTitle {
+  text-align: left;
+}
+
 /* Стилизация полосы прокрутки для WebKit-браузеров */
 .productSection::-webkit-scrollbar {
   width: 12px;
@@ -280,7 +288,7 @@
 /* Используем псевдоэлементы для создания отступов */
 .productSection::-webkit-scrollbar-track:before,
 .productSection::-webkit-scrollbar-track:after {
-  content: '';
+  content: "";
   display: block;
   height: 20px; /* Высота отступа */
   background: transparent;

@@ -16,7 +16,7 @@ const UserProfile = () => {
                             <div className={styles.userProfile}>USER PROFILE</div>
                             <div className={styles.profileInfo}>
                                 <div className={styles.profileInfoLeft}>
-                                    <img src="/path-to-avatar.jpg" alt="User Avatar" className={styles.avatar} />
+                                    <img src="../../user-pic.png" alt="User Avatar" className={styles.avatar} />
                                     <div className={styles.profiletatus}>
                                         <div className={styles.userName}>User name</div>
                                         <div className={styles.status}>status</div>
@@ -25,7 +25,7 @@ const UserProfile = () => {
                                 </div>
                                 <div className={styles.profileInfoRight}>
                                     <div className={styles.icons}>
-                                        <div className={styles.steamIcon}>Steam Icon</div>
+                                        <div className={styles.steamIcon}><img src="../../steam-icon.svg" alt="User Avatar" className={styles.avatar} /></div>
                                     </div>
                                     <div className={styles.actions}>
                                         <button className={styles.writeButton}>Write</button>
@@ -54,15 +54,25 @@ const UserProfile = () => {
                         <div className={styles.contentAndActions}>
                             <div className={`${styles.productSection} overflow-auto`}>
                                 <div className={styles.productCards}>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
-                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" /></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+                                    <div className={styles.productCard}><img src="../../ak-47.png" alt="Product" />
+                                        <p className={styles.productTitle}>АК-47</p></div>
+
                                 </div>
                             </div>
                             <div className={styles.actionsWithSkins}>
