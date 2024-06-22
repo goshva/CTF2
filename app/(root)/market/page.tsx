@@ -1,12 +1,11 @@
-'use client';
-
+"use client"
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import styles from './market.module.scss';
 import { Link } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
-import { Metadata, NextPage } from 'next';
+import {  NextPage } from 'next';
 import index from '@/components/ProductCard';
 import { IProduct } from '@/index';
 import iconCart from '../../../public/Icons-basket.svg';
@@ -19,9 +18,9 @@ import { colorFilter, priceRangeFilter } from '@/lib/utils';
 import Item from 'antd/es/list/Item';
 import { IFilters } from '@/index';
 
-const metadata: Metadata = {
-  title: 'Market',
-};
+// export const metadata: Metadata = {
+//   title: 'Market',
+// };
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
