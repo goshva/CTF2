@@ -1,11 +1,23 @@
 .home {
-  width: 97vw;
   display: flex;
 
+  // * {
+  //   outline: 4px solid green !important;
+  // }
+  button {
+    color: white;
+  }
+  p {
+    color: white;
+  }
+  a {
+    color: white;
+  }
   .col {
     position: relative;
-    top: -25%;
-    left: 8%;
+    top: -115%;
+    left: 78%;
+    width: 10vw;
   }
 
   .upperdesc {
@@ -426,7 +438,7 @@
   .equal {
     position: relative;
     top: 60px;
-    left: 800px;
+    left: 780px;
     button {
       background-color: #02841e;
       width: 41px;
@@ -439,7 +451,7 @@
     flex-direction: column;
     align-items: left;
     width: 1070px;
-    height: 154px;
+    height: 200px;
     margin-top: 80px;
 
     a {
@@ -448,8 +460,7 @@
 
     p {
       font-size: 13px;
-      margin-top: 20px;
-      width: 767px;
+      // margin-top: 20px;
     }
 
     .downdescription {

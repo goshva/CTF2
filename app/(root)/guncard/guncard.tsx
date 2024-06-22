@@ -2,7 +2,7 @@
 
 import { NextPage } from "next";
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./home.module.scss";
+import styles from "./gun.module.scss";
 import Ruble from "@/rubleicon.svg";
 import AK47 from "../../../public/ak-47 1.png";
 import Image from "next/image";
@@ -64,30 +64,34 @@ const GunCard: NextPage = () => {
 
       <div className={styles.info}>
         <div className={styles.descriptiongun}>
-          <div className={styles.upperdesc}>
-            <div>
-              <a className={styles.guntitle}>АК-47</a>
-              <p>
-                Silver color code. Silver RGB color code; Silver color chart.
-                Silver RGB color code. Silver RGB color code = #C0C0C0 =
-                192Silver color code. Silver RGB color code; Silver color chart.
-                Silver RGB color code. Silver RGB color code = #C0C0C0 = 192
-              </p>
+          <div>
+            <div className={styles.upperdesc}>
+              <div>
+                <a className={styles.guntitle}>АК-47</a>
+                <p>
+                  Silver color code. Silver RGB color code; Silver color chart.
+                  Silver RGB color code. Silver RGB color code = #C0C0C0 ={" "}
+                  <br />
+                  192Silver color code. Silver RGB color code; Silver color
+                  chart. Silver RGB color code. Silver <br /> RGB color code =
+                  #C0C0C0 = 192
+                </p>
+              </div>
             </div>
-            <div className={styles.col}>
-              <Balance />
+
+            <div className={styles.downdescription}>
+              <div className={styles.pricedescription}>
+                <a>14.2565</a>
+                <Image src={Ruble} alt="ruble"></Image>
+              </div>
+              <div className={styles.pricebuttons}>
+                <button>Fast buy</button>
+                <button>Add to cart</button>
+              </div>
             </div>
           </div>
-
-          <div className={styles.downdescription}>
-            <div className={styles.pricedescription}>
-              <a>14.2565</a>
-              <Image src={Ruble} alt="ruble"></Image>
-            </div>
-            <div className={styles.pricebuttons}>
-              <button>Fast buy</button>
-              <button>Add to cart</button>
-            </div>
+          <div className={styles.col}>
+            <Balance />
           </div>
         </div>
 
