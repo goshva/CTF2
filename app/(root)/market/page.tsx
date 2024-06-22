@@ -18,6 +18,7 @@ import { getFilters } from '@/redux/marketFilterSlice'
 import { colorFilter, priceRangeFilter} from '@/lib/utils';
 import Item from 'antd/es/list/Item';
 import { IFilters } from '@/index';
+// import { useGetAllProductsQuery } from '@/redux/api/productsApi';
 
 const metadata: Metadata = {
   title: 'Market',
@@ -55,6 +56,8 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   );
 };
 const MarketPage: NextPage = () => {
+  const { data = [] } = useGetAllProductsQuery();
+  console.log(data);
   const [filters, setFilters] = useState<IFilters>({
     minPrice: 0,
     maxPrice: 2000,
@@ -68,8 +71,8 @@ const MarketPage: NextPage = () => {
     setFilters(stateFilters);
   }, [stateFilters]);
 
-  const renderCards = (data: IProduct[]) => {
-    const cards: JSX.Element[] = data.filter((product) => priceRangeFilter(filters.minPrice, filters.maxPrice, product.price))
+  const renderCards = (productsData: IProduct[]) => {
+    const cards: JSX.Element[] = productsData.filter((product) => priceRangeFilter(filters.minPrice, filters.maxPrice, product.price))
       .map((product: IProduct, index: number) => (<ProductCard key={index} product={product} />));
 
     return cards;
