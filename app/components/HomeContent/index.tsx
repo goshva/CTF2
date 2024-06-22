@@ -105,7 +105,7 @@ function HomeContent() {
       };
       await addPost(newPost).unwrap();
       console.log('Пост успешно создан');
-      alert('Пост успешно создан');
+      alert('Пост успешно создан!');
       setValue('');
       setIsFocused(false);
     } catch (err) {
