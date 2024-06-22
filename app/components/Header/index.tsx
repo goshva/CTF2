@@ -77,7 +77,7 @@ const Header: FC = () => {
               href={openLink ? '/' : '/market'}
               className={styles.cartLink}>
               <div
-                style={{ height: openLink || path === '/market' ? '97px' : '22px' }}
+                style={{ height: path === '/market' ? '97px' : '22px' }}
                 className={styles.openLink}></div>
               <h1>MARKET</h1>
             </Link>

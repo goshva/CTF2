@@ -26,7 +26,7 @@
       left: -62px;
       top: 0px;
 
-      @media (max-width: 1330px) {
+      @media (max-width: 1235px) {
         display: none;
       }
 
@@ -73,6 +73,7 @@
         max-height: 150px;
         overflow-y: auto;
         font-weight: 400;
+        font-size: 14px;
 
         &::-webkit-scrollbar {
           width: 10px;

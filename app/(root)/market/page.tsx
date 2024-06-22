@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -14,8 +14,8 @@ import iconPrice from '../../../public/icons-price.svg';
 import UserInfo from '@/components/UserInfo';
 import MarketHeader from '@/components/MarketHeader';
 import fakeData from './fakeData';
-import { getFilters } from '@/redux/marketFilterSlice'
-import { colorFilter, priceRangeFilter} from '@/lib/utils';
+import { getFilters } from '@/redux/marketFilterSlice';
+import { colorFilter, priceRangeFilter } from '@/lib/utils';
 import Item from 'antd/es/list/Item';
 import { IFilters } from '@/index';
 // import { useGetAllProductsQuery } from '@/redux/api/productsApi';
@@ -64,7 +64,7 @@ const MarketPage: NextPage = () => {
     instantly: false,
     colors: [],
   });
-  const stateFilters = useSelector(getFilters)
+  const stateFilters = useSelector(getFilters);
 
   useEffect(() => {
     setFilters(stateFilters);

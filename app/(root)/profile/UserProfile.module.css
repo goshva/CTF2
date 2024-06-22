@@ -180,6 +180,10 @@
   margin-right: 10px;
 }
 
+.profiletatus {
+  margin-top: 20px;
+}
+
 .writeButton {
   background-color: #555;
   color: #fff;
@@ -254,6 +258,10 @@
   padding: 20px;
   border-radius: 5px;
   text-align: center;
+}
+
+.productTitle {
+  text-align: left;
 }
 
 /* Стилизация полосы прокрутки для WebKit-браузеров */
