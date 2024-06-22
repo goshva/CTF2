@@ -56,8 +56,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   );
 };
 const MarketPage: NextPage = () => {
-  const { data = [] } = useGetAllProductsQuery();
-  console.log(data);
+  // const { data = [] } = useGetAllProductsQuery();
   const [filters, setFilters] = useState<IFilters>({
     minPrice: 0,
     maxPrice: 2000,
