@@ -11,6 +11,7 @@ import fileIcon from '../../../public/file-icon.svg';
 import loopIcon from '../../../public/loop-icon.svg';
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 interface AuthorType {
   id: string;
@@ -63,6 +64,8 @@ export interface PostFake {
 }
 
 function HomeContent() {
+  //@ts-ignore
+  const decodedToken = useSelector((state) => state.auth.decodedToken);
   const [value, setValue] = useState<string>('');
   const buttonRef = useRef<HTMLButtonElement>(null);
   // получение постов
@@ -74,18 +77,41 @@ function HomeContent() {
   // создания поста
   const [addPost, { isError }] = useCreatePostsMutation();
 
+  // для увелечения textarea
+  const [isFocused, setIsFocused] = useState(false);
+
   // для будушего создания поста
   const handleCreatePost = async () => {
     try {
       // await addPost(value).unwrap(); создания нового поста
+      let userName = 'Test User';
+      let avatar = 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-8.jpg';
+
+      if (decodedToken) {
+        userName = decodedToken.displayName || 'Test User';
+        avatar = decodedToken.photos ? decodedToken.photos[1] : avatar;
+      }
+
+      const newPost = {
+        createdAt: new Date().toISOString(),
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png',
+        desc: value,
+        user: {
+          userName: userName,
+          avatar: avatar,
+        },
+        id: String(Date.now()),
+      };
+      await addPost(newPost).unwrap();
       console.log('Пост успешно создан');
+      alert('Пост успешно создан!');
       setValue('');
+      setIsFocused(false);
     } catch (err) {
       console.warn('Ошибка при создании поста', err);
     }
   };
-
-  const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
     setIsFocused(true);
