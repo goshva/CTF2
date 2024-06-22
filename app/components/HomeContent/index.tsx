@@ -77,6 +77,9 @@ function HomeContent() {
   // создания поста
   const [addPost, { isError }] = useCreatePostsMutation();
 
+  // для увелечения textarea
+  const [isFocused, setIsFocused] = useState(false);
+
   // для будушего создания поста
   const handleCreatePost = async () => {
     try {
@@ -103,12 +106,11 @@ function HomeContent() {
       await addPost(newPost).unwrap();
       console.log('Пост успешно создан');
       setValue('');
+      setIsFocused(false);
     } catch (err) {
       console.warn('Ошибка при создании поста', err);
     }
   };
-
-  const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => {
     setIsFocused(true);
