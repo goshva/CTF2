@@ -17,7 +17,7 @@ const UserProfile = () => {
                             <div className={styles.profileInfo}>
                                 <div className={styles.profileInfoLeft}>
                                     <img src="../../user-pic.png" alt="User Avatar" className={styles.avatar} />
-                                    <div className={styles.profiletatus}>
+                                    <div className={styles.profileStatus}>
                                         <div className={styles.userName}>User name</div>
                                         <div className={styles.status}>status</div>
                                         <div className={styles.info}>Information is absent.</div>
