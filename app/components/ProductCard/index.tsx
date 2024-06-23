@@ -19,7 +19,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className={styles.card}>
       <div>
-        <Link href={product.id}>
+        <Link href={`/market/${product.id}`}>
           <Image
             className={styles.productImg}
             src={product.image}
