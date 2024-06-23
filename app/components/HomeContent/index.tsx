@@ -93,7 +93,7 @@ function HomeContent() {
 
       if (decodedToken) {
         userName = decodedToken.displayName || 'Test User';
-        avatar = decodedToken.photos ? decodedToken.photos[1] : avatar;
+        avatar = decodedToken.photos ? decodedToken.photos[1].value : avatar;
       }
 
       const newPost = {
