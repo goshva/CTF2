@@ -11,9 +11,7 @@
   border: 1px solid rgba(255, 255, 255, 0.125);
   margin-right: 0;
   overflow-y: scroll;
-
 }
-
 
 .container::-webkit-scrollbar {
   width: 12px;
@@ -33,9 +31,6 @@
   cursor: pointer;
 }
 
-
-
-
 .textCenter {
   display: flex;
   flex-wrap: wrap;
@@ -47,10 +42,9 @@
   margin-bottom: 30px;
 
   gap: 30px;
-
 }
 
-.favorites_title{
+.favorites_title {
   display: flex;
   justify-content: center;
   align-items: center;
