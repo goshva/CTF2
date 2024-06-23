@@ -1,10 +1,10 @@
-import { Metadata, NextPage } from 'next';
-import styles from './home.module.scss';
-import News from '@/components/News';
-import HomeContent from '@/components/HomeContent';
+import { Metadata, NextPage } from "next";
+import styles from "./home.module.scss";
+import News from "@/components/News";
+import HomeContent from "@/components/HomeContent";
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: "Home",
 };
 
 const HomePage: NextPage = () => {

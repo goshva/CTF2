@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
-import Image from 'next/image';
-import styles from './layout.module.scss';
-import Header from '@/components/Header';
+import { ReactNode } from "react";
+import Image from "next/image";
+import styles from "./layout.module.scss";
+import Header from "@/components/Header";
 
 // import backgroundImage from '@/main-bg.png';
-import backgroundImage from '../../public/background.jpg';
-import UserInfo from '@/components/UserInfo';
-import HomeSidebar from '@/components/HomeSidebar';
-import { Metadata } from 'next';
+import backgroundImage from "../../public/background.jpg";
+import UserInfo from "@/components/UserInfo";
+import HomeSidebar from "@/components/HomeSidebar";
+import { Metadata } from "next";
 
 // import { StyleProvider } from '@ant-design/cssinjs';
 
@@ -36,10 +36,10 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {/* только эти 2 компонента остаються */}
-          <div className={styles.left_section}>
+          {/* <div className={styles.left_section}>
             <UserInfo />
             <HomeSidebar />
-          </div>
+          </div> */}
           {/* тут динамическое */}
           <main className={styles.main}>{children}</main>
         </div>

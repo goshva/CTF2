@@ -11,8 +11,7 @@ import plusIcon from '../../../public/plus.svg';
 import minusIcon from '../../../public/minus.svg';
 import { Badge, Menu } from 'antd';
 import type { InputNumberProps } from 'antd';
-import { Col, Row, Input, InputNumber, Slider, Space, Checkbox } from 'antd';
-import { Button, Flex } from 'antd';
+import { Flex, Col, Row, Input, InputNumber, Slider, Space, Checkbox, Button, Dropdown } from 'antd';
 import steamIcon from '../../../public/steam-icon.svg';
 import type { MenuProps } from 'antd';
 import Link from 'next/link';
@@ -34,6 +33,49 @@ import homeIcon from '../../../public/home-new-icon.svg';
 import profileIcon from '../../../public/profile-new-icon.svg';
 import messengerIcon from '../../../public/messenger-new-icon.svg';
 import bookMarkIcon from '../../../public/bookmark-new-icon.svg';
+
+const items: MenuProps['items'] = [
+  {
+    key: '1',
+    label: (
+      <li rel="noopener noreferrer">
+        Yelow
+      </li>
+    ),
+  },
+  {
+    key: '2',
+    label: (
+      <li rel="noopener noreferrer">
+        Red
+      </li>
+    ),
+  },
+  {
+    key: '3',
+    label: (
+      <li rel="noopener noreferrer" >
+        Green
+      </li>
+    ),
+  },
+  {
+    key: '4',
+    label: (
+      <li rel="noopener noreferrer" >
+        Extra Red
+      </li>
+    ),
+  },
+  {
+    key: '5',
+    label: (
+      <li rel="noopener noreferrer" >
+        Tiger Color
+      </li>
+    ),
+  },
+];
 
 const MarketSidebar: FC = () => {
   const dispatch = useDispatch();
@@ -281,10 +323,19 @@ const MarketSidebar: FC = () => {
                 </div>
 
                 <div className={styles.bigInputBox}>
-                  <div id="colorList" className={styles.colorList}>
+                  <Dropdown
+                    className={styles.colorList}
+                    menu={{ items }}
+                    placement="bottomLeft"
+                    arrow
+                    trigger={['click']}
+                  >
+                    <Button><span className={styles.btnName}>Color</span></Button>
+                  </Dropdown>
+                  {/* <div id="colorList" className={styles.colorList}>
                     <span className={styles.btnName}>Color</span>
                     <span className={styles.plusSymbol}>+</span>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className={styles.bigInputBox}>
