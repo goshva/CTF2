@@ -1,6 +1,12 @@
 .wrapper {
   display: flex;
   gap: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+
+  @media (max-width: 1366px) {
+    justify-content: center;
+  }
 }
 
 .container {
@@ -12,7 +18,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-left: 58px;
+  // margin-left: 58px;
 }
 
 // .wrapper {
