@@ -1,15 +1,21 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Image from 'next/image';
 import styles from './card.module.scss';
-import { Link } from 'lucide-react';
+import Link from 'next/link';
 import { IProduct } from '@/index';
 import iconCart from '../../../public/Icons-basket.svg';
 import iconPrice from '../../../public/icons-price.svg';
+import { addProduct } from '@/redux/cartSlice'
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (productItem: IProduct) => {
+    dispatch(addProduct(productItem));
+  }
+
   return (
     <div className={styles.card}>
       <div>
@@ -32,7 +38,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
       </div>
 
       <div className={styles.btnBorder}>
-        <button type="button" className={styles.buying}>
+        <button onClick={() => handleAddToCart(product)} type="button" className={styles.buying}>
           <Image src={iconCart} alt="icon-basket" width={29} height={29} />
           <p>Add to cart</p>
         </button>
