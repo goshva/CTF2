@@ -1,5 +1,8 @@
+'use client'
+
 import styles from './marketHeader.module.scss';
 import { FC, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { Tabs } from 'antd';
 import iconPrice from '../../../public/icons-price.svg';
@@ -7,8 +10,12 @@ import currencyIcon from '../../../public/currencyIcon.svg';
 import iconCart from '../../../public/Icons-basket.svg';
 import Link from 'next/link';
 import clsx from 'clsx';
+import { getCartProducts } from '@/redux/cartSlice'
 
 const MarketHeader: FC = () => {
+  const addedProducts = useSelector(getCartProducts);
+  const productCount = addedProducts.length;
+  console.log(addedProducts);
   console.log('');
   return (
     <section className={styles.mainContainer}>
@@ -59,6 +66,9 @@ const MarketHeader: FC = () => {
           </div>
           <div className={styles.cartIcon}>
             <Image src={iconCart} alt="currencyIcon" />
+            {productCount > 0 ?(<div className={styles.cartBadge}>
+              <span>{productCount}</span>
+            </div>) : null}
           </div>
         </div>
       </div>
