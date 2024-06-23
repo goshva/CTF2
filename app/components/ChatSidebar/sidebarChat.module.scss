@@ -45,14 +45,6 @@
     }
 }
 
-.downLine {
-  position: absolute;
-  bottom: 0px;
-  background-color: #696969;
-  width: 100%;
-  left: 0;
-  height: 1px;
-}
 
 .textCenter {
   display: flex;
@@ -61,13 +53,4 @@
   height: 100%;
 }
 
-.search{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.searchInput{
-  background-color: #696969;
-}
 
