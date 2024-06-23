@@ -124,4 +124,21 @@
       }
     }
   }
+
+  &:last-child {
+    // padding-bottom: 885px;
+    padding-bottom: 900px;
+
+    @media (max-height: 1375px) {
+      padding-bottom: 635px;
+    }
+
+    @media (max-height: 1220px) {
+      padding-bottom: 80px;
+    }
+
+    @media (max-height: 1050px) {
+      padding-bottom: 15px;
+    }
+  }
 }
