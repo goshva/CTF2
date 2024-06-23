@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useCreatePostsMutation, useGetAllPostsQuery } from '@/redux';
+import { useSelector } from 'react-redux';
+import { usePathname } from 'next/navigation';
 import styles from './homeContent.module.scss';
 import PostCard from '../PostCard';
 import gunIcon from '../../../public/gun-icon.svg';
@@ -11,7 +13,6 @@ import fileIcon from '../../../public/file-icon.svg';
 import loopIcon from '../../../public/loop-icon.svg';
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
 
 interface AuthorType {
   id: string;
@@ -66,6 +67,9 @@ export interface PostFake {
 function HomeContent() {
   //@ts-ignore
   const decodedToken = useSelector((state) => state.auth.decodedToken);
+  // ============================
+
+  const path = usePathname();
   const [value, setValue] = useState<string>('');
   const buttonRef = useRef<HTMLButtonElement>(null);
   // получение постов
@@ -89,7 +93,7 @@ function HomeContent() {
 
       if (decodedToken) {
         userName = decodedToken.displayName || 'Test User';
-        avatar = decodedToken.photos ? decodedToken.photos[1] : avatar;
+        avatar = decodedToken.photos ? decodedToken.photos[1].value : avatar;
       }
 
       const newPost = {
@@ -146,23 +150,45 @@ function HomeContent() {
     };
   }, [searchOpened]);
 
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [isHighScreen, setIsHighScreen] = useState(false);
+  // must remove
+
+  // const [isSmallScreen, setIsSmallScreen] = useState(false);
+  // const [isHighScreen, setIsHighScreen] = useState(false);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     const width = window.innerWidth;
+  //     const height = window.innerHeight;
+  //     setIsSmallScreen(width === 1280 && height === 720);
+  //     setIsHighScreen(height > 1080);
+  //   };
+
+  //   handleResize();
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      setIsSmallScreen(width === 1280 && height === 720);
-      setIsHighScreen(height > 1080);
-    };
+    const body = document.body;
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    if (path === '/') {
+      window.scrollTo(0, 0);
+      body.classList.add('no-scroll-home');
+    } else {
+      body.classList.remove('no-scroll-home');
+    }
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      body.classList.remove('no-scroll-home');
     };
-  }, []);
+  }, [path]);
+
+  useEffect(() => {
+    // всегда скролл вверх в home
+    window.scrollTo(0, 0);
+  });
 
   return (
     <div>
@@ -209,9 +235,9 @@ function HomeContent() {
 
         {/* Контейнер для постов */}
         <div
-          style={{
-            height: isHighScreen ? '' : isFocused ? (isSmallScreen ? '30vh' : '32.5vh') : '',
-          }}
+          // style={{
+          //   height: isHighScreen ? '' : isFocused ? (isSmallScreen ? '30vh' : '32.5vh') : '',
+          // }}
           // style={{ marginTop: '-40px' }}
           className={styles.postsWrapper}>
           <div className={styles.posts_section}>
