@@ -19,19 +19,20 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   return (
     <div className={styles.card}>
       <div>
-        <Image
-          className={styles.productImg}
-          src={product.image}
-          alt={product.alt}
-          width={200}
-          height={200}
-        />
+        <Link href={product.id}>
+          <Image
+            className={styles.productImg}
+            src={product.image}
+            alt={product.alt}
+            width={200}
+            height={200}
+          />
+        </Link>
       </div>
 
       <div className={styles.title}>
         <h3>{product.name}</h3>
       </div>
-
       <div className={styles.price}>
         <span>{product.price}</span>
         <Image src={iconPrice} alt="iconPrice" width={20} height={20} />
