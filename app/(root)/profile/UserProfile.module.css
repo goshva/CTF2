@@ -11,8 +11,9 @@
   display: grid;
   grid-template-rows: auto auto; /* Для Header и остального содержимого */
   width: 100%;
-  max-width: 1280px;
+  max-width: 1600px;
   gap: 20px;
+  column-gap: 0px;
 }
 
 .sidebar {
@@ -23,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  grid-column: 2 / 3; /* Охватывает второй столбец */
+  grid-column: 2 / 3;
 }
 
 .userProfile {
@@ -136,6 +137,7 @@
 .profileStatus {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .profileInfoRight {
@@ -178,10 +180,6 @@
   justify-content: center;
   color: #fff;
   margin-right: 10px;
-}
-
-.profiletatus {
-  margin-top: 20px;
 }
 
 .writeButton {
