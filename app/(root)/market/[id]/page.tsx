@@ -1,74 +1,175 @@
-'use client';
+"use client";
 
-import styles from './marketproduct.module.scss';
+import styles from "./marketproduct.module.scss";
 
-import productImage from './mock/Ak47-anubis.png';
-import personIcon from '../../../../public/person.svg';
+import productImage from "./mock/Ak47-anubis.png";
+import personIcon from "../../../../public/person.svg";
 
-import Image from 'next/image';
-import { ShoppingCart, Eye } from 'lucide-react';
-import { FC } from 'react';
-
-import { ICatalogProductPage } from '@/components';
-
-const PRODUCT_DATA = {
-  title: 'AK-47 | Легион Анубиса (Закалённое в боях)',
-  subtitle: 'AK-47 | Legion of Anubis (Battle-Scarred)',
-  category: 'Обычный',
-  wear: 'BS - Закаленное в боях',
-};
-
-const MarketProductPage: FC<ICatalogProductPage> = ({ params }) => {
-  const handleConnectSalesman = () => {
-    console.log('connect salesman');
-  };
-
-  const handleAddCart = () => {
-    console.log('add cart');
-  };
-
-  const handleViewInGame = () => {
-    console.log('view in game');
-  };
-
+import Image from "next/image";
+import { ShoppingCart, Eye } from "lucide-react";
+import { FC } from "react";
+import { ICatalogProductPage } from "@/components";
+import Ruble from "@/rubleicon.svg";
+import AK47 from "../../../../public/ak-47 1.png";
+import GreyElipce from "@/greyelipce.svg";
+import LeftArrow from "@/left-arrow.svg";
+import Profile from "@/profilenew.svg";
+import Balance from "@/components/Balance";
+const GunCard: FC<ICatalogProductPage> = ({ params }) => {
   return (
-    <div className={styles.product}>
-      <div className={styles.product__imageButtonsWrapper}>
-        <div className={styles.product__imageWrapper}>
-          <Image src={productImage} alt="product" />
-        </div>
-        <div className={styles.product__buttonsWrapper}>
-          <button className={styles.product__buttonSalesman} onClick={handleConnectSalesman}>
-            <Image src={personIcon} alt="person" />
-            Связь с продавцом
+    <div className={styles.home}>
+      <div className={styles.flexgun}>
+        <div className={styles.navigate}>
+          <button className={styles.leftArrow}>
+            <Image src={LeftArrow} alt="arrow icon" />
           </button>
-          <button className={styles.product__buttonCart} onClick={handleAddCart}>
-            <ShoppingCart size={20} />
-            Добавить в корзину
-          </button>
+          <a>Back</a>
+          <Image src={GreyElipce} alt="elipce"></Image>
+          <a>Market</a>
+          <Image src={GreyElipce} alt="elipce"></Image>
+          <a>About the skin</a>
         </div>
-      </div>
-      <div className={styles.product__infoWrapper}>
-        <div className={styles.product__info}>
-          <h3 className={styles.product__title}>{PRODUCT_DATA.title}</h3>
-          <h4 className={styles.product__subtitle}>{PRODUCT_DATA.subtitle}</h4>
-          <div className={styles.product__descriptionWrapper}>
-            <div className={styles.product__category}>
-              <p>Категория</p>
-              <h4>{PRODUCT_DATA.category}</h4>
-            </div>
-            <div className={styles.product__wear}>
-              <p>Износ</p>
-              <h4>{PRODUCT_DATA.wear}</h4>
-            </div>
+        <div className={styles.guncard}>
+          <Image src={AK47} alt="ak47"></Image>
+          <div className={styles.buttonline}>
+            <button className={styles.gunbuttons}>View in game</button>
+            <button className={styles.gunbuttons}>View in game</button>
           </div>
         </div>
-        <button className={styles.product__buttonViewInGame} onClick={handleViewInGame}>
-          <Eye size={20} /> Осмотреть в игре
-        </button>
+
+        <aside className={styles.sidebar}>
+          <div className={styles.middleSide}>
+            <div className={styles.home_sideBar}>
+              <div className={styles.webTitle}>
+                <h2>buff 163 chart</h2>
+              </div>
+              <nav className={styles.router_section}>
+                <ul className={styles.links}></ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+        <aside className={styles.sidebar}>
+          <div className={styles.middleSide}>
+            <div className={styles.home_sideBar}>
+              <div className={styles.webTitle}>
+                <h2>price history</h2>
+              </div>
+              <nav className={styles.router_section}>
+                section under development
+                <ul className={styles.links}></ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div className={styles.equal}>
+        <button>8,7</button>
+      </div>
+
+      <div className={styles.info}>
+        <div className={styles.descriptiongun}>
+          <div>
+            <div className={styles.upperdesc}>
+              <div>
+                <a className={styles.guntitle}>АК-47</a>
+                <p>
+                  Silver color code. Silver RGB color code; Silver color chart.
+                  Silver RGB color code. Silver RGB color code = #C0C0C0 ={" "}
+                  <br />
+                  192Silver color code. Silver RGB color code; Silver color
+                  chart. Silver RGB color code. Silver <br /> RGB color code =
+                  #C0C0C0 = 192
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.downdescription}>
+              <div className={styles.pricedescription}>
+                <a>14.2565</a>
+                <Image src={Ruble} alt="ruble"></Image>
+              </div>
+              <div className={styles.pricebuttons}>
+                <button>Fast buy</button>
+                <button>Add to cart</button>
+              </div>
+            </div>
+          </div>
+          <div className={styles.col}>
+            <Balance />
+          </div>
+        </div>
+
+        <div className={styles.blocks}>
+          <div className={styles.firstblock}>
+            <aside className={styles.sidebarinfo}>
+              <div className={styles.middleSide}>
+                <div className={styles.home_sideBar}>
+                  <div className={styles.webTitle}>
+                    <h2>USER PROFILE</h2>
+                  </div>
+                  <nav className={styles.router_section}>
+                    <div className={styles.userInfo_container}>
+                      <div className={styles.avatar}>
+                        <Image
+                          width={50}
+                          height={50}
+                          src={Profile}
+                          alt="avatar"
+                        />
+                      </div>
+                      <div className={styles.textInfo}>
+                        <h2>User Name</h2>
+                        <p>status</p>
+
+                        <div>
+                          {" "}
+                          <p>
+                            Transferability <span>- 90%</span>
+                          </p>
+                          <p>
+                            {" "}
+                            Average transfer time <span>- 50 minet</span>{" "}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <ul className={styles.links}></ul>
+                  </nav>
+                </div>
+              </div>
+            </aside>
+            <aside className={styles.sidebarinfo}>
+              <div className={styles.middleSide}>
+                <div className={styles.home_sideBar}>
+                  <div className={styles.webTitle}>
+                    <h2>AUCTION</h2>
+                  </div>
+                  <nav className={styles.router_section}>
+                    <ul className={styles.links}></ul>
+                  </nav>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div className={styles.nextblock}>
+            <aside className={styles.sidebarinfo}>
+              <div className={styles.middleSide}>
+                <div className={styles.home_sideBar}>
+                  <div className={styles.webTitle}>
+                    <h2>OTHER OFFERS</h2>
+                  </div>
+                  <nav className={styles.router_section}>
+                    <ul className={styles.links}></ul>
+                  </nav>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default MarketProductPage;
+export default GunCard;
