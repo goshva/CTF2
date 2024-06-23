@@ -2,6 +2,7 @@ import { IProduct } from '../../../types/index';
 
 const fakeData: IProduct[] = [
   {
+    id: '1',
     image: '/anubis.png',
     alt: 'Product 1',
     name: 'AK-47',
@@ -15,6 +16,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '2',
     image: '/speedy-gun.jpg',
     alt: 'Product 2',
     name: 'UZI',
@@ -28,6 +30,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '3',
     image: '/Glock-18.png',
     alt: 'Product 3',
     name: 'AK-47',
@@ -41,6 +44,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '4',
     image: '/anubis.png',
     alt: 'Product 4',
     name: 'AK-47',
@@ -54,6 +58,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '5',
     image: '/Glock-18.png',
     alt: 'Product 5',
     name: 'Glock-18',
@@ -67,6 +72,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '6',
     image: '/ak47-asiimov.jpg',
     alt: 'Product 6',
     name: 'AK47 ASIIMOV',
@@ -80,6 +86,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '7',
     image: '/AK47-ex.jpg',
     alt: 'Product 7',
     name: 'AK47-ex',
@@ -93,6 +100,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '8',
     image: '/tec-9.jpg',
     alt: 'Product 8',
     name: 'TEC-9',
@@ -106,6 +114,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '9',
     image: '/speedy-gun.jpg',
     alt: 'Product 9',
     name: 'Speedy GUN',
@@ -119,6 +128,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '10',
     image: '/ak47-asiimov.jpg',
     alt: 'Product 10',
     name: 'AK47 ASIIMOV',
@@ -132,6 +142,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '11',
     image: '/anubis.png',
     alt: 'Product 11',
     name: 'UZI',
@@ -145,6 +156,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '12',
     image: '/tec-9.jpg',
     alt: 'Product 12',
     name: 'TEC-9',
@@ -158,6 +170,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '13',
     image: '/Glock-18.png',
     alt: 'Product 13',
     name: 'Glock-18',
@@ -171,6 +184,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '14',
     image: '/anubis.png',
     alt: 'Product 13',
     name: 'UZI',
@@ -184,6 +198,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '15',
     image: '/ak47-asiimov.jpg',
     alt: 'Product 14',
     name: 'AK47 ASIIMOV',
@@ -197,6 +212,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '16',
     image: '/AK47-ex.jpg',
     alt: 'Product 15',
     name: 'AK47-ex',
@@ -210,6 +226,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '17',
     image: '/Glock-18.png',
     alt: 'Product 16',
     name: 'Glock-18',
@@ -223,6 +240,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '18',
     image: '/tec-9.jpg',
     alt: 'Product 17',
     name: 'TEC-9',
@@ -236,6 +254,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '19',
     image: '/anubis.png',
     alt: 'Product 18',
     name: 'UZI',
@@ -249,6 +268,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '20',
     image: '/speedy-gun.jpg',
     alt: 'Product 19',
     name: 'Speedy GUN',
@@ -262,6 +282,7 @@ const fakeData: IProduct[] = [
     ],
   },
   {
+    id: '21',
     image: '/AK47-ex.jpg',
     alt: 'Product 20',
     name: 'AK47-ex',

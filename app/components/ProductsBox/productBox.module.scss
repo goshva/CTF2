@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  max-height: 100vh;
+  min-height: 70vh;
+  background-color: #3a4340;
+  border-radius: 10px;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.container::-webkit-scrollbar {
+  width: 8px;
+  position: absolute;
+  left: 50px;
+}
+
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #D9D9D9;
+  ;
+  border-radius: 20px;
+  background-clip: padding-box;
+}
