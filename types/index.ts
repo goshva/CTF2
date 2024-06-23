@@ -96,6 +96,7 @@ interface IComment {
 }
 
 interface IProduct {
+  id: string;
   image: string;
   alt: string;
   name: string;
@@ -113,6 +114,10 @@ interface IFilters {
   about15min: boolean,
   instantly: boolean,
   colors: string[],
-  }
+}
+  
+interface ICartState {
+  products: IProduct[];
+}
 
-export type { IPost, IUser, IProduct, IFilters };
+export type { IPost, IUser, IProduct, IFilters, ICartState };
