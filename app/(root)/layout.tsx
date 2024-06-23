@@ -36,10 +36,10 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       <div className={styles.container}>
         <div className={styles.wrapper}>
           {/* только эти 2 компонента остаються */}
-          {/* <div className={styles.left_section}>
+          <div className={styles.left_section}>
             <UserInfo />
             <HomeSidebar />
-          </div> */}
+          </div>
           {/* тут динамическое */}
           <main className={styles.main}>{children}</main>
         </div>
