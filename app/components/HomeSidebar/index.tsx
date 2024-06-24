@@ -145,6 +145,22 @@ const MarketSidebar: FC = () => {
     }));
   };
 
+  const handleClearPrice = () => {
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      minPrice: 0,
+      maxPrice: 2000,
+    }));
+  }
+
+  const handleResetCheckboxes = () => {
+    setFilters((prevFilters: typeof filters) => ({
+      ...prevFilters,
+      about15min: false,
+      instantly: false,
+    }));
+  }
+
   return (
     <aside className={styles.sidebar}>
       <div style={{ height: path === '/market' ? '355px' : '' }} className={styles.middleSide}>
@@ -249,12 +265,14 @@ const MarketSidebar: FC = () => {
                 isActiveFilters && isMarket() && styles.filters__active,
               )}>
               <div className={styles.filterBox}>
-                <div className={styles.bigInputBox}>
-                  <Input
-                    variant="borderless"
-                    className={clsx(styles.filterInput, styles.priceInput)}
-                    placeholder="Price"
-                  />
+                <div className={styles.resetBtn}>
+                  <button
+                    type="button"
+                    onClick={() => handleClearPrice()}
+                  >
+                    <span>Price</span>
+                    <span className={styles.minusSymbol}>{filters.minPrice > 0 || filters.maxPrice < 2000 ? '-' : '' }</span>
+                  </button>
                 </div>
 
                 <div className={styles.sliderInputsBox}>
@@ -283,12 +301,14 @@ const MarketSidebar: FC = () => {
                   />
                 </div>
 
-                <div className={styles.bigInputBox}>
-                  <Input
-                    variant="borderless"
-                    className={clsx(styles.filterInput, styles.priceInput)}
-                    placeholder="Delivery speed"
-                  />
+                <div className={styles.resetBtn}>
+                  <button
+                    type="button"
+                    onClick={() => handleResetCheckboxes()}
+                  >
+                    <span>Delivery speed</span>
+                    <span className={styles.minusSymbol}>{filters.about15min || filters.instantly ? '-' : ''}</span>
+                  </button>
                 </div>
 
                 <div className={styles.checkboxContainer}>
@@ -322,7 +342,7 @@ const MarketSidebar: FC = () => {
                   </label>
                 </div>
 
-                <div className={styles.bigInputBox}>
+                <div className={styles.dropdownBox}>
                   <Dropdown
                     className={styles.colorList}
                     menu={{ items }}
@@ -338,7 +358,7 @@ const MarketSidebar: FC = () => {
                   </div> */}
                 </div>
 
-                <div className={styles.bigInputBox}>
+                <div className={styles.dropdownBox}>
                   <div id="colorList" className={styles.colorList}>
                     <span className={styles.btnName}>Rarity</span>
                     <span className={styles.plusSymbol}>+</span>
