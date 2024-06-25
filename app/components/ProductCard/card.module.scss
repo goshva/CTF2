@@ -1,13 +1,25 @@
+@keyframes cardShadow {
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(32, 36, 34, 0.8);
+  }
+}
+
 .card {
   border-radius: 10px;
   width: 179px;
   height: 222px;
-  box-shadow: 0 5px 15px 0 rgba(32, 36, 34, 0.8);
   background: #232927;
   display: flex;
   flex-direction: column;
   padding: 10px;
   color: #d9d9d9;
+  &:hover {
+    // box-shadow: 0 5px 15px 0 rgba(32, 36, 34, 0.8);
+    animation: cardShadow 150ms ease-in forwards;
+  }
 }
 
 .productImg {
@@ -43,10 +55,12 @@
 
 @keyframes hoverBtn {
   0% {
-    background: #474C52;
+    color: #d9d9d9;
+    fill: #d9d9d9;
   }
   100% {
-    background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%);
+    color: #1886D0;
+    fill: #1886D0;
   }
 }
 
@@ -54,9 +68,8 @@
   width: 100%;
   height: 31px;
   padding: 1px;
-  background: #474C52;
+  background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%);
   border-radius: 0 10px;
-  // transition: background 300ms;
 
   .buying {
     width: 100%;
@@ -65,8 +78,8 @@
     border-radius: 0 10px;
     display: flex;
     align-items: center;
-
-    img {
+    svg {
+      fill: #d9d9d9;
       margin: 0 11px 0 10px;
     }
 
@@ -75,13 +88,14 @@
       font-size: 14px;
     }
 
-    &:active {
+    &:active, &:active svg {
       background: #0F629A;
+      fill: #d9d9d9;
+      color: #d9d9d9;
     }
   }
 
-  &:hover {
-    animation: hoverBtn 200ms ease-in forwards;
-    // background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%);
+  &:hover, &:hover svg {
+    animation: hoverBtn 150ms ease-in forwards;
   }
 }
