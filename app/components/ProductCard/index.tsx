@@ -9,6 +9,7 @@ import { IProduct } from '@/index';
 import iconCart from '../../../public/Icons-basket.svg';
 import iconPrice from '../../../public/icons-price.svg';
 import { addProduct } from '@/redux/cartSlice'
+import IconCart from '../IconCart/IconCart'
 
 const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const ProductCard: React.FC<{ product: IProduct }> = ({ product }) => {
 
       <div className={styles.btnBorder}>
         <button onClick={() => handleAddToCart(product)} type="button" className={styles.buying}>
-          <Image src={iconCart} alt="icon-basket" width={29} height={29} />
+          <IconCart className="buying"/>
           <p>Add to cart</p>
         </button>
       </div>
