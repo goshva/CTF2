@@ -14,12 +14,29 @@ import LogOutIcon from '../../../public/logout.svg';
 // import { StyleProvider } from '@ant-design/cssinjs';
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
-import { useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
+import { useGetMeQuery, useGetFriendListQuery, useLazyGetFriendListQuery } from '../../redux';
 import { useSelector } from 'react-redux';
 
+type UserType = {
+  id: number;
+  steamId: string;
+  registeredAt: number;
+  lastAuthorizedAt: number;
+  role: string;
+  isBanned: boolean;
+  username: string | null;
+  nickname: string | null;
+  about: string | null;
+};
+
+export type UserDataResponse = {
+  user: UserType;
+};
+
 const UserInfo: FC = () => {
+  const { data: userData } = useGetMeQuery({});
+  const user: UserType | undefined = userData?.user;
   const baseUrl = process.env.BASE_URL;
-  const [inputValue, setInputValue] = useState(parseFloat('0.000'));
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loadings, setLoadings] = useState<boolean[]>([]);
   // const [decodedToken, setDecodedToken] = useState<any>('');
@@ -27,30 +44,37 @@ const UserInfo: FC = () => {
   const [friendCount, setFriendCount] = useState<any>('');
 
   //@ts-ignore
-  const decodedToken = useSelector((state) => state.auth.decodedToken);
+  // const decodedToken = useSelector((state) => state.auth.decodedToken);
 
   //@ts-ignore
-  const [getFriendsList, { data }] = useLazyGetFriendListQuery(decodedToken?.id);
+  // const [getFriendsList, { data: friendsData  }] = useLazyGetFriendListQuery(decodedToken?.id);
+
+  // useEffect(() => {
+  //   if (decodedToken) {
+  //     setIsAuthenticated(true);
+  //   }
+  //   setLoadingCookies(false);
+  // }, []);
 
   useEffect(() => {
-    if (decodedToken) {
+    if (user) {
       setIsAuthenticated(true);
     }
     setLoadingCookies(false);
   }, []);
 
-  useEffect(() => {
-    const jwtToken = Cookies.get('jwt');
-    if (jwtToken) {
-    }
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   const jwtToken = Cookies.get('jwt');
+  //   if (jwtToken) {
+  //   }
+  // }, [isAuthenticated]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(decodedToken.id);
-  };
+  // const handleCopy = () => {
+  //   navigator.clipboard.writeText(decodedToken.id);
+  // };
 
   const handleOpenProfile = () => {
-    let url = `${process.env.BASE_URL}/auth/steam`;
+    let url = `${process.env.BASE_URL}/auth-steam`;
     console.log(url);
     // window.location.href = url;
     //@ts-ignore
@@ -58,7 +82,7 @@ const UserInfo: FC = () => {
   };
 
   const logout = () => {
-    Cookies.remove('jwt');
+    // Cookies.remove('jwt');
     setIsAuthenticated(false);
   };
 
@@ -92,12 +116,12 @@ const UserInfo: FC = () => {
     );
   }
 
-  let displayName = 'User name';
+  let userName = user?.username === null ? 'пустой username' : user?.username;
 
-  if (isAuthenticated && decodedToken) {
-    displayName = decodedToken.displayName;
-    if (displayName.length > 20) {
-      displayName = displayName.slice(0, 20) + '...';
+  if (isAuthenticated && user && user.username !== null) {
+    userName = user.username;
+    if (userName.length > 20) {
+      userName = `${userName.slice(0, 20)}...`;
     }
   }
 
@@ -106,32 +130,32 @@ const UserInfo: FC = () => {
       <div className={styles.profileSection}>
         <div className={styles.userInfo_container}>
           <div className={styles.avatar}>
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <Image
                 src={decodedToken?.photos[1] == '' ? '' : decodedToken?.photos[1].value}
                 alt="steam avatar"
                 width={100}
                 height={100}
               />
-            ) : (
-              <Image
-                width={100}
-                height={100}
-                src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-8.jpg"
-                alt="steam avatar"
-              />
-            )}
+            ) : ( */}
+            <Image
+              width={100}
+              height={100}
+              src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-8.jpg"
+              alt="steam avatar"
+            />
+            {/* )} */}
           </div>
           <div className={styles.textInfo}>
-            <h2>{displayName}</h2>
-            <p>status</p>
+            <h2>{userName ? userName : 'пустой username'}</h2>
+            <p>пустой status</p>
           </div>
         </div>
 
         {!isAuthenticated && (
           <>
             <div className={styles.loginContent}>
-              <Link href={`${process.env.BASE_URL}/auth/steam`} style={{ textDecoration: 'none' }}>
+              <Link href={`${process.env.BASE_URL}/auth-steam`} style={{ textDecoration: 'none' }}>
                 <button
                   onClick={handleOpenProfile}
                   onClickCapture={() => enterLoading(0)}
@@ -150,7 +174,8 @@ const UserInfo: FC = () => {
 
         {isAuthenticated && (
           <div className={styles.info_block}>
-            <p>Information is absent.</p>
+            {/* <p>Information is absent.</p> */}
+            <p>{user?.about === null ? 'Информация пустая' : user?.about}</p>
           </div>
         )}
 

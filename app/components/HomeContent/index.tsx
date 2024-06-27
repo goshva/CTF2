@@ -87,6 +87,10 @@ function HomeContent() {
   // для будушего создания поста
   const handleCreatePost = async () => {
     try {
+      if (value === '') {
+        return alert('Сначла заполните поле информации');
+      }
+
       // await addPost(value).unwrap(); создания нового поста
       let userName = 'Test User';
       let avatar = 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-8.jpg';
