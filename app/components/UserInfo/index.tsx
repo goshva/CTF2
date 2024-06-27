@@ -116,7 +116,7 @@ const UserInfo: FC = () => {
     );
   }
 
-  let userName = user?.username === null ? 'пустой username' : user?.username;
+  let userName = user?.username === null ? 'укажите username' : user?.username;
 
   if (isAuthenticated && user && user.username !== null) {
     userName = user.username;
