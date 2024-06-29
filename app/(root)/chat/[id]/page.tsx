@@ -13,18 +13,18 @@ function Chat() {
   return (
     <div className={styles.container}>
       <div className="row">
-        <div className="col-10">
+        <div className="col-9">
           <ChatRecomedation />
         </div>
-        <div className="col-2">
+        <div className="col-3">
           <Balance />
         </div>
       </div>
       <div className="row">
-        <div className="col-10">
+        <div className="col-8">
           <ChatWindow />
         </div>
-        <div className="col-2">
+        <div className="col-4">
           <FriendsChat />
         </div>
       </div>

@@ -1,5 +1,6 @@
 .container{
   margin-left: -35px;
+  width: 50vw;
 }
 .wrapper {
   margin-top: 0.5vw;
@@ -19,4 +20,16 @@
     height: 100%;
   }
 
+}
+
+
+@media screen and (max-width: 1600px) {
+  .container{
+    width: 51vw;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .container{
+    width: 52vw;
+  }
 }
