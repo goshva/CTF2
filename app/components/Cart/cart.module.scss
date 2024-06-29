@@ -1,0 +1,150 @@
+.cartBox {
+  border-radius: 0 10px;
+  min-width: 177px;
+  height: 165px;
+  display: flex;
+  flex-direction: column;
+  background: #3A4340;
+  position: relative;
+  &_closed {
+    height: 60px;
+    min-width: 177px;
+  }
+}
+
+.balanceBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 10px;
+  width: 100%;
+  height: 60px;
+  background: #C0C0C0;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 31px;
+  z-index: 2;
+  &_openCartBorder {
+    background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%) !important;
+  }
+
+  .iconBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .balanceBtn {
+    padding: 9px 9px 9px 19px;
+    background: #1C1C1C;
+    color: #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 10px;
+    width: 100%;
+    height: 100%;
+
+    .title {
+      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 700;
+      p {
+        margin-bottom: 4px;
+      }
+    }
+
+    .balanceCount {
+      font-weight: normal;
+      font-size: 14px;
+      display: flex;
+      align-items: end;
+
+      span {
+        margin-right: 11px;
+      }
+    }
+  }
+}
+
+.currencyIcon {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  background: #292B2C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  overflow: hidden;
+  height: 165px;
+  width: 100%;
+  padding-top: 91px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  &_cloced {
+    display: none;
+  }
+}
+
+.cartButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  .btnBorder {
+    height: 27px;
+    padding: 1px;
+    margin-bottom: 10px;
+    background: #474C52;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+
+    .cartBtn {
+      background: #1C1C1C;
+      border-radius: 20px;
+      padding: 3px 10px;
+      height: 100%;
+      font-weight: 500;
+      font-size: 14px;
+      color: #D9D9D9;
+      display: inline;
+
+      &:active {
+        background: #0F629A;
+      }
+    }
+
+    &:hover {
+      background: linear-gradient(90deg, rgba(24, 134, 208, 1) 0%, rgba(12, 68, 106, 1) 100%);
+    }
+  }
+}
+
+
+.cartColor {
+  fill: #D9D9D9;
+
+  &_closedCart {
+    fill: #1886D0;
+  }
+}
+
+.openCartBg {
+  background: #1C1C1C;
+}
+
+.closedCartBg {
+  background: #2a2a2a;
+}
+
