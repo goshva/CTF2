@@ -1,0 +1,37 @@
+.cartIcon {
+  position: relative;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.cartColor {
+  fill: #D9D9D9;
+
+  &_closedCart {
+    fill: #1886D0;
+  }
+}
+
+.cartBadge {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  background: #1C1C1C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -6px;
+  right: -6px;
+  border-radius: 50%;
+
+  span {
+    color: #1886D0;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
