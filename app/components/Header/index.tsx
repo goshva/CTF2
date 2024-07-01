@@ -101,15 +101,16 @@ const Header: FC = () => {
                   src={showLanguageIcon ? activeLanguageIcon : languageIcon}
                   alt="languageIcon"
                 />
-                {openLanugageSelector && (
-                  <article className={styles.selectLanguage_section}>
-                    <span onClick={handleMakeIconActive}>En</span>
-                    <div className="flex justify-center">
-                      <hr />
-                    </div>
-                    <span onClick={handleMakeIconActive}>Ru</span>
-                  </article>
-                )}
+                <article
+                  className={`${styles.selectLanguage_section} ${
+                    openLanugageSelector ? styles.active : ''
+                  }`}>
+                  <span onClick={handleMakeIconActive}>En</span>
+                  <div className="flex justify-center">
+                    <hr />
+                  </div>
+                  <span onClick={handleMakeIconActive}>Ru</span>
+                </article>
               </div>
             </section>
           </div>

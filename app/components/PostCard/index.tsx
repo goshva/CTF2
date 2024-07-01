@@ -15,6 +15,9 @@ import cubeIcon from '../../../public/cube-icon.svg';
 import clockIcon from '../../../public/clock-icon.svg';
 import smileIcon from '../../../public/smile-emoji.svg';
 import arrowIcon from '../../../public/arrowDown.svg';
+import likeIcon from '../../../public/like-icon.svg';
+import commentIcon from '../../../public/comment-icon.svg';
+import shareIcon from '../../../public/share-icon.svg';
 import { format } from 'timeago.js';
 import { PostFake, PostType } from '../HomeContent';
 
@@ -24,6 +27,10 @@ interface PropsTypes {
 }
 
 const PostCard: React.FC<PropsTypes> = ({ post }) => {
+  const randomFakeLikes = Math.floor(Math.random() * 201);
+  const randomFakeCommentsCount = Math.floor(Math.random() * 20);
+  const randomFakeShares = Math.floor(Math.random() * 12);
+
   return (
     <div className={styles.postCard}>
       <div className={styles.highContent}>
@@ -36,9 +43,11 @@ const PostCard: React.FC<PropsTypes> = ({ post }) => {
             {/* <span className={styles.userName}>{post.author.name}</span> */}
             <span className={styles.userName}>{post.user.userName}</span>
             {/* <span className={styles.greyText}>@{post.author.name}</span> */}
-            <span className={styles.greyText}>@{post.user.userName}</span>
-            <span className={styles.dot}>.</span>
-            <span className={styles.createdAt}>{format(post.createdAt)}</span>
+            <div style={{ fontSize: '14px' }}>
+              <span className={styles.greyText}>@{post.user.userName}</span>
+              <span className={styles.dot}>.</span>
+              <span className={styles.createdAt}>{format(post.createdAt)}</span>
+            </div>
           </div>
           {/* <div className={styles.desc}>{post.content}</div> */}
           <div className={styles.desc}>{post.desc}</div>
@@ -62,18 +71,18 @@ const PostCard: React.FC<PropsTypes> = ({ post }) => {
       </div>
       <section className={styles.icons}>
         <article className={styles.icon}>
-          <MessageCircle style={{ cursor: 'pointer' }} color="#8a98a4" />
-          {/* <span>{post?.comments.length === 0 ? '0' : post?.comments.length}</span> */}
-          <span>0</span>
-        </article>
-        <article className={styles.icon}>
-          <Share style={{ cursor: 'pointer' }} color="#8a98a4" />
-          <span>0</span>
-        </article>
-        <article className={styles.icon}>
-          <Heart style={{ cursor: 'pointer' }} color="#8a98a4" />
+          <Image src={likeIcon} alt="like icon" />
           {/* <span>{post?._count.likes === 0 ? '0' : post?._count.likes}</span> */}
-          <span>0</span>
+          <span>{randomFakeLikes}</span>
+        </article>
+        <article className={styles.icon}>
+          <Image src={commentIcon} alt="comment icon" />
+          {/* <span>{post?.comments.length === 0 ? '0' : post?.comments.length}</span> */}
+          <span>{randomFakeCommentsCount}</span>
+        </article>
+        <article className={styles.icon}>
+          <Image src={shareIcon} alt="share icon" />
+          <span>{randomFakeShares}</span>
         </article>
       </section>
     </div>

@@ -6,7 +6,25 @@
 
 .postCard {
   max-width: 550px;
-  max-height: 600px;
+  max-height: max-content;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -200px;
+    width: 100vw;
+    height: 1px;
+    background-color: #474c52;
+    z-index: 1;
+  }
+
+  &:last-child {
+    &::after {
+      content: none;
+    }
+  }
 
   @include sm-pc-screen {
     max-width: 490px;
@@ -23,8 +41,10 @@
       height: 52px;
       cursor: pointer;
       position: absolute;
-      left: -62px;
-      top: 0px;
+      // left: -62px;
+      left: -75px;
+      // top: 0px;
+      top: -7px;
 
       @media (max-width: 1235px) {
         display: none;
@@ -45,11 +65,18 @@
 
       .userText {
         display: flex;
+        align-items: center;
         gap: 5px;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
+
+        // new styles
+        margin-left: -5px;
+        margin-bottom: 5px;
 
         .userName {
           font-weight: 700;
+          font-size: 18px;
+          margin-right: 10px;
         }
 
         .greyText {
@@ -85,7 +112,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-          background: #888;
+          background: #d9d9d9;
           border-radius: 20px;
           cursor: pointer;
         }
@@ -113,6 +140,7 @@
     gap: 40px;
     align-items: center;
     margin-bottom: 22px;
+    cursor: pointer;
 
     .icon {
       display: flex;
@@ -120,17 +148,20 @@
       align-items: center;
 
       span {
-        color: #8a98a4;
+        color: #d9d9d9;
       }
     }
   }
 
   &:last-child {
     // padding-bottom: 885px;
-    padding-bottom: 900px;
+
+    // do
+    // padding-bottom: 900px;
+    padding-bottom: 410px;
 
     @media (max-height: 1375px) {
-      padding-bottom: 635px;
+      padding-bottom: 170px;
     }
 
     @media (max-height: 1220px) {

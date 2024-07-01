@@ -94,6 +94,82 @@
         display: flex;
         gap: 15px;
 
+        .ellipsisIcon {
+          cursor: pointer;
+          margin-left: -7px;
+
+          &:hover {
+            color: #0f629a;
+          }
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .uploadMenu_section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        width: 127px;
+        height: 130px;
+        border-radius: 10px;
+        background: #292b2c;
+        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.6);
+        left: 5px;
+        top: 17px;
+        padding: 10px;
+        transition: 150ms all ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+
+        &.activeShow {
+          position: absolute;
+          opacity: 1;
+          z-index: 0;
+          pointer-events: auto;
+        }
+
+        .items {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: 100ms all ease-in-out;
+          font-weight: 700;
+
+          &:hover {
+            span {
+              color: #0f629a;
+            }
+
+            svg {
+              path {
+                fill: #0f629a;
+              }
+            }
+          }
+
+          .fileItems {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            h3 {
+              &:hover {
+                color: #0f629a;
+              }
+            }
+          }
+        }
+
+        svg {
+          cursor: pointer;
+        }
+
         img {
           cursor: pointer;
         }
@@ -250,6 +326,12 @@
     right: 15px;
     top: 15px;
     box-shadow: 4px 4px 20px 0px #5a5a5a40 inset;
+    transition: 50ms all ease-in;
+    opacity: 0;
+
+    &.activeSearch {
+      opacity: 1;
+    }
 
     input {
       width: 75%;
