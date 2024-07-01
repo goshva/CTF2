@@ -2,8 +2,8 @@
   max-width: 1330px;
   margin: 0px auto;
 
-  @media (max-width: 1366px) {
-    max-width: 1215px;
+  @media (max-width: 1285px) {
+    margin: 10px -20px;
   }
 }
 
@@ -121,6 +121,12 @@
           right: 15px;
           z-index: 3;
           box-shadow: 4px 4px 20px 0px #5a5a5a40 inset;
+          opacity: 0;
+          transition: 120ms all ease-in-out;
+
+          &.active {
+            opacity: 1;
+          }
 
           hr {
             display: flex;

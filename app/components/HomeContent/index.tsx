@@ -13,6 +13,7 @@ import fileIcon from '../../../public/file-icon.svg';
 import loopIcon from '../../../public/loop-icon.svg';
 import activeLoopIcon from '../../../public/active-loop-icon.svg';
 import Image from 'next/image';
+import { EllipsisVertical } from 'lucide-react';
 
 interface AuthorType {
   id: string;
@@ -83,6 +84,7 @@ function HomeContent() {
 
   // для увелечения textarea
   const [isFocused, setIsFocused] = useState(false);
+  const [showIconMenu, setShowIconMenu] = useState(false);
 
   // для будушего создания поста
   const handleCreatePost = async () => {
@@ -154,26 +156,6 @@ function HomeContent() {
     };
   }, [searchOpened]);
 
-  // must remove
-
-  // const [isSmallScreen, setIsSmallScreen] = useState(false);
-  // const [isHighScreen, setIsHighScreen] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     const width = window.innerWidth;
-  //     const height = window.innerHeight;
-  //     setIsSmallScreen(width === 1280 && height === 720);
-  //     setIsHighScreen(height > 1080);
-  //   };
-
-  //   handleResize();
-  //   window.addEventListener('resize', handleResize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-
   useEffect(() => {
     const body = document.body;
 
@@ -194,6 +176,25 @@ function HomeContent() {
     window.scrollTo(0, 0);
   });
 
+  const showMenuRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutsideMenu = (event: MouseEvent) => {
+    if (showMenuRef.current && !showMenuRef.current.contains(event.target as Node)) {
+      setShowIconMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showIconMenu) {
+      document.addEventListener('click', handleClickOutsideMenu);
+    } else {
+      document.removeEventListener('click', handleClickOutsideMenu);
+    }
+    return () => {
+      document.removeEventListener('click', handleClickOutsideMenu);
+    };
+  }, [showIconMenu]);
+
   return (
     <div>
       <div className={styles.homeContent}>
@@ -212,24 +213,50 @@ function HomeContent() {
                 <Image src={loopIcon} alt="loopIcon" />
               </div>
             )}
-            {searchOpened && (
-              <div className={styles.inputBlock}>
-                <Image
-                  onClick={() => setSearchOpened(!searchOpened)}
-                  src={activeLoopIcon}
-                  alt="loopIcon"
-                />
-                <input placeholder="Search by posts" type="text" />
-              </div>
-            )}
+            <div className={`${styles.inputBlock} ${searchOpened ? styles.activeSearch : ''}`}>
+              <Image
+                onClick={() => setSearchOpened(!searchOpened)}
+                src={activeLoopIcon}
+                alt="loopIcon"
+              />
+              <input placeholder="Search by posts" type="text" />
+            </div>
           </div>
           <div className={styles.line}></div>
           <article className={styles.downContent}>
             <div className={styles.icons}>
-              <Image src={cameraIcon} alt="icon" />
+              <EllipsisVertical
+                onClick={() => setShowIconMenu(!showIconMenu)}
+                className={styles.ellipsisIcon}
+              />
+              {/* <Image src={cameraIcon} alt="icon" />
               <Image src={playIcon} alt="icon" />
               <Image src={fileIcon} alt="icon" />
-              <Image src={gunIcon} alt="icon" />
+              <Image src={gunIcon} alt="icon" /> */}
+            </div>
+            <div
+              ref={showMenuRef}
+              className={`${styles.uploadMenu_section} ${showIconMenu ? styles.activeShow : ''}`}>
+              <article>
+                <div onClick={() => setShowIconMenu(false)} className={styles.items}>
+                  <Image src={cameraIcon} alt="icon" />
+                  <span>Фото</span>
+                </div>
+                <div onClick={() => setShowIconMenu(false)} className={styles.items}>
+                  <Image src={playIcon} alt="icon" />
+                  <span>Видео</span>
+                </div>
+                <div onClick={() => setShowIconMenu(false)} className={styles.items}>
+                  <Image style={{ marginTop: '-25px' }} src={fileIcon} alt="icon" />
+
+                  <div onClick={() => setShowIconMenu(false)} className={styles.fileItems}>
+                    <h3>Файл</h3>
+                    <h3>Скин</h3>
+                  </div>
+                </div>
+              </article>
+
+              {/* <Image src={gunIcon} alt="icon" /> */}
             </div>
             <button ref={buttonRef} onClick={handleCreatePost}>
               Отправить
