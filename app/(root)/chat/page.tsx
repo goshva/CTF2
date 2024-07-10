@@ -4,6 +4,7 @@ import ChatSidebar from '@/components/ChatSidebar';
 import Balance from '@/components/Balance';
 import { Metadata } from 'next';
 import FriendsChat from '@/components/FriendsChat';
+import Cart from '@/components/Cart';
 
 
 export const metadata: Metadata ={
@@ -16,8 +17,8 @@ function Chat() {
           <div className="col-9">
             <ChatRecomedation />
           </div>
-          <div className="col-3">
-            <Balance />
+          <div className={`${styles.cart} col-3`}>
+            <Cart />
           </div>
         </div>
       <div className="row">
